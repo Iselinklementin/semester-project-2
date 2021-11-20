@@ -1,0 +1,20 @@
+// form {
+//   border: none;
+// }
+
+// .form-search {
+//   input {
+//     @extend form;
+//   }
+
+//   button {
+//     @extend form;
+//     background-color: getColour(secondary);
+//     color: white;
+
+//     &:hover {
+//       background-color: lighten(getColour(secondary), 10);
+//       cursor: pointer;
+//     }
+//   }
+// }

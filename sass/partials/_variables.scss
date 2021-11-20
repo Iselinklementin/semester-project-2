@@ -1,0 +1,30 @@
+// fonts
+
+$font-headings: "Roboto Slab", serif;
+$font-primary: "Roboto", sans-serif;
+
+// colours
+
+$colours: (
+  primary: #c6d9de,
+  secondary: #82b447,
+  backgroundColor: #efefef,
+  addToCartBtn: #db1275,
+  statusSuccess: #cde5c8,
+  statusWarning: #f7d3ab,
+  statusError: #fbc9b6,
+  contrast: #fbaf2a,
+);
+
+// statusOk: #cbe7f4,
+
+@function getColour($colour) {
+  @return map-get($colours, $colour);
+}
+
+// media
+$mobile-width: 576px;
+$tablet-width: 768px;
+$laptop-width: 992px;
+$desktop-width: 1200px;
+$desktop-large-width: 1400px;

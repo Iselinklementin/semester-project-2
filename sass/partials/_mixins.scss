@@ -1,0 +1,4 @@
+@mixin button-border($radius) {
+  border-radius: $radius;
+  border: 3px solid white;
+}

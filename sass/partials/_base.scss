@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: getColour(backgroundColor);
+  margin: 0;
+  font-family: $font-primary;
+}
+
+// .wrapper {
+//   flex: 1 0 auto;
+// }
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
