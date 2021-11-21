@@ -19,10 +19,17 @@ body {
   flex: 1 0 auto;
 }
 
-.flex-container, nav .social-media-wrapper {
+.flex-container, nav .social-media-wrapper, .cow-container, .filter-btns, .featured-products-container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.absolute-center, nav .logo-container .logo, nav .logo-container .logo-background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 nav {
@@ -39,11 +46,7 @@ nav .logo-container .logo {
   background-repeat: no-repeat;
   width: 90px;
   height: 36px;
-  position: absolute;
   z-index: 1;
-  right: 0;
-  left: 0;
-  margin: auto;
   top: 35px;
 }
 
@@ -52,11 +55,7 @@ nav .logo-container .logo-background {
   background-repeat: no-repeat;
   width: 130px;
   height: 132px;
-  position: absolute;
   top: -8px;
-  right: 0;
-  left: 0;
-  margin: auto;
 }
 
 nav .sidebar-nav-toggle {
@@ -123,12 +122,12 @@ nav .sidebar-nav-links li {
 nav .sidebar-nav-links a {
   display: block;
   text-decoration: none;
-  color: black;
+  color: #000000;
 }
 
 nav .sidebar-nav-links a:hover {
   scale: 1.05;
-  color: black;
+  color: #000000;
 }
 
 nav .social-media-wrapper {
@@ -157,12 +156,11 @@ nav .social-media-wrapper .social-media li {
 
 nav .social-media-wrapper .social-media li:hover {
   cursor: pointer;
-  background-color: white;
   scale: 1.1;
 }
 
 nav .social-media-wrapper .social-media a {
-  color: black;
+  color: #000000;
   text-decoration: none;
   margin: 1rem;
   font-size: 1.5rem;
@@ -191,12 +189,11 @@ nav .social-media-wrapper .social-media a {
 .icon-container a {
   position: relative;
   z-index: 2;
-  color: black;
+  color: #000000;
   top: 25px;
 }
 
 .icon-container a:hover {
-  color: black;
   scale: 1.1;
 }
 
@@ -204,6 +201,53 @@ nav .social-media-wrapper .social-media a {
   width: 100%;
   opacity: 1;
   transition: all 0.5s;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: 370px;
+  object-fit: cover;
+  object-position: 54%;
+  margin-bottom: 2rem;
+}
+
+.cow-container {
+  flex-direction: column;
+}
+
+.cow-container img {
+  width: 300px;
+}
+
+.cow-container figcaption {
+  max-width: 250px;
+  text-align: center;
+}
+
+.filter-btns {
+  margin: 2rem;
+}
+
+.filter-btns input {
+  margin: 10px;
+  border-radius: 50px;
+  padding: 5px 15px;
+}
+
+.filter-btns input:focus {
+  box-shadow: none;
+}
+
+.filter-btns .featured-btn {
+  background-color: #fbaf2a;
+  border-color: transparent;
+  color: #000000;
+}
+
+.filter-btns .new-btn {
+  background-color: transparent;
+  color: #000000;
+  border-color: transparent;
 }
 
 h1,
