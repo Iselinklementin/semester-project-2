@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   height: 100%;
@@ -19,7 +23,7 @@ body {
   flex: 1 0 auto;
 }
 
-.flex-container, nav .social-media-wrapper, .cow-container, .filter-btns, .featured-products-container, .social-media-bottom, .social-media-bottom li a {
+.flex-container, nav .social-media-wrapper, .cow-container, .filter-btns, .featured-products-container, .social-media-bottom, .social-media-bottom li a, footer, footer ul {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,6 +35,7 @@ body {
   border: none;
   font-weight: 500;
   text-transform: uppercase;
+  max-width: 200px;
 }
 
 nav {
@@ -338,8 +343,9 @@ nav .sidebar-nav-wrapper.show .sidebar-nav-container {
 
 .filter-btns .new-btn {
   background-color: transparent;
-  color: #000000;
+  color: #4d4d4d;
   border-color: transparent;
+  font-weight: 400;
 }
 
 @media (min-width: 992px) {
@@ -546,6 +552,40 @@ nav .sidebar-nav-wrapper.show .sidebar-nav-container {
   margin-bottom: 5px;
 }
 
+.to-top-container {
+  position: relative;
+  margin: -2rem auto 2rem auto;
+}
+
+.to-top-container .splat {
+  background-image: url("../../images/splat.svg");
+  background-repeat: no-repeat;
+  width: 131px;
+  height: 120px;
+  transform: all 0.5s;
+}
+
+.to-top-container .splat:hover, .to-top-container .splat:focus {
+  scale: 1.05;
+}
+
+.to-top-btn {
+  margin: auto;
+  position: absolute;
+  left: 21px;
+  top: 41px;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  max-width: 79px;
+  text-align: center;
+}
+
+.to-top-btn:hover {
+  color: white;
+}
+
 h1,
 h2 {
   font-family: "Roboto Slab", serif;
@@ -556,5 +596,39 @@ footer {
   background-color: #c6d9de;
   height: 100px;
   width: 100%;
+}
+
+footer .footer-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer ul {
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+footer .nav-item {
+  list-style: none;
+}
+
+footer a.nav-link {
+  color: #000000;
+}
+
+footer a.nav-link:hover {
+  color: #000000;
+  scale: 1.05;
+}
+
+footer .logo-container {
+  position: relative;
+}
+
+footer .logo-container .logo {
+  background-image: url("../../images/logo.svg");
+  background-repeat: no-repeat;
+  width: 90px;
+  height: 36px;
 }
 /*# sourceMappingURL=style.css.map */

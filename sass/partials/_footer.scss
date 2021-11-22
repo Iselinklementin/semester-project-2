@@ -1,7 +1,42 @@
 footer {
-  // @extend flex-container;
+  @extend .flex-container;
   flex-shrink: 0;
   background-color: getColour(primary);
   height: 100px;
   width: 100%;
+
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ul {
+    @extend .flex-container;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
+  .nav-item {
+    list-style: none;
+  }
+
+  a.nav-link {
+    color: getColour(dark);
+
+    &:hover {
+      color: getColour(dark);
+      scale: 1.05;
+    }
+  }
+
+  .logo-container {
+    position: relative;
+
+    .logo {
+      background-image: url("../../images/logo.svg");
+      background-repeat: no-repeat;
+      width: 90px;
+      height: 36px;
+    }
+  }
 }

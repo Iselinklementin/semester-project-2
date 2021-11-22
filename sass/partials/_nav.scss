@@ -303,8 +303,9 @@ nav {
 
   .new-btn {
     background-color: transparent;
-    color: getColour(dark);
+    color: lighten(getColour(dark), 30);
     border-color: transparent;
+    font-weight: 400;
   }
 
   @media (min-width: $laptop-width) {
@@ -498,5 +499,40 @@ nav {
       font-size: 1.5rem;
       margin-bottom: 5px;
     }
+  }
+}
+
+.to-top-container {
+  position: relative;
+  margin: -2rem auto 2rem auto;
+
+  .splat {
+    background-image: url("../../images/splat.svg");
+    background-repeat: no-repeat;
+    width: 131px;
+    height: 120px;
+    transform: all 0.5s;
+
+    &:hover,
+    &:focus {
+      scale: 1.05;
+    }
+  }
+}
+
+.to-top-btn {
+  margin: auto;
+  position: absolute;
+  left: 21px;
+  top: 41px;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  max-width: 79px;
+  text-align: center;
+
+  &:hover {
+    color: getColour(bright);
   }
 }
