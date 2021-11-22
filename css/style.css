@@ -38,6 +38,12 @@ nav {
   height: 90px;
 }
 
+@media (min-width: 992px) {
+  nav {
+    height: 120px;
+  }
+}
+
 nav .logo-container {
   position: relative;
 }
@@ -61,7 +67,7 @@ nav .logo-container .logo {
     right: auto;
     width: 110px;
     height: 42px;
-    top: 27px;
+    top: 42px;
   }
 }
 
@@ -83,7 +89,7 @@ nav .logo-container .logo-background {
     right: auto;
     width: 140px;
     height: 143px;
-    top: -13px;
+    top: 15px;
   }
 }
 
@@ -161,6 +167,7 @@ nav .sidebar-nav-links a {
   display: block;
   text-decoration: none;
   color: #000000;
+  padding-left: 0;
 }
 
 nav .sidebar-nav-links a:hover {
@@ -201,7 +208,6 @@ nav .social-media-wrapper .social-media a {
 
 nav .input-group {
   max-width: 85%;
-  margin-left: 25px;
   margin-bottom: 2rem;
 }
 
@@ -232,12 +238,24 @@ nav .icon-container a {
   }
 }
 
-nav .icon-container a:hover {
-  scale: 1.1;
+@media (min-width: 992px) {
+  nav .icon-container a {
+    padding-top: 1.5rem;
+  }
 }
 
 nav .icon-container a i {
   font-size: 1.4rem;
+}
+
+nav .icon-container a:hover {
+  scale: 1.1;
+  color: #000000;
+}
+
+nav .icon-container .input-group {
+  width: 200px;
+  margin: 2.5rem 1rem 0 0;
 }
 
 nav .sidebar-nav-wrapper.show .sidebar-nav-container {

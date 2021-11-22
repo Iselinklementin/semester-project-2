@@ -2,6 +2,10 @@ nav {
   background-color: getColour(primary);
   height: 90px;
 
+  @media (min-width: $laptop-width) {
+    height: 120px;
+  }
+
   // logo
 
   .logo-container {
@@ -24,7 +28,7 @@ nav {
         right: auto;
         width: 110px;
         height: 42px;
-        top: 27px;
+        top: 42px;
       }
     }
 
@@ -44,7 +48,7 @@ nav {
         right: auto;
         width: 140px;
         height: 143px;
-        top: -13px;
+        top: 15px;
       }
     }
   }
@@ -122,6 +126,7 @@ nav {
       display: block;
       text-decoration: none;
       color: getColour(dark);
+      padding-left: 0;
 
       &:hover {
         scale: 1.05;
@@ -171,7 +176,7 @@ nav {
 
   .input-group {
     max-width: 85%;
-    margin-left: 25px;
+    // margin-left: 25px;
     margin-bottom: 2rem;
 
     .fa-search {
@@ -187,7 +192,6 @@ nav {
   .icon-container {
     position: relative;
     display: flex;
-    // font-size: 1.4rem;
     justify-content: end;
 
     & a {
@@ -201,13 +205,23 @@ nav {
         padding: 0.5rem 1rem;
       }
 
-      &:hover {
-        scale: 1.1;
+      @media (min-width: $laptop-width) {
+        padding-top: 1.5rem;
       }
 
       & i {
         font-size: 1.4rem;
       }
+
+      &:hover {
+        scale: 1.1;
+        color: getColour(dark);
+      }
+    }
+
+    & .input-group {
+      width: 200px;
+      margin: 2.5rem 1rem 0 0;
     }
   }
 
