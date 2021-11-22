@@ -27,9 +27,19 @@ body {
   align-items: center;
 }
 
-.absolute-center {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
+// .absolute-center {
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   margin: auto;
+// }
+
+.btn-primary {
+  // background-color: getColour(primary);
+  background-color: #c9868e;
+  background-color: getColour(dark);
+  border: none;
+  // color: getColour(dark);
+  font-weight: 500;
+  text-transform: uppercase;
 }
