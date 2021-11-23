@@ -1,7 +1,7 @@
 footer {
-  @extend .flex-container;
-  flex-shrink: 0;
+  @include flex(row, center, center);
   background-color: getColour(primary);
+  flex-shrink: 0;
   height: 100px;
   width: 100%;
 
@@ -11,7 +11,7 @@ footer {
   }
 
   ul {
-    @extend .flex-container;
+    @include flex(row, center, center);
     flex-wrap: wrap;
     margin: 0;
   }

@@ -1,0 +1,236 @@
+nav {
+  background-color: getColour(primary);
+  height: 90px;
+
+  @media (min-width: $laptop-width) {
+    height: 120px;
+  }
+
+  .logo-container {
+    position: relative;
+
+    // logo nav - mid mobile
+
+    .logo {
+      background-image: url("../../images/logo.svg");
+      background-repeat: no-repeat;
+      width: 90px;
+      height: 36px;
+      z-index: 1;
+      top: 35px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+
+      // logo nav - left on laptop
+
+      @media (min-width: $laptop-width) {
+        left: 26px;
+        right: auto;
+        width: 110px;
+        height: 42px;
+        top: 42px;
+      }
+    }
+
+    .logo-background {
+      background-image: url("../../images/logo_background.svg");
+      background-repeat: no-repeat;
+      width: 130px;
+      height: 132px;
+      top: -8px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+
+      @media (min-width: $laptop-width) {
+        left: auto;
+        right: auto;
+        width: 140px;
+        height: 143px;
+        top: 15px;
+      }
+    }
+  }
+
+  // Sidebar - mobile
+
+  .hamburger-container {
+    position: relative;
+
+    .sidebar-nav-toggle {
+      font-size: 1.6rem;
+      z-index: 2;
+      position: absolute;
+      top: 20px;
+      transition: all 0.5s;
+
+      &.btn:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .sidebar-nav-container {
+    z-index: 1;
+    position: absolute;
+    width: 0;
+    overflow-y: hidden;
+    background: getColour(contrast);
+    opacity: 0;
+    display: flex;
+    padding-top: 5rem;
+    top: 0;
+    transition: all 0.5s;
+  }
+
+  .sidebar-nav-items {
+    border-top: 1px solid getColour(borderContrast);
+    display: flex;
+    width: 100%;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    flex-direction: column;
+    overflow: hidden;
+
+    @media (min-width: $laptop-width) {
+      height: 370px;
+    }
+  }
+
+  .sidebar-nav-links {
+    padding: 0;
+    list-style: none;
+    width: 300px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 190px;
+    margin-bottom: 2rem;
+
+    .fa-chevron-right::before {
+      margin-right: 0.5rem;
+    }
+
+    li {
+      line-height: 30px;
+      transition: all 0.3s;
+      padding: 10px;
+      text-align: left;
+      white-space: nowrap;
+      display: block;
+      width: 120px;
+    }
+
+    .nav-link {
+      display: block;
+      text-decoration: none;
+      color: getColour(dark);
+      padding-left: 0;
+
+      &:hover {
+        scale: 1.05;
+        color: getColour(dark);
+      }
+    }
+  }
+
+  // Social Media Icons
+
+  .social-media-wrapper {
+    @include flex(row, center, center);
+
+    p {
+      margin-top: 1rem;
+    }
+
+    .social-media {
+      @include flex(row, center, center);
+      transition: all 0.5s;
+      margin-bottom: 0;
+      padding: 1rem;
+
+      li {
+        display: flex;
+        list-style: none;
+        white-space: nowrap;
+        font-size: 0.8rem;
+
+        &:hover {
+          cursor: pointer;
+          scale: 1.1;
+        }
+      }
+
+      a {
+        color: getColour(dark);
+        text-decoration: none;
+        margin: 1rem;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  // Search
+
+  .input-group {
+    max-width: 85%;
+    margin-bottom: 2rem;
+
+    .fa-search {
+      position: absolute;
+      right: 10px;
+      top: 11px;
+      z-index: 4;
+    }
+  }
+
+  // Icons top right
+
+  .icon-container {
+    position: relative;
+    @include flex(row, end, flex-start);
+
+    a {
+      position: relative;
+      z-index: 2;
+      color: getColour(dark);
+      top: 25px;
+      padding: 0.5rem 0.5rem;
+
+      i {
+        font-size: 1.4rem;
+      }
+
+      &:hover {
+        scale: 1.1;
+        color: getColour(dark);
+      }
+
+      @media (min-width: $mobile-width) {
+        padding: 0.5rem 1rem;
+      }
+
+      @media (min-width: $laptop-width) {
+        padding-top: 1.5rem;
+      }
+    }
+
+    .input-group {
+      width: 200px;
+      margin: 2.5rem 1rem 0 0;
+    }
+  }
+
+  // When visible
+
+  .sidebar-nav-wrapper {
+    &.show .sidebar-nav-container {
+      width: 100%;
+      opacity: 1;
+      transition: all 0.5s;
+    }
+  }
+}

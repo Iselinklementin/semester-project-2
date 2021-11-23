@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+main {
+  background-color: getColour(backgroundColor);
+  font-family: $font-primary;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.wrapper {
+  flex: 1 0 auto;
+}
+
+// extended
+
+// .flex-container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .absolute-center {
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   margin: auto;
+// }

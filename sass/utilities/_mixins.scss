@@ -1,0 +1,11 @@
+// @mixin button-border($radius) {
+//   border-radius: $radius;
+//   border: 3px solid white;
+// }
+
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}

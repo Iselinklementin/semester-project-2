@@ -1,0 +1,290 @@
+// index
+
+.hero-banner {
+  max-width: 100%;
+  height: 370px;
+  object-fit: cover;
+  object-position: 54%;
+  margin-bottom: 2rem;
+
+  @media (min-width: $laptop-width) {
+    height: unset;
+  }
+
+  @media (min-width: $desktop-width) {
+    object-fit: none;
+    object-position: unset;
+  }
+}
+
+.cow-container {
+  @include flex(column, center, center);
+
+  img {
+    width: 300px;
+  }
+
+  figcaption {
+    max-width: 250px;
+    text-align: center;
+  }
+
+  @media (min-width: $laptop-width) {
+    display: none;
+  }
+}
+
+.line {
+  border-bottom: getColour(borderContrast) thin solid;
+  width: 35%;
+  margin: 3rem auto 0 auto;
+
+  @media (min-width: $laptop-width) {
+    display: none;
+  }
+}
+
+.filter-btns {
+  @include flex(row, center, center);
+  margin: 2rem auto 0rem auto;
+
+  input {
+    margin: 10px;
+    border-radius: 50px;
+    padding: 5px 15px;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .featured-btn {
+    background-color: getColour(contrast);
+    border-color: transparent;
+    color: getColour(dark);
+  }
+
+  .new-btn {
+    background-color: transparent;
+    color: lighten(getColour(dark), 30);
+    border-color: transparent;
+    font-weight: 400;
+  }
+
+  @media (min-width: $laptop-width) {
+    justify-content: start;
+    margin: unset;
+  }
+}
+
+.search-featured {
+  @include flex(row, space-between, center);
+
+  @media (min-width: $laptop-width) {
+    margin-top: 2rem;
+  }
+
+  .input-group {
+    width: 300px;
+    margin-right: 1rem;
+
+    .fa-search {
+      position: absolute;
+      right: 10px;
+      top: 11px;
+      z-index: 4;
+    }
+  }
+}
+
+.featured-products-container {
+  @include flex(row, center, center);
+  margin-top: 1rem;
+
+  .card {
+    padding: 0;
+    // box-shadow: rgb(219, 219, 219) 2px 1px 5px 2px;
+
+    img {
+      height: 280px;
+      object-fit: cover;
+
+      @media (min-width: $tablet-width) {
+        height: unset;
+      }
+    }
+  }
+}
+
+.benefits-container {
+  margin-bottom: 2rem;
+  margin-top: 0rem;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 3rem;
+  }
+
+  .benefits_list_container {
+    @media (min-width: $laptop-width) {
+      padding-right: 12px;
+      margin-top: -42px;
+    }
+  }
+
+  h2 {
+    width: 218px;
+    padding-bottom: 1rem;
+    border-bottom: getColour(borderContrast) thin solid;
+    padding-left: 0;
+    font-size: 1.5rem;
+
+    @media (min-width: $mobile-width) {
+      margin-left: 1rem;
+    }
+
+    @media (min-width: $laptop-width) {
+      margin-left: 0;
+    }
+  }
+
+  .list-group-flush {
+    .list-group-item {
+      border-width: 0;
+      background-color: transparent;
+      align-items: baseline;
+      padding-left: 0;
+      max-width: 295px;
+
+      .fa-check-circle {
+        margin-right: 10px;
+        color: getColour(secondary);
+      }
+    }
+  }
+
+  figure {
+    max-height: 270px;
+    margin: 3rem auto;
+
+    @media (min-width: $laptop-width) {
+      margin-top: 0;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    figcaption {
+      margin: 1rem auto;
+      max-width: 230px;
+    }
+  }
+}
+
+.products-container {
+  height: 320px;
+  position: relative;
+
+  @media (min-width: $laptop-width) {
+    height: 380px;
+  }
+
+  @media (min-width: $desktop-width) {
+    height: 400px;
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: 17%;
+
+    @media (min-width: $tablet-width) {
+      object-position: 0%;
+    }
+  }
+
+  h2 {
+    width: 180px;
+    margin-bottom: 2rem;
+
+    @media (min-width: $tablet-width) {
+      width: 210px;
+    }
+  }
+
+  .to-products-wrap {
+    position: absolute;
+    top: 28%;
+    left: 10%;
+
+    @media (min-width: $laptop-width) {
+      top: 30%;
+    }
+
+    @media (min-width: $desktop-width) {
+      top: 32%;
+    }
+
+    a {
+      @extend .btn-primary;
+    }
+  }
+}
+
+.social-media-bottom {
+  @include flex(row, center, center);
+  list-style: none;
+  padding-top: 2rem;
+
+  margin: 0 auto 4rem auto;
+
+  li a {
+    color: getColour(dark);
+    margin: 20px;
+    text-decoration: none;
+    @include flex(column, center, center);
+
+    &:hover {
+      scale: 1.05;
+    }
+
+    i {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.to-top-container {
+  position: relative;
+  margin: -2rem auto 2rem auto;
+
+  &:hover,
+  &:focus {
+    scale: 1.05;
+  }
+
+  .splat {
+    background-image: url("../../images/splat.svg");
+    background-repeat: no-repeat;
+    width: 131px;
+    height: 120px;
+    transform: all 0.5s;
+  }
+
+  .to-top-btn {
+    margin: auto;
+    position: absolute;
+    left: 21px;
+    top: 41px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    max-width: 79px;
+    text-align: center;
+  }
+}

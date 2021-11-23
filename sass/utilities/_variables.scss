@@ -17,13 +17,10 @@ $colours: (
   dark: #000000,
   bright: white,
   inputColor: #576e82,
+  borderContrast: #bd8320,
 );
 
 // statusOk: #cbe7f4,
-
-@function getColour($colour) {
-  @return map-get($colours, $colour);
-}
 
 // media
 $mobile-width: 576px;
