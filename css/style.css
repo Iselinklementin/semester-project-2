@@ -92,7 +92,7 @@ nav .hamburger-container .sidebar-nav-toggle {
   z-index: 2;
   position: absolute;
   top: 20px;
-  transition: all 0.5s;
+  transition: all 0.5s ease;
 }
 
 nav .hamburger-container .sidebar-nav-toggle.btn:focus {
@@ -161,7 +161,7 @@ nav .nav-links-top-right .input-group {
   display: flex;
   padding-top: 5rem;
   top: 0;
-  transition: all 0.5s;
+  transition: all 0.5s ease;
 }
 
 .sidebar-nav-items {
@@ -233,7 +233,7 @@ nav .nav-links-top-right .input-group {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  transition: all 0.5s;
+  transition: all 0.5s ease;
   margin-bottom: 0;
   padding: 1rem;
 }
@@ -272,7 +272,7 @@ nav .nav-links-top-right .input-group {
 .sidebar-nav-wrapper.show .sidebar-nav-container {
   width: 100%;
   opacity: 1;
-  transition: all 0.5s;
+  transition: all 0.5s ease;
 }
 
 h1,
@@ -327,11 +327,11 @@ footer a.nav-link:hover {
   scale: 1.05;
 }
 
-footer .logo-container {
+footer .logo-container-footer {
   position: relative;
 }
 
-footer .logo-container .logo {
+footer .logo-container-footer .logo-footer {
   background-image: url("../../images/logo.svg");
   background-repeat: no-repeat;
   width: 90px;
@@ -405,21 +405,23 @@ footer .logo-container .logo {
   margin: 10px;
   border-radius: 50px;
   padding: 5px 15px;
+  color: #000000;
 }
 
-.filter-btns input:focus {
+.filter-btns input:focus, .filter-btns input:hover {
   box-shadow: none;
+  color: #000000;
 }
 
 .filter-btns .featured-btn {
   background-color: #fbaf2a;
   border-color: transparent;
-  color: #000000;
 }
 
 .filter-btns .new-btn {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
   background-color: transparent;
-  color: #4d4d4d;
   border-color: transparent;
   font-weight: 400;
 }

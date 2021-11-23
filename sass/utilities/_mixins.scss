@@ -10,6 +10,14 @@
   align-items: $align;
 }
 
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
 @mixin reset-list {
   margin: 0;
   padding: 0;
@@ -40,4 +48,11 @@
   @media (min-width: $desktop-large-width) {
     @content;
   }
+}
+
+// Cross browser opacity
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
 }

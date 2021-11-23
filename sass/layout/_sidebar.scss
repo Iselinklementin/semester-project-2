@@ -10,12 +10,11 @@
   display: flex;
   padding-top: 5rem;
   top: 0;
-  transition: all 0.5s;
+  @include transition(all 0.5s ease);
 }
 
 .sidebar-nav-items {
   border-top: 1px solid getColour(borderContrast);
-  // @include flex(column, unset, unset);
   display: flex;
   width: 100%;
   margin-top: 2rem;
@@ -76,7 +75,7 @@
 
   .social-media {
     @include flex(row, center, center);
-    transition: all 0.5s;
+    @include transition(all 0.5s ease);
     margin-bottom: 0;
     padding: 1rem;
 
@@ -121,6 +120,6 @@
   &.show .sidebar-nav-container {
     width: 100%;
     opacity: 1;
-    transition: all 0.5s;
+    @include transition(all 0.5s ease);
   }
 }
