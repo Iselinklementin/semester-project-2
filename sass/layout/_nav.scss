@@ -2,7 +2,7 @@ nav {
   background-color: getColour(primary);
   height: 90px;
 
-  @media (min-width: $laptop-width) {
+  @include for-laptop {
     height: 120px;
   }
 
@@ -25,7 +25,7 @@ nav {
 
       // logo nav - left on laptop
 
-      @media (min-width: $laptop-width) {
+      @include for-laptop {
         left: 26px;
         right: auto;
         width: 110px;
@@ -45,7 +45,7 @@ nav {
       right: 0;
       margin: auto;
 
-      @media (min-width: $laptop-width) {
+      @include for-laptop {
         left: auto;
         right: auto;
         width: 140px;
@@ -88,6 +88,7 @@ nav {
 
   .sidebar-nav-items {
     border-top: 1px solid getColour(borderContrast);
+    // @include flex(column, unset, unset);
     display: flex;
     width: 100%;
     margin-top: 2rem;
@@ -95,7 +96,7 @@ nav {
     flex-direction: column;
     overflow: hidden;
 
-    @media (min-width: $laptop-width) {
+    @include for-laptop {
       height: 370px;
     }
   }
@@ -191,7 +192,7 @@ nav {
 
   .icon-container {
     position: relative;
-    @include flex(row, end, flex-start);
+    @include flex(row, end, center);
 
     a {
       position: relative;
@@ -209,12 +210,12 @@ nav {
         color: getColour(dark);
       }
 
-      @media (min-width: $mobile-width) {
+      @include for-phone {
         padding: 0.5rem 1rem;
       }
 
-      @media (min-width: $laptop-width) {
-        padding-top: 1.5rem;
+      @include for-laptop {
+        padding-top: 0.5rem, 1.5rem;
       }
     }
 

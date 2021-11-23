@@ -9,3 +9,35 @@
   justify-content: $justify;
   align-items: $align;
 }
+
+// @mixin reset-list {
+//   margin: 0;
+//   padding: 0;
+//   list-style: none;
+// }
+
+@mixin for-phone {
+  @media (min-width: $mobile-width) {
+    @content;
+  }
+}
+@mixin for-tablet {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+@mixin for-laptop {
+  @media (min-width: $laptop-width) {
+    @content;
+  }
+}
+@mixin for-desktop {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}
+@mixin for-large-desktop {
+  @media (min-width: $desktop-large-width) {
+    @content;
+  }
+}

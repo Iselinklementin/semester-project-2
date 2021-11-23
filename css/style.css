@@ -222,7 +222,7 @@ nav .icon-container {
   display: flex;
   flex-direction: row;
   justify-content: end;
-  align-items: flex-start;
+  align-items: center;
 }
 
 nav .icon-container a {
@@ -250,7 +250,7 @@ nav .icon-container a:hover {
 
 @media (min-width: 992px) {
   nav .icon-container a {
-    padding-top: 1.5rem;
+    padding-top: 0.5rem, 1.5rem;
   }
 }
 
@@ -503,7 +503,7 @@ footer .logo-container .logo {
 
 @media (min-width: 992px) {
   .benefits-container h2 {
-    margin-left: 0;
+    margin-left: 0rem;
   }
 }
 
