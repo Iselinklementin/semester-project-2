@@ -26,28 +26,38 @@
   </head>
   <body>
     <main>
-      <!-- main? 
-    article: The article element is used to identify a block of content suitable for reuse and syndication in other settings, such as a blog post or technical article.-->
+      <!--
+      article: The article element is used to identify a block of content suitable for reuse and syndication in other settings,
+      such as a blog post or technical article.-->
       <div class="wrapper" id="top">
         <nav>
           <div class="sidebar-nav-wrapper">
             <div class="sidebar-nav-container">
               <div class="sidebar-nav-items container">
-                <!-- LIST -->
-
                 <ul class="sidebar-nav-links">
                   <li>
-                    <a href="#" class="active nav-link" aria-current="page"><i class="fas fa-chevron-right"></i>Home</a>
+                    <a href="#" class="active nav-link" aria-current="page"></a>
+                      <i class="fas fa-chevron-right"></i>
+                      Home
+                    </a>
                   </li>
                   <li>
-                    <a href="#" class="nav-link"><i class="fas fa-chevron-right"></i>Products</a>
+                    <a href="#" class="nav-link">
+                      <i class="fas fa-chevron-right"></i>
+                      Products
+                    </a>
                   </li>
                   <li>
-                    <a href="#" class="nav-link"><i class="fas fa-chevron-right"></i>Wishlist</a>
+                    <a href="#" class="nav-link">
+                      <i class="fas fa-chevron-right"></i>
+                      Wishlist
+                    </a>
                   </li>
-
                   <li>
-                    <a href="#" class="nav-link"><i class="fas fa-chevron-right"></i>About</a>
+                    <a href="#" class="nav-link">
+                      <i class="fas fa-chevron-right"></i>
+                      About
+                    </a>
                   </li>
                 </ul>
 
@@ -92,10 +102,7 @@
             </a>
           </div>
 
-          <!-- Make list and change name? -->
-
-          <div class="icon-container container">
-            <!-- search -->
+          <div class="nav-links-top-right container">
             <div class="input-group rounded d-none d-lg-flex">
               <input
                 type="search"
@@ -107,12 +114,22 @@
               <i class="fas fa-search"></i>
             </div>
 
-            <a class="nav-link d-none d-lg-block" href="#">Home</a>
-            <a class="nav-link d-none d-lg-block" href="#">Products</a>
-            <a class="nav-link d-none d-lg-block" href="#">About</a>
-            <a class="nav-link" href="#"><i class="far fa-heart"></i></a>
-            <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
-            <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
+            <ul>
+              <li><a class="nav-link d-none d-lg-block" href="#">Home</a></li>
+              <li>
+                <a class="nav-link d-none d-lg-block" href="#">Products</a>
+              </li>
+              <li><a class="nav-link d-none d-lg-block" href="#">About</a></li>
+              <li>
+                <a class="nav-link" href="#"><i class="far fa-heart"></i></a>
+              </li>
+              <li>
+                <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+              </li>
+              <li>
+                <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
+              </li>
+            </ul>
           </div>
         </nav>
 
@@ -145,8 +162,6 @@
             <i class="fas fa-search"></i>
           </div>
         </div>
-
-        <!--row-cols-lg-4 -->
 
         <section class="container featured-products-container p-4">
           <div class="row row-cols-2 row-cols-md-2 row-cols-lg-4 g-4">
@@ -184,23 +199,34 @@
           </div>
         </section>
 
-        <!-- <div class="test-background mb-4"> -->
         <div class="container benefits-wrap p-4">
           <div class="benefits-container row row-cols-1 row-cols-lg-3 g-4">
             <h2 class="d-none d-sm-block d-lg-none">Milky Benefits</h2>
             <section class="row-cols-md-3 d-sm-inline-flex flex-lg-column benefits_list_container">
               <h2 class="d-sm-none d-lg-block">Milky Benefits</h2>
               <ul class="list-group list-group-flush col-sm-7 col-md-6 col-lg-12">
-                <li class="list-group-item d-flex"><i class="fas fa-check-circle"></i> Best on taste</li>
-                <li class="list-group-item d-flex"><i class="fas fa-check-circle"></i> No added sugar</li>
-                <li class="list-group-item d-flex"><i class="fas fa-check-circle"></i> Builds healthy bones and teeth</li>
+                <li class="list-group-item d-flex">
+                  <i class="fas fa-check-circle"></i>
+                  Best on taste
+                </li>
+                <li class="list-group-item d-flex">
+                  <i class="fas fa-check-circle"></i>
+                  No added sugar
+                </li>
+                <li class="list-group-item d-flex">
+                  <i class="fas fa-check-circle"></i>
+                  Builds healthy bones and teeth
+                </li>
               </ul>
               <ul class="list-group list-group-flush col-sm-6 col-md-6 col-lg-12">
                 <li class="list-group-item d-flex">
                   <i class="fas fa-check-circle"></i>
                   It’s packed with important nutrients like calcium, B-vitamins and vitamin D
                 </li>
-                <li class="list-group-item d-flex"><i class="fas fa-check-circle"></i> It’s an excellent source of protein</li>
+                <li class="list-group-item d-flex">
+                  <i class="fas fa-check-circle"></i>
+                  It’s an excellent source of protein
+                </li>
               </ul>
             </section>
 
@@ -215,34 +241,38 @@
             </figure>
           </div>
         </div>
-        <!-- </div> -->
 
         <div class="container products-container p-4">
           <img src="./images/product-image.jpg" class="img-fluid rounded" alt="..." />
-          <!-- <button></button> -->
+
           <div class="to-products-wrap">
             <h2>Look at all of our products!</h2>
-            <a href="" class="btn btn-primary">Products <i class="fas fa-chevron-right"></i></a>
+            <a href="" class="btn btn-primary">
+              Products
+              <i class="fas fa-chevron-right"></i>
+            </a>
           </div>
         </div>
       </div>
 
-      <!-- <ul class="some">
-      <a href="#"><img src="images/icons/facebook.svg" alt="Facebook-logo" />Like</a>
-      <a href="#"><img src="images/icons/instagram.svg" alt="Instagram-logo" />Follow</a>
-      <a href="#"><img id="twitter" src="images/icons/twitter.svg" alt="Twitter-logo" />Follow</a>
-      <a href="#"><img id="youtube" src="images/icons/youtube.svg" alt="YouTube-logo" />Subscribe</a>
-    </ul> -->
-
       <ul class="social-media-bottom">
         <li>
-          <a href="#"><i class="fab fa-twitter"></i>Like</a>
+          <a href="#">
+            <i class="fab fa-twitter"></i>
+            Like
+          </a>
         </li>
         <li>
-          <a href="#"><i class="fab fa-facebook-square"></i>Follow</a>
+          <a href="#">
+            <i class="fab fa-facebook-square"></i>
+            Follow
+          </a>
         </li>
         <li>
-          <a href="#"><i class="fab fa-instagram-square"></i>Follow</a>
+          <a href="#">
+            <i class="fab fa-instagram-square"></i>
+            Follow
+          </a>
         </li>
       </ul>
 
@@ -262,8 +292,12 @@
 
         <ul>
           <li class="nav-item"><a href="#" class="nav-link px-2">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2">Products</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2">Wishlist</a></li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2">Products</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2">Wishlist</a>
+          </li>
           <li class="nav-item"><a href="#" class="nav-link px-2">About</a></li>
         </ul>
       </div>

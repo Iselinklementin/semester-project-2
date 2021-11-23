@@ -10,11 +10,11 @@
   align-items: $align;
 }
 
-// @mixin reset-list {
-//   margin: 0;
-//   padding: 0;
-//   list-style: none;
-// }
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
 @mixin for-phone {
   @media (min-width: $mobile-width) {

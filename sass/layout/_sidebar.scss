@@ -1,0 +1,126 @@
+// Sidebar - mobile
+
+.sidebar-nav-container {
+  z-index: 1;
+  position: absolute;
+  width: 0;
+  overflow-y: hidden;
+  background: getColour(contrast);
+  opacity: 0;
+  display: flex;
+  padding-top: 5rem;
+  top: 0;
+  transition: all 0.5s;
+}
+
+.sidebar-nav-items {
+  border-top: 1px solid getColour(borderContrast);
+  // @include flex(column, unset, unset);
+  display: flex;
+  width: 100%;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  flex-direction: column;
+  overflow: hidden;
+
+  @include for-laptop {
+    height: 370px;
+  }
+}
+
+.sidebar-nav-links {
+  padding: 0;
+  list-style: none;
+  width: 300px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 190px;
+  margin-bottom: 2rem;
+
+  .fa-chevron-right::before {
+    margin-right: 0.5rem;
+  }
+
+  li {
+    line-height: 30px;
+    transition: all 0.3s;
+    padding: 10px;
+    text-align: left;
+    white-space: nowrap;
+    display: block;
+    width: 120px;
+  }
+
+  .nav-link {
+    display: block;
+    text-decoration: none;
+    color: getColour(dark);
+    padding-left: 0;
+
+    &:hover {
+      scale: 1.05;
+      color: getColour(dark);
+    }
+  }
+}
+
+// Social Media Icons
+
+.social-media-wrapper {
+  @include flex(row, center, center);
+
+  p {
+    margin-top: 1rem;
+  }
+
+  .social-media {
+    @include flex(row, center, center);
+    transition: all 0.5s;
+    margin-bottom: 0;
+    padding: 1rem;
+
+    li {
+      display: flex;
+      list-style: none;
+      white-space: nowrap;
+      font-size: 0.8rem;
+
+      &:hover {
+        cursor: pointer;
+        scale: 1.1;
+      }
+    }
+
+    a {
+      color: getColour(dark);
+      text-decoration: none;
+      margin: 1rem;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+// Sidebar search
+
+.input-group {
+  max-width: 85%;
+  margin-bottom: 2rem;
+
+  .fa-search {
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    z-index: 4;
+  }
+}
+
+// When visible
+
+.sidebar-nav-wrapper {
+  &.show .sidebar-nav-container {
+    width: 100%;
+    opacity: 1;
+    transition: all 0.5s;
+  }
+}

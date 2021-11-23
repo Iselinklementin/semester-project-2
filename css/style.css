@@ -99,7 +99,59 @@ nav .hamburger-container .sidebar-nav-toggle.btn:focus {
   box-shadow: none;
 }
 
-nav .sidebar-nav-container {
+nav .nav-links-top-right {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+}
+
+nav .nav-links-top-right ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+nav .nav-links-top-right a {
+  position: relative;
+  z-index: 2;
+  color: #000000;
+  top: 25px;
+  padding: 0.5rem 0.5rem;
+}
+
+nav .nav-links-top-right a i {
+  font-size: 1.4rem;
+}
+
+nav .nav-links-top-right a:hover {
+  scale: 1.1;
+  color: #000000;
+}
+
+@media (min-width: 576px) {
+  nav .nav-links-top-right a {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  nav .nav-links-top-right a {
+    padding-top: 0.5rem, 1.5rem;
+  }
+}
+
+nav .nav-links-top-right .input-group {
+  width: 200px;
+  margin: 2.5rem 1rem 0 0;
+}
+
+.sidebar-nav-container {
   z-index: 1;
   position: absolute;
   width: 0;
@@ -112,7 +164,7 @@ nav .sidebar-nav-container {
   transition: all 0.5s;
 }
 
-nav .sidebar-nav-items {
+.sidebar-nav-items {
   border-top: 1px solid #bd8320;
   display: flex;
   width: 100%;
@@ -123,12 +175,12 @@ nav .sidebar-nav-items {
 }
 
 @media (min-width: 992px) {
-  nav .sidebar-nav-items {
+  .sidebar-nav-items {
     height: 370px;
   }
 }
 
-nav .sidebar-nav-links {
+.sidebar-nav-links {
   padding: 0;
   list-style: none;
   width: 300px;
@@ -139,11 +191,11 @@ nav .sidebar-nav-links {
   margin-bottom: 2rem;
 }
 
-nav .sidebar-nav-links .fa-chevron-right::before {
+.sidebar-nav-links .fa-chevron-right::before {
   margin-right: 0.5rem;
 }
 
-nav .sidebar-nav-links li {
+.sidebar-nav-links li {
   line-height: 30px;
   transition: all 0.3s;
   padding: 10px;
@@ -153,30 +205,30 @@ nav .sidebar-nav-links li {
   width: 120px;
 }
 
-nav .sidebar-nav-links .nav-link {
+.sidebar-nav-links .nav-link {
   display: block;
   text-decoration: none;
   color: #000000;
   padding-left: 0;
 }
 
-nav .sidebar-nav-links .nav-link:hover {
+.sidebar-nav-links .nav-link:hover {
   scale: 1.05;
   color: #000000;
 }
 
-nav .social-media-wrapper {
+.social-media-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-nav .social-media-wrapper p {
+.social-media-wrapper p {
   margin-top: 1rem;
 }
 
-nav .social-media-wrapper .social-media {
+.social-media-wrapper .social-media {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -186,80 +238,38 @@ nav .social-media-wrapper .social-media {
   padding: 1rem;
 }
 
-nav .social-media-wrapper .social-media li {
+.social-media-wrapper .social-media li {
   display: flex;
   list-style: none;
   white-space: nowrap;
   font-size: 0.8rem;
 }
 
-nav .social-media-wrapper .social-media li:hover {
+.social-media-wrapper .social-media li:hover {
   cursor: pointer;
   scale: 1.1;
 }
 
-nav .social-media-wrapper .social-media a {
+.social-media-wrapper .social-media a {
   color: #000000;
   text-decoration: none;
   margin: 1rem;
   font-size: 1.5rem;
 }
 
-nav .input-group {
+.input-group {
   max-width: 85%;
   margin-bottom: 2rem;
 }
 
-nav .input-group .fa-search {
+.input-group .fa-search {
   position: absolute;
   right: 10px;
   top: 11px;
   z-index: 4;
 }
 
-nav .icon-container {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: end;
-  align-items: center;
-}
-
-nav .icon-container a {
-  position: relative;
-  z-index: 2;
-  color: #000000;
-  top: 25px;
-  padding: 0.5rem 0.5rem;
-}
-
-nav .icon-container a i {
-  font-size: 1.4rem;
-}
-
-nav .icon-container a:hover {
-  scale: 1.1;
-  color: #000000;
-}
-
-@media (min-width: 576px) {
-  nav .icon-container a {
-    padding: 0.5rem 1rem;
-  }
-}
-
-@media (min-width: 992px) {
-  nav .icon-container a {
-    padding-top: 0.5rem, 1.5rem;
-  }
-}
-
-nav .icon-container .input-group {
-  width: 200px;
-  margin: 2.5rem 1rem 0 0;
-}
-
-nav .sidebar-nav-wrapper.show .sidebar-nav-container {
+.sidebar-nav-wrapper.show .sidebar-nav-container {
   width: 100%;
   opacity: 1;
   transition: all 0.5s;
