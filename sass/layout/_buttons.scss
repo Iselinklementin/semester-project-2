@@ -17,4 +17,9 @@
   font-weight: 500;
   text-transform: uppercase;
   max-width: 200px;
+
+  // change this
+  &:hover {
+    background-color: getColour(secondary);
+  }
 }

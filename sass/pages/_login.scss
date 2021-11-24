@@ -1,0 +1,20 @@
+.login {
+  .login-form {
+    margin-bottom: 5rem;
+    max-width: 400px;
+  }
+
+  .cow-container {
+    margin-top: 3rem;
+  }
+
+  .btn-primary {
+    margin-top: 2rem;
+  }
+
+  .wrap-warning {
+    @include flex(row, space-between, center);
+    margin-top: 0.5rem;
+    // font-style: italic;
+  }
+}

@@ -26,3 +26,20 @@ body {
 footer {
   flex-shrink: 0;
 }
+
+// cow on home & login
+
+.cow-container {
+  @include flex(column, center, center);
+  margin-top: 2rem;
+
+  img {
+    width: 300px;
+  }
+
+  h1 {
+    max-width: 300px;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+}
