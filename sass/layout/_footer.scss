@@ -1,9 +1,9 @@
 footer {
   @include flex(row, center, center);
   background-color: getColour(primary);
-  flex-shrink: 0;
   height: 100px;
   width: 100%;
+  flex-shrink: 0;
 
   .footer-container {
     display: flex;

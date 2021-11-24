@@ -68,6 +68,7 @@
 
 .social-media-wrapper {
   @include flex(row, center, center);
+  padding-bottom: 5rem;
 
   p {
     margin-top: 1rem;

@@ -1,19 +1,81 @@
-// index
+.hero-banner-container {
+  text-align: center;
+  padding: 0;
+  position: relative;
+  background-color: #5187a9;
 
-.hero-banner {
-  max-width: 100%;
-  height: 370px;
-  object-fit: cover;
-  object-position: 54%;
-  margin-bottom: 2rem;
+  .hero-banner {
+    max-width: 100%;
+    height: 450px;
+    object-fit: cover;
+    object-position: 50%;
+    position: relative;
 
-  @include for-laptop {
-    height: unset;
-  }
+    &__logo {
+      width: 140px;
 
-  @include for-desktop {
-    object-fit: none;
-    object-position: unset;
+      @include for-laptop {
+        width: 160px;
+      }
+    }
+
+    &__arrow {
+      @include for-laptop {
+        background: url("../../images/arrow.svg");
+        background-repeat: no-repeat;
+        width: 50px;
+        height: 120px;
+      }
+    }
+
+    &__text {
+      position: absolute;
+      color: white;
+      text-align: left;
+      top: 8%;
+      left: 0;
+      right: 0;
+      margin: auto;
+      padding: 20px;
+      @include flex(row, center, center);
+
+      @include for-laptop {
+        top: 10%;
+      }
+
+      p {
+        font-size: 1.5rem;
+        line-height: 1.2;
+        max-width: 190px;
+        margin: 0;
+
+        @include for-laptop {
+          font-size: 1.9rem;
+          max-width: 250px;
+        }
+      }
+    }
+
+    &__text-split {
+      border: solid thin getColour(contrast);
+      height: 52px;
+      margin-left: 10px;
+      margin-right: 10px;
+
+      @include for-laptop {
+        height: 60px;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    }
+
+    @include for-laptop {
+      height: unset;
+    }
+
+    @include for-desktop {
+      object-position: unset;
+    }
   }
 }
 
@@ -90,6 +152,7 @@
   .input-group {
     width: 300px;
     margin-right: 1rem;
+    margin-bottom: 0;
 
     .fa-search {
       position: absolute;
@@ -114,27 +177,28 @@
   }
 
   .featured-main-info {
-    @include flex(row, space-between, center);
+    @include flex(row, space-between, baseline);
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    padding: 0 10px;
   }
 
   .card {
     padding: 0;
 
-    &-title {
-      margin-top: 1rem;
-    }
-
     &-price {
       font-weight: 600;
+      background-color: #eae7e7;
+      padding: 3px 10px;
     }
 
     &-title {
       max-width: 120px;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
 
       span {
         font-weight: 600;
-        font-size: calc(1.325rem + 0.9vw);
+        font-size: 1.8rem;
       }
     }
 
@@ -202,6 +266,7 @@
     text-transform: uppercase;
     font-weight: 500;
     border-bottom: getColour(borderContrast) 2px solid;
+    // background-color: red;
   }
 
   figure {
@@ -303,7 +368,9 @@
 
 .to-top-container {
   position: relative;
-  margin: -2rem auto 2rem auto;
+  margin: 2rem auto 4rem auto;
+  @include flex(row, center, center);
+  width: 150px;
 
   &:hover,
   &:focus {
@@ -313,21 +380,24 @@
   .splat {
     background-image: url("../../images/splat.svg");
     background-repeat: no-repeat;
-    width: 131px;
-    height: 120px;
-    transform: all 0.5s;
+    width: 132px;
+    height: 130px;
+    position: relative;
   }
 
   .to-top-btn {
-    margin: auto;
     position: absolute;
-    left: 21px;
-    top: 41px;
+    top: 34%;
+    right: 0;
+    left: 0;
+    margin: auto;
     color: white;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: 600;
     max-width: 79px;
     text-align: center;
+    line-height: 1.3;
+    font-size: 1.2rem;
   }
 }
