@@ -342,7 +342,7 @@ h2 {
   font-family: "Roboto Slab", serif;
 }
 
-.btn-primary, .products-container .to-products-wrap a {
+.btn-primary, .to-productsite-container .to-products-wrap a {
   background-color: #c9868e;
   background-color: #000000;
   border: none;
@@ -579,7 +579,7 @@ footer .logo-container-footer .logo-footer {
   z-index: 4;
 }
 
-.featured-products-container {
+.featured-products-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -596,31 +596,61 @@ footer .logo-container-footer .logo-footer {
   margin-top: 1rem;
 }
 
-.featured-products-container a {
+.featured-products-wrapper a {
   text-decoration: none;
   color: #000000;
 }
 
-.featured-products-container a:hover {
+.featured-products-wrapper a:hover {
   scale: 1.05;
 }
 
-.featured-products-container .card {
+.featured-products-wrapper .featured-main-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.featured-products-wrapper .card {
   padding: 0;
 }
 
-.featured-products-container .card-title {
+.featured-products-wrapper .card-title {
   margin-top: 1rem;
 }
 
-.featured-products-container .card img {
+.featured-products-wrapper .card-price {
+  font-weight: 600;
+}
+
+.featured-products-wrapper .card-title {
+  max-width: 120px;
+  font-size: 1.5rem;
+}
+
+.featured-products-wrapper .card-title span {
+  font-weight: 600;
+  font-size: calc(1.325rem + 0.9vw);
+}
+
+.featured-products-wrapper .card img {
   height: 280px;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
 @media (min-width: 768px) {
-  .featured-products-container .card img {
+  .featured-products-wrapper .card img {
     height: unset;
   }
 }
@@ -712,24 +742,24 @@ footer .logo-container-footer .logo-footer {
   margin: 1rem auto;
 }
 
-.products-container {
+.to-productsite-container {
   height: 320px;
   position: relative;
 }
 
 @media (min-width: 992px) {
-  .products-container {
+  .to-productsite-container {
     height: 380px;
   }
 }
 
 @media (min-width: 1200px) {
-  .products-container {
+  .to-productsite-container {
     height: 450px;
   }
 }
 
-.products-container img {
+.to-productsite-container img {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
@@ -739,37 +769,37 @@ footer .logo-container-footer .logo-footer {
 }
 
 @media (min-width: 768px) {
-  .products-container img {
+  .to-productsite-container img {
     -o-object-position: 0%;
        object-position: 0%;
   }
 }
 
-.products-container h2 {
+.to-productsite-container h2 {
   width: 180px;
   margin-bottom: 2rem;
 }
 
 @media (min-width: 768px) {
-  .products-container h2 {
+  .to-productsite-container h2 {
     width: 210px;
   }
 }
 
-.products-container .to-products-wrap {
+.to-productsite-container .to-products-wrap {
   position: absolute;
   top: 28%;
   left: 10%;
 }
 
 @media (min-width: 992px) {
-  .products-container .to-products-wrap {
+  .to-productsite-container .to-products-wrap {
     top: 30%;
   }
 }
 
 @media (min-width: 1200px) {
-  .products-container .to-products-wrap {
+  .to-productsite-container .to-products-wrap {
     top: 32%;
   }
 }
