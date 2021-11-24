@@ -16,6 +16,8 @@ export const contentType = {
   "Content-type": "application/json",
 };
 
+// skifte til uppercase og sånt?
+
 export const contentTypeAuth = {
   "Content-type": "application/json",
   Authorization: `Bearer ${token}`,
