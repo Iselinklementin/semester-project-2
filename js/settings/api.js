@@ -1,19 +1,22 @@
 // import { token, getFromStorage } from "./storage.js";
 // import { favKey } from "./keys.js";
 
-// export const baseUrl = "http://localhost:1337/";
-// export const loginUrl = baseUrl + "auth/local";
-// export const articlesUrl = baseUrl + "articles";
+import { token } from "./storage.js";
 
-// export const authorization = {
-//   Authorization: `Bearer ${token}`,
-// };
+export const baseUrl = "https://iselin-sp2-api.herokuapp.com/";
+export const loginUrl = baseUrl + "auth/local";
+export const productsUrl = baseUrl + "products";
+export const homeUrl = baseUrl + "home";
 
-// export const contentType = {
-//   "Content-type": "application/json",
-// };
+export const authorization = {
+  Authorization: `Bearer ${token}`,
+};
 
-// export const contentTypeAuth = {
-//   "Content-type": "application/json",
-//   Authorization: `Bearer ${token}`,
-// };
+export const contentType = {
+  "Content-type": "application/json",
+};
+
+export const contentTypeAuth = {
+  "Content-type": "application/json",
+  Authorization: `Bearer ${token}`,
+};

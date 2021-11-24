@@ -41,7 +41,8 @@
         @include flex(row, center, center);
 
         @include for-laptop {
-          top: 10%;
+          top: 6%;
+          left: -4rem;
         }
 
         p {
@@ -52,7 +53,7 @@
 
           @include for-laptop {
             font-size: 1.9rem;
-            max-width: 250px;
+            max-width: 220px;
           }
         }
       }

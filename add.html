@@ -22,7 +22,7 @@
       rel="stylesheet"
     />
     <script src="https://kit.fontawesome.com/9b8ac118a8.js" crossorigin="anonymous"></script>
-    <title>Login Milky</title>
+    <title>Add product - Milky</title>
   </head>
   <body>
     <div class="wrapper login" id="top">
@@ -118,7 +118,7 @@
                 <a class="nav-link" href="#"><i class="far fa-heart"></i></a>
               </li>
               <li>
-                <a class="active nav-link" aria-current="page" href="login.html"><i class="fas fa-user"></i></a>
+                <a class="nav-link" href="login.html"><i class="fas fa-user"></i></a>
               </li>
               <li>
                 <a class="nav-link" href="test.html"><i class="fas fa-shopping-cart"></i></a>
@@ -127,16 +127,29 @@
           </div>
         </nav>
 
-        <figure class="cow-container container">
-          <img src="./images/cow.png" class="" alt="..." />
-          <h1>Please sign in</h1>
-        </figure>
+        <h1 class="m-4 text-center">Add product</h1>
 
-        <!-- gå gjennom tekst her, kopiert fra Bootstrap -->
-        <form class="container login-form">
+        <form class="add-form container">
           <div class="message-container"></div>
 
-          <!-- her må det kanskje stå username? -->
+          <!-- <div class="input-container"> -->
+          <label for="title" class="form-label">Title</label>
+          <input class="title form-input form-control" />
+          <!-- </div> -->
+          <!-- <div class="input-container"> -->
+          <label for="price" class="form-label">Price</label>
+          <input class="price form-input form-control" />
+          <!-- </div> -->
+          <!-- <div class="input-container"> -->
+          <label for="description" class="description-label form-label">Description</label>
+          <textarea class="description form-control" rows="6"></textarea>
+          <!-- </div> -->
+          <button class="btn-primary btn">Add product</button>
+        </form>
+
+        <!-- <form class="container login-form">
+          <div class="message-container"></div>
+
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
             <input type="email" class="form-control email" />
@@ -156,7 +169,7 @@
           </div>
 
           <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </form> -->
       </main>
     </div>
 

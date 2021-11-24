@@ -27,6 +27,16 @@ footer {
   flex-shrink: 0;
 }
 
+// error
+
+.error {
+  background-color: getColour(statusWarning);
+  padding: 10px;
+  text-align: center;
+  margin: 2rem auto;
+  border: getColour(borderContrast) thin solid;
+}
+
 // cow on home & login
 
 .cow-container {
@@ -43,3 +53,10 @@ footer {
     font-size: 1.5rem;
   }
 }
+
+// husk å lag loadingbar
+// breadcrumbs?
+// skjul add/edit
+// active in nav
+// change menu when logged in
+// icons when logged in
