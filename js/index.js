@@ -7,36 +7,76 @@ const herobanner = document.querySelector(".hero-banner");
 
 // husk try fetch finally
 
-(async function fetchBanner() {
-  const response = await fetch(homeUrl);
-  const result = await response.json();
-  herobanner.src = `${result.hero_banner.url}`;
-})();
+function callApi() {
+  let fetchBanner = fetch(homeUrl);
+  let fetchProducts = fetch(productsUrl);
 
-(async function fetchProducts() {
-  const response = await fetch(productsUrl);
-  const result = await response.json();
-  console.log(result);
+  Promise.all([fetchBanner, fetchProducts])
+    .then((values) => Promise.all(values.map((value) => value.json())))
+    .then((finalValues) => {
+      let homeAPI = finalValues[0];
+      let productsAPI = finalValues[1];
 
-  result.forEach((product) => {
-    const productImages = product.image;
+      console.log(productsAPI);
 
-    if (product.featured) {
-      productImages.forEach((img) => {
-        featuredProducts.innerHTML += `<a href="#" class="col"> 
-                                      <div class="card">
-                                      <img src="${img.url}" class="card-img-top" alt="..." />
-                                      </div>
+      herobanner.src = `${homeAPI.hero_banner.url}`;
 
-                                      <div class="featured-main-info">
-                                      <h2 class="card-title">${product.title}</h2>
-                                      <p class="card-price">${product.price}$</p>
-                                      
-                                      <p class="card-text">${product.description}</p>
-                                      </div>
-                                      
-                                      </a> `;
+      productsAPI.forEach((product) => {
+        const productImages = product.image;
+
+        if (product.featured) {
+          productImages.forEach((img) => {
+            featuredProducts.innerHTML += `<a href="#" class="col">
+                                            <div class="card">
+                                            <img src="${img.url}" class="card-img-top" alt="..." />
+                                            </div>
+
+                                            <div class="featured-main-info">
+                                            <h2 class="card-title">${product.title}</h2>
+                                            <p class="card-price">${product.price}$</p>
+
+                                            <p class="card-text">${product.description}</p>
+                                            </div>
+
+                                            </a> `;
+          });
+        }
       });
-    }
-  });
-})();
+    });
+}
+
+callApi();
+
+// callApi()(async function fetchBanner() {
+//   const response = await fetch(homeUrl);
+//   const result = await response.json();
+//   herobanner.src = `${result.hero_banner.url}`;
+// })();
+
+// (async function fetchProducts() {
+//   const response = await fetch(productsUrl);
+//   const result = await response.json();
+//   console.log(result);
+
+//   result.forEach((product) => {
+//     const productImages = product.image;
+
+//     if (product.featured) {
+//       productImages.forEach((img) => {
+//         featuredProducts.innerHTML += `<a href="#" class="col">
+//                                       <div class="card">
+//                                       <img src="${img.url}" class="card-img-top" alt="..." />
+//                                       </div>
+
+//                                       <div class="featured-main-info">
+//                                       <h2 class="card-title">${product.title}</h2>
+//                                       <p class="card-price">${product.price}$</p>
+
+//                                       <p class="card-text">${product.description}</p>
+//                                       </div>
+
+//                                       </a> `;
+//       });
+//     }
+//   });
+// })();

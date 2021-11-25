@@ -3,7 +3,6 @@ import displayMessage from "../components/displayMessage.js";
 import { messages } from "../components/messages.js";
 // egen js
 import checkValidation from "../components/checkValidation.js";
-import { token } from "../settings/storage.js";
 import {
   addTitle,
   addPrice,
@@ -14,9 +13,10 @@ import {
   uploadPreset,
   uploadWidget,
   uploadedImage,
+  addImage,
 } from "../components/elements.js";
 
-const image = document.querySelector(".image");
+// const addImage = document.querySelector(".image");
 
 const myWidget = cloudinary.createUploadWidget(
   {
@@ -27,8 +27,7 @@ const myWidget = cloudinary.createUploadWidget(
     if (!error && result && result.event === "success") {
       console.log("Done! Here is the image info: ", result.info);
       uploadedImage.setAttribute("src", result.info.secure_url);
-      // const image = document.querySelector(".image");
-      image.value = result.info.secure_url;
+      addImage.value = result.info.secure_url;
     }
   }
 );
@@ -59,15 +58,16 @@ uploadWidget.addEventListener(
 
 // callApi();
 
-export async function addProduct(title, price, description, featured) {
+export async function addProduct(title, price, description, featured, imageValue) {
   const data = JSON.stringify({
     title: title,
     price: price,
     description: description,
     featured: featured,
+    image_url: imageValue,
   });
 
-  // console.log(data);
+  console.log(data);
 
   const options = {
     method: "POST",
@@ -104,13 +104,14 @@ function submitProduct(event) {
   const price = addPrice.value.trim();
   const description = addDescription.value.trim();
   const featured = featuredBox.checked;
-  // const image_url = image.value;
+  const imageValue = addImage.value.trim();
 
-  // console.log(image_url);
+  console.log(addImage.value);
+  console.log(imageValue);
 
   if (checkValidation(title.length, 1) || checkValidation(price.length, 1) || checkValidation(description.length, 1)) {
     return displayMessage("error", messages.empty_input, ".message-container");
   }
 
-  addProduct(title, price, description, featured);
+  addProduct(title, price, description, featured, imageValue);
 }

@@ -11,6 +11,7 @@ export const addPrice = document.querySelector(".price");
 export const addDescription = document.querySelector(".description");
 export const addBtn = document.querySelector(".add-btn");
 export const featuredBox = document.querySelector(".featured");
+export const addImage = document.querySelector(".image");
 export const cloudName = "dmgiu9rx2";
 export const uploadPreset = "jrqukoh3";
 export const uploadWidget = document.querySelector("#upload_widget");
