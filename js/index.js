@@ -25,10 +25,10 @@ function callApi() {
         const productImages = product.image;
 
         if (product.featured) {
-          productImages.forEach((img) => {
-            featuredProducts.innerHTML += `<a href="#" class="col">
+          // productImages.forEach((img) => {
+          featuredProducts.innerHTML += `<a href="#" class="col">
                                             <div class="card">
-                                            <img src="${img.url}" class="card-img-top" alt="..." />
+                                            <img src="${product.image_url}" class="card-img-top" alt="..." />
                                             </div>
 
                                             <div class="featured-main-info">
@@ -39,7 +39,7 @@ function callApi() {
                                             </div>
 
                                             </a> `;
-          });
+          // });
         }
       });
     });

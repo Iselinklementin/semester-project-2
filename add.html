@@ -131,42 +131,52 @@
         <!-- må også ha featured -->
         <!-- Starte med Milky og bare legge inn navn? -->
 
-        <h1 class="m-4 text-center">Add product</h1>
+        <!-- <img alt="" class="uploadedimage rounded" alt="" id="uploadedimage" /> -->
+        <div class="container">
+          <h1 class="add-heading">Add product</h1>
+        </div>
 
-        <form class="add-form container">
-          <div class="message-container"></div>
+        <div class="container add-wrapper">
+          <figure class="upload-img-wrap">
+            <img class="rounded uploadedimage" alt="" id="uploadedimage" />
+          </figure>
+          <button id="upload_widget" class="btn cloudinary-button upload_widget">Upload image</button>
+          <!--  style="background-color: #76a9c6"   -->
+        </div>
 
-          <!-- <div class="input-container"> -->
-          <label for="title" class="form-label">Title</label>
-          <input class="title form-input form-control" />
-          <!-- </div> -->
-          <!-- <div class="input-container"> -->
-          <label for="price" class="form-label">Price</label>
-          <input class="price form-input form-control" />
+        <div class="container">
+          <h2 class="mt-4">Add details</h2>
+          <form class="add-form container">
+            <div class="message-container"></div>
+            <div class="input-group">
+              <label for="title" class="form-label">Title - enter taste</label>
+              <span>Milky</span>
+              <input type="text" class="title form-control" aria-label="Amount (to the nearest dollar)" />
+            </div>
+            <!-- only numbers -->
+            <div class="input-group">
+              <span class="input-group-text">Price</span>
+              <input type="text" class="price form-control" aria-label="Amount (to the nearest dollar)" />
+            </div>
+            <label for="description" class="description-label form-label">Description</label>
+            <textarea class="description form-control" rows="6"></textarea>
 
-          <!-- IMAGE -->
+            <div class="form-check mt-4">
+              <input type="checkbox" class="form-check-input featured" />
+              <label class="form-check-label" for="exampleCheck1">Featured</label>
+            </div>
 
-          <label for="image" class="form-label">Image src</label>
-          <input class="image form-input form-control" />
+            <div class="image-container" style="opacity: 0">
+              <label for="image" class="form-label">Image src</label>
+              <input class="image form-input form-control" />
+            </div>
 
-          <!-- </div> -->
-          <!-- <div class="input-container"> -->
-          <label for="description" class="description-label form-label">Description</label>
-          <textarea class="description form-control" rows="6"></textarea>
-          <!-- </div> -->
-
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input featured" />
-            <label class="form-check-label" for="exampleCheck1">Featured</label>
-          </div>
-
-          <button class="btn-primary btn add-btn">Add product</button>
-        </form>
+            <button class="btn-primary btn add-btn">Add product</button>
+          </form>
+        </div>
 
         <!-- CLOUDINARY BUTTON -->
-
-        <button id="upload_widget" class="cloudinary-button upload_widget">Upload image</button>
-        <img alt="" class="uploadedimage" id="uploadedimage" />
+        <!-- Remember alt-tekst -->
       </main>
     </div>
 

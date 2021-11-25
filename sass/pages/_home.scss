@@ -196,9 +196,11 @@
         height: 280px;
         object-fit: cover;
 
-        @include for-tablet {
-          height: unset;
-        }
+        // need fixed height on uploading img
+
+        // @include for-tablet {
+        //   height: unset;
+        // }
       }
     }
   }

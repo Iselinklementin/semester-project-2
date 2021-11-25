@@ -27,10 +27,19 @@ footer {
   flex-shrink: 0;
 }
 
-// error
+// feedback
+// her må jeg lage en mal og bare endre farge
 
 .error {
   background-color: getColour(statusWarning);
+  padding: 10px;
+  text-align: center;
+  margin: 2rem auto;
+  border: getColour(borderContrast) thin solid;
+}
+
+.success {
+  background-color: getColour(statusSuccess);
   padding: 10px;
   text-align: center;
   margin: 2rem auto;

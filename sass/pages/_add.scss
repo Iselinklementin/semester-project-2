@@ -1,0 +1,29 @@
+.add-heading {
+  margin-top: 3rem;
+}
+
+.image-container {
+  opacity: 1;
+}
+
+.add-wrapper {
+  @include flex(row, baseline, center);
+}
+
+.upload-img-wrap {
+  width: 300px;
+  margin-top: 2rem;
+  background-color: black;
+  & img {
+    height: 400px;
+    width: 300px;
+    object-fit: cover;
+  }
+}
+
+.cloudinary-button {
+  background-color: #76a9c6;
+  padding: 5px 10px;
+  box-shadow: none;
+  margin-left: 2rem;
+}

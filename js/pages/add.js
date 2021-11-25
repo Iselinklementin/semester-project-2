@@ -1,3 +1,4 @@
+import toggleSidebar from "../layout/nav.js";
 import { productsUrl, baseUrl, contentTypeAuth } from "../settings/api.js";
 import displayMessage from "../components/displayMessage.js";
 import { messages } from "../components/messages.js";
@@ -17,6 +18,8 @@ import {
 } from "../components/elements.js";
 
 // const addImage = document.querySelector(".image");
+
+toggleSidebar();
 
 const myWidget = cloudinary.createUploadWidget(
   {
@@ -81,11 +84,11 @@ export async function addProduct(title, price, description, featured, imageValue
 
     if (json.error) {
       displayMessage("error", json.message, ".message-container");
+      console.error();
     }
 
     if (json.created_at) {
-      console.log(json);
-      // addForm.reset();
+      addForm.reset();
       displayMessage("success", messages.created_article, ".message-container");
     }
   } catch {
@@ -100,14 +103,15 @@ addBtn.addEventListener("click", submitProduct);
 function submitProduct(event) {
   event.preventDefault();
 
-  const title = addTitle.value.trim();
+  // const title = addTitle.value.trim();
+  const title = `Milky <span>${addTitle.value.trim()}</span>`;
   const price = addPrice.value.trim();
   const description = addDescription.value.trim();
   const featured = featuredBox.checked;
   const imageValue = addImage.value.trim();
 
-  console.log(addImage.value);
-  console.log(imageValue);
+  // console.log(addImage.value);
+  // console.log(imageValue);
 
   if (checkValidation(title.length, 1) || checkValidation(price.length, 1) || checkValidation(description.length, 1)) {
     return displayMessage("error", messages.empty_input, ".message-container");

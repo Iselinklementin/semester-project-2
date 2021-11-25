@@ -35,6 +35,14 @@ footer {
   border: #bd8320 thin solid;
 }
 
+.success {
+  background-color: #cde5c8;
+  padding: 10px;
+  text-align: center;
+  margin: 2rem auto;
+  border: #bd8320 thin solid;
+}
+
 .cow-container {
   display: flex;
   flex-direction: column;
@@ -606,12 +614,6 @@ footer .logo-container-footer .logo-footer {
   object-fit: cover;
 }
 
-@media (min-width: 768px) {
-  .home .featured-products-wrapper .card img {
-    height: unset;
-  }
-}
-
 .home .benefits-container {
   margin-bottom: 2rem;
   margin-top: 0rem;
@@ -841,5 +843,39 @@ footer .logo-container-footer .logo-footer {
   justify-content: space-between;
   align-items: center;
   margin-top: 0.5rem;
+}
+
+.add-heading {
+  margin-top: 3rem;
+}
+
+.image-container {
+  opacity: 1;
+}
+
+.add-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  align-items: center;
+}
+
+.upload-img-wrap {
+  width: 300px;
+  margin-top: 2rem;
+  background-color: black;
+}
+
+.upload-img-wrap img {
+  height: 400px;
+  width: 300px;
+  object-fit: cover;
+}
+
+.cloudinary-button {
+  background-color: #76a9c6;
+  padding: 5px 10px;
+  box-shadow: none;
+  margin-left: 2rem;
 }
 /*# sourceMappingURL=style.css.map */
