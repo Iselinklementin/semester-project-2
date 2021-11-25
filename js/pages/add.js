@@ -15,6 +15,7 @@ import {
   uploadWidget,
   uploadedImage,
   addImage,
+  addForm,
 } from "../components/elements.js";
 
 // const addImage = document.querySelector(".image");
@@ -43,24 +44,6 @@ uploadWidget.addEventListener(
   false
 );
 
-// async function callApi() {
-//   const response = await fetch(productsUrl);
-//   const result = await response.json();
-
-//   console.log(result);
-//   result.forEach((element) => {
-//     console.log(element.image_url);
-//   });
-//   // // result.forEach((product) => {
-//   // //   const imageArray = product.image;
-//   // //   imageArray.forEach((img) => {
-//   // //     console.log(img.url);
-//   // //   });
-//   // // });
-// }
-
-// callApi();
-
 export async function addProduct(title, price, description, featured, imageValue) {
   const data = JSON.stringify({
     title: title,
@@ -84,14 +67,16 @@ export async function addProduct(title, price, description, featured, imageValue
 
     if (json.error) {
       displayMessage("error", json.message, ".message-container");
-      console.error();
+      console.log(error);
     }
 
     if (json.created_at) {
       addForm.reset();
+      console.log(json.created_at);
       displayMessage("success", messages.created_article, ".message-container");
     }
-  } catch {
+  } catch (error) {
+    console.log(error);
     displayMessage("error", messages.server_error, ".message-container");
   }
 }

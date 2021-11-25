@@ -10,6 +10,7 @@ export const addTitle = document.querySelector(".title");
 export const addPrice = document.querySelector(".price");
 export const addDescription = document.querySelector(".description");
 export const addBtn = document.querySelector(".add-btn");
+export const addForm = document.querySelector(".add-form");
 export const featuredBox = document.querySelector(".featured");
 export const addImage = document.querySelector(".image");
 export const cloudName = "dmgiu9rx2";

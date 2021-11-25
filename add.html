@@ -25,7 +25,7 @@
     <title>Add product - Milky</title>
   </head>
   <body>
-    <div class="wrapper login" id="top">
+    <div class="wrapper add-productpage-wrapper" id="top">
       <main>
         <nav>
           <div class="sidebar-nav-wrapper">
@@ -127,52 +127,66 @@
           </div>
         </nav>
 
-        <!-- legge til ml i api`en? -->
-        <!-- må også ha featured -->
-        <!-- Starte med Milky og bare legge inn navn? -->
+        <!-- legge til ml i api`en -->
+        <!-- legg til alt-text også -->
 
-        <!-- <img alt="" class="uploadedimage rounded" alt="" id="uploadedimage" /> -->
-        <div class="container">
-          <h1 class="add-heading">Add product</h1>
-        </div>
-
-        <div class="container add-wrapper">
-          <figure class="upload-img-wrap">
-            <img class="rounded uploadedimage" alt="" id="uploadedimage" />
-          </figure>
-          <button id="upload_widget" class="btn cloudinary-button upload_widget">Upload image</button>
-          <!--  style="background-color: #76a9c6"   -->
-        </div>
-
-        <div class="container">
-          <h2 class="mt-4">Add details</h2>
-          <form class="add-form container">
-            <div class="message-container"></div>
-            <div class="input-group">
-              <label for="title" class="form-label">Title - enter taste</label>
-              <span>Milky</span>
-              <input type="text" class="title form-control" aria-label="Amount (to the nearest dollar)" />
+        <div class="container add-product-wrap">
+          <div class="container header-container">
+            <div class="header-container">
+              <h1>Add a new product</h1>
+              <div class="message-container"></div>
             </div>
-            <!-- only numbers -->
-            <div class="input-group">
-              <span class="input-group-text">Price</span>
-              <input type="text" class="price form-control" aria-label="Amount (to the nearest dollar)" />
-            </div>
-            <label for="description" class="description-label form-label">Description</label>
-            <textarea class="description form-control" rows="6"></textarea>
-
-            <div class="form-check mt-4">
-              <input type="checkbox" class="form-check-input featured" />
-              <label class="form-check-label" for="exampleCheck1">Featured</label>
+          </div>
+          <div class="add-product-container">
+            <div class="container upload-img-wrapper">
+              <figure class="upload-img-container">
+                <img class="rounded uploadedimage" alt="" id="uploadedimage" />
+              </figure>
+              <button id="upload_widget" class="btn cloudinary-button upload_widget">Upload image</button>
             </div>
 
-            <div class="image-container" style="opacity: 0">
-              <label for="image" class="form-label">Image src</label>
-              <input class="image form-input form-control" />
-            </div>
+            <form class="container add-form">
+              <div class="input-group">
+                <!--Title-->
+                <label for="title" class="label-title">Enter title</label>
+                <div class="milky-title">
+                  <div class="milky-title__content">
+                    <span class="milky">Milky <i class="fas fa-chevron-right"></i></span>
+                  </div>
+                  <input type="text" class="title form-control" aria-label="Title" />
+                </div>
+                <!--Price-->
+                <!-- only numbers -->
+                <div class="price-ml-wrap">
+                  <div class="price-ml-wrap__price">
+                    <label for="price" class="label-price">Price</label>
+                    <input type="text" class="price form-control" aria-label="Price" />
+                  </div>
+                  <div class="price-ml-wrap__ml">
+                    <!--price-->
+                    <label for="ml" class="label-ml">ml</label>
+                    <input type="text" class="ml form-control" aria-label="Amount" />
+                  </div>
+                </div>
 
-            <button class="btn-primary btn add-btn">Add product</button>
-          </form>
+                <!--description-->
+                <label for="description" class="label-description">Description</label>
+                <textarea class="description form-control" rows="9"></textarea>
+                <!--checkbox-->
+                <div class="featured-container">
+                  <input type="checkbox" class="form-check-input featured" />
+                  <label class="form-check-label label-featured">Featured product</label>
+                </div>
+              </div>
+
+              <button class="btn-primary btn add-btn">Add product</button>
+              <!--image-->
+              <div class="image-container">
+                <label for="image" class="">Image src</label>
+                <input class="image form-input form-control" />
+              </div>
+            </form>
+          </div>
         </div>
 
         <!-- CLOUDINARY BUTTON -->
