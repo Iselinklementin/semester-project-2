@@ -127,7 +127,6 @@
           </div>
         </nav>
 
-        <!-- legge til ml i api`en -->
         <!-- legg til alt-text også -->
 
         <div class="container add-product-wrap">
@@ -142,9 +141,9 @@
               <figure class="upload-img-container">
                 <img class="rounded uploadedimage" alt="" id="uploadedimage" />
               </figure>
-              <button id="upload_widget" class="btn cloudinary-button upload_widget"
-                ><i class="fas fa-cloud-upload-alt"></i> Upload image</button
-              >
+              <button id="upload_widget" class="btn cloudinary-button upload_widget">
+                <i class="fas fa-cloud-upload-alt"></i> Upload image
+              </button>
             </div>
 
             <form class="container add-form">
@@ -157,18 +156,18 @@
                   </div>
                   <input type="text" class="title form-control" aria-label="Title" />
                 </div>
-                <!--Price-->
+
                 <!-- only numbers -->
-                <div class="price-ml-wrap">
-                  <div class="price-ml-wrap__price">
+                <div class="price-volume-wrap">
+                  <div>
                     <label for="price" class="label-price">Price</label>
                     <input type="text" class="price form-control" aria-label="Price" />
                   </div>
-                  <div class="price-ml-wrap__ml">
-                    <!--price-->
-                    <label for="ml" class="label-ml">ml - Boolean?</label>
-                    <input type="text" class="ml form-control" aria-label="Amount" />
-                  </div>
+                  <select class="form-select volume" aria-label="Select volume">
+                    <option selected>Choose volume</option>
+                    <option value="1">250ml</option>
+                    <option value="2">750ml</option>
+                  </select>
                 </div>
 
                 <!--description-->
@@ -181,7 +180,9 @@
                 </div>
               </div>
 
-              <button class="btn-primary btn add-btn"><i class="fas fa-plus"></i> Add product</button>
+              <button class="btn-primary btn add-btn">
+                <i class="fas fa-plus"></i> Add product
+              </button>
               <!--image-->
               <div class="image-container">
                 <label for="image" class="">Image src</label>

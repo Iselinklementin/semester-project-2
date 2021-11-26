@@ -12,8 +12,8 @@ function callApi() {
   let fetchProducts = fetch(productsUrl);
 
   Promise.all([fetchBanner, fetchProducts])
-    .then((values) => Promise.all(values.map((value) => value.json())))
-    .then((finalValues) => {
+    .then(values => Promise.all(values.map(value => value.json())))
+    .then(finalValues => {
       let homeAPI = finalValues[0];
       let productsAPI = finalValues[1];
 
@@ -21,8 +21,8 @@ function callApi() {
 
       herobanner.src = `${homeAPI.hero_banner.url}`;
 
-      productsAPI.forEach((product) => {
-        const productImages = product.image;
+      productsAPI.forEach(product => {
+        // const productImages = product.image;
 
         if (product.featured) {
           // productImages.forEach((img) => {
@@ -32,9 +32,10 @@ function callApi() {
                                             </div>
 
                                             <div class="featured-main-info">
+                                            <div class="featured-main-info__heading">
                                             <h2 class="card-title">${product.title}</h2>
                                             <p class="card-price">${product.price}$</p>
-
+                                            </div>
                                             <p class="card-text">${product.description}</p>
                                             </div>
 

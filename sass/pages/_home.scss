@@ -167,10 +167,14 @@
     }
 
     .featured-main-info {
-      @include flex(row, space-between, baseline);
+      @include flex(column, space-between, baseline);
       margin-top: 1rem;
-      flex-wrap: wrap;
       padding: 0 10px;
+
+      &__heading {
+        @include flex(row, space-between, baseline);
+        width: 100%;
+      }
     }
 
     .card {

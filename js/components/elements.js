@@ -13,6 +13,7 @@ export const addBtn = document.querySelector(".add-btn");
 export const addForm = document.querySelector(".add-form");
 export const featuredBox = document.querySelector(".featured");
 export const addImage = document.querySelector(".image");
+export const addVolume = document.querySelector(".volume");
 export const cloudName = "dmgiu9rx2";
 export const uploadPreset = "jrqukoh3";
 export const uploadWidget = document.querySelector("#upload_widget");

@@ -66,7 +66,7 @@
       }
     }
 
-    .price-ml-wrap {
+    .price-volume-wrap {
       @include flex(row, center, center);
 
       & input {
@@ -74,17 +74,22 @@
         margin-right: 10px;
       }
 
-      &__price {
-        margin-right: 10px;
+      & select {
+        margin-top: 2rem;
+        line-height: 1.6;
       }
     }
+  }
+
+  select {
+    margin-top: 1rem;
   }
 
   .featured,
   .price,
   .title,
   .description,
-  .ml {
+  .volume {
     margin: 10px;
     margin-bottom: 1rem;
   }

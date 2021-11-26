@@ -16,6 +16,7 @@ import {
   uploadedImage,
   addImage,
   addForm,
+  addVolume,
 } from "../components/elements.js";
 
 // const addImage = document.querySelector(".image");
@@ -44,13 +45,14 @@ uploadWidget.addEventListener(
   false
 );
 
-export async function addProduct(title, price, description, featured, imageValue) {
+export async function addProduct(title, price, description, featured, imageValue, volume) {
   const data = JSON.stringify({
     title: title,
     price: price,
     description: description,
     featured: featured,
     image_url: imageValue,
+    volume: volume,
   });
 
   console.log(data);
@@ -67,7 +69,7 @@ export async function addProduct(title, price, description, featured, imageValue
 
     if (json.error) {
       displayMessage("error", json.message, ".message-container");
-      console.log(error);
+      // console.log(error);
     }
 
     if (json.created_at) {
@@ -76,7 +78,7 @@ export async function addProduct(title, price, description, featured, imageValue
       displayMessage("success", messages.created_article, ".message-container");
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     displayMessage("error", messages.server_error, ".message-container");
   }
 }
@@ -85,22 +87,49 @@ export async function addProduct(title, price, description, featured, imageValue
 
 addBtn.addEventListener("click", submitProduct);
 
+// husk validering
+
 function submitProduct(event) {
   event.preventDefault();
 
-  // const title = addTitle.value.trim();
+  let volumeValue = "";
+
+  if (addVolume.value == 1) {
+    volumeValue = "Small";
+  }
+
+  if (addVolume.value == 2) {
+    volumeValue = "Large";
+  }
+
+  if (isNaN(addVolume.value)) {
+    displayMessage("error", messages.empty_input, ".message-container");
+  }
+
   const title = `Milky <span>${addTitle.value.trim()}</span>`;
   const price = addPrice.value.trim();
   const description = addDescription.value.trim();
   const featured = featuredBox.checked;
   const imageValue = addImage.value.trim();
+  const volume = volumeValue;
 
-  // console.log(addImage.value);
-  // console.log(imageValue);
+  console.log(volume);
 
-  if (checkValidation(title.length, 1) || checkValidation(price.length, 1) || checkValidation(description.length, 1)) {
+  if (
+    checkValidation(title.length, 1) ||
+    checkValidation(price.length, 1) ||
+    checkValidation(description.length, 1)
+  ) {
     return displayMessage("error", messages.empty_input, ".message-container");
   }
 
-  addProduct(title, price, description, featured, imageValue);
+  addProduct(title, price, description, featured, imageValue, volume);
 }
+
+// console.log(addVolume.value);
+
+// (async function fetchProducts() {
+//   const response = await fetch(productsUrl);
+//   const result = await response.json();
+//   console.log(result);
+// })();
