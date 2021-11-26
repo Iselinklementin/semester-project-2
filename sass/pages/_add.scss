@@ -1,17 +1,10 @@
 .add-productpage-wrapper {
   .add-product-wrap {
-    // @include flex(row, center, normal);
     margin-top: 5rem;
-    // flex-wrap: wrap;
   }
 
   .header-container {
-    // margin-top: 3rem;
-    // width: 100%;
     margin-bottom: 5rem;
-    max-width: 400px;
-    // text-align: left;
-    // margin-left: 1rem;
   }
 
   .add-product-container {
@@ -23,11 +16,12 @@
     width: 400px;
 
     .upload-img-container {
+      // margin-top: 36px;
       width: 250px;
       background-color: getColour(inputColor);
 
       & img {
-        height: 345px;
+        height: 355px;
         width: 100%;
         object-fit: cover;
       }
@@ -35,13 +29,21 @@
 
     .cloudinary-button {
       background-color: #76a9c6;
-      padding: 5px 10px;
+      padding: 5px 15px;
       box-shadow: none;
       color: white;
+      text-transform: uppercase;
+      font-size: 14px;
+      @include flex(row, center, center);
 
       &:hover {
         color: white;
         scale: 1.05;
+      }
+
+      i {
+        font-size: 1.2rem;
+        margin-right: 8px;
       }
     }
   }
@@ -52,24 +54,16 @@
 
     .description {
       width: 100%;
+      margin-right: 0;
     }
 
     .label {
       font-style: italic;
       margin-top: 1rem;
 
-      // &-title {
-      //   margin: 0;
-      // }
-
       &-description {
         width: 100%;
       }
-
-      // &-price,
-      // &-ml {
-      //   width: 40px;
-      // }
     }
 
     .price-ml-wrap {
@@ -92,6 +86,7 @@
   .description,
   .ml {
     margin: 10px;
+    margin-bottom: 1rem;
   }
 
   .image-container {
@@ -111,6 +106,7 @@
       @include flex(row, center, center);
       position: absolute;
       left: 10px;
+      top: 41px;
 
       span {
         font-family: $font-headings;
@@ -133,16 +129,16 @@
 
   .featured-container {
     @include flex(row, center, center);
-    margin-top: 1rem;
 
     & input {
       margin-left: 0;
+      height: 25px;
+      width: 25px;
     }
   }
 
   form {
     margin-bottom: 4rem;
-    margin-top: -36px;
   }
 
   .btn-primary {
