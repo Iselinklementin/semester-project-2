@@ -609,7 +609,7 @@ footer .logo-container-footer .logo-footer {
 }
 
 .home .featured-products-wrapper .card img {
-  height: 280px;
+  height: 320px;
   object-fit: cover;
 }
 
@@ -842,6 +842,10 @@ footer .logo-container-footer .logo-footer {
   justify-content: space-between;
   align-items: center;
   margin-top: 0.5rem;
+}
+
+.product-page-wrapper .header-container {
+  margin-top: 4rem;
 }
 
 .add-productpage-wrapper .add-product-wrap {
