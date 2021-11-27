@@ -6,8 +6,7 @@ footer {
   flex-shrink: 0;
 
   .footer-container {
-    display: flex;
-    justify-content: space-between;
+    @include flex(row, space-between, center);
   }
 
   ul {

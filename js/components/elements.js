@@ -18,3 +18,7 @@ export const cloudName = "dmgiu9rx2";
 export const uploadPreset = "jrqukoh3";
 export const uploadWidget = document.querySelector("#upload_widget");
 export const uploadedImage = document.querySelector("#uploadedimage");
+
+// detail-page
+
+export const productImage = document.querySelector(".product-image");
