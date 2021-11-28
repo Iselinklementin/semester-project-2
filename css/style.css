@@ -593,7 +593,7 @@ footer .logo-container-footer .logo-footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
   width: 100%;
 }
 
@@ -604,11 +604,11 @@ footer .logo-container-footer .logo-footer {
 .home .featured-products-wrapper .card-price {
   font-weight: 600;
   background-color: #eae7e7;
-  padding: 3px 10px;
+  padding: 0px 10px;
 }
 
 .home .featured-products-wrapper .card-title {
-  max-width: 120px;
+  max-width: 80px;
   font-size: 1.3rem;
 }
 
@@ -1030,40 +1030,15 @@ footer .logo-container-footer .logo-footer {
 
 .detailpage-wrapper .buy-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.detailpage-wrapper .number {
-  margin: 100px;
-}
-
-.detailpage-wrapper .number span {
-  cursor: pointer;
-}
-
-.detailpage-wrapper .number .minus,
-.detailpage-wrapper .number .plus {
-  width: 20px;
-  height: 20px;
-  background: #f2f2f2;
-  border-radius: 4px;
-  padding: 8px 5px 8px 5px;
-  border: 1px solid #ddd;
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
-}
-
-.detailpage-wrapper .number input {
-  height: 34px;
-  width: 100px;
-  text-align: center;
-  font-size: 26px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  display: inline-block;
-  vertical-align: middle;
+.detailpage-wrapper .buy-container .volume-quantity-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 /*# sourceMappingURL=style.css.map */

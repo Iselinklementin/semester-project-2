@@ -172,7 +172,7 @@
       padding: 0 10px;
 
       &__heading {
-        @include flex(row, space-between, baseline);
+        @include flex(row, space-between, flex-start);
         width: 100%;
       }
     }
@@ -183,11 +183,12 @@
       &-price {
         font-weight: 600;
         background-color: #eae7e7;
-        padding: 3px 10px;
+        padding: 0px 10px;
       }
 
       &-title {
-        max-width: 120px;
+        // max-width: 120px;
+        max-width: 80px;
         font-size: 1.3rem;
 
         span {

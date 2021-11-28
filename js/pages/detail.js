@@ -1,6 +1,8 @@
 import toggleSidebar from "../layout/nav.js";
 import { productsUrl } from "../settings/api.js";
 import { productImage } from "../components/elements.js";
+import { getFromStorage, saveToStorage } from "../settings/storage.js";
+import { cartKey, favKey } from "../settings/keys.js";
 toggleSidebar();
 
 const queryString = document.location.search;
@@ -15,24 +17,87 @@ const id = params.get("id");
   productImage.src = `${result.image_url}`;
 
   const productContainer = document.querySelector(".product-container");
+  const productDescription = document.querySelector(".product-description");
+  const productNutrition = document.querySelector(".product-nutrition");
 
   // form?
 
   productContainer.innerHTML += `<h1>${result.title}</h1>
+  <i class="far fa-heart favorite-icon" data-id="${result.id}" data-title="${result.title}" data-description="${result.description}" data-price="${result.price}" data-volume="${result.volume}" data-image="${result.image_url}"></i>
+  <a href="edit.html?id=${result.id}"><i class="far fa-edit"></i></a>
                                   <div class="buy-container">
-                                    <p class="price">${result.price}$</p>
-                                    <select class="form-select volume" aria-label="Select volume">
-                                      <option selected>Choose volume</option>
-                                      <option value="1">250ml</option>
-                                      <option value="2">750ml</option>
-                                    </select>
+                                    <div class="volume-quantity-container">
+                                      <p class="price">${result.price}$</p>
+
+                                      <select class="form-select volume" aria-label="Select volume">
+                                        <option selected>Choose volume</option>
+                                        <option value="1">250ml</option>
+                                        <option value="2">750ml</option>
+                                      </select>
                                   
-                                    <div class="number">
-                                     <span class="minus">-</span>
-                                     <input type="text" value="1"/>
-                                     <span class="plus">+</span>
-                                   </div>
+                                      <div class="number">
+                                        <span class="minus">-</span>
+                                        <input type="text" value="1"/>
+                                        <span class="plus">+</span>
+                                      </div>
+                                    </div>
+
+                                    <div class="button">
+                                      <a href="cart.html" class="btn addToCart-btn" data-id="${result.id}" data-title="${result.title}" data-description="${result.description}" data-price="${result.price}" data-volume="${result.volume}" data-image="${result.image_url}">Add to cart</a>
+                                    </div>
                                   </div`;
 
+  productDescription.innerText = `${result.description}`;
+  // data-id="${result.id}" data-title="${result.title}" data-description="${result.description}" data-price="${result.price}" data-volume="${result.volume}" data-image="${result.image_url}"
+  // her kommer nutrition
+  const favoritesHeart = document.querySelector(".favorite-icon");
+  const addToCartBtn = document.querySelector(".addToCart-btn");
+  addToCartBtn.addEventListener("click", addToCart);
+  favoritesHeart.addEventListener("click", addFavorite);
+  console.log(favoritesHeart);
   // productName.innerText = `${result.title}`;
 })();
+
+// en funksjon som dekker begge, bare bytter ut navn
+
+function addToCart() {
+  const id = this.dataset.id;
+  const title = this.dataset.title;
+  const description = this.dataset.description;
+  const price = this.dataset.price;
+  const volume = this.dataset.volume;
+
+  const cartItems = getFromStorage(cartKey);
+  const productExists = cartItems.find((product) => product.id === id);
+
+  if (!productExists) {
+    const product = { id: id, title: title, description: description, price: price, volume: volume };
+    cartItems.push(product);
+    saveToStorage(cartKey, cartItems);
+  } else {
+    const newCartItem = cartItems.filter((product) => product.id !== id);
+    saveToStorage(cartKey, newCartItem);
+  }
+}
+
+function addFavorite() {
+  this.classList.toggle("fa");
+
+  const id = this.dataset.id;
+  const title = this.dataset.title;
+  const description = this.dataset.description;
+  const price = this.dataset.price;
+  const volume = this.dataset.volume;
+
+  const favList = getFromStorage(favKey);
+  const favExists = favList.find((fav) => fav.id === id);
+
+  if (!favExists) {
+    const favorite = { id: id, title: title, description: description, price: price, volume: volume };
+    favList.push(favorite);
+    saveToStorage(favKey, favList);
+  } else {
+    const newfavorite = favList.filter((fav) => fav.id !== id);
+    saveToStorage(favKey, newfavorite);
+  }
+}
