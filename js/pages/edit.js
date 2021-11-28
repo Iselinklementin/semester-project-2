@@ -1,5 +1,9 @@
 import { productsUrl } from "../settings/api.js";
-import { contentTypeAuth } from "../settings/api.js";
+import { contentTypeAuth, authorization } from "../settings/api.js";
+import { getFromStorage } from "../settings/storage.js";
+import { favKey, cartKey } from "../settings/keys.js";
+import { displayMessage } from "../components/displayMessage.js";
+import { messages } from "../components/messages.js";
 
 // hmm. samme navn på function og dokument?
 import toggleSidebar from "../layout/nav.js";
@@ -103,4 +107,39 @@ export async function updateProduct(title, price, description, id, image) {
     // console.log(error);
     // displayMessage(classes.warning, error, messageContainer);
   }
+}
+
+// egen js
+
+const currentFav = getFromStorage(favKey);
+
+export default function deleteButton(id) {
+  const deleteContainer = document.querySelector(".delete-container");
+  deleteContainer.innerHTML = `<button type="button" class="delete delete-btn btn">Delete</button>`;
+  const deleteBtn = document.querySelector("button.delete");
+
+  deleteBtn.onclick = async function () {
+    const deleteProduct = confirm("Are you sure you want to delete the product?");
+
+    if (deleteProduct) {
+      const url = productsUrl + `/` + id;
+
+      const option = {
+        method: "DELETE",
+        headers: authorization,
+      };
+      try {
+        const response = await fetch(url, option);
+        const json = await response.json();
+        // location.href = "/";
+
+        // delete the article from favourite-list
+        const newFavourites = currentFav.filter((product) => parseInt(product.id) !== json.id);
+        saveToStorage(favKey, newFavourites);
+      } catch (error) {
+        console.log(error);
+        displayMessage("error", messages.server_error, ".message-container");
+      }
+    }
+  };
 }
