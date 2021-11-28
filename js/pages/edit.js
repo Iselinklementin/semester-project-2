@@ -1,6 +1,10 @@
 import { productsUrl } from "../settings/api.js";
 import { contentTypeAuth } from "../settings/api.js";
 
+// hmm. samme navn på function og dokument?
+import toggleSidebar from "../layout/nav.js";
+toggleSidebar();
+
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
