@@ -83,12 +83,13 @@ function addToCart() {
   // if (productExists) {
   // const product = { id, title, description, price, volume };
   if (productExists) {
-    const idDuplicate = this.dataset.id;
+    const idDuplicate = true;
     const product = { id, title, description, price, volume, image_url, featured, idDuplicate };
     cartItems.push(product);
     saveToStorage(cartKey, cartItems);
   } else {
-    const product = { id, title, description, price, volume, image_url, featured };
+    const idDuplicate = false;
+    const product = { id, title, description, price, volume, image_url, featured, idDuplicate };
     cartItems.push(product);
     saveToStorage(cartKey, cartItems);
   }
