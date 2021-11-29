@@ -1,6 +1,7 @@
 // import { token, getFromStorage } from "./storage.js";
 // import { favKey } from "./keys.js";
 
+// skift navn på fila?
 import { token } from "./storage.js";
 
 export const baseUrl = "https://iselin-sp2-api.herokuapp.com/";

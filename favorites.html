@@ -22,10 +22,10 @@
       rel="stylesheet"
     />
     <script src="https://kit.fontawesome.com/9b8ac118a8.js" crossorigin="anonymous"></script>
-    <title>Milky</title>
+    <title>Favorites</title>
   </head>
   <body>
-    <div class="wrapper home" id="top">
+    <div class="wrapper favorites-page-wrapper" id="top">
       <main>
         <nav>
           <div class="sidebar-nav-wrapper">
@@ -33,13 +33,13 @@
               <div class="sidebar-nav-items container">
                 <ul class="sidebar-nav-links">
                   <li>
-                    <a href="index.html" class="active nav-link" aria-current="page">
+                    <a href="index.html" class="nav-link">
                       <i class="fas fa-chevron-right"></i>
                       Home
                     </a>
                   </li>
                   <li>
-                    <a href="products.html" class="nav-link">
+                    <a href="products.html" class="active nav-link" aria-current="page">
                       <i class="fas fa-chevron-right"></i>
                       Products
                     </a>
@@ -126,149 +126,22 @@
             </ul>
           </div>
         </nav>
-
-        <!-- HUSK Å ENDRE ALT-TEKST! -->
-
-        <div class="container-fluid hero-banner-container">
-          <img class="img-fluid hero-banner" alt="..." />
-          <div class="hero-banner__text">
-            <img class="hero-banner__logo" src="./images/logo-white.svg" alt="" />
-            <div class="hero-banner__text-split"></div>
-            <p>Now also in 500ml cartons!</p>
-            <div class="hero-banner__arrow"></div>
-          </div>
+        <div class="container header-container">
+          <h1>Favorites</h1>
         </div>
-
-        <figure class="cow-container container">
-          <img src="./images/cow.png" class="" alt="..." />
-          <h1>Milk-based drinks with taste - made for comfort and enjoyment</h1>
-        </figure>
-
-        <div class="line"></div>
-        <!-- Feil klasse på de knappene? -->
-        <div class="container search-featured">
-          <div class="filter-btns">
-            <input class="btn btn-primary featured-btn" type="button" value="Featured" />
-            <input class="btn btn-primary new-btn" type="button" value="New" />
-          </div>
-
-          <div class="input-group rounded d-none d-lg-flex">
-            <input
-              type="search"
-              class="form-control rounded"
-              placeholder="Search"
-              aria-label="Search"
-              aria-describedby="search-addon"
-            />
-            <i class="fas fa-search"></i>
-          </div>
-        </div>
-
-        <section class="container products-wrapper p-4">
-          <div class="row row-cols-2 row-cols-md-2 row-cols-lg-4 g-4 product-container">
+        <section class="container products-wrapper results p-4">
+          <div class="row g-4 product-container">
             <!-- her er produktenene -->
           </div>
         </section>
-
-        <div class="container benefits-wrap p-4">
-          <div class="benefits-container row row-cols-1 row-cols-lg-3 g-4">
-            <h2 class="d-none d-sm-block d-lg-none">Milky Benefits</h2>
-            <section class="row-cols-md-3 d-sm-inline-flex flex-lg-column benefits_list_container">
-              <h2 class="d-sm-none d-lg-block">Milky Benefits</h2>
-
-              <ul class="list-group list-group-flush col-sm-7 col-md-6 col-lg-12">
-                <li class="list-group-item d-flex">
-                  <i class="fas fa-check-circle"></i>
-                  Best on taste
-                </li>
-                <li class="list-group-item d-flex">
-                  <i class="fas fa-check-circle"></i>
-                  No added sugar
-                </li>
-                <li class="list-group-item d-flex">
-                  <i class="fas fa-check-circle"></i>
-                  Builds healthy bones and teeth
-                </li>
-              </ul>
-
-              <ul class="list-group list-group-flush col-sm-6 col-md-6 col-lg-12">
-                <li class="list-group-item d-flex">
-                  <i class="fas fa-check-circle"></i>
-                  It’s packed with important nutrients like calcium, B-vitamins and vitamin D
-                </li>
-                <li class="list-group-item d-flex">
-                  <i class="fas fa-check-circle"></i>
-                  It’s an excellent source of protein
-                </li>
-              </ul>
-            </section>
-
-            <article class="col-sm-6 col-md-6 col-lg-4">
-              <figure>
-                <img src="./images/cow-field.jpg" class="rounded" alt="..." />
-                <figcaption>See where we get our yummy milk from!</figcaption>
-              </figure>
-              <a href="#">Local farms</a>
-            </article>
-
-            <article class="col-sm-6 col-md-6 col-lg-4">
-              <figure>
-                <img src="./images/milkshake.jpg" class="rounded" alt="..." />
-                <figcaption>Pimp up our milk for festive occasions!</figcaption>
-              </figure>
-              <a href="#">Inspiration</a>
-            </article>
-          </div>
-        </div>
-
-        <div class="container to-productsite-container p-4">
-          <img src="./images/product-image.jpg" class="img-fluid rounded" alt="..." />
-
-          <div class="to-products-wrap">
-            <h2>Look at all of our products!</h2>
-            <a href="" class="btn btn-primary">
-              Products
-              <i class="fas fa-chevron-right"></i>
-            </a>
-          </div>
-        </div>
-
-        <ul class="social-media-bottom">
-          <li>
-            <a href="#">
-              <i class="fab fa-twitter"></i>
-              Like
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fab fa-facebook-square"></i>
-              Follow
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fab fa-instagram-square"></i>
-              Follow
-            </a>
-          </li>
-        </ul>
-
-        <div class="to-top-container">
-          <a href="#top">
-            <div class="splat">
-              <p class="to-top-btn">Go to top</p>
-            </div>
-          </a>
-        </div>
       </main>
     </div>
-    <footer>
+
+    <footer class="footer">
       <div class="container footer-container p-4">
         <div class="logo-container-footer">
           <div class="logo-footer"></div>
         </div>
-
         <ul>
           <li class="nav-item"><a href="#" class="nav-link px-2">Home</a></li>
           <li class="nav-item"><a href="#" class="nav-link px-2">Products</a></li>
@@ -283,6 +156,6 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <script src="/js/index.js" type="module"></script>
+    <script src="/js/pages/favorites.js" type="module"></script>
   </body>
 </html>

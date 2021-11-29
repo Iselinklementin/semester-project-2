@@ -153,63 +153,6 @@
     }
   }
 
-  .featured-products-wrapper {
-    @include flex(row, center, center);
-    margin-top: 1rem;
-
-    a {
-      text-decoration: none;
-      color: getColour(dark);
-      // box-shadow: rgb(219, 219, 219) 2px 1px 5px 2px;
-      &:hover {
-        scale: 1.01;
-      }
-    }
-
-    .featured-main-info {
-      @include flex(column, space-between, baseline);
-      margin-top: 1rem;
-      padding: 0 10px;
-
-      &__heading {
-        @include flex(row, space-between, flex-start);
-        width: 100%;
-      }
-    }
-
-    .card {
-      padding: 0;
-
-      &-price {
-        font-weight: 600;
-        background-color: #eae7e7;
-        padding: 0px 10px;
-      }
-
-      &-title {
-        // max-width: 120px;
-        max-width: 80px;
-        font-size: 1.3rem;
-
-        span {
-          font-weight: 600;
-          font-size: 1.8rem;
-        }
-      }
-
-      img {
-        height: 320px;
-        object-fit: cover;
-
-        // need fixed height on uploading img
-
-        // @include for-tablet {
-        //   height: unset;
-        // }
-      }
-    }
-  }
-
   .benefits-container {
     margin-bottom: 2rem;
     margin-top: 0rem;

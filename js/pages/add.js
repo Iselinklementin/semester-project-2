@@ -1,5 +1,5 @@
 import toggleSidebar from "../layout/nav.js";
-import { productsUrl, baseUrl, contentTypeAuth } from "../settings/api.js";
+import { productsUrl, baseUrl, contentTypeAuth } from "../settings/constant.js";
 import displayMessage from "../components/displayMessage.js";
 import { messages } from "../components/messages.js";
 // egen js
@@ -55,7 +55,7 @@ export async function addProduct(title, price, description, featured, imageValue
     volume: volume,
   });
 
-  console.log(data);
+  // console.log(data);
 
   const options = {
     method: "POST",
@@ -113,13 +113,9 @@ function submitProduct(event) {
   const imageValue = addImage.value.trim();
   const volume = volumeValue;
 
-  console.log(volume);
+  // console.log(volume);
 
-  if (
-    checkValidation(title.length, 1) ||
-    checkValidation(price.length, 1) ||
-    checkValidation(description.length, 1)
-  ) {
+  if (checkValidation(title.length, 1) || checkValidation(price.length, 1) || checkValidation(description.length, 1)) {
     return displayMessage("error", messages.empty_input, ".message-container");
   }
 

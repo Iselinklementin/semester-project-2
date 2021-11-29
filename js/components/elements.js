@@ -22,3 +22,6 @@ export const uploadedImage = document.querySelector("#uploadedimage");
 // detail-page
 
 export const productImage = document.querySelector(".product-image");
+
+//
+export const results = document.querySelector(".results");

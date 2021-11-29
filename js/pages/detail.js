@@ -1,5 +1,5 @@
 import toggleSidebar from "../layout/nav.js";
-import { productsUrl } from "../settings/api.js";
+import { productsUrl } from "../settings/constant.js";
 import { productImage } from "../components/elements.js";
 import { getFromStorage, saveToStorage } from "../settings/storage.js";
 import { cartKey, favKey } from "../settings/keys.js";
@@ -42,19 +42,26 @@ const id = params.get("id");
                                       </div>
                                     </div>
 
-                                    <div class="button">
-                                      <a href="cart.html" class="btn addToCart-btn" data-id="${result.id}" data-title="${result.title}" data-description="${result.description}" data-price="${result.price}" data-volume="${result.volume}" data-image="${result.image_url}">Add to cart</a>
-                                    </div>
+                                    <button type="button" class="btn btn-primary" id="addToCart-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${result.id}" data-title="${result.title}" data-description="${result.description}" data-price="${result.price}" data-volume="${result.volume}" data-featured="${result.featured}" data-image_url="${result.image_url}">
+                                    Add to cart
+                                    </button>
+
+                                   
                                   </div`;
+
+  //   <div class="button">
+  //   <a href="#" class="btn addToCart-btn" data-id="${result.id}" data-title="${result.title}" data-description="${result.description}" data-price="${result.price}" data-volume="${result.volume}" data-image="${result.image_url}">Add to cart</a>
+  // </div>
 
   productDescription.innerText = `${result.description}`;
   // data-id="${result.id}" data-title="${result.title}" data-description="${result.description}" data-price="${result.price}" data-volume="${result.volume}" data-image="${result.image_url}"
   // her kommer nutrition
   const favoritesHeart = document.querySelector(".favorite-icon");
-  const addToCartBtn = document.querySelector(".addToCart-btn");
+  const addToCartBtn = document.querySelector("#addToCart-btn");
+  console.log(addToCartBtn);
   addToCartBtn.addEventListener("click", addToCart);
   favoritesHeart.addEventListener("click", addFavorite);
-  console.log(favoritesHeart);
+  // console.log(favoritesHeart);
   // productName.innerText = `${result.title}`;
 })();
 
@@ -66,18 +73,31 @@ function addToCart() {
   const description = this.dataset.description;
   const price = this.dataset.price;
   const volume = this.dataset.volume;
+  const image_url = this.dataset.image_url;
+  const featured = this.dataset.featured;
 
   const cartItems = getFromStorage(cartKey);
   const productExists = cartItems.find((product) => product.id === id);
 
-  if (!productExists) {
-    const product = { id: id, title: title, description: description, price: price, volume: volume };
+  // legg til produktet, selv om det allerede er i cart
+  // if (productExists) {
+  // const product = { id, title, description, price, volume };
+  if (productExists) {
+    const idDuplicate = this.dataset.id;
+    const product = { id, title, description, price, volume, image_url, featured, idDuplicate };
     cartItems.push(product);
     saveToStorage(cartKey, cartItems);
   } else {
-    const newCartItem = cartItems.filter((product) => product.id !== id);
-    saveToStorage(cartKey, newCartItem);
+    const product = { id, title, description, price, volume, image_url, featured };
+    cartItems.push(product);
+    saveToStorage(cartKey, cartItems);
   }
+
+  // }
+  // else {
+  //   const newCartItem = cartItems.filter((product) => product.id !== id);
+  //   saveToStorage(cartKey, newCartItem);
+  // }
 }
 
 function addFavorite() {

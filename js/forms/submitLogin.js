@@ -1,5 +1,5 @@
 import displayMessage from "../components/displayMessage.js";
-import { contentType, loginUrl } from "../settings/api.js";
+import { contentType, loginUrl } from "../settings/constant.js";
 import { saveToken, saveUser } from "../settings/storage.js";
 import { messages } from "../components/messages.js";
 

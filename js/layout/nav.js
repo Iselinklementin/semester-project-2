@@ -1,3 +1,7 @@
+// import { favKey } from "../settings/keys.js";
+// import { getFromStorage } from "../settings/storage.js";
+
+// open sidebar on mobile
 export default function toggleSidebar() {
   const toggleNav = document.querySelector(".sidebar-nav-toggle");
   const hamburger = toggleNav.children[0];

@@ -69,3 +69,77 @@ footer {
 // active in nav
 // change menu when logged in
 // icons when logged in
+// hover (!)
+
+// product layout
+
+// denne kan gjøres på base.
+// så kan jeg bruke samme classes på fav og products osv
+
+.products-wrapper {
+  @include flex(row, center, center);
+  margin-top: 1rem;
+
+  a {
+    text-decoration: none;
+    color: getColour(dark);
+    // box-shadow: rgb(219, 219, 219) 2px 1px 5px 2px;
+  }
+
+  // .featured-main-info
+  .product-info {
+    @include flex(column, space-between, baseline);
+    margin-top: 1rem;
+    padding: 0 10px;
+
+    &__heading {
+      @include flex(row, space-between, flex-start);
+      width: 100%;
+    }
+  }
+
+  .col {
+    position: relative;
+
+    &:hover {
+      scale: 1.01;
+    }
+  }
+
+  .card {
+    padding: 0;
+    position: relative;
+
+    // denne er ny etter create-html
+    .favorite-heart {
+      position: absolute;
+    }
+
+    &-price {
+      font-weight: 600;
+      background-color: #eae7e7;
+      padding: 0px 10px;
+    }
+
+    &-title {
+      // max-width: 120px;
+      max-width: 80px;
+      font-size: 1.3rem;
+
+      span {
+        font-weight: 600;
+        font-size: 1.8rem;
+      }
+    }
+
+    img {
+      height: 320px;
+      object-fit: cover;
+      // need fixed height on uploading img
+
+      // @include for-tablet {
+      //   height: unset;
+      // }
+    }
+  }
+}

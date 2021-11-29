@@ -1,13 +1,15 @@
 import toggleSidebar from "./layout/nav.js";
-import { productsUrl, homeUrl } from "./settings/api.js";
+import { productsUrl, homeUrl } from "./settings/constant.js";
+import { createHtml } from "./common/createHtml.js";
+
 toggleSidebar();
 
-const featuredProducts = document.querySelector(".featured-products-container");
+// const featuredProducts = document.querySelector(".featured-products-container");
 const herobanner = document.querySelector(".hero-banner");
 
-// husk try fetch finally
+// husk try fetch finally og autocall
 
-function callApi() {
+(function callApi() {
   let fetchBanner = fetch(homeUrl);
   let fetchProducts = fetch(productsUrl);
 
@@ -17,31 +19,12 @@ function callApi() {
       let homeAPI = finalValues[0];
       let productsAPI = finalValues[1];
 
-      console.log(productsAPI);
-
       herobanner.src = `${homeAPI.hero_banner.url}`;
 
-      productsAPI.forEach((product) => {
-        if (product.featured) {
-          featuredProducts.innerHTML += `<a href="detail.html?id=${product.id}" class="col">
-                                          <div class="card">
-                                            <img src="${product.image_url}" class="card-img-top" alt="..." />
-                                          </div>
-
-                                            <div class="featured-main-info">
-                                              <div class="featured-main-info__heading">
-                                                <h2 class="card-title">${product.title}</h2>
-                                                <p class="card-price">${product.price}$</p>
-                                              </div>
-                                            <p class="card-text">${product.description}</p>
-                                          </div>
-                                        </a> `;
-        }
-      });
+      const featuredProducts = productsAPI.filter((product) => (product.featured ? true : false));
+      createHtml(featuredProducts);
     });
-}
-
-callApi();
+})();
 
 // callApi()(async function fetchBanner() {
 //   const response = await fetch(homeUrl);
