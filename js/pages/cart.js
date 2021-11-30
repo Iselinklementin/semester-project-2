@@ -6,11 +6,29 @@ import { createHtml } from "../common/createHtml.js";
 
 toggleSidebar();
 
+// summary
+
+function sum() {
+  const sum = document.querySelector(".sum");
+  const currentCart = getFromStorage(cartKey);
+  let countPrice = [];
+
+  currentCart.map(product => {
+    const price = product.price;
+    countPrice.push(parseFloat(price));
+    let total = countPrice.reduce((a, b) => a + b);
+
+    sum.innerHTML = `Total: ${total.toFixed(2)}$`;
+  });
+}
+
+sum();
+
 function createCart() {
   const currentItems = getFromStorage(cartKey);
   let newCurrentList = [];
 
-  currentItems.forEach((item) => {
+  currentItems.forEach(item => {
     if (!item.idDuplicate) {
       newCurrentList.push(item);
       createHtml(newCurrentList);
@@ -26,25 +44,27 @@ function createCart() {
     }, {});
 
     const col = document.querySelectorAll(".col");
-    let dataAttributes = [];
+    // let dataAttributes = [];
 
-    col.forEach((product) => {
+    col.forEach(product => {
       let dataID = product.firstElementChild.getAttribute("data-id");
       let newArr = Object.entries(countProductId);
       let inCart = [];
-      dataAttributes.push(product.firstElementChild.attributes);
+      // dataAttributes.push(product.firstElementChild.attributes);
 
       // finn duplicate ID
-      newArr.forEach((id) => {
+      newArr.forEach(id => {
         if (id[0] === dataID) {
           inCart.push(id[1]);
         }
       });
 
       // "afterend"
+      // "beforeend"
       product.insertAdjacentHTML(
         "beforeend",
-        `<div class="quantity"><b>In cart: ${inCart}</b>
+        `<div class="quantity">
+        <p>In cart: ${inCart}</p>
         <div class="number">
           <span class="minus" >-</span>
           <input type="text" value="${inCart}"/>
@@ -56,21 +76,26 @@ function createCart() {
 
     const minus = document.querySelectorAll(".minus");
     const plus = document.querySelectorAll(".plus");
+    const trashcan = document.querySelectorAll(".fa-trash-alt");
 
     // Se på navn her
-    minus.forEach((decrease) => {
+    minus.forEach(decrease => {
       decrease.addEventListener("click", removeItem);
     });
-    plus.forEach((increase) => {
+    plus.forEach(increase => {
       increase.addEventListener("click", increaseAmount);
     });
-  })();
 
-  // plus.addEventListener("click", addItem);
+    trashcan.forEach(trash => {
+      trash.addEventListener("click", deleteFromCart);
+    });
+  })();
 
   if (!currentItems.length) {
     emptyResult();
   }
+
+  sum();
 }
 
 createCart();
@@ -80,7 +105,7 @@ export default function removeItem() {
   const id = this.offsetParent.firstElementChild.getAttribute("data-id");
   let newItemList = [];
 
-  currentCart.forEach((item) => {
+  currentCart.forEach(item => {
     if (id === item.id) {
       newItemList.push(item);
     }
@@ -95,65 +120,60 @@ export default function removeItem() {
   // få produktet til å ikke hoppe
 
   let newArray = removeElement(newItemList);
-  // console.log(newArray);
-  const newCart = currentCart.filter((product) => product.id !== id);
-  // console.log(newCart);
+  const newCart = currentCart.filter(product => product.id !== id);
   const newItems = newArray.concat(newCart);
-  // console.log(newItems);
   saveToStorage(cartKey, newItems);
   createCart();
+  sum();
 }
+
+// skift navn
 
 function increaseAmount() {
   const currentCart = getFromStorage(cartKey);
   const id = this.offsetParent.firstElementChild.getAttribute("data-id");
 
-  // function addElement(arr) {
-  //   if (arr.length > 0) arr.length++;
-  //   return arr;
-  // }
-
-  let newItem = currentCart.find((product) => product.id === id);
-  // newItem = newItem["idDuplicate"] = true; // property name with a space
-  // function makeDup(item) {
-  //   return (item.idDuplicate = true);
-  // }
-  // // newItem.idDuplicate = true;
-  // const addItem = makeDup(newItem);
+  let newItem = currentCart.find(product => product.id === id);
   const new_obj = { ...newItem, idDuplicate: true };
-  // console.log(new_obj);
   currentCart.push(new_obj);
-  console.log(currentCart);
 
   saveToStorage(cartKey, currentCart);
   createCart();
+  sum();
 }
 
-// newItem.idDuplicate = true;
-// function findDup(value, index) {
-//   return value, index;
-// }
+// modal hvis det er flere enn èn i handlekurven?
+const modalText = document.querySelector(".modal-body");
+const confirmBtn = document.querySelector(".confirmBtn");
+let myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
 
-// let thisIsNew = findDup(newItem, index);
-// console.log(thisIsNew);
-// currentCart.push(newItem);
-// console.log(currentCart);
+function deleteFromCart() {
+  const id = this.offsetParent.firstElementChild.getAttribute("data-id");
+  const itemsInCart = this.parentElement.children[1].children[1].value;
+  console.log(itemsInCart);
+  // hvis det er fler enn 2, send en advarsel
+  if (itemsInCart >= 2) {
+    myModal.show();
+    modalText.innerHTML = `<p>Are you sure you want to delete ${itemsInCart} products?</p>`;
+    confirmBtn.setAttribute("id", `${id}`);
+    confirmBtn.addEventListener("click", deleteProduct);
+    console.log(confirmBtn);
+  } else {
+    const currentCart = getFromStorage(cartKey);
+    const deletedItem = currentCart.filter(product => product.id !== id);
+    saveToStorage(cartKey, deletedItem);
+    createCart();
+    sum();
+  }
+}
 
-// const newProduct = {
-//   id: product.id,
-//   title: product.title,
-//   description: product.description,
-//   price: product.price,
-//   featured: product.featured,
-//   idDuplicate: true,
-//   image_url: product.image_url,
-//   volume: product.volume,
-
-// let newArray = addElement(newProduct);
-// console.log(newArray);
-// currentCart.push(newArray);
-// console.log(currentCart);
-// saveToStorage(cartKey, currentCart);
-// createCart();
-// }
-// });
+function deleteProduct() {
+  console.log(this.id);
+  const id = this.id;
+  const currentCart = getFromStorage(cartKey);
+  const deletedItem = currentCart.filter(product => product.id !== id);
+  saveToStorage(cartKey, deletedItem);
+  myModal.hide();
+  createCart();
+  sum();
+}

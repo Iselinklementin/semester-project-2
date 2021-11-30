@@ -4,7 +4,6 @@ import { createHtml } from "./common/createHtml.js";
 
 toggleSidebar();
 
-// const featuredProducts = document.querySelector(".featured-products-container");
 const herobanner = document.querySelector(".hero-banner");
 
 // husk try fetch finally og autocall
@@ -14,48 +13,85 @@ const herobanner = document.querySelector(".hero-banner");
   let fetchProducts = fetch(productsUrl);
 
   Promise.all([fetchBanner, fetchProducts])
-    .then((values) => Promise.all(values.map((value) => value.json())))
-    .then((finalValues) => {
-      let homeAPI = finalValues[0];
-      let productsAPI = finalValues[1];
+    .then(values => Promise.all(values.map(value => value.json())))
+    .then(finalValues => {
+      const homeAPI = finalValues[0];
+      const productsAPI = finalValues[1];
 
       herobanner.src = `${homeAPI.hero_banner.url}`;
 
-      const featuredProducts = productsAPI.filter((product) => (product.featured ? true : false));
+      const featuredProducts = productsAPI.filter(product => (product.featured ? true : false));
       createHtml(featuredProducts);
+
+      const newBtn = document.querySelectorAll(".filter-btn");
+      newBtn.forEach(btn => {
+        btn.addEventListener("click", filterNewsFeatured);
+      });
+
+      function filterNewsFeatured() {
+        if (this.nextElementSibling) {
+          this.classList.add("active-filter");
+          this.nextElementSibling.classList.remove("active-filter");
+        }
+
+        if (!this.nextElementSibling) {
+          this.classList.add("active-filter");
+          this.previousElementSibling.classList.remove("active-filter");
+        }
+
+        if (this.value === "New") {
+          const newProducts = productsAPI.filter(product => product.volume === "Small");
+          createHtml(newProducts);
+        }
+
+        if (this.value === "Featured") {
+          const featuredProducts = productsAPI.filter(product => (product.featured ? true : false));
+          createHtml(featuredProducts);
+        }
+      }
     });
 })();
 
-// callApi()(async function fetchBanner() {
-//   const response = await fetch(homeUrl);
-//   const result = await response.json();
-//   herobanner.src = `${result.hero_banner.url}`;
-// })();
+// A search text box. When searching (filtering),
+// only the products that include the searched text in their title or
+// description should be listed.
 
-// (async function fetchProducts() {
-//   const response = await fetch(productsUrl);
-//   const result = await response.json();
-//   console.log(result);
+// index search
+// function searchProducts(products) {
+//   const search = document.querySelectorAll(".search");
 
-//   result.forEach((product) => {
-//     const productImages = product.image;
+//   search.forEach(input => {
+//     input.onkeyup = event => {
+//       const searchValue = event.target.value.trim();
 
-//     if (product.featured) {
-//       productImages.forEach((img) => {
-//         featuredProducts.innerHTML += `<a href="#" class="col">
-//                                       <div class="card">
-//                                       <img src="${img.url}" class="card-img-top" alt="..." />
-//                                       </div>
+//       console.log(searchValue);
 
-//                                       <div class="featured-main-info">
-//                                       <h2 class="card-title">${product.title}</h2>
-//                                       <p class="card-price">${product.price}$</p>
+//       const newProducts = products.filter(product => product.volume === "Small");
+//       const featuredProducts = products.filter(product => (product.featured ? true : false));
 
-//                                       <p class="card-text">${product.description}</p>
-//                                       </div>
+//       const availableProductSearch = newProducts.concat(featuredProducts);
 
-//                                       </a> `;
+//       const filteredProducts = availableProductSearch.filter(item => {
+//         // console.log(item.title.toLowerCase().includes(searchValue));
+//         // console.log(item.description.toLowerCase().includes(searchValue));
+//         if (
+//           item.title.toLowerCase().includes(searchValue) ||
+//           item.description.toLowerCase().includes(searchValue)
+//         ) {
+//           return true;
+//         }
+
+//         if (!searchValue) {
+//           console.log("this");
+//         }
 //       });
-//     }
+
+//       // console.log(availableProductSearch);
+//       // });
+
+//       console.log(filteredProducts);
+//       createHtml(filteredProducts);
+//       // emptyResult();
+//     };
 //   });
-// })();
+// }

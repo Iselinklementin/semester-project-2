@@ -9,8 +9,8 @@ export function createHtml(products) {
   const currentFavorites = getFromStorage(favKey);
   // const currentCart = getFromStorage(cartKey);
 
-  products.forEach((product) => {
-    const doesFavExists = currentFavorites.find((fav) => {
+  products.forEach(product => {
+    const doesFavExists = currentFavorites.find(fav => {
       if (parseInt(fav.id) === product.id || fav.id === product.id) {
         return true;
       }
@@ -41,7 +41,7 @@ export function createHtml(products) {
   });
 
   const favHeart = document.querySelectorAll(".favorite-heart");
-  favHeart.forEach((heart) => {
+  favHeart.forEach(heart => {
     heart.addEventListener("click", handleFavourites);
     heart.addEventListener("click", fillNavHeart);
   });

@@ -77,7 +77,7 @@ function addToCart() {
   const featured = this.dataset.featured;
 
   const cartItems = getFromStorage(cartKey);
-  const productExists = cartItems.find((product) => product.id === id);
+  const productExists = cartItems.find(product => product.id === id);
 
   // legg til produktet, selv om det allerede er i cart
   // if (productExists) {
@@ -93,12 +93,6 @@ function addToCart() {
     cartItems.push(product);
     saveToStorage(cartKey, cartItems);
   }
-
-  // }
-  // else {
-  //   const newCartItem = cartItems.filter((product) => product.id !== id);
-  //   saveToStorage(cartKey, newCartItem);
-  // }
 }
 
 function addFavorite() {
@@ -111,14 +105,20 @@ function addFavorite() {
   const volume = this.dataset.volume;
 
   const favList = getFromStorage(favKey);
-  const favExists = favList.find((fav) => fav.id === id);
+  const favExists = favList.find(fav => fav.id === id);
 
   if (!favExists) {
-    const favorite = { id: id, title: title, description: description, price: price, volume: volume };
+    const favorite = {
+      id: id,
+      title: title,
+      description: description,
+      price: price,
+      volume: volume,
+    };
     favList.push(favorite);
     saveToStorage(favKey, favList);
   } else {
-    const newfavorite = favList.filter((fav) => fav.id !== id);
+    const newfavorite = favList.filter(fav => fav.id !== id);
     saveToStorage(favKey, newfavorite);
   }
 }

@@ -61,7 +61,7 @@
                 <div class="input-group rounded">
                   <input
                     type="search"
-                    class="form-control rounded"
+                    class="form-control rounded search"
                     placeholder="Search"
                     aria-label="Search"
                     aria-describedby="search-addon"
@@ -102,7 +102,7 @@
             <div class="input-group rounded d-none d-lg-flex">
               <input
                 type="search"
-                class="form-control rounded"
+                class="form-control rounded search"
                 placeholder="Search"
                 aria-label="Search"
                 aria-describedby="search-addon"
@@ -146,22 +146,26 @@
 
         <div class="line"></div>
         <!-- Feil klasse på de knappene? -->
-        <div class="container search-featured">
+        <div class="container featured">
           <div class="filter-btns">
-            <input class="btn btn-primary featured-btn" type="button" value="Featured" />
-            <input class="btn btn-primary new-btn" type="button" value="New" />
+            <input
+              class="btn btn-primary filter-btn active-filter"
+              type="button"
+              value="Featured"
+            />
+            <input class="btn btn-primary filter-btn" type="button" value="New" />
           </div>
 
-          <div class="input-group rounded d-none d-lg-flex">
+          <!-- <div class="input-group rounded d-none d-lg-flex">
             <input
               type="search"
-              class="form-control rounded"
-              placeholder="Search"
+              class="form-control rounded search"
+              placeholder="Search featured & new products"
               aria-label="Search"
               aria-describedby="search-addon"
             />
             <i class="fas fa-search"></i>
-          </div>
+          </div> -->
         </div>
 
         <section class="container products-wrapper p-4">

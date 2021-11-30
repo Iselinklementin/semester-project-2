@@ -114,16 +114,16 @@
       }
     }
 
-    .featured-btn {
-      background-color: getColour(contrast);
-      border-color: transparent;
-    }
-
-    .new-btn {
+    .filter-btn {
       @include opacity(0.7);
       background-color: transparent;
       border-color: transparent;
-      font-weight: 400;
+    }
+
+    .active-filter {
+      background-color: getColour(contrast);
+      border-color: transparent;
+      font-weight: 600;
     }
 
     @include for-laptop {
@@ -132,7 +132,7 @@
     }
   }
 
-  .search-featured {
+  .featured {
     @include flex(row, space-between, center);
 
     @include for-laptop {
