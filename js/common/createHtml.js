@@ -2,6 +2,7 @@ import Block from "../components/blocks.js";
 import { cartKey, favKey } from "../settings/keys.js";
 import { getFromStorage } from "../settings/storage.js";
 import handleFavourites from "../buttons/handleFavorites.js";
+import { editIcon } from "../buttons/editIcon.js";
 
 export function createHtml(products) {
   const productContainer = document.querySelector(".product-container");
@@ -9,8 +10,8 @@ export function createHtml(products) {
   const currentFavorites = getFromStorage(favKey);
   // const currentCart = getFromStorage(cartKey);
 
-  products.forEach(product => {
-    const doesFavExists = currentFavorites.find(fav => {
+  products.forEach((product) => {
+    const doesFavExists = currentFavorites.find((fav) => {
       if (parseInt(fav.id) === product.id || fav.id === product.id) {
         return true;
       }
@@ -41,10 +42,12 @@ export function createHtml(products) {
   });
 
   const favHeart = document.querySelectorAll(".favorite-heart");
-  favHeart.forEach(heart => {
+  favHeart.forEach((heart) => {
     heart.addEventListener("click", handleFavourites);
     heart.addEventListener("click", fillNavHeart);
   });
+
+  editIcon();
 }
 
 // spesifiser navheart bedre

@@ -139,23 +139,26 @@
           <!-- her må det kanskje stå username? -->
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
+            <div class="form-text">We'll never share your email with anyone else.</div>
             <input type="email" class="form-control email" />
             <div class="wrap-warning">
-              <div class="form-text">We'll never share your email with anyone else.</div>
+              <div class="login-error"></div>
               <i class="fas fa-check-circle"></i>
             </div>
           </div>
 
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
+            <div class="form-text">Minimum 3 characters and numbers</div>
             <input type="password" class="form-control password" />
             <div class="wrap-warning">
-              <div class="form-text">Minimum 3 characters and numbers</div>
+              <div class="login-error"></div>
+
               <i class="fas fa-exclamation-circle"></i>
             </div>
           </div>
 
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary login-btn">Sign in</button>
         </form>
       </main>
     </div>

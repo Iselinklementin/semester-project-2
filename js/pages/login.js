@@ -25,33 +25,3 @@ function submitForm(event) {
   }
   submitLogin(username, password);
 }
-
-// import {
-//   loginForm,
-//   username,
-//   password,
-//   messageContainer,
-// } from "../../global/components/elements.js";
-// import checkValidation from "../../global/components/checkValidation.js";
-// import displayMessage from "../../global/components/displayMessage.js";
-// import { submitLogin } from "../loginForm/submitLogin.js";
-// import createMenu from "../../global/menu/createMenu.js";
-// import { messages } from "../../global/components/messages.js";
-// import { classes } from "../../global/components/classes.js";
-
-// createMenu();
-
-// loginForm.addEventListener("submit", submitForm);
-
-// function submitForm(event) {
-//   event.preventDefault();
-
-//   const usernameValue = username.value.trim();
-//   const passwordValue = password.value.trim();
-
-//   if (checkValidation(usernameValue.length, 3) || checkValidation(passwordValue.length, 3)) {
-//     return displayMessage(classes.error, messages.not_valid, messageContainer);
-//   }
-//   submitLogin(usernameValue, passwordValue);
-//   loginForm.reset();
-// }

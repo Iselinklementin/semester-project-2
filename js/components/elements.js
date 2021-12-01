@@ -2,6 +2,7 @@
 export const loginForm = document.querySelector(".login-form");
 export const emailInput = document.querySelector(".email");
 export const passwordInput = document.querySelector(".password");
+export const loginBtn = document.querySelector(".login-btn");
 
 // add product
 
