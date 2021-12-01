@@ -38,13 +38,18 @@ btnfilter.forEach(btn => {
 });
 
 // lag en filter function som fungerer på begge sidene?
+// denne er bedre enn på index
 
 function filterProducts() {
   const parentChildren = this.parentElement.children;
-  console.log(parentChildren);
-  // const findClass = parentChildren.filter(child => {
-  //   console.log(child);
-  // });
+  const findChildrenClass = [...parentChildren];
+
+  const removeClass = findChildrenClass.filter(child => child.classList.contains("active-filter"));
+  if (removeClass.length) {
+    removeClass[0].classList.remove("active-filter");
+  }
+
+  // kan vurdere en funksjon som gjør dette siden alt er likt
 
   if (this.value === "All products") {
     createHtml(products);

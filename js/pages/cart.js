@@ -31,6 +31,9 @@ function createCart() {
   currentItems.forEach(item => {
     if (!item.idDuplicate) {
       newCurrentList.push(item);
+      newCurrentList.sort(function (a, b) {
+        return a.id - b.id;
+      });
       createHtml(newCurrentList);
     }
   });
@@ -103,25 +106,25 @@ createCart();
 export default function removeItem() {
   const currentCart = getFromStorage(cartKey);
   const id = this.offsetParent.firstElementChild.getAttribute("data-id");
-  let newItemList = [];
 
+  // skriv denne funksjonen annerledes
+  // her fjerner man en fra length
+  function removeElement(arr) {
+    if (arr.length > 0) arr.length--;
+    return arr;
+  }
+
+  // dette er listen med alle med samme id
+  let newItemList = [];
   currentCart.forEach(item => {
     if (id === item.id) {
       newItemList.push(item);
     }
   });
 
-  // skriv denne funksjonen annerledes
-  function removeElement(arr) {
-    if (arr.length > 0) arr.length--;
-    return arr;
-  }
-
-  // få produktet til å ikke hoppe
-
   let newArray = removeElement(newItemList);
   const newCart = currentCart.filter(product => product.id !== id);
-  const newItems = newArray.concat(newCart);
+  const newItems = newCart.concat(newArray);
   saveToStorage(cartKey, newItems);
   createCart();
   sum();
@@ -132,11 +135,9 @@ export default function removeItem() {
 function increaseAmount() {
   const currentCart = getFromStorage(cartKey);
   const id = this.offsetParent.firstElementChild.getAttribute("data-id");
-
   let newItem = currentCart.find(product => product.id === id);
   const new_obj = { ...newItem, idDuplicate: true };
   currentCart.push(new_obj);
-
   saveToStorage(cartKey, currentCart);
   createCart();
   sum();
@@ -177,3 +178,36 @@ function deleteProduct() {
   createCart();
   sum();
 }
+
+// denne funker
+
+// export default function removeItem() {
+//   const currentCart = getFromStorage(cartKey);
+//   const id = this.offsetParent.firstElementChild.getAttribute("data-id");
+
+//   // skriv denne funksjonen annerledes
+//   // her fjerner man en fra length
+//   function removeElement(arr) {
+//     if (arr.length > 0) arr.length--;
+//     return arr;
+//   }
+
+//   // dette er listen med alle med samme id
+//   let newItemList = [];
+//   currentCart.forEach(item => {
+//     if (id === item.id) {
+//       newItemList.push(item);
+//     }
+//   });
+
+//   // få produktet til å ikke hoppe
+//   // hopper fordi jeg joiner to arrayer
+//   // en idè å kun fjerne samme id`length, uten å endre hovedarray?
+
+//   let newArray = removeElement(newItemList);
+//   const newCart = currentCart.filter(product => product.id !== id);
+//   const newItems = newCart.concat(newArray);
+//   saveToStorage(cartKey, newItems);
+//   createCart();
+//   sum();
+// }
