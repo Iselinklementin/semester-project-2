@@ -143,3 +143,11 @@ footer {
     }
   }
 }
+
+// button-filter
+
+.active-filter {
+  background-color: getColour(contrast);
+  border-color: transparent;
+  font-weight: 600;
+}

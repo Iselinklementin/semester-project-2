@@ -3,12 +3,15 @@ import toggleSidebar from "../layout/nav.js";
 import { fetchApi } from "../settings/fetchApi.js";
 import { emptyResult } from "../components/emptyResult.js";
 
+const btnfilter = document.querySelectorAll(".filter-btn");
+const searchInput = document.querySelector(".search-product-page");
+
 const products = await fetchApi();
 
 toggleSidebar();
 createHtml(products);
 
-const searchInput = document.querySelector(".search-product-page");
+// search, fungerer ikke ordentlig pga <span>
 
 function filterSearch(products) {
   searchInput.onkeyup = event => {
@@ -30,10 +33,33 @@ function filterSearch(products) {
 
 filterSearch(products);
 
-const btnfilter = document.querySelectorAll(".filter-btn");
-
 btnfilter.forEach(btn => {
   btn.addEventListener("click", filterProducts);
 });
 
-function filterProducts() {}
+// lag en filter function som fungerer på begge sidene?
+
+function filterProducts() {
+  const parentChildren = this.parentElement.children;
+  console.log(parentChildren);
+  // const findClass = parentChildren.filter(child => {
+  //   console.log(child);
+  // });
+
+  if (this.value === "All products") {
+    createHtml(products);
+    this.classList.add("active-filter");
+  }
+
+  if (this.value === "Small") {
+    const smallProducts = products.filter(product => product.volume === "Small");
+    createHtml(smallProducts);
+    this.classList.add("active-filter");
+  }
+
+  if (this.value === "Large") {
+    const largeProducts = products.filter(product => product.volume === "Large");
+    createHtml(largeProducts);
+    this.classList.add("active-filter");
+  }
+}
