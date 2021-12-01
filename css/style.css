@@ -174,12 +174,6 @@ footer {
      object-fit: cover;
 }
 
-.active-filter {
-  background-color: #fbaf2a;
-  border-color: transparent;
-  font-weight: 600;
-}
-
 nav {
   background-color: #c6d9de;
   height: 90px;
