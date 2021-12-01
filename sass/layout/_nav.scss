@@ -1,6 +1,8 @@
 nav {
   background-color: getColour(primary);
   height: 90px;
+  z-index: 5;
+  position: relative;
 
   @include for-laptop {
     height: 120px;

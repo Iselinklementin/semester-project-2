@@ -3,17 +3,18 @@ import { cartKey } from "../settings/keys.js";
 import { emptyResult } from "../components/emptyResult.js";
 import toggleSidebar from "../layout/nav.js";
 import { createHtml } from "../common/createHtml.js";
+import modal from "../common/modal.js";
 
 toggleSidebar();
 
 // summary
 
-function sum() {
+function total() {
   const sum = document.querySelector(".sum");
   const currentCart = getFromStorage(cartKey);
   let countPrice = [];
 
-  currentCart.map(product => {
+  currentCart.map((product) => {
     const price = product.price;
     countPrice.push(parseFloat(price));
     let total = countPrice.reduce((a, b) => a + b);
@@ -22,13 +23,13 @@ function sum() {
   });
 }
 
-sum();
+total();
 
 function createCart() {
   const currentItems = getFromStorage(cartKey);
   let newCurrentList = [];
 
-  currentItems.forEach(item => {
+  currentItems.forEach((item) => {
     if (!item.idDuplicate) {
       newCurrentList.push(item);
       newCurrentList.sort(function (a, b) {
@@ -47,16 +48,14 @@ function createCart() {
     }, {});
 
     const col = document.querySelectorAll(".col");
-    // let dataAttributes = [];
 
-    col.forEach(product => {
+    col.forEach((product) => {
       let dataID = product.firstElementChild.getAttribute("data-id");
       let newArr = Object.entries(countProductId);
       let inCart = [];
-      // dataAttributes.push(product.firstElementChild.attributes);
 
       // finn duplicate ID
-      newArr.forEach(id => {
+      newArr.forEach((id) => {
         if (id[0] === dataID) {
           inCart.push(id[1]);
         }
@@ -73,7 +72,7 @@ function createCart() {
           <input type="text" value="${inCart}"/>
           <span class="plus">+</span>
           </div>
-      <i class="fas fa-trash-alt"></i></div>`
+      <i class="fas fa-trash-alt" data-id="${dataID}"></i></div>`
       );
     });
 
@@ -82,14 +81,14 @@ function createCart() {
     const trashcan = document.querySelectorAll(".fa-trash-alt");
 
     // Se på navn her
-    minus.forEach(decrease => {
+    minus.forEach((decrease) => {
       decrease.addEventListener("click", removeItem);
     });
-    plus.forEach(increase => {
+    plus.forEach((increase) => {
       increase.addEventListener("click", increaseAmount);
     });
 
-    trashcan.forEach(trash => {
+    trashcan.forEach((trash) => {
       trash.addEventListener("click", deleteFromCart);
     });
   })();
@@ -98,7 +97,7 @@ function createCart() {
     emptyResult();
   }
 
-  sum();
+  total();
 }
 
 createCart();
@@ -116,18 +115,18 @@ export default function removeItem() {
 
   // dette er listen med alle med samme id
   let newItemList = [];
-  currentCart.forEach(item => {
+  currentCart.forEach((item) => {
     if (id === item.id) {
       newItemList.push(item);
     }
   });
 
   let newArray = removeElement(newItemList);
-  const newCart = currentCart.filter(product => product.id !== id);
+  const newCart = currentCart.filter((product) => product.id !== id);
   const newItems = newCart.concat(newArray);
   saveToStorage(cartKey, newItems);
   createCart();
-  sum();
+  total();
 }
 
 // skift navn
@@ -135,79 +134,38 @@ export default function removeItem() {
 function increaseAmount() {
   const currentCart = getFromStorage(cartKey);
   const id = this.offsetParent.firstElementChild.getAttribute("data-id");
-  let newItem = currentCart.find(product => product.id === id);
+  let newItem = currentCart.find((product) => product.id === id);
   const new_obj = { ...newItem, idDuplicate: true };
   currentCart.push(new_obj);
   saveToStorage(cartKey, currentCart);
   createCart();
-  sum();
+  total();
 }
 
-// modal hvis det er flere enn èn i handlekurven?
-const modalText = document.querySelector(".modal-body");
-const confirmBtn = document.querySelector(".confirmBtn");
-let myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+// modal hvis det er flere enn èn i handlekurven
 
 function deleteFromCart() {
   const id = this.offsetParent.firstElementChild.getAttribute("data-id");
   const itemsInCart = this.parentElement.children[1].children[1].value;
-  console.log(itemsInCart);
+
   // hvis det er fler enn 2, send en advarsel
   if (itemsInCart >= 2) {
-    myModal.show();
-    modalText.innerHTML = `<p>Are you sure you want to delete ${itemsInCart} products?</p>`;
-    confirmBtn.setAttribute("id", `${id}`);
-    confirmBtn.addEventListener("click", deleteProduct);
-    console.log(confirmBtn);
+    modal(`Are you sure you want to delete ${itemsInCart} products?`, "Delete products", id, deleteProduct);
   } else {
     const currentCart = getFromStorage(cartKey);
-    const deletedItem = currentCart.filter(product => product.id !== id);
+    const deletedItem = currentCart.filter((product) => product.id !== id);
     saveToStorage(cartKey, deletedItem);
     createCart();
-    sum();
+    total();
   }
 }
 
 function deleteProduct() {
-  console.log(this.id);
-  const id = this.id;
+  const confirmBtn = document.querySelector(".confirmBtn");
+  const id = confirmBtn.attributes.data.value;
   const currentCart = getFromStorage(cartKey);
-  const deletedItem = currentCart.filter(product => product.id !== id);
+  const deletedItem = currentCart.filter((product) => product.id !== id);
   saveToStorage(cartKey, deletedItem);
-  myModal.hide();
   createCart();
-  sum();
+  total();
 }
-
-// denne funker
-
-// export default function removeItem() {
-//   const currentCart = getFromStorage(cartKey);
-//   const id = this.offsetParent.firstElementChild.getAttribute("data-id");
-
-//   // skriv denne funksjonen annerledes
-//   // her fjerner man en fra length
-//   function removeElement(arr) {
-//     if (arr.length > 0) arr.length--;
-//     return arr;
-//   }
-
-//   // dette er listen med alle med samme id
-//   let newItemList = [];
-//   currentCart.forEach(item => {
-//     if (id === item.id) {
-//       newItemList.push(item);
-//     }
-//   });
-
-//   // få produktet til å ikke hoppe
-//   // hopper fordi jeg joiner to arrayer
-//   // en idè å kun fjerne samme id`length, uten å endre hovedarray?
-
-//   let newArray = removeElement(newItemList);
-//   const newCart = currentCart.filter(product => product.id !== id);
-//   const newItems = newCart.concat(newArray);
-//   saveToStorage(cartKey, newItems);
-//   createCart();
-//   sum();
-// }

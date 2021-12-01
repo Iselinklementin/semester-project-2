@@ -19,7 +19,7 @@ export async function submitLogin(username, password) {
     if (json.user) {
       saveToken(json.jwt);
       saveUser(json.user);
-      //       location.href = "/";
+      location.href = "/";
     }
 
     if (json.error) {
