@@ -25,7 +25,7 @@
     <title>Edit product</title>
   </head>
   <body>
-    <div class="wrapper cartpage-wrapper" id="top">
+    <div class="wrapper editpage-wrapper">
       <main>
         <nav>
           <div class="sidebar-nav-wrapper">
@@ -126,34 +126,113 @@
             </ul>
           </div>
         </nav>
+
         <div class="container header-container">
-          <h1>Edit product</h1>
+          <div class="header-container">
+            <h1>Edit product</h1>
+          </div>
+        </div>
+
+        <!-- skift classes -->
+
           <div class="container">
-            <form class="edit-form">
+
+            <div class="container upload-img-wrapper">
+              <figure class="upload-img-container">
+                <img class="rounded uploadedimage edit-image" alt="" id="uploadedimage" />
+              </figure>
+              <div class="upload-btn-warning-container">
+                <button id="upload_widget" class="btn cloudinary-button upload_widget">
+                  <i class="fas fa-cloud-upload-alt"></i> Upload image
+                </button>
+                <div class="input-error input-warning__image"></div>
+              </div>
+            </div>
+
+            <form class="container edit-form">
               <div class="message-container"></div>
-
-              <div class="input-container">
-                <label for="title">Edit title</label>
-                <input class="edit-title form-input" />
+              <!--Title-->
+              <div class="input-group">
+                <label for="title" class="label-title">Enter new title</label>
+                <div class="milky-input">
+                  <div class="milky-input__content">
+                    <span class="milky">Milky <i class="fas fa-chevron-right"></i></span>
+                  </div>
+                  <input type="text" placeholder="Title" class="title form-control" aria-label="Title" />
+                  <div class="input-error input-warning__title"></div>
+                </div>
+                <!-- <label for="title">Edit title</label>
+                <input class="edit-title form-input" /> -->
               </div>
 
-              <div class="input-container">
-                <label for="image">Edit image</label>
-                <input class="edit-image form-input" />
+
+              <!--Price-->
+
+              <div class="price-volume-wrap">
+                <!-- Price ! -->
+                <div class="price-container">
+                  <label for="price" class="label-price">Price </label>
+                  <input type="text" class="price form-control" aria-label="Price" />
+                  <div class="input-error input-warning__price"></div>
+                </div>
+                <!-- Select volume ! -->
+                <div class="select-volume">
+                  <label for="price" class="label-price">Volume</label>
+                  <select class="form-select volume" aria-label="Select volume">
+                    <option selected>Choose volume</option>
+                    <option value="1">Small</option>
+                    <option value="2">Large</option>
+                  </select>
+                  <div class="input-error input-warning__volume"></div>
+                </div>
               </div>
 
-              <div class="input-container">
-                <label for="price">Edit price</label>
-                <input class="edit-price form-input" />
+              <!---->
+
+              <div class="description-inputs">
+                <!--description-->
+                <div>
+                  <label for="description" class="label-description">Description</label>
+                  <textarea class="description form-control" rows="3" placeholder="Simple description"></textarea>
+                  <div class="input-error input-warning__description"></div>
+                </div>
+
+                <!-- description details -->
+                <div>
+                  <label for="description-details" class="label-description-details">Description details</label>
+                  <textarea
+                    class="description-details form-control"
+                    rows="5"
+                    placeholder="Longer description for productpage"
+                  ></textarea>
+                  <div class="input-error input-warning__description-details"></div>
+                </div>
+
+                <!-- nutrition -->
+                <div>
+                  <label for="nutrition" class="label-nutrition">Nutrition facts</label>
+                  <textarea class="nutrition form-control" rows="5" placeholder="Milk containing:"></textarea>
+                  <div class="input-error input-warning__nutrition"></div>
+                </div>
               </div>
-              <div class="input-container">
+
+              <!--checkbox-->
+              <div class="featured-container">
+                <input type="checkbox" class="form-check-input featured" />
+                <label class="form-check-label label-featured">Featured product</label>
+              </div>
+            </div>
+            <!-- <button class="btn-primary btn add-btn"> <i class="fas fa-plus"></i> Add product </button> -->
+            <div class="message-container"></div>
+
+              <!-- <div class="input-group">
                 <label for="description" class="description-label">Edit description</label>
                 <textarea class="edit-description" rows="6"></textarea>
-              </div>
+              </div> -->
               <input id="id" type="hidden" />
               <div class="button-container">
                 <div class="delete-container"></div>
-                <button class="update-btn btn btn-primary">Update</button>
+                <button class="update-btn btn btn-primary"><i class="fas fa-check"></i>Update</button>
                 <!-- <div class="delete-container"></div> -->
               </div>
             </form>

@@ -6,6 +6,20 @@ export const loginBtn = document.querySelector(".login-btn");
 
 // add product
 
+// edit product
+
+export const editForm = document.querySelector(".edit-form");
+export const editTitle = document.querySelector(".title");
+export const editPrice = document.querySelector(".price");
+export const editImage = document.querySelector(".image");
+export const editVolume = document.querySelector(".volume");
+export const editDescription = document.querySelector(".description");
+export const editDescriptionDetail = document.querySelector(".description-details");
+export const editNutrition = document.querySelector(".nutrition");
+export const editFeatured = document.querySelector(".featured");
+export const idInput = document.querySelector("#id");
+export const updateBtn = document.querySelector(".update-btn");
+
 // export const addForm = document.querySelector(".add-form");
 export const addTitle = document.querySelector(".title");
 export const addPrice = document.querySelector(".price");

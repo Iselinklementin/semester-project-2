@@ -167,7 +167,7 @@ function submitProduct(event) {
   }
 
   if (!validateAddForm || checkValidation(addImage.value.length, 1)) {
-    return displayMessage("error", messages.empty_input, ".message-container");
+    return displayMessage("error", "Fill in all fields", ".message-container");
   }
 
   addProduct(title, price, description, featured, imageValue, volume, description_details, nutrition);
@@ -187,7 +187,7 @@ function validateAddForm() {
 
   addPrice.addEventListener("blur", () => {
     if (isNaN(addPrice.value) || checkValidation(addPrice.value, 1)) {
-      inputFeedback(".input-warning__price", "Please insert numbers", "fa-exclamation-circle");
+      inputFeedback(".input-warning__price", "Insert numbers", "fa-exclamation-circle");
       validationPassed = false;
     } else {
       inputFeedback(".input-warning__price", "", "");
@@ -224,7 +224,7 @@ function validateAddForm() {
   addVolume.addEventListener("blur", () => {
     console.log(addVolume.value);
     if (addVolume.value === "Choose volume") {
-      inputFeedback(".input-warning__volume", "Please choose volume", "fa-exclamation-circle");
+      inputFeedback(".input-warning__volume", "Choose volume", "fa-exclamation-circle");
       validationPassed = false;
     } else {
       inputFeedback(".input-warning__volume", "", "");
