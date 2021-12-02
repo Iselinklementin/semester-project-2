@@ -133,46 +133,77 @@
           <div class="container header-container">
             <div class="header-container">
               <h1>Add a new product</h1>
-              <div class="message-container"></div>
+              <!-- <div class="message-container"></div> -->
             </div>
           </div>
+
           <div class="add-product-container">
             <div class="container upload-img-wrapper">
               <figure class="upload-img-container">
                 <img class="rounded uploadedimage" alt="" id="uploadedimage" />
               </figure>
-              <button id="upload_widget" class="btn cloudinary-button upload_widget">
-                <i class="fas fa-cloud-upload-alt"></i> Upload image
-              </button>
+              <div class="upload-btn-warning-container">
+                <button id="upload_widget" class="btn cloudinary-button upload_widget">
+                  <i class="fas fa-cloud-upload-alt"></i> Upload image
+                </button>
+                <div class="input-error input-warning__image"></div>
+              </div>
             </div>
 
             <form class="container add-form">
               <div class="input-group">
                 <!--Title-->
                 <label for="title" class="label-title">Enter title</label>
-                <div class="milky-title">
+                <div class="milky-input-container">
                   <div class="milky-title__content">
                     <span class="milky">Milky <i class="fas fa-chevron-right"></i></span>
                   </div>
-                  <input type="text" class="title form-control" aria-label="Title" />
+                  <input type="text" placeholder="Title" class="title form-control" aria-label="Title" />
+                  <div class="input-error input-warning__title"></div>
                 </div>
 
                 <!-- only numbers -->
                 <div class="price-volume-wrap">
                   <div>
                     <label for="price" class="label-price">Price</label>
-                    <input type="text" class="price form-control" aria-label="Price" />
+                    <input type="text" placeholder="2.23" class="price form-control" aria-label="Price" />
+                    <div class="input-error input-warning__price"></div>
                   </div>
                   <select class="form-select volume" aria-label="Select volume">
                     <option selected>Choose volume</option>
-                    <option value="1">250ml</option>
-                    <option value="2">750ml</option>
+                    <option value="1">Small</option>
+                    <option value="2">Large</option>
                   </select>
+                  <div class="input-error input-warning__volume"></div>
                 </div>
 
-                <!--description-->
-                <label for="description" class="label-description">Description</label>
-                <textarea class="description form-control" rows="7"></textarea>
+                <div class="description-inputs">
+                  <!--description-->
+                  <div>
+                    <label for="description" class="label-description">Description</label>
+                    <textarea class="description form-control" rows="7" placeholder="Simple description"></textarea>
+                    <div class="input-error input-warning__description"></div>
+                  </div>
+
+                  <!-- description details -->
+                  <div>
+                    <label for="description-details" class="label-description-details">Description details</label>
+                    <textarea
+                      class="description-details form-control"
+                      rows="7"
+                      placeholder="Longer description for productpage"
+                    ></textarea>
+                    <div class="input-error input-warning__description-details"></div>
+                  </div>
+
+                  <!-- nutrition -->
+                  <div>
+                    <label for="nutrition" class="label-nutrition">Nutrition facts</label>
+                    <textarea class="nutrition form-control" rows="7" placeholder="Milk containing"></textarea>
+                    <div class="input-error input-warning__nutrition"></div>
+                  </div>
+                </div>
+
                 <!--checkbox-->
                 <div class="featured-container">
                   <input type="checkbox" class="form-check-input featured" />
@@ -181,6 +212,7 @@
               </div>
 
               <button class="btn-primary btn add-btn"> <i class="fas fa-plus"></i> Add product </button>
+              <div class="message-container"></div>
               <!--image-->
               <div class="image-container">
                 <label for="image" class="">Image src</label>

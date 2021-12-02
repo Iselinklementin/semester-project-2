@@ -14,7 +14,27 @@
 
   .wrap-warning {
     @include flex(row, space-between, center);
-    margin-top: 0.5rem;
-    // font-style: italic;
+    margin-top: 1rem;
+    position: relative;
+    font-style: italic;
+
+    p {
+      padding: 5px 10px;
+      background-color: rgb(219, 219, 166);
+    }
+
+    i {
+      position: absolute;
+      right: 1rem;
+      top: -2.6rem;
+    }
+
+    .fa-check-circle {
+      color: getColour(statusSuccess);
+    }
+
+    .fa-exclamation-circle {
+      color: getColour(statusError);
+    }
   }
 }

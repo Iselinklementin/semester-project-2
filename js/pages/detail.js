@@ -22,6 +22,8 @@ const id = params.get("id");
 
   // form?
 
+  // husk å få et symbol ved cart når man adder produkt
+
   productContainer.innerHTML += `<h1>${result.title}</h1>
   <i class="far fa-heart favorite-icon" data-id="${result.id}" data-title="${result.title}" data-description="${result.description}" data-price="${result.price}" data-volume="${result.volume}" data-image="${result.image_url}"></i>
   <a href="edit.html?id=${result.id}"><i class="far fa-edit"></i></a>
@@ -77,7 +79,7 @@ function addToCart() {
   const featured = this.dataset.featured;
 
   const cartItems = getFromStorage(cartKey);
-  const productExists = cartItems.find(product => product.id === id);
+  const productExists = cartItems.find((product) => product.id === id);
 
   // legg til produktet, selv om det allerede er i cart
   // if (productExists) {
@@ -105,7 +107,7 @@ function addFavorite() {
   const volume = this.dataset.volume;
 
   const favList = getFromStorage(favKey);
-  const favExists = favList.find(fav => fav.id === id);
+  const favExists = favList.find((fav) => fav.id === id);
 
   if (!favExists) {
     const favorite = {
@@ -118,7 +120,7 @@ function addFavorite() {
     favList.push(favorite);
     saveToStorage(favKey, favList);
   } else {
-    const newfavorite = favList.filter(fav => fav.id !== id);
+    const newfavorite = favList.filter((fav) => fav.id !== id);
     saveToStorage(favKey, newfavorite);
   }
 }

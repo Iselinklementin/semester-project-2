@@ -2,8 +2,11 @@ import toggleSidebar from "../layout/nav.js";
 import checkValidation from "../components/checkValidation.js";
 import displayMessage from "../components/displayMessage.js";
 import { messages } from "../components/messages.js";
-import { loginForm, emailInput, passwordInput } from "../components/elements.js";
+import { loginForm, emailInput, passwordInput, loginBtn } from "../components/elements.js";
 import { submitLogin } from "../forms/submitLogin.js";
+
+const errorLogin = document.querySelector(".login-error-username");
+const errorPassword = document.querySelector(".login-error-password");
 
 toggleSidebar();
 
@@ -30,54 +33,43 @@ function submitForm(event) {
 
   // rydd opp i username/email navnrot
 
+  validateForm();
+
   const username = emailInput.value.trim();
   const password = passwordInput.value.trim();
 
-  if (checkValidation(username.length, 3) || checkValidation(password.length, 3)) {
+  if (checkValidation(username.length, 1) || checkValidation(password.length, 1)) {
     return displayMessage("error", messages.not_valid, ".message-container");
   }
   submitLogin(username, password);
 }
 
-// ikke sikker på om jeg skal bruke lengden for å validere her
+loginForm.addEventListener("focusin", validateForm);
 
-// loginForm.addEventListener("submit", submitForm);
-// const loginInputs = document.querySelectorAll(".login-input");
-// const errorLogin = document.querySelector(".login-error-username");
-// const errorPassword = document.querySelector(".login-error-password");
+function validateForm() {
+  loginBtn.disabled = false;
 
-// const username = emailInput.value.trim();
-// const password = passwordInput.value.trim();
+  emailInput.addEventListener("blur", () => {
+    if (validateEmail(emailInput.value.trim())) {
+      errorLogin.innerHTML = ``;
+      errorLogin.nextElementSibling.classList = "fas fa-check-circle";
+    } else {
+      errorLogin.innerHTML = `<p>Please insert a valid email</p>`;
+      errorLogin.nextElementSibling.classList = "fas fa-exclamation-circle";
+      loginBtn.disabled = true;
+    }
+  });
 
-// loginInputs.forEach((input) => {
-//   input.addEventListener("focusin", (event) => {
-//     //
-//     if (event.target.type === "email") {
-//       event.target.addEventListener("blur", () => {
-//         console.log(username);
-//         if (validateEmail(emailInput)) {
-//           console.log(emailInput);
-//           console.log(username);
-//           errorLogin.innerText = "";
-//         } else {
-//           console.log("username");
-//           errorLogin.innerText = "Please insert a valid email";
-//         }
-//       });
-//     }
-//     //
-//     if (event.target.type === "password") {
-//       event.target.addEventListener("blur", () => {
-//         console.log(password);
-//         if (validatePassword(password)) {
-//           console.log(password);
-//           errorPassword.innerText = "";
-//         } else if (!validatePassword(password)) {
-//           console.log("password");
-//           errorPassword.innerText =
-//             "Over 6 characters which contain at least one numeric digit, one uppercase and one lowercase letter";
-//         }
-//       });
-//     }
-//   });
-// });
+  passwordInput.addEventListener("blur", () => {
+    if (validatePassword(passwordInput.value.trim())) {
+      errorPassword.innerHTML = ``;
+      errorPassword.nextElementSibling.classList = "fas fa-check-circle";
+    } else {
+      errorPassword.innerHTML = `<p>Please at least one numeric digit, one uppercase and one lowercase letter</p>`;
+      errorPassword.nextElementSibling.classList = "fas fa-exclamation-circle";
+      loginBtn.disabled = true;
+    }
+  });
+}
+
+// vurder validateJs
