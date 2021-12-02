@@ -25,7 +25,7 @@
     <title>Add product - Milky</title>
   </head>
   <body>
-    <div class="wrapper add-productpage-wrapper" id="top">
+    <div class="wrapper add-productpage-wrapper">
       <main>
         <nav>
           <div class="sidebar-nav-wrapper">
@@ -152,29 +152,33 @@
 
             <form class="container add-form">
               <div class="input-group">
-                <!--Title-->
+                <!--Title ! -->
                 <label for="title" class="label-title">Enter title</label>
-                <div class="milky-input-container">
-                  <div class="milky-title__content">
+                <div class="milky-input">
+                  <div class="milky-input__content">
                     <span class="milky">Milky <i class="fas fa-chevron-right"></i></span>
                   </div>
                   <input type="text" placeholder="Title" class="title form-control" aria-label="Title" />
                   <div class="input-error input-warning__title"></div>
                 </div>
 
-                <!-- only numbers -->
                 <div class="price-volume-wrap">
-                  <div>
-                    <label for="price" class="label-price">Price</label>
-                    <input type="text" placeholder="2.23" class="price form-control" aria-label="Price" />
+                  <!-- Price ! -->
+                  <div class="price-container">
+                    <label for="price" class="label-price">Price </label>
+                    <input type="text" placeholder="2.23$" class="price form-control" aria-label="Price" />
                     <div class="input-error input-warning__price"></div>
                   </div>
-                  <select class="form-select volume" aria-label="Select volume">
-                    <option selected>Choose volume</option>
-                    <option value="1">Small</option>
-                    <option value="2">Large</option>
-                  </select>
-                  <div class="input-error input-warning__volume"></div>
+                  <!-- Select volume ! -->
+                  <div class="select-volume">
+                    <label for="price" class="label-price">Volume</label>
+                    <select class="form-select volume" aria-label="Select volume">
+                      <option selected>Choose volume</option>
+                      <option value="1">Small</option>
+                      <option value="2">Large</option>
+                    </select>
+                    <div class="input-error input-warning__volume"></div>
+                  </div>
                 </div>
 
                 <div class="description-inputs">
@@ -199,7 +203,7 @@
                   <!-- nutrition -->
                   <div>
                     <label for="nutrition" class="label-nutrition">Nutrition facts</label>
-                    <textarea class="nutrition form-control" rows="7" placeholder="Milk containing"></textarea>
+                    <textarea class="nutrition form-control" rows="7" placeholder="Milk containing:"></textarea>
                     <div class="input-error input-warning__nutrition"></div>
                   </div>
                 </div>
@@ -210,7 +214,6 @@
                   <label class="form-check-label label-featured">Featured product</label>
                 </div>
               </div>
-
               <button class="btn-primary btn add-btn"> <i class="fas fa-plus"></i> Add product </button>
               <div class="message-container"></div>
               <!--image-->
@@ -221,11 +224,19 @@
             </form>
           </div>
         </div>
-
-        <!-- CLOUDINARY BUTTON -->
-        <!-- Remember alt-tekst -->
       </main>
     </div>
+
+    <!-- <div class="featured-container">
+      <p>Featured product</p>
+
+      <input class="form-check-label featured" type="radio" name="featured" value="false" />
+      <label for="featurede">No</label>
+      <input class="form-check-label featured" type="radio" name="featured" value="true" />
+      <label for="featured">Yes</label>
+
+      <div class="input-error input-warning__featured"></div>
+    </div> -->
 
     <footer class="footer">
       <div class="container footer-container p-4">

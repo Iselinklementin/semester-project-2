@@ -21,8 +21,7 @@ import {
   descriptionDetails,
 } from "../components/elements.js";
 import { inputFeedback } from "../forms/inputFeedback.js";
-
-// const addImage = document.querySelector(".image");
+const formInputs = document.querySelectorAll(".add-product-wrap .form-control");
 
 toggleSidebar();
 
@@ -93,35 +92,33 @@ export async function addProduct(
     const response = await fetch(productsUrl, options);
     const json = await response.json();
 
-    // emailInput.disabled = true;
-    // passwordInput.disabled = true;
-    // addBtn.innerText = "Adding product...";
+    formInputs.forEach((input) => {
+      input.disabled = true;
+    });
 
-    const forminputs = document.querySelectorAll(".add-product-wrap .form-control");
-    forminputs.disabled = true;
+    addBtn.innerText = "Adding product...";
 
     if (json.error) {
       displayMessage("error", json.message, ".message-container");
-      // console.log(error);
     }
 
     if (json.created_at) {
       addForm.reset();
-      forminputs.disabled = false;
       console.log(json.created_at);
       displayMessage("success", "Product created", ".message-container");
     }
   } catch (error) {
-    // console.log(error);
     displayMessage("error", messages.server_error, ".message-container");
+  } finally {
+    formInputs.forEach((input) => {
+      input.disabled = false;
+    });
+
+    addBtn.innerText = "Add product";
   }
 }
 
 // egen js
-// addPrice.addEventListener("keyup", () => {
-//   console.log(!isNaN(addPrice.value));
-//   // return true;
-// });
 
 addBtn.addEventListener("click", submitProduct);
 
@@ -155,14 +152,19 @@ function submitProduct(event) {
   const description_details = descriptionDetails.value.trim();
   const nutrition = addNutrition.value.trim();
 
-  if (checkValidation(addImage.value.length, 1)) {
+  // if (checkValidation(addImage.value.length, 1)) {
+  //   inputFeedback(".input-warning__image", "Please upload an image", "fa-exclamation-circle");
+  // } else {
+  //   inputFeedback(".input-warning__image", "", "");
+  // }
+
+  const imageContainer = document.querySelector("#uploadedimage.src");
+
+  if (!imageContainer) {
     inputFeedback(".input-warning__image", "Please upload an image", "fa-exclamation-circle");
   } else {
-    inputFeedback(".input-warning__image", "", "fa-check-circle");
+    inputFeedback(".input-warning__image", "", "");
   }
-
-  // return value here?
-  // button should be disabled
 
   if (!validateAddForm || checkValidation(addImage.value.length, 1)) {
     return displayMessage("error", messages.empty_input, ".message-container");
@@ -170,12 +172,6 @@ function submitProduct(event) {
 
   addProduct(title, price, description, featured, imageValue, volume, description_details, nutrition);
 }
-
-// (async function fetchProducts() {
-//   const response = await fetch(productsUrl);
-//   const result = await response.json();
-//   console.log(result);
-// })();
 
 function validateAddForm() {
   let validationPassed = true;

@@ -6,4 +6,10 @@ export function inputFeedback(targetElement, message, icon) {
   container.innerHTML = `${message}
                         <i class="fas ${icon}"></i>
                         `;
+
+  if (message.length) {
+    container.classList.add("error-displayed");
+  } else {
+    container.classList.remove("error-displayed");
+  }
 }
