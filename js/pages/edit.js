@@ -13,6 +13,7 @@ import {
   updateBtn,
   editDescriptionDetail,
   editFeatured,
+  editVolume,
 } from "../components/elements.js";
 // import { displayMessage } from "../components/displayMessage.js";
 // import { messages } from "../components/messages.js";
@@ -30,11 +31,7 @@ const url = productsUrl + `/` + id;
   try {
     const response = await fetch(url);
     const product = await response.json();
-    // console.log(product);
-
-    console.log(editNutrition.value);
-    console.log(editNutrition);
-    console.log(product.nutrition);
+    const selected = [...editVolume.options];
 
     // pagetitle
     editNutrition.value = product.nutrition;
@@ -44,11 +41,10 @@ const url = productsUrl + `/` + id;
     editDescriptionDetail.value = product.description_details;
     editImage.value = product.image_url;
     idInput.value = product.id;
-
-    editFeatured.value = product.featured; // denne må sees på
-
+    editFeatured.value = product.featured;
     editVolume.value = product.volume; // denne må fikses
-    // if "Small" osv
+
+    console.log(product);
   } catch (error) {}
 })();
 
