@@ -64,6 +64,30 @@ console.log(url);
       selected[2].setAttribute("selected", true);
     }
 
+    // Prøve å kun bytte tittelen og ikke det rundt
+    // console.log(editTitle.value.trim().substr(0, 12));
+    // editTitle.value = product.title.substr(12, 4);
+    // function addStr(str, index, stringToAdd) {
+    //   return str.substring(0, index) + stringToAdd + str.substring(index, str.length);
+    // }
+
+    // let str = "This is a string";
+    // let stringToAdd = "modyfied ";
+    // console.log(addStr(str, 10, stringToAdd));
+
+    let stringToHTML = function (str) {
+      let parser = new DOMParser();
+      let doc = parser.parseFromString(str, "text/html");
+      return doc.body;
+    };
+
+    if (product.title.includes("<span>")) {
+      let testTitle = product.title;
+
+      const splits = testTitle.split(" ", 3);
+      console.log(splits);
+    }
+
     editImage.src = product.image_url;
     editTitle.value = product.title;
     editPrice.value = product.price;
@@ -94,8 +118,6 @@ async function submitEdit(event) {
   const imageSrc = newImageContainer.value.trim();
   const volumeValue = editVolume.value;
 
-  // console.log(idValue);
-  // console.log(imageSrc);
   // validation
   // updateProductFunction
   updateProduct(
@@ -158,8 +180,13 @@ export async function updateProduct(
   }
 }
 
-const deleteContainer = document.querySelector(".delete-container");
-deleteContainer.innerHTML = `<button type="button" class="delete delete-btn btn btn-primary mb-4"><i class="fas fa-trash-alt"></i> Delete</button>`;
+const buttonContainer = document.querySelector(".button-container");
+
+buttonContainer.insertAdjacentHTML(
+  "afterbegin",
+  `<button type="button" class="delete delete-btn btn btn-primary"><i class="fas fa-trash-alt"></i> Delete</button>`
+);
+
 const deleteBtn = document.querySelector("button.delete");
 
 deleteBtn.onclick = async function () {

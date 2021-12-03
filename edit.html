@@ -127,16 +127,16 @@
           </div>
         </nav>
 
-        <div class="container header-container">
-          <div class="header-container">
-            <h1>Edit product</h1>
+        <div class="container edit-product-wrap">
+          <div class="container header-container">
+            <div class="header-container">
+              <h1>Edit product</h1>
+            </div>
           </div>
-        </div>
 
-        <!-- skift classes -->
+          <!-- skift classes? -->
 
-          <div class="container">
-
+          <div class="container edit-product-container">
             <div class="container upload-img-wrapper">
               <figure class="upload-img-container">
                 <img class="rounded uploadedimage image" alt="" id="uploadedimage" />
@@ -149,10 +149,7 @@
               </div>
             </div>
 
-            <div class="image-container">
-              <label for="" class="">Image src</label>
-              <input class="edit-image form-input form-control" />
-            </div>
+            <input class="edit-image form-input form-control" type="hidden" />
 
             <form class="container edit-form">
               <div class="message-container"></div>
@@ -166,79 +163,68 @@
                   <input type="text" placeholder="Title" class="title form-control" aria-label="Title" />
                   <div class="input-error input-warning__title"></div>
                 </div>
-                <!-- <label for="title">Edit title</label>
-                <input class="edit-title form-input" /> -->
-              </div>
 
+                <!--Price-->
 
-              <!--Price-->
-
-              <div class="price-volume-wrap">
-                <!-- Price ! -->
-                <div class="price-container">
-                  <label for="price" class="label-price">Price </label>
-                  <input type="text" class="price form-control" aria-label="Price" />
-                  <div class="input-error input-warning__price"></div>
-                </div>
-                <!-- Select volume ! -->
-                <div class="select-volume">
-                  <label for="price" class="label-price">Volume</label>
-                  <select class="form-select volume" aria-label="Select volume">
-                    <option >Choose volume</option>
-                    <option value="Small">Small</option>
-                    <option value="Large">Large</option>
-                  </select>
-                  <div class="input-error input-warning__volume"></div>
-                </div>
-              </div>
-
-              <!---->
-
-              <div class="description-inputs">
-                <!--description-->
-                <div>
-                  <label for="description" class="label-description">Description</label>
-                  <textarea class="description form-control" rows="3" placeholder="Simple description"></textarea>
-                  <div class="input-error input-warning__description"></div>
+                <div class="price-volume-wrap">
+                  <!-- Price ! -->
+                  <div class="price-container">
+                    <label for="price" class="label-price">Price </label>
+                    <input type="text" class="price form-control" aria-label="Price" />
+                    <div class="input-error input-warning__price"></div>
+                  </div>
+                  <!-- Select volume ! -->
+                  <div class="select-volume">
+                    <label for="price" class="label-price">Volume</label>
+                    <select class="form-select volume" aria-label="Select volume">
+                      <option>Choose volume</option>
+                      <option value="Small">Small</option>
+                      <option value="Large">Large</option>
+                    </select>
+                    <div class="input-error input-warning__volume"></div>
+                  </div>
                 </div>
 
-                <!-- description details -->
-                <div>
-                  <label for="description-details" class="label-description-details">Description details</label>
-                  <textarea
-                    class="description-details form-control"
-                    rows="5"
-                    placeholder="Longer description for productpage"
-                  ></textarea>
-                  <div class="input-error input-warning__description-details"></div>
+                <!---->
+
+                <div class="description-inputs">
+                  <!--description-->
+                  <div>
+                    <label for="description" class="label-description">Description</label>
+                    <textarea class="description form-control" rows="3" placeholder="Simple description"></textarea>
+                    <div class="input-error input-warning__description"></div>
+                  </div>
+
+                  <!-- description details -->
+                  <div>
+                    <label for="description-details" class="label-description-details">Description details</label>
+                    <textarea
+                      class="description-details form-control"
+                      rows="5"
+                      placeholder="Longer description for productpage"
+                    ></textarea>
+                    <div class="input-error input-warning__description-details"></div>
+                  </div>
+
+                  <!-- nutrition -->
+                  <div>
+                    <label for="nutrition" class="label-nutrition">Nutrition facts</label>
+                    <textarea class="nutrition form-control" rows="5" placeholder="Milk containing:"></textarea>
+                    <div class="input-error input-warning__nutrition"></div>
+                  </div>
                 </div>
 
-                <!-- nutrition -->
-                <div>
-                  <label for="nutrition" class="label-nutrition">Nutrition facts</label>
-                  <textarea class="nutrition form-control" rows="5" placeholder="Milk containing:"></textarea>
-                  <div class="input-error input-warning__nutrition"></div>
+                <!--checkbox-->
+                <div class="featured-container">
+                  <input type="checkbox" class="form-check-input featured" />
+                  <label class="form-check-label label-featured">Featured product</label>
                 </div>
-              </div>
 
-              <!--checkbox-->
-              <div class="featured-container">
-                <input type="checkbox" class="form-check-input featured" />
-                <label class="form-check-label label-featured">Featured product</label>
-              </div>
-            </div>
-            <!-- <button class="btn-primary btn add-btn"> <i class="fas fa-plus"></i> Add product </button> -->
-            <div class="message-container"></div>
-
-              <!-- <div class="input-group">
-                <label for="description" class="description-label">Edit description</label>
-                <textarea class="edit-description" rows="6"></textarea>
-              </div> -->
-              <input id="id"  />
-              <div class="button-container">
-                <div class="delete-container"></div>
-                <button class="update-btn btn btn-primary"><i class="fas fa-check"></i>Update</button>
-                <!-- <div class="delete-container"></div> -->
+                <div class="message-container"></div>
+                <input id="id" type="hidden" />
+                <div class="button-container">
+                  <button class="update-btn btn btn-primary"><i class="fas fa-check"></i>Update</button>
+                </div>
               </div>
             </form>
           </div>
