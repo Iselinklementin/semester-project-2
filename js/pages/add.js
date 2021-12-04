@@ -122,16 +122,10 @@ export async function addProduct(
 
 addBtn.addEventListener("click", submitProduct);
 
-// husk validering
+// IMAGE error vises selv om du legger til bilde
 
 function submitProduct(event) {
   event.preventDefault();
-
-  // sjekk den her
-
-  // if (isNaN(addVolume.value)) {
-  //   displayMessage("error", messages.empty_input, ".message-container");
-  // }
 
   let volumeValue = "";
 

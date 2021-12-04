@@ -14,7 +14,9 @@ import {
 } from "../components/elements.js";
 import { cloudName, uploadPreset, uploadWidget, uploadedImage } from "../components/elements.js";
 import displayMessage from "../components/displayMessage.js";
-const newImageContainer = document.querySelector(".edit-image");
+import checkValidation from "../components/checkValidation.js";
+import { inputFeedback } from "../forms/inputFeedback.js";
+const hiddenImageContainer = document.querySelector(".edit-image");
 toggleSidebar();
 
 const myWidget = cloudinary.createUploadWidget(
@@ -27,7 +29,7 @@ const myWidget = cloudinary.createUploadWidget(
       console.log("Done! Here is the image info: ", result.info);
       const editImage = document.querySelector(".image");
       editImage.setAttribute("src", result.info.secure_url);
-      newImageContainer.value = result.info.secure_url;
+      hiddenImageContainer.value = result.info.secure_url;
     }
   }
 );
@@ -64,16 +66,8 @@ console.log(url);
       selected[2].setAttribute("selected", true);
     }
 
-    // Prøve å kun bytte tittelen og ikke det rundt
-    // console.log(editTitle.value.trim().substr(0, 12));
-    // editTitle.value = product.title.substr(12, 4);
-    // function addStr(str, index, stringToAdd) {
-    //   return str.substring(0, index) + stringToAdd + str.substring(index, str.length);
-    // }
-
-    // let str = "This is a string";
-    // let stringToAdd = "modyfied ";
-    // console.log(addStr(str, 10, stringToAdd));
+    // remove span from input-text
+    // convert string to html
 
     let stringToHTML = function (str) {
       let parser = new DOMParser();
@@ -81,23 +75,18 @@ console.log(url);
       return doc.body;
     };
 
-    if (product.title.includes("<span>")) {
-      let testTitle = product.title;
-
-      const splits = testTitle.split(" ", 3);
-      console.log(splits);
-    }
+    let originalTitle = product.title;
+    const findSpan = originalTitle.split(" ", 3);
+    let tasteTitle = stringToHTML(findSpan[1]);
 
     editImage.src = product.image_url;
-    editTitle.value = product.title;
+    editTitle.value = tasteTitle.innerText;
     editPrice.value = product.price;
     editDescription.value = product.description;
     editDescriptionDetail.value = product.description_details;
     idInput.value = product.id;
     editNutrition.value = product.nutrition;
-
-    newImageContainer.value = product.image_url;
-
+    hiddenImageContainer.value = product.image_url;
     // console.log(product);
   } catch (error) {
     displayMessage("error", "Something went wrong", ".message-container");
@@ -108,18 +97,18 @@ editForm.addEventListener("submit", submitEdit);
 
 async function submitEdit(event) {
   event.preventDefault();
-  const titleValue = editTitle.value.trim();
+  const titleValue = `Milky <span>${editTitle.value.trim()}</span>`;
   const priceValue = editPrice.value.trim();
   const idValue = idInput.value;
   const descriptionValue = editDescription.value.trim();
   const descriptionDetailValue = editDescriptionDetail.value.trim();
   const nutritionValue = editNutrition.value.trim();
   const featuredValue = editFeatured.checked;
-  const imageSrc = newImageContainer.value.trim();
+  const imageSrc = hiddenImageContainer.value.trim();
   const volumeValue = editVolume.value;
 
   // validation
-  // updateProductFunction
+
   updateProduct(
     titleValue,
     priceValue,
@@ -160,8 +149,6 @@ export async function updateProduct(
     body: data,
     headers: contentTypeAuth,
   };
-
-  console.log(data);
 
   try {
     const response = await fetch(url, options);
@@ -212,3 +199,68 @@ deleteBtn.onclick = async function () {
     }
   }
 };
+
+// samme som add-page
+// gjør alle classene like, så slipper man å ha det dobbelt opp
+
+function validateAddForm() {
+  let validationPassed = true;
+
+  editTitle.addEventListener("blur", () => {
+    if (checkValidation(editTitle.value.length, 1)) {
+      inputFeedback(".input-warning__title", "Please insert text", "fa-exclamation-circle");
+      validationPassed = false;
+    } else {
+      inputFeedback(".input-warning__title", "", "");
+    }
+  });
+
+  editPrice.addEventListener("blur", () => {
+    if (isNaN(editPrice.value) || checkValidation(editPrice.value, 1)) {
+      inputFeedback(".input-warning__price", "Insert numbers", "fa-exclamation-circle");
+      validationPassed = false;
+    } else {
+      inputFeedback(".input-warning__price", "", "");
+    }
+  });
+
+  editDescription.addEventListener("blur", () => {
+    if (checkValidation(editDescription.value.length, 1)) {
+      inputFeedback(".input-warning__description", "Please insert text", "fa-exclamation-circle");
+      validationPassed = false;
+    } else {
+      inputFeedback(".input-warning__description", "", "");
+    }
+  });
+
+  editDescriptionDetail.addEventListener("blur", () => {
+    if (checkValidation(editDescriptionDetail.value.length, 1)) {
+      inputFeedback(".input-warning__description-details", "Please insert text", "fa-exclamation-circle");
+      validationPassed = false;
+    } else {
+      inputFeedback(".input-warning__description-details", "", "");
+    }
+  });
+
+  editNutrition.addEventListener("blur", () => {
+    if (checkValidation(editNutrition.value.length, 1)) {
+      inputFeedback(".input-warning__nutrition", "Please insert text", "fa-exclamation-circle");
+      validationPassed = false;
+    } else {
+      inputFeedback(".input-warning__nutrition", "", "");
+    }
+  });
+
+  editVolume.addEventListener("blur", () => {
+    if (editVolume.value === "Choose volume") {
+      inputFeedback(".input-warning__volume", "Choose volume", "fa-exclamation-circle");
+      validationPassed = false;
+    } else {
+      inputFeedback(".input-warning__volume", "", "");
+    }
+  });
+
+  return validationPassed;
+}
+
+validateAddForm();

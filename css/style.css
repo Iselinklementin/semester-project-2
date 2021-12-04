@@ -886,6 +886,10 @@ footer .logo-container-footer .logo-footer {
   color: #fbc9b6;
 }
 
+.product-page-wrapper {
+  margin-bottom: 5rem;
+}
+
 .product-page-wrapper .header-container {
   margin-top: 4rem;
 }
