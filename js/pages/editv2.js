@@ -71,8 +71,8 @@ console.log(url);
 
     let stringToHTML = function (str) {
       let parser = new DOMParser();
-      let doc = parser.parseFromString(str, "text/html");
-      return doc.body;
+      let title = parser.parseFromString(str, "text/html");
+      return title.body;
     };
 
     let originalTitle = product.title;

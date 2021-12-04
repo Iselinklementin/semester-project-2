@@ -1,31 +1,31 @@
 import { createHtml } from "../common/createHtml.js";
 import toggleSidebar from "../layout/nav.js";
-import { fetchApi } from "../settings/fetchApi.js";
+import { fetchProductsApi } from "../settings/fetchApi.js";
 import { emptyResult } from "../components/emptyResult.js";
-
+// import { fetchProductHeaderApi } from "../settings/fetchApi.js";
 const btnfilter = document.querySelectorAll(".filter-btn");
 const searchInput = document.querySelector(".search-product-page");
 
-const products = await fetchApi();
+const products = await fetchProductsApi();
+// denne fungerer ikke
+// const banner = await fetchProductHeaderApi();
 
 toggleSidebar();
 createHtml(products);
 
-// search, fungerer ikke ordentlig pga <span>
-
 function filterSearch(products) {
-  searchInput.onkeyup = event => {
+  searchInput.onkeyup = (event) => {
     const searchValue = event.target.value.trim();
-    const searchTitle = products.filter(item => {
-      if (
-        item.title.toLowerCase().includes(searchValue) ||
-        item.description.toLowerCase().includes(searchValue)
-      ) {
+    const searchTitle = products.filter((item) => {
+      // Tar vekk span så produktet kan søkes på
+      let titleStr = item.title;
+      let title = titleStr.replace("<span>", "");
+      console.log(title);
+      if (title.toLowerCase().includes(searchValue) || item.description.toLowerCase().includes(searchValue)) {
         return true;
       }
     });
 
-    console.log(searchTitle);
     createHtml(searchTitle);
     // emptyResult();
   };
@@ -33,7 +33,7 @@ function filterSearch(products) {
 
 filterSearch(products);
 
-btnfilter.forEach(btn => {
+btnfilter.forEach((btn) => {
   btn.addEventListener("click", filterProducts);
 });
 
@@ -44,7 +44,7 @@ function filterProducts() {
   const parentChildren = this.parentElement.children;
   const findChildrenClass = [...parentChildren];
 
-  const removeClass = findChildrenClass.filter(child => child.classList.contains("active-filter"));
+  const removeClass = findChildrenClass.filter((child) => child.classList.contains("active-filter"));
   if (removeClass.length) {
     removeClass[0].classList.remove("active-filter");
   }
@@ -57,13 +57,13 @@ function filterProducts() {
   }
 
   if (this.value === "Small") {
-    const smallProducts = products.filter(product => product.volume === "Small");
+    const smallProducts = products.filter((product) => product.volume === "Small");
     createHtml(smallProducts);
     this.classList.add("active-filter");
   }
 
   if (this.value === "Large") {
-    const largeProducts = products.filter(product => product.volume === "Large");
+    const largeProducts = products.filter((product) => product.volume === "Large");
     createHtml(largeProducts);
     this.classList.add("active-filter");
   }

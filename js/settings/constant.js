@@ -9,6 +9,9 @@ export const loginUrl = baseUrl + "auth/local";
 export const productsUrl = baseUrl + "products";
 export const homeUrl = baseUrl + "home";
 
+// denne fungerer ikke
+export const productBannerUrl = baseUrl + "productpage";
+
 export const authorization = {
   Authorization: `Bearer ${token}`,
 };
