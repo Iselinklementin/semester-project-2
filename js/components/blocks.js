@@ -16,7 +16,7 @@ export default class Block {
               data-price="${this.price}" data-description="${this.description}" data-volume="${this.volume}" 
               data-featured="${this.featured}" data-image_url="${this.image_url}"></i>
               <a href="edit.html?id=${this.id}"><i class="far fa-edit"></i></a>
-              <a href="detail.html?id=${this.id}">
+              <a href="detail.html?id=${this.id}" class="product-link">
                 <div class="card">
                   <img src="${this.image_url}" class="card-img-top" alt="..." />
                 </div>
@@ -24,7 +24,7 @@ export default class Block {
                 <div class="product-info">
                   <div class="product-info__heading">
                     <h2 class="card-title">${this.title}</h2>
-                    <p class="card-price">${this.price}$</p>
+                    <p class="card-price">$ ${this.price}</p>
                   </div>
                   <p class="card-text">${this.description}</p>
                 </div>

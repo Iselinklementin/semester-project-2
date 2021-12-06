@@ -32,7 +32,6 @@ export function createHtml(products) {
     );
 
     productContainer.innerHTML += newBlock.draw();
-    // hvis det er i cart - ha med amount?
   });
 
   const favHeart = document.querySelectorAll(".favorite-heart");

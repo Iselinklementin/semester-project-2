@@ -8,15 +8,16 @@ import modal from "../common/modal.js";
 toggleSidebar();
 
 const currentItems = getFromStorage(cartKey);
+const productsInCart = document.querySelector(".count-products");
+
 createHtml(currentItems);
-
-if (!currentItems) {
-  emptyResult();
-}
-
+emptyResult();
 columns();
 total();
 
+productsInCart.innerText = `${currentItems.length} products in cart`;
+
+// Noe buggy med minus. Forsvinner når den kommer til 0, dukker plutselig opp igjen senere
 // skift navn
 
 function columns() {
@@ -29,13 +30,13 @@ function columns() {
         product.insertAdjacentHTML(
           "beforeend",
           `<div class="quantity">
-                  <p>In cart: ${item.quantity}</p>
-                  <div class="number">
-                    <span class="minus" data-id="${id}" >-</span>
-                    <input type="text" class"quantity-input" value="${item.quantity}"/>
-                    <span class="plus" data-id="${id}">+</span>
-                    </div>
-                <i class="fas fa-trash-alt" data-id="${id}"></i></div>`
+              <div class="number">
+                <span class="minus" data-id="${id}" >-</span>
+                <input type="text" disabled="true" class="input-quantity" value="${item.quantity}"/>
+                <span class="plus" data-id="${id}">+</span>
+              </div>
+              <i class="fas fa-trash-alt" data-id="${id}"></i>
+          </div>`
         );
       }
     });
@@ -65,7 +66,7 @@ function total() {
   currentCart.map(product => {
     let productTotal = parseFloat(product.price) * product.quantity;
     cost += productTotal;
-    sum.innerHTML = `Total: ${cost.toFixed(2)}$`;
+    sum.innerHTML = `$ ${cost.toFixed(2)}`;
   });
 }
 

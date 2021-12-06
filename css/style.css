@@ -1572,10 +1572,165 @@ footer .logo-container-footer .logo-footer {
   margin: auto 10px auto auto;
 }
 
-.cartpage-wrapper .minus,
-.cartpage-wrapper .plus {
-  padding: 10px;
+.cartpage-wrapper .header-container h1 {
+  margin: 4rem 0 1rem 0;
+}
+
+.cartpage-wrapper .header-container .count-products {
+  border-bottom: black solid thin;
+  padding-bottom: 3rem;
+}
+
+.cartpage-wrapper .quantity {
+  position: absolute;
+  left: 35%;
+  bottom: 14%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cartpage-wrapper .quantity .number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 43px;
+}
+
+.cartpage-wrapper .quantity .number .minus,
+.cartpage-wrapper .quantity .number .plus {
+  padding: 10px 15px;
   cursor: pointer;
+  background-color: white;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+}
+
+.cartpage-wrapper .quantity .number .input-quantity {
+  width: 50px;
+  text-align: center;
+  border: none;
+}
+
+.cartpage-wrapper .quantity .number .input-quantity:disabled {
+  background-color: white;
+}
+
+.cartpage-wrapper .quantity .fa-trash-alt {
+  position: relative;
+}
+
+.cartpage-wrapper .product-container {
+  margin-top: -4rem;
+}
+
+.cartpage-wrapper .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cartpage-wrapper .col {
+  border-bottom: black solid thin;
+  padding-bottom: 2rem;
+}
+
+.cartpage-wrapper .card {
+  background-color: transparent;
+  width: 40%;
+}
+
+.cartpage-wrapper .card-title {
+  max-width: 100%;
+}
+
+.cartpage-wrapper .card img {
+  width: 100%;
+  height: 200px;
+}
+
+.cartpage-wrapper .card-text {
+  display: none;
+}
+
+.cartpage-wrapper .card-price {
+  background-color: transparent;
+  padding: 0;
+}
+
+.cartpage-wrapper .product-info {
+  width: 100%;
+}
+
+.cartpage-wrapper .product-info__heading {
+  margin-left: 0.5rem;
+}
+
+.cartpage-wrapper .product-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
+
+.cartpage-wrapper .subtotal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.cartpage-wrapper .subtotal p {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.cartpage-wrapper .btn-primary, .cartpage-wrapper .home .to-productsite-container .to-products-wrap a, .home .to-productsite-container .to-products-wrap .cartpage-wrapper a {
+  background-color: #db1275;
+  padding: 0.6rem 0.75rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 1rem 0 4rem 0;
 }
 
 .detailpage-wrapper .image-bread-container {
