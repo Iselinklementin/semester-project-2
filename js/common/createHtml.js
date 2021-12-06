@@ -3,6 +3,7 @@ import { cartKey, favKey } from "../settings/keys.js";
 import { getFromStorage } from "../settings/storage.js";
 import handleFavourites from "../buttons/handleFavorites.js";
 import { editIcon } from "../buttons/editIcon.js";
+// import { results } from "../components/elements.js";
 
 export function createHtml(products) {
   const productContainer = document.querySelector(".product-container");

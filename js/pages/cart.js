@@ -10,6 +10,10 @@ toggleSidebar();
 const currentItems = getFromStorage(cartKey);
 createHtml(currentItems);
 
+if (!currentItems) {
+  emptyResult();
+}
+
 columns();
 total();
 

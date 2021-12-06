@@ -14,8 +14,6 @@ export default function handleFavourites() {
   const favourites = getFromStorage(favKey);
   const productExists = favourites.find(product => product.id === id);
 
-  // tror ikke man trenger å skrive :, og man bare trenger å føre det inn èn gang?
-
   if (!productExists) {
     const product = {
       id,
@@ -29,29 +27,10 @@ export default function handleFavourites() {
 
     favourites.push(product);
     saveToStorage(favKey, favourites);
+    fillNavHeart();
   } else {
     const newProduct = favourites.filter(product => product.id !== id);
     saveToStorage(favKey, newProduct);
+    fillNavHeart();
   }
 }
-
-// export default function handleFavourites() {
-//   this.classList.toggle("fa");
-
-//   const id = this.dataset.id;
-//   const title = this.dataset.title;
-//   const summary = this.dataset.summary;
-//   const author = this.dataset.author;
-
-//   const favourites = getFromStorage(favKey);
-//   const articleExists = favourites.find(article => article.id === id);
-
-//   if (!articleExists) {
-//     const article = { id: id, title: title, summary: summary, author: author };
-//     favourites.push(article);
-//     saveToStorage(favKey, favourites);
-//   } else {
-//     const newFavArticle = favourites.filter(article => article.id !== id);
-//     saveToStorage(favKey, newFavArticle);
-//   }
-// }

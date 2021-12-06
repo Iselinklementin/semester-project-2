@@ -5,6 +5,46 @@
     margin-top: 4rem;
   }
 
+  .image-container {
+    background-color: #c8dae7;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    @include for-desktop {
+      text-align: left;
+    }
+  }
+
+  .search-products {
+    @include for-desktop {
+      margin: 0;
+    }
+  }
+
+  .search-featured {
+    @include flex(column, center, center);
+
+    @include for-desktop {
+      flex-direction: row;
+      justify-content: space-between;
+
+      .search-products {
+        order: 2;
+        max-width: 300px;
+      }
+    }
+  }
+
+  .col {
+    @include for-laptop {
+      border: red solid thin;
+      // min-width: 220px;
+    }
+  }
+
   // kopiert fra home.scss
   // lag den global
 
