@@ -1,9 +1,9 @@
 import { getFromStorage, saveToStorage } from "../settings/storage.js";
 import { favKey } from "../settings/keys.js";
+import { fillNavHeart } from "../common/createHtml.js";
 
 export default function handleFavourites() {
   this.classList.toggle("fa");
-
   const id = this.dataset.id;
   const title = this.dataset.title;
   const price = this.dataset.price;
@@ -12,7 +12,7 @@ export default function handleFavourites() {
   const volume = this.dataset.volume;
   const featured = this.dataset.featured;
   const favourites = getFromStorage(favKey);
-  const productExists = favourites.find((product) => product.id === id);
+  const productExists = favourites.find(product => product.id === id);
 
   // tror ikke man trenger å skrive :, og man bare trenger å føre det inn èn gang?
 
@@ -30,7 +30,7 @@ export default function handleFavourites() {
     favourites.push(product);
     saveToStorage(favKey, favourites);
   } else {
-    const newProduct = favourites.filter((product) => product.id !== id);
+    const newProduct = favourites.filter(product => product.id !== id);
     saveToStorage(favKey, newProduct);
   }
 }

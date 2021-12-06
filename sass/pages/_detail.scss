@@ -1,39 +1,152 @@
 .detailpage-wrapper {
-  .buy-container {
-    @include flex(column, center, center);
+  .image-bread-container {
+    margin-top: 4rem;
 
-    .volume-quantity-container {
-      @include flex(row, center, center);
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .active {
+      color: getColour(borderContrast);
+    }
+
+    @include for-tablet {
+      margin-bottom: 1.5rem;
     }
   }
 
-  // .number {
-  //   // margin: 100px;
+  .content-wrap {
+    padding: 0;
 
-  //   span {
-  //     cursor: pointer;
-  //   }
-  //   .minus,
-  //   .plus {
-  //     width: 20px;
-  //     height: 20px;
-  //     background: #f2f2f2;
-  //     border-radius: 4px;
-  //     padding: 8px 5px 8px 5px;
-  //     border: 1px solid #ddd;
-  //     display: inline-block;
-  //     vertical-align: middle;
-  //     text-align: center;
-  //   }
-  //   input {
-  //     height: 34px;
-  //     // width: 100px;
-  //     text-align: center;
-  //     font-size: 26px;
-  //     border: 1px solid #ddd;
-  //     border-radius: 4px;
-  //     display: inline-block;
-  //     vertical-align: middle;
-  //   }
-  // }
+    @include for-tablet {
+      padding-right: var(--bs-gutter-x, 0.75rem);
+      padding-left: var(--bs-gutter-x, 0.75rem);
+      margin-bottom: 5rem;
+      @include flex(row, center, start);
+    }
+  }
+
+  .image-container {
+    position: relative;
+
+    & .favorite-icon {
+      position: absolute;
+      right: 5%;
+      top: 5%;
+      font-size: 1.4rem;
+    }
+  }
+
+  .text-content-container {
+    position: relative;
+
+    .title-container {
+      position: relative;
+      border-bottom: black solid thin;
+      padding-bottom: 1rem;
+      margin: 2rem 0;
+
+      @include for-tablet {
+        margin-top: 0;
+      }
+
+      .title {
+        font-size: 1.6rem;
+
+        span {
+          font-weight: 600;
+          font-size: 2.3rem;
+          display: block;
+        }
+      }
+      // fa-edit og hjerte har samme css
+      .fa-edit {
+        position: absolute;
+        right: 5%;
+        top: 5%;
+        font-size: 1.4rem;
+        color: black;
+      }
+    }
+
+    .buy-container {
+      @include flex(column, space-between, center);
+
+      margin-bottom: 2rem;
+      border-bottom: black solid thin;
+      padding-bottom: 2rem;
+
+      @include for-desktop {
+        flex-direction: row;
+      }
+
+      .price-quantity-container {
+        @include flex(row, space-between, center);
+        margin-bottom: 2rem;
+
+        @include for-desktop {
+          margin-bottom: 0;
+          margin-right: 2rem;
+          // justify-content: space-evenly;
+        }
+      }
+    }
+
+    .number {
+      display: flex;
+      height: 43px;
+
+      .minus,
+      .plus {
+        padding: 10px 15px;
+        cursor: pointer;
+        background-color: white;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+      }
+
+      .input-quantity {
+        width: 50px;
+        text-align: center;
+        border: none;
+        &:disabled {
+          background-color: white;
+        }
+      }
+    }
+
+    .price {
+      font-size: 1.6rem;
+      // margin: 0 25px 0 0;
+      margin: 0;
+      color: getColour(secondary);
+    }
+  }
+
+  .fa-plus {
+    margin-right: 15px;
+  }
+
+  #addToCart-btn {
+    background-color: getColour(addToCartBtn);
+    padding: 0.6rem 0.75rem;
+    width: 100%;
+    max-width: 100%;
+
+    @include for-desktop {
+      max-width: 200px;
+      // margin: 0 4rem 0 1rem;
+    }
+  }
+
+  .text-content-wrap {
+    margin-bottom: 3rem;
+    line-height: 1.5;
+
+    @include for-tablet {
+      margin-left: 2rem;
+      max-width: 600px;
+    }
+  }
 }

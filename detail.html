@@ -127,42 +127,60 @@
           </div>
         </nav>
 
-        <div>
-          <img class="img-fluid product-image" alt="..." />
+        <div class="image-bread-container">
+          <div style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb" class="container">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="products.html">Products</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Product-name</li>
+            </ol>
+          </div>
         </div>
 
-        <div style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb" class="mt-4 container p-4">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="products.html">Products</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Product-name</li>
-          </ol>
-        </div>
-
-        <div class="container text-content-wrap">
-          <div class="product-container">
-            <!-- javascript inni her -->
+        <div class="container-lg content-wrap">
+          <div class="image-container">
+            <img class="img-fluid product-image" alt="..." />
           </div>
 
-          <p class="product-description"></p>
-          <p class="product-nutrition">nutrition facts</p>
-        </div>
+          <div class="container text-content-wrap">
+            <div class="text-content-container">
+              <!-- Her er overskrift, pris, quantity, volume og knapp -->
+            </div>
 
-        <!-- Modal - skift ut id og tekst -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="description-wrap">
+              <h2>Yummy flavor</h2>
+              <p class="product-description-details">
+                <!-- Her er overskrift, pris, quantity, volume og knapp -->
+              </p>
+
+              <h2>Nutrition facts</h2>
+              <p class="product-nutrition"></p>
+            </div>
+          </div>
+
+          <!-- Modal - skift ut id og tekst -->
+          <!-- <div aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
               </div>
-              <div class="modal-body"> ... </div>
+              <div class="modal-body">...</div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                  Close
+                </button>
                 <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
+        </div> -->
         </div>
       </main>
     </div>

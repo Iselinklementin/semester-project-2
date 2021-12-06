@@ -13,7 +13,7 @@ export default function modal(bodyText, headerText, attribute, action) {
           <div class="modal-body">${bodyText}</div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="no"> No </button>
-            <button type="button" class="btn btn-primary confirmBtn" value="yes">Yes</button>
+            <button type="button" class="btn btn-primary confirmBtn" value="yes">Ok</button>
           </div>
         </div>
       </div>
