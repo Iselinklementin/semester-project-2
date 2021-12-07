@@ -1122,6 +1122,13 @@ footer .logo-container-footer .logo-footer {
 .product-page-wrapper .image-container {
   background-color: #c8dae7;
   height: 350px;
+  text-align: center;
+}
+
+@media (min-width: 1200px) {
+  .product-page-wrapper .image-container {
+    height: 400px;
+  }
 }
 
 .product-page-wrapper .image-container img {
@@ -1609,6 +1616,14 @@ footer .logo-container-footer .logo-footer {
   margin: auto 10px auto auto;
 }
 
+.editpage-wrapper .message-container {
+  width: 100%;
+}
+
+.editpage-wrapper .message-container .success {
+  margin: 3rem auto -0.5rem auto;
+}
+
 .cartpage-wrapper .favorite-heart,
 .cartpage-wrapper .fa-edit {
   display: none;
@@ -1641,6 +1656,12 @@ footer .logo-container-footer .logo-footer {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: start;
+}
+
+@media (min-width: 768px) {
+  .cartpage-wrapper .quantity {
+    left: 33%;
+  }
 }
 
 .cartpage-wrapper .quantity .number {
@@ -1820,23 +1841,22 @@ footer .logo-container-footer .logo-footer {
             align-items: baseline;
     left: 49%;
     bottom: 15%;
-    width: 26%;
+    width: 30%;
+  }
+  .cartpage-wrapper .quantity .number {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
   }
   .cartpage-wrapper .col {
     border-bottom: none;
   }
   .cartpage-wrapper .card {
-    width: unset;
+    max-width: 150px;
   }
   .cartpage-wrapper .subtotal {
     margin-bottom: 4rem;
     border-top: black solid thin;
-  }
-  .cartpage-wrapper .btn-primary, .cartpage-wrapper .home .to-productsite-container .to-products-wrap a, .home .to-productsite-container .to-products-wrap .cartpage-wrapper a,
-  .cartpage-wrapper .btn-secondary {
-    width: 200px;
-    margin: 1rem;
-    display: block;
   }
   .cartpage-wrapper .buttons {
     display: -webkit-box;
@@ -1852,6 +1872,13 @@ footer .logo-container-footer .logo-footer {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+  }
+  .cartpage-wrapper .buttons .btn-primary, .cartpage-wrapper .buttons .home .to-productsite-container .to-products-wrap a, .home .to-productsite-container .to-products-wrap .cartpage-wrapper .buttons a,
+  .cartpage-wrapper .buttons .btn-secondary {
+    width: 200px;
+    margin: 1rem;
+    display: block;
+    margin-top: 3rem;
   }
   .cartpage-wrapper .buttons .btn-primary, .cartpage-wrapper .buttons .home .to-productsite-container .to-products-wrap a, .home .to-productsite-container .to-products-wrap .cartpage-wrapper .buttons a {
     -webkit-box-ordinal-group: 3;

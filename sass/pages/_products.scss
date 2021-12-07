@@ -8,6 +8,11 @@
   .image-container {
     background-color: #c8dae7;
     height: 350px;
+    text-align: center;
+
+    @include for-desktop {
+      height: 400px;
+    }
 
     img {
       height: 100%;
@@ -54,13 +59,6 @@
 
     @include for-desktop {
       margin-bottom: 0;
-    }
-  }
-
-  .col {
-    @include for-laptop {
-      // border: red solid thin;
-      // min-width: 220px;
     }
   }
 

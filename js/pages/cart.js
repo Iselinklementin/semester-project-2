@@ -20,8 +20,6 @@ productsInCart.innerText = `${currentItems.length} products in cart`;
 // Noe buggy med minus. Forsvinner når den kommer til 0, dukker plutselig opp igjen senere
 // skift navn
 
-// skiftet ut trashcan, må kobles på nytt
-
 function columns() {
   const productCards = document.querySelectorAll(".col");
   productCards.forEach(product => {
@@ -44,11 +42,9 @@ function columns() {
     });
   });
 
-  // <i class="fas fa-trash-alt" data-id="${id}"></i>
-
   const minus = document.querySelectorAll(".minus");
   const plus = document.querySelectorAll(".plus");
-  const trashcan = document.querySelectorAll(".fa-trash-alt");
+  const removeItem = document.querySelectorAll(".remove");
 
   minus.forEach(decrease => {
     decrease.addEventListener("click", decreaseAmount);
@@ -57,7 +53,7 @@ function columns() {
     increase.addEventListener("click", increaseAmount);
   });
 
-  trashcan.forEach(trash => {
+  removeItem.forEach(trash => {
     trash.addEventListener("click", deleteFromCart);
   });
 }
@@ -201,7 +197,7 @@ function deleteFromCart() {
 
 //     const minus = document.querySelectorAll(".minus");
 //     const plus = document.querySelectorAll(".plus");
-//     const trashcan = document.querySelectorAll(".fa-trash-alt");
+//     const removeItem = document.querySelectorAll(".fa-trash-alt");
 
 //     // Se på navn her
 //     minus.forEach(decrease => {
@@ -211,7 +207,7 @@ function deleteFromCart() {
 //       increase.addEventListener("click", increaseAmount);
 //     });
 
-//     trashcan.forEach(trash => {
+//     removeItem.forEach(trash => {
 //       trash.addEventListener("click", deleteFromCart);
 //     });
 //   })();

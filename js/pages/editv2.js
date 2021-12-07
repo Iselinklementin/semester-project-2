@@ -16,6 +16,8 @@ import { cloudName, uploadPreset, uploadWidget, uploadedImage } from "../compone
 import displayMessage from "../components/displayMessage.js";
 import checkValidation from "../components/checkValidation.js";
 import { inputFeedback } from "../forms/inputFeedback.js";
+import { getFromStorage } from "../settings/storage.js";
+import { favKey } from "../settings/keys.js";
 const hiddenImageContainer = document.querySelector(".edit-image");
 toggleSidebar();
 
@@ -195,7 +197,9 @@ deleteBtn.onclick = async function () {
       const json = await response.json();
 
       location.href = "products.html";
-      // Hvis den ligger i favorites - legg kode her
+      currentFav = getFromStorage(favKey);
+      const newFavourites = currentFav.filter(product => parseInt(product.id) !== json.id);
+      saveToStorage(favKey, newFavourites);
     } catch (error) {
       displayMessage("error", "Server error", ".message-container");
     }

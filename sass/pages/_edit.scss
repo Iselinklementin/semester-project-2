@@ -231,4 +231,12 @@
       }
     }
   }
+
+  .message-container {
+    width: 100%;
+
+    .success {
+      margin: 3rem auto -0.5rem auto;
+    }
+  }
 }

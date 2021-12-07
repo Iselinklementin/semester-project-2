@@ -121,7 +121,9 @@
                 <a class="nav-link" href="login.html"><i class="fas fa-user"></i></a>
               </li>
               <li>
-                <a class="active nav-link" href="cart.html" aria-current="page"><i class="fas fa-shopping-cart"></i></a>
+                <a class="active nav-link" href="cart.html" aria-current="page"
+                  ><i class="fas fa-shopping-cart"></i
+                ></a>
               </li>
             </ul>
           </div>
@@ -152,7 +154,6 @@
             <input class="edit-image form-input form-control" type="hidden" />
 
             <form class="container edit-form">
-              <div class="message-container"></div>
               <!--Title-->
               <div class="input-group">
                 <label for="title" class="label-title">Enter new title</label>
@@ -160,7 +161,12 @@
                   <div class="milky-input__content">
                     <span class="milky">Milky <i class="fas fa-chevron-right"></i></span>
                   </div>
-                  <input type="text" placeholder="Title" class="title form-control" aria-label="Title" />
+                  <input
+                    type="text"
+                    placeholder="Title"
+                    class="title form-control"
+                    aria-label="Title"
+                  />
                   <div class="input-error input-warning__title"></div>
                 </div>
 
@@ -191,13 +197,19 @@
                   <!--description-->
                   <div>
                     <label for="description" class="label-description">Description</label>
-                    <textarea class="description form-control" rows="3" placeholder="Simple description"></textarea>
+                    <textarea
+                      class="description form-control"
+                      rows="3"
+                      placeholder="Simple description"
+                    ></textarea>
                     <div class="input-error input-warning__description"></div>
                   </div>
 
                   <!-- description details -->
                   <div>
-                    <label for="description-details" class="label-description-details">Description details</label>
+                    <label for="description-details" class="label-description-details"
+                      >Description details</label
+                    >
                     <textarea
                       class="description-details form-control"
                       rows="5"
@@ -209,7 +221,11 @@
                   <!-- nutrition -->
                   <div>
                     <label for="nutrition" class="label-nutrition">Nutrition facts</label>
-                    <textarea class="nutrition form-control" rows="5" placeholder="Milk containing:"></textarea>
+                    <textarea
+                      class="nutrition form-control"
+                      rows="5"
+                      placeholder="Milk containing:"
+                    ></textarea>
                     <div class="input-error input-warning__nutrition"></div>
                   </div>
                 </div>
@@ -220,11 +236,14 @@
                   <label class="form-check-label label-featured">Featured product</label>
                 </div>
 
-                <div class="message-container"></div>
                 <input id="id" type="hidden" />
                 <div class="button-container">
-                  <button class="update-btn btn btn-primary"><i class="fas fa-check"></i>Update</button>
+                  <button class="update-btn btn btn-primary">
+                    <i class="fas fa-check"></i>Update
+                  </button>
                 </div>
+
+                <div class="message-container"></div>
               </div>
             </form>
           </div>

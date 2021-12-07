@@ -16,6 +16,8 @@ herobanner.src = productPageApi.banner[0].url;
 toggleSidebar();
 createHtml(products);
 
+console.log(products);
+
 function filterSearch(products) {
   searchInput.onkeyup = event => {
     const searchValue = event.target.value.trim();

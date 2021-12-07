@@ -49,16 +49,6 @@ uploadWidget.addEventListener(
   false
 );
 
-// export async function addProduct(title, price, description, featured, imageValue, volume) {
-//   const data = JSON.stringify({
-//     title: title,
-//     price: price,
-//     description: description,
-//     featured: featured,
-//     image_url: imageValue,
-//     volume: volume,
-//   });
-
 export async function addProduct(
   title,
   price,
@@ -80,8 +70,6 @@ export async function addProduct(
     nutrition,
   });
 
-  // console.log(data);
-
   const options = {
     method: "POST",
     body: data,
@@ -92,7 +80,7 @@ export async function addProduct(
     const response = await fetch(productsUrl, options);
     const json = await response.json();
 
-    formInputs.forEach((input) => {
+    formInputs.forEach(input => {
       input.disabled = true;
     });
 
@@ -110,7 +98,7 @@ export async function addProduct(
   } catch (error) {
     displayMessage("error", messages.server_error, ".message-container");
   } finally {
-    formInputs.forEach((input) => {
+    formInputs.forEach(input => {
       input.disabled = false;
     });
 
@@ -152,19 +140,28 @@ function submitProduct(event) {
   //   inputFeedback(".input-warning__image", "", "");
   // }
 
-  const imageContainer = document.querySelector("#uploadedimage.src");
+  // const imageContainer = document.querySelector("#uploadedimage.src");
 
-  if (!imageContainer) {
-    inputFeedback(".input-warning__image", "Please upload an image", "fa-exclamation-circle");
-  } else {
-    inputFeedback(".input-warning__image", "", "");
-  }
+  // if (!imageContainer) {
+  //   inputFeedback(".input-warning__image", "Please upload an image", "fa-exclamation-circle");
+  // } else {
+  //   inputFeedback(".input-warning__image", "", "");
+  // }
 
   if (!validateAddForm || checkValidation(addImage.value.length, 1)) {
     return displayMessage("error", "Fill in all fields", ".message-container");
   }
 
-  addProduct(title, price, description, featured, imageValue, volume, description_details, nutrition);
+  addProduct(
+    title,
+    price,
+    description,
+    featured,
+    imageValue,
+    volume,
+    description_details,
+    nutrition
+  );
 }
 
 function validateAddForm() {
@@ -199,7 +196,11 @@ function validateAddForm() {
 
   descriptionDetails.addEventListener("blur", () => {
     if (checkValidation(descriptionDetails.value.length, 1)) {
-      inputFeedback(".input-warning__description-details", "Please insert text", "fa-exclamation-circle");
+      inputFeedback(
+        ".input-warning__description-details",
+        "Please insert text",
+        "fa-exclamation-circle"
+      );
       validationPassed = false;
     } else {
       inputFeedback(".input-warning__description-details", "", "");

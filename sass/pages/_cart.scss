@@ -23,6 +23,10 @@
     height: 115px;
     @include flex(column, space-between, start);
 
+    @include for-tablet {
+      left: 33%;
+    }
+
     .number {
       display: flex;
       height: 43px;
@@ -150,12 +154,8 @@
   }
 
   @include for-laptop {
-    .wrap-content {
-      // width: 900px;
-    }
-
     .product-link {
-      align-items: center
+      align-items: center;
     }
 
     .quantity {
@@ -164,7 +164,11 @@
       align-items: baseline;
       left: 49%;
       bottom: 15%;
-      width: 26%;
+      width: 30%;
+
+      .number {
+        order: 2;
+      }
     }
 
     .col {
@@ -172,7 +176,7 @@
     }
 
     .card {
-      width: unset;
+      max-width: 150px;
     }
 
     .subtotal {
@@ -181,15 +185,16 @@
       // padding-top: 4rem;
     }
 
-    .btn-primary,
-    .btn-secondary {
-      width: 200px;
-      margin: 1rem;
-      display: block;
-    }
-
     .buttons {
       @include flex(row, end, center);
+
+      .btn-primary,
+      .btn-secondary {
+        width: 200px;
+        margin: 1rem;
+        display: block;
+        margin-top: 3rem;
+      }
 
       .btn-primary {
         order: 2;
