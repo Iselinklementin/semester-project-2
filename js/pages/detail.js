@@ -135,19 +135,15 @@ function addToCart() {
     }
     saveToStorage(cartKey, cartItems);
   } else {
-    console.log(input.value);
     const product = { id, title, price, volume, image_url, description, quantity: count };
     cartItems.push(product);
     saveToStorage(cartKey, cartItems);
   }
 
-  // kan egentlig bruke modal import her og på logout
-
-  modal("Product added", "Your product is in cart", "cart", productAdded);
+  modal(`${title} is added to cart!`, "Product added", "cart", "Go to cart", productAdded);
 
   function productAdded() {
-    // timer på knappen?
-    // eventuelt go-to-cart?
+    location.href = "cart.html";
     input.value = 1;
   }
   input.value = 1;

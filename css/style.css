@@ -210,6 +210,49 @@ footer {
   margin-bottom: 3rem;
 }
 
+.modal-header {
+  background: #c6d9de;
+  padding: 2rem;
+}
+
+.modal-body {
+  padding: 3rem;
+}
+
+.modal-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal-footer #modal-btn-ok {
+  width: 200px;
+  height: 45px;
+  margin: 0;
+  margin-left: 1rem;
+}
+
+.modal-footer #modal-btn-close {
+  width: 200px;
+  margin: 0;
+  height: 45px;
+  margin-right: 1rem;
+}
+
+.fa-sign-out-alt {
+  cursor: pointer;
+}
+
 nav {
   background-color: #c6d9de;
   height: 90px;

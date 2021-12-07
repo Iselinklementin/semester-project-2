@@ -4,9 +4,17 @@ import modal from "../common/modal.js";
 
 export default function logOutBtn() {
   const logoutbtn = document.querySelector(".logout");
+  logoutbtn.setAttribute("data-modal", "out");
+
   if (logoutbtn) {
     logoutbtn.onclick = () => {
-      modal("Sure you want to log out?", "Logout", "logout", clearToken);
+      modal(
+        "You are about to log out from Milky-admin. <br> Please confirm.",
+        "Logout",
+        "logout",
+        "Logout",
+        clearToken
+      );
     };
   }
 }

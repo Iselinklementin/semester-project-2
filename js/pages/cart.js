@@ -36,7 +36,7 @@ function columns() {
                 <input type="text" disabled="true" class="input-quantity" value="${item.quantity}"/>
                 <span class="plus" data-id="${id}">+</span>
               </div>
-              <p class="remove" data-id="${id}">Remove</p>
+              <p class="remove" data-id="${id}" data-modal="remove">Remove</p>
           </div>`
         );
       }
@@ -92,7 +92,13 @@ function deleteFromCart() {
 
   currentItems.forEach(item => {
     if (item.id === id) {
-      modal("Product added", "Your product is in cart", id, productDelete);
+      modal(
+        `Are you sure you want to delete ${item.title}?`,
+        "Delete product",
+        id,
+        "Delete product",
+        productDelete
+      );
 
       function productDelete() {
         const currentCart = getFromStorage(cartKey);

@@ -167,3 +167,36 @@ footer {
   min-height: 300px;
   margin-bottom: 3rem;
 }
+
+// modal
+
+.modal-header {
+  background: getColour(primary);
+  padding: 2rem;
+}
+
+.modal-body {
+  padding: 3rem;
+}
+
+.modal-footer {
+  @include flex(row, center, center);
+
+  #modal-btn-ok {
+    width: 200px;
+    height: 45px;
+    margin: 0;
+    margin-left: 1rem;
+  }
+
+  #modal-btn-close {
+    width: 200px;
+    margin: 0;
+    height: 45px;
+    margin-right: 1rem;
+  }
+}
+
+.fa-sign-out-alt {
+  cursor: pointer;
+}
