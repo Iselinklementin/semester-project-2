@@ -5,6 +5,9 @@
   }
 
   .header-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
     h1 {
       margin: 4rem 0 1rem 0;
     }
@@ -16,7 +19,6 @@
   }
 
   .quantity {
-    // position: relative;
     position: absolute;
     left: 35%;
     bottom: 4%;
@@ -109,7 +111,8 @@
   .subtotal {
     @include flex(row, space-between, center);
     flex-wrap: wrap;
-    margin-top: -1rem;
+    // margin-top: -1rem;
+    padding-top: 2rem;
 
     .buttons {
       width: 100%;
@@ -202,9 +205,10 @@
       }
     }
 
-    // .wrap-content {
-    //   @include flex(row, center, end);
-    // }
+    .wrap-content,
+    .header-container {
+      max-width: 1000px;
+    }
   }
 }
 

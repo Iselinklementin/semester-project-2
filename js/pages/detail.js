@@ -44,7 +44,6 @@ fillNavHeart();
   // form?
 
   // HUSK Å FIKS MODAL CLASSES
-  //data-bs-toggle="modal"  data-bs-target="#exampleModal"
 
   productContainer.innerHTML += `<div class="title-container">
                                   <h1 class="title">${result.title}</h1>
@@ -142,22 +141,16 @@ function addToCart() {
     saveToStorage(cartKey, cartItems);
   }
 
-  // må legge til en attribute her, rart
-  modal("Product added to cart", "Product added to cart", "confirmed", changeButton);
-}
+  // kan egentlig bruke modal import her og på logout
 
-// modal må fikses, bare surr. Får ikke prisen riktig.
-function changeButton() {
-  // denne må settes en timer på
-  const addToCartBtn = document.querySelector("#addToCart-btn");
-  const input = document.querySelector(".input-quantity");
-  // const priceSection = document.querySelector(".price");
+  modal("Product added", "Your product is in cart", "cart", productAdded);
 
-  // priceSection.innerText = `${price}`;
-  addToCartBtn.innerText = `In cart`;
+  function productAdded() {
+    // timer på knappen?
+    // eventuelt go-to-cart?
+    input.value = 1;
+  }
   input.value = 1;
-
-  // showPrice(result);
 }
 
 function showPrice(result) {

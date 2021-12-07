@@ -193,6 +193,23 @@ footer {
      object-position: 57%;
 }
 
+.no-results {
+  border: #737e7c dashed 2px;
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 300px;
+  min-height: 300px;
+  margin-bottom: 3rem;
+}
+
 nav {
   background-color: #c6d9de;
   height: 90px;
@@ -1629,6 +1646,11 @@ footer .logo-container-footer .logo-footer {
   display: none;
 }
 
+.cartpage-wrapper .header-container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .cartpage-wrapper .header-container h1 {
   margin: 4rem 0 1rem 0;
 }
@@ -1780,7 +1802,7 @@ footer .logo-container-footer .logo-footer {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-top: -1rem;
+  padding-top: 2rem;
 }
 
 .cartpage-wrapper .subtotal .buttons {
@@ -1885,6 +1907,10 @@ footer .logo-container-footer .logo-footer {
         -ms-flex-order: 2;
             order: 2;
     margin-right: 0;
+  }
+  .cartpage-wrapper .wrap-content,
+  .cartpage-wrapper .header-container {
+    max-width: 1000px;
   }
 }
 

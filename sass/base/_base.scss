@@ -156,3 +156,14 @@ footer {
     }
   }
 }
+
+.no-results {
+  border: #737e7c dashed 2px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  min-height: 300px;
+  margin-bottom: 3rem;
+}
