@@ -22,11 +22,9 @@ export default class Block {
                 </div>
 
                 <div class="product-info">
-                  <div class="product-info__heading">
                     <h2 class="card-title">${this.title}</h2>
+                    <p class="card-text">${this.description}</p>
                     <p class="card-price">$ ${this.price}</p>
-                  </div>
-                  <p class="card-text">${this.description}</p>
                 </div>
               </a> 
             </div>`;

@@ -20,6 +20,8 @@ productsInCart.innerText = `${currentItems.length} products in cart`;
 // Noe buggy med minus. Forsvinner når den kommer til 0, dukker plutselig opp igjen senere
 // skift navn
 
+// skiftet ut trashcan, må kobles på nytt
+
 function columns() {
   const productCards = document.querySelectorAll(".col");
   productCards.forEach(product => {
@@ -35,12 +37,14 @@ function columns() {
                 <input type="text" disabled="true" class="input-quantity" value="${item.quantity}"/>
                 <span class="plus" data-id="${id}">+</span>
               </div>
-              <i class="fas fa-trash-alt" data-id="${id}"></i>
+              <p class="remove" data-id="${id}">Remove</p>
           </div>`
         );
       }
     });
   });
+
+  // <i class="fas fa-trash-alt" data-id="${id}"></i>
 
   const minus = document.querySelectorAll(".minus");
   const plus = document.querySelectorAll(".plus");

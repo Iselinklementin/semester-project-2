@@ -19,6 +19,8 @@ import { inputFeedback } from "../forms/inputFeedback.js";
 const hiddenImageContainer = document.querySelector(".edit-image");
 toggleSidebar();
 
+// hvis tittelen har mer enn bare et ord, så vises fortsatt bare det ene ordet og ikke hele setningen
+// bekreftelse på sendt kommer øverst og ikke nede, så man ser det ikke på tlf
 const myWidget = cloudinary.createUploadWidget(
   {
     cloudName: cloudName,
@@ -235,7 +237,11 @@ function validateAddForm() {
 
   editDescriptionDetail.addEventListener("blur", () => {
     if (checkValidation(editDescriptionDetail.value.length, 1)) {
-      inputFeedback(".input-warning__description-details", "Please insert text", "fa-exclamation-circle");
+      inputFeedback(
+        ".input-warning__description-details",
+        "Please insert text",
+        "fa-exclamation-circle"
+      );
       validationPassed = false;
     } else {
       inputFeedback(".input-warning__description-details", "", "");

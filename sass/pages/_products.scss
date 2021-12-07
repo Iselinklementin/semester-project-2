@@ -7,6 +7,13 @@
 
   .image-container {
     background-color: #c8dae7;
+    height: 350px;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      object-position: 53%;
+    }
   }
 
   h1 {
@@ -38,9 +45,21 @@
     }
   }
 
+  .search-products {
+    margin-bottom: 0;
+
+    @include for-laptop {
+      margin-bottom: 2rem;
+    }
+
+    @include for-desktop {
+      margin-bottom: 0;
+    }
+  }
+
   .col {
     @include for-laptop {
-      border: red solid thin;
+      // border: red solid thin;
       // min-width: 220px;
     }
   }
