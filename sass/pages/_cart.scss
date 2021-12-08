@@ -1,3 +1,7 @@
+// fiks sånn at produktene sees tydelig når du hovrer
+// så man skjønner at det er en link
+// vurder en annen type loading også
+
 .cartpage-wrapper {
   .favorite-heart,
   .fa-edit {
@@ -166,7 +170,7 @@
       justify-content: space-between;
       align-items: baseline;
       left: 49%;
-      bottom: 15%;
+      bottom: 16%;
       width: 30%;
 
       .number {

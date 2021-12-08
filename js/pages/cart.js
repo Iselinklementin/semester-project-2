@@ -16,6 +16,7 @@ createHtml(currentItems);
 emptyResult();
 columns();
 total();
+updateProductPrice();
 
 productsInCart.innerText = `${currentItems.length} products in cart`;
 
@@ -26,6 +27,8 @@ function columns() {
   const productCards = document.querySelectorAll(".col");
   productCards.forEach((product) => {
     let id = product.firstElementChild.getAttribute("data-id");
+    let modalMessage = "This is the last item, sure you want to delete it?";
+    let modalTitle = "Delete product";
 
     currentItems.forEach((item) => {
       if (item.id === id) {
@@ -33,11 +36,11 @@ function columns() {
           "beforeend",
           `<div class="quantity">
               <div class="number">
-                <span class="minus" data-id="${id}" >-</span>
-                <input type="text" disabled="true" class="input-quantity" value="${item.quantity}"/>
+                <span class="minus" data-id="${id}" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal="${modalMessage}" data-title-modal="${modalTitle}" >-</span>
+                <input type="text" disabled="true" data-id="${id}" class="input-quantity" value="${item.quantity}"/>
                 <span class="plus" data-id="${id}">+</span>
               </div>
-              <p class="remove" data-id="${id}" data-modal="remove">Remove</p>
+              <p class="remove" data-id="${id}" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal="remove">Remove</p>
           </div>`
         );
       }
@@ -66,25 +69,69 @@ function decreaseAmount() {
   const product = cartProducts.find((product) => product.id === id);
   product.quantity--;
   this.nextElementSibling.value = `${product.quantity}`;
+
+  let originalPrice = parseFloat(this.offsetParent.offsetParent.firstElementChild.getAttribute("data-price"));
+  let newPrice = originalPrice * product.quantity;
+  let priceDom = this.offsetParent.offsetParent.children[2].children[1].lastElementChild;
+  priceDom.innerText = `$ ` + newPrice.toFixed(2);
+
+  if (product.quantity < 1) {
+    this.nextElementSibling.value = `1`;
+    product.quantity = 1;
+
+    modal();
+
+    let myModal = document.getElementById("infoModal");
+    myModal.addEventListener("show.bs.modal", (e) => {
+      let button = e.relatedTarget;
+      let newBodytext = button.getAttribute("data-modal");
+      let newTitle = button.getAttribute("data-title-modal");
+      let modalTitle = myModal.querySelector(".modal-title");
+      let modalBody = myModal.querySelector(".modal-body");
+
+      // Update the modal's content.
+
+      modalTitle.innerHTML = newTitle;
+      modalBody.innerHTML = `<b>${newBodytext}</b>`;
+    });
+
+    // modal(
+    //   "Are you sure you want to remove the product from cart?",
+    //   "Delete product",
+    //   "delete",
+    //   "Delete product",
+    //   deleteProduct
+    // );
+
+    function deleteProduct() {
+      const currentCart = getFromStorage(cartKey);
+      const newList = currentCart.filter((product) => product.id !== id);
+      saveToStorage(cartKey, newList);
+      createHtml(newList);
+      total();
+      columns();
+      productsInCart.innerText = `${newList.length} products in cart`;
+    }
+  }
+  console.log(product);
   saveToStorage(cartKey, cartProducts);
   total();
-
-  if (product.quantity === 0) {
-    const products = cartProducts.filter((product) => product.id !== id);
-    console.log(products);
-    saveToStorage(cartKey, products);
-    createHtml(products);
-    columns();
-    total();
-  }
 }
 
 function increaseAmount() {
   let id = this.getAttribute("data-id");
-  const product = currentItems.find((product) => product.id === id);
+  const cartProducts = getFromStorage(cartKey);
+  const product = cartProducts.find((product) => product.id === id);
+
   product.quantity++;
-  this.previousElementSibling.value = `${product.quantity}`;
-  saveToStorage(cartKey, currentItems);
+  console.log(product);
+  this.previousElementSibling.value = product.quantity;
+  let originalPrice = parseFloat(this.offsetParent.offsetParent.firstElementChild.getAttribute("data-price"));
+  let newPrice = originalPrice * product.quantity;
+  let priceDom = this.offsetParent.offsetParent.children[2].children[1].lastElementChild;
+
+  priceDom.innerText = `$ ` + newPrice.toFixed(2);
+  saveToStorage(cartKey, cartProducts);
   total();
 }
 
@@ -124,3 +171,21 @@ function total() {
     sum.innerHTML = `$ ${cost.toFixed(2)}`;
   });
 }
+
+function updateProductPrice() {
+  const productPrice = document.querySelectorAll(".card-price");
+  const prices = [...productPrice];
+
+  prices.forEach((price) => {
+    let findQuantity = price.offsetParent.lastElementChild.firstElementChild.children[1].value;
+    let originalPriceString = price.innerText.replace("$ ", "");
+    let originalPrice = parseFloat(originalPriceString);
+    let currentQuantity = parseFloat(findQuantity);
+    let newPrice = originalPrice * currentQuantity;
+    price.innerText = `$ ` + newPrice.toFixed(2);
+  });
+}
+
+// BootstrapDialog.show({
+//   message: "Hi Apple!",
+// });

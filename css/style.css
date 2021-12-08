@@ -221,7 +221,7 @@ footer {
 }
 
 .loadspan {
-  background-color: #c1c9cd;
+  background-color: #b3bcc0;
 }
 
 nav {
@@ -1540,7 +1540,7 @@ footer .logo-container-footer .logo-footer {
     justify-content: space-between;
     align-items: baseline;
     left: 49%;
-    bottom: 15%;
+    bottom: 16%;
     width: 30%;
   }
   .cartpage-wrapper .quantity .number {
