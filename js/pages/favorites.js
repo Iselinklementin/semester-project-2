@@ -3,6 +3,7 @@ import { getFromStorage } from "../settings/storage.js";
 import { favKey } from "../settings/keys.js";
 import { emptyResult } from "../components/emptyResult.js";
 import { createHtml } from "../common/createHtml.js";
+import clearAll from "../buttons/clearFavorites.js";
 
 toggleSidebar();
 
@@ -22,4 +23,4 @@ export function favourites() {
 }
 
 favourites();
-// clearAll();
+clearAll();

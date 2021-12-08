@@ -38,11 +38,9 @@ export default function modal(bodyText, headerText, attribute, buttonText, actio
 
   let confirmBtn = document.querySelector(".confirmBtn");
 
-  confirmBtn.addEventListener("click", e => {
+  confirmBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    action();
-
     myModal.hide();
-    myModal.dispose();
+    action();
   });
 }

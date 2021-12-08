@@ -42,3 +42,6 @@ export const productImage = document.querySelector(".product-image");
 
 //
 export const results = document.querySelector(".results");
+
+// favorites
+export const clearBtn = document.querySelector(".clear");

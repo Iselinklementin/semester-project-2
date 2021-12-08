@@ -2,10 +2,16 @@
   .header-container {
     margin-top: 3rem;
     text-align: center;
+    @include flex(row, space-between, center);
   }
   .card {
     max-width: 208px;
   }
-}
 
-// kanskje lage noe gøy hvis det er tomt?
+  .clear {
+    font-size: 0.8rem;
+    // border-bottom: black solid thin;
+    // padding: 0.5rem 0;
+    // font-style: italic;
+  }
+}
