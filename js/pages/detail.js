@@ -4,9 +4,8 @@ import { productImage } from "../components/elements.js";
 import { getFromStorage, saveToStorage } from "../settings/storage.js";
 import { cartKey, favKey } from "../settings/keys.js";
 import { editIcon } from "../buttons/editIcon.js";
-// import modal from "../common/modal.js";
 import handleFavourites from "../buttons/handleFavorites.js";
-import { fillNavHeart } from "../common/createHtml.js";
+import { changeCartIcon, fillNavHeart } from "../common/createHtml.js";
 import { modal, modalHeader, closeBtn, confirmBtn, modalBody } from "../components/elements.js";
 toggleSidebar();
 
@@ -21,6 +20,9 @@ const params = new URLSearchParams(queryString);
 const id = params.get("id");
 
 fillNavHeart();
+changeCartIcon();
+
+const documentTitle = document.querySelector("title");
 
 (async function fetchProducts() {
   const response = await fetch(productsUrl + "/" + id);
@@ -38,11 +40,12 @@ fillNavHeart();
 
   let cssClass = doesFavExists ? "fa" : "far";
 
-  productImage.src = `${result.image_url}`;
   // jeg kan lage en funksjon her som kan brukes flere plasser
   let titleWithoutSpan = result.title.replace("<span>", "").replace("</span>", "");
-  breacrumbTitle.innerText = `${titleWithoutSpan}`;
-
+  breacrumbTitle.innerText = titleWithoutSpan;
+  documentTitle.innerHTML = titleWithoutSpan;
+  productImage.src = result.image_url;
+  productImage.alt = titleWithoutSpan;
   // form?
 
   // HUSK Å FIKS MODAL CLASSES
@@ -121,7 +124,6 @@ function addToCart() {
   const volume = this.dataset.volume;
   const image_url = this.dataset.image_url;
   const description = this.dataset.description;
-
   const input = document.querySelector(".input-quantity");
   let count = input.value;
 
@@ -142,41 +144,32 @@ function addToCart() {
     saveToStorage(cartKey, cartItems);
   }
 
-  // MODAL
-  // SE PÅ KODEN SENERE
-  // jeg må også trykke to ganger
-
-  const openModal = document.querySelector("#addToCart-btn");
-  console.log(openModal);
-
-  openModal.onclick = function () {
-    modal.style.display = "block";
-    modalHeader.innerHTML = `<p>${title} is added to cart!</p>`;
-    modalBody.innerHTML = `<p>${title} is added to cart!</p>`;
-    confirmBtn.addEventListener("click", () => {
-      modal.style.display = "none";
-    });
-  };
-
-  closeBtn.onclick = function () {
+  input.value = 1;
+  changeCartIcon();
+  modal.style.display = "block";
+  modalHeader.innerHTML = `<p>${title} is added to cart!</p>`;
+  modalBody.innerHTML = `<p>${title} is added to cart!</p>`;
+  confirmBtn.addEventListener("click", () => {
     modal.style.display = "none";
-  };
+  });
+}
 
-  window.onclick = function (e) {
-    if (e.target == modal) {
-      modal.style.display = "none";
-    }
-  };
+closeBtn.onclick = function () {
+  modal.style.display = "none";
+};
+
+window.onclick = function (e) {
+  if (e.target == modal) {
+    modal.style.display = "none";
+  }
 
   // modal(`${title} is added to cart!`, "Product added", "cart", "Go to cart", productAdded);
   // være med?
-  function productAdded() {
-    location.href = "cart.html";
-    input.value = 1;
-  }
-
-  input.value = 1;
-}
+  // function productAdded() {
+  //   location.href = "cart.html";
+  //   input.value = 1;
+  // }
+};
 
 function showPrice(result) {
   const priceSection = document.querySelector(".price");

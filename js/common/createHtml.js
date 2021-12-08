@@ -1,5 +1,5 @@
 import Block from "../components/blocks.js";
-import { favKey } from "../settings/keys.js";
+import { cartKey, favKey } from "../settings/keys.js";
 import { getFromStorage } from "../settings/storage.js";
 import handleFavourites from "../buttons/handleFavorites.js";
 import { editIcon } from "../buttons/editIcon.js";
@@ -38,6 +38,7 @@ export function createHtml(products) {
     heart.addEventListener("click", fillNavHeart);
   });
   fillNavHeart();
+  changeCartIcon();
   editIcon();
 }
 
@@ -55,4 +56,21 @@ export function fillNavHeart() {
   } else {
     navHeart.classList.remove("fa");
   }
+}
+
+export function changeCartIcon() {
+  const shoppingCart = document.querySelector(".cart-icon");
+  const cartStorage = getFromStorage(cartKey);
+
+  if (cartStorage.length) {
+    shoppingCart.classList.remove("fa-shopping-cart");
+    shoppingCart.classList.add("fa-cart-arrow-down");
+  } else {
+    shoppingCart.classList.remove("fa-cart-arrow-down");
+    shoppingCart.classList.add("fa-shopping-cart");
+  }
+}
+
+{
+  /* <i class="fas fa-cart-arrow-down"></i> */
 }

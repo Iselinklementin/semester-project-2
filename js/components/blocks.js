@@ -18,7 +18,7 @@ export default class Block {
               <a href="edit.html?id=${this.id}"><i class="far fa-edit"></i></a>
               <a href="detail.html?id=${this.id}" class="product-link">
                 <div class="card">
-                  <img src="${this.image_url}" class="card-img-top" alt="..." />
+                  <img src="${this.image_url}" class="card-img-top" alt="${this.title}" />
                 </div>
 
                 <div class="product-info">

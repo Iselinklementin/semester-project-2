@@ -68,6 +68,7 @@ function decreaseAmount() {
   const cartProducts = getFromStorage(cartKey);
   const product = cartProducts.find((product) => product.id === id);
   product.quantity--;
+
   this.nextElementSibling.value = `${product.quantity}`;
 
   let originalPrice = parseFloat(this.offsetParent.offsetParent.firstElementChild.getAttribute("data-price"));
@@ -76,28 +77,24 @@ function decreaseAmount() {
   priceDom.innerText = `$ ` + newPrice.toFixed(2);
 
   if (product.quantity < 1) {
-    this.nextElementSibling.value = `1`;
+    this.nextElementSibling.value = "1";
     product.quantity = 1;
-    // prisen blir null selv om jeg stiller quantity til 1
-    // jeg må også trykke to ganger
-    // MODAL
-    // Se på koden senere
-    const openModalMinus = document.querySelector(".modal-btn-minus");
-    openModalMinus.onclick = function () {
-      modal.style.display = "block";
-      modalHeader.innerHTML = `<p>Last item</p>`;
-      modalBody.innerHTML = `<p>Last item</p>`;
-      confirmBtn.addEventListener("click", () => {
-        const currentCart = getFromStorage(cartKey);
-        const newList = currentCart.filter((product) => product.id !== id);
-        saveToStorage(cartKey, newList);
-        createHtml(newList);
-        total();
-        columns();
-        productsInCart.innerText = `${newList.length} products in cart`;
-        modal.style.display = "none";
-      });
-    };
+    priceDom.innerText = `$ ${originalPrice.toFixed(2)}`;
+    // modal
+    modal.style.display = "block";
+    modalHeader.innerHTML = `<p>Last item</p>`;
+    modalBody.innerHTML = `<p>Last item</p>`;
+    confirmBtn.addEventListener("click", () => {
+      // productDelete();
+      const currentCart = getFromStorage(cartKey);
+      const newList = currentCart.filter((product) => product.id !== id);
+      saveToStorage(cartKey, newList);
+      createHtml(newList);
+      total();
+      columns();
+      productsInCart.innerText = `${newList.length} products in cart`;
+      modal.style.display = "none";
+    });
 
     closeBtn.onclick = function () {
       modal.style.display = "none";
@@ -117,9 +114,7 @@ function increaseAmount() {
   let id = this.getAttribute("data-id");
   const cartProducts = getFromStorage(cartKey);
   const product = cartProducts.find((product) => product.id === id);
-
   product.quantity++;
-  console.log(product);
   this.previousElementSibling.value = product.quantity;
   let originalPrice = parseFloat(this.offsetParent.offsetParent.firstElementChild.getAttribute("data-price"));
   let newPrice = originalPrice * product.quantity;
@@ -135,10 +130,11 @@ function deleteFromCart() {
 
   currentItems.forEach((item) => {
     if (item.id === id) {
-      // Her må jeg sette inn ny modal
-      modal(`Are you sure you want to delete ${item.title}?`, "Delete product", id, "Delete product", productDelete);
-
-      function productDelete() {
+      modal.style.display = "block";
+      modalHeader.innerHTML = `<p>Delete product</p>`;
+      modalBody.innerHTML = `<p>Are you sure you want to delete ${item.title}?</p>`;
+      confirmBtn.addEventListener("click", () => {
+        // productDelete();
         const currentCart = getFromStorage(cartKey);
         const newList = currentCart.filter((product) => product.id !== id);
         saveToStorage(cartKey, newList);
@@ -146,7 +142,30 @@ function deleteFromCart() {
         total();
         columns();
         productsInCart.innerText = `${newList.length} products in cart`;
-      }
+        modal.style.display = "none";
+      });
+
+      closeBtn.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      window.onclick = function (e) {
+        if (e.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+      // Her må jeg sette inn ny modal
+      // modal(`Are you sure you want to delete ${item.title}?`, "Delete product", id, "Delete product", productDelete);
+
+      // function productDelete() {
+      //   const currentCart = getFromStorage(cartKey);
+      //   const newList = currentCart.filter((product) => product.id !== id);
+      //   saveToStorage(cartKey, newList);
+      //   createHtml(newList);
+      //   total();
+      //   columns();
+      //   productsInCart.innerText = `${newList.length} products in cart`;
+      // }
     }
   });
 }

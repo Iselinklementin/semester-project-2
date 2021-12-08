@@ -4,13 +4,14 @@ import displayMessage from "../components/displayMessage.js";
 import { messages } from "../components/messages.js";
 import { loginForm, emailInput, passwordInput, loginBtn } from "../components/elements.js";
 import { submitLogin } from "../forms/submitLogin.js";
-import { fillNavHeart } from "../common/createHtml.js";
+import { changeCartIcon, fillNavHeart } from "../common/createHtml.js";
 
 const errorLogin = document.querySelector(".login-error-username");
 const errorPassword = document.querySelector(".login-error-password");
 
 toggleSidebar();
 fillNavHeart();
+changeCartIcon();
 
 function validateEmail(email) {
   const regEx =

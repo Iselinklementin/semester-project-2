@@ -28,7 +28,7 @@ export default function toggleSidebar() {
       pathname === "/add.html" ? "active" : ""
     }">Add product</a></li>
     <li><a class="nav-link" href="favorites.html"><i class="far fa-heart"></i></a></li>
-    <li><a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i></a></li>
+    <li><a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart cart-icon"></i></a></li>
     <li><a class="nav-link logout modal-btn-signout"><i class="fas fa-sign-out-alt"></i></a></li>`;
 
     navSidebar.innerHTML = `

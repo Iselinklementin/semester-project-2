@@ -10,40 +10,25 @@ export default function clearAll() {
   clearBtn.addEventListener("click", clearAll);
 
   function clearAll() {
-    // MODAL
-    // SE PÅ KODEN SENERE
-    // jeg må også trykke to ganger
-
-    const openModal = document.querySelector(".clear");
-
-    openModal.onclick = function () {
-      modal.style.display = "block";
-      modalHeader.innerHTML = `<p>Clear all favorites</p>`;
-      modalBody.innerHTML = `<p>Are you sure you want to delete all of your favorite products?</p>`;
-      confirmBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-        clearKey(favKey);
-        createHtml([]);
-        emptyResult();
-      });
-    };
-
-    closeBtn.onclick = function () {
+    //modal
+    modal.style.display = "block";
+    modalHeader.innerHTML = `<p>Clear all favorites</p>`;
+    modalBody.innerHTML = `<p>Are you sure you want to delete all of your favorite products?</p>`;
+    confirmBtn.addEventListener("click", () => {
       modal.style.display = "none";
-    };
-
-    window.onclick = function (e) {
-      if (e.target == modal) {
-        modal.style.display = "none";
-      }
-    };
+      clearKey(favKey);
+      createHtml([]);
+      emptyResult();
+    });
   }
-}
 
-// modal(
-//   "Are you sure you want to delete all of your favorite products?",
-//   "Clear all favorites",
-//   "fav",
-//   "Clear all",
-//   confirmed
-// );
+  closeBtn.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  window.onclick = function (e) {
+    if (e.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+}
