@@ -4,9 +4,10 @@ import { productImage } from "../components/elements.js";
 import { getFromStorage, saveToStorage } from "../settings/storage.js";
 import { cartKey, favKey } from "../settings/keys.js";
 import { editIcon } from "../buttons/editIcon.js";
-import modal from "../common/modal.js";
+// import modal from "../common/modal.js";
 import handleFavourites from "../buttons/handleFavorites.js";
 import { fillNavHeart } from "../common/createHtml.js";
+import { modal, modalHeader, closeBtn, confirmBtn, modalBody } from "../components/elements.js";
 toggleSidebar();
 
 const breacrumbTitle = document.querySelector(".breadcrumb-item.active");
@@ -141,12 +142,39 @@ function addToCart() {
     saveToStorage(cartKey, cartItems);
   }
 
-  modal(`${title} is added to cart!`, "Product added", "cart", "Go to cart", productAdded);
+  // MODAL
+  // SE PÅ KODEN SENERE
+  // jeg må også trykke to ganger
 
+  const openModal = document.querySelector("#addToCart-btn");
+  console.log(openModal);
+
+  openModal.onclick = function () {
+    modal.style.display = "block";
+    modalHeader.innerHTML = `<p>${title} is added to cart!</p>`;
+    modalBody.innerHTML = `<p>${title} is added to cart!</p>`;
+    confirmBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+  };
+
+  closeBtn.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  window.onclick = function (e) {
+    if (e.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  // modal(`${title} is added to cart!`, "Product added", "cart", "Go to cart", productAdded);
+  // være med?
   function productAdded() {
     location.href = "cart.html";
     input.value = 1;
   }
+
   input.value = 1;
 }
 

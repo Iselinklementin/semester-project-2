@@ -3,8 +3,8 @@ import { cartKey } from "../settings/keys.js";
 import { emptyResult } from "../components/emptyResult.js";
 import toggleSidebar from "../layout/nav.js";
 import { createHtml } from "../common/createHtml.js";
-import modal from "../common/modal.js";
 import { loadingCart } from "../common/loadingHtml.js";
+import { modal, modalHeader, closeBtn, confirmBtn, modalBody } from "../components/elements.js";
 const productContainer = document.querySelector(".product-container");
 loadingCart();
 toggleSidebar();
@@ -27,8 +27,8 @@ function columns() {
   const productCards = document.querySelectorAll(".col");
   productCards.forEach((product) => {
     let id = product.firstElementChild.getAttribute("data-id");
-    let modalMessage = "This is the last item, sure you want to delete it?";
-    let modalTitle = "Delete product";
+    // let modalMessage = "This is the last item, sure you want to delete it?";
+    // let modalTitle = "Delete product";
 
     currentItems.forEach((item) => {
       if (item.id === id) {
@@ -36,11 +36,11 @@ function columns() {
           "beforeend",
           `<div class="quantity">
               <div class="number">
-                <span class="minus" data-id="${id}" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal="${modalMessage}" data-title-modal="${modalTitle}" >-</span>
+                <span class="minus modal-btn-minus" data-id="${id}">-</span>
                 <input type="text" disabled="true" data-id="${id}" class="input-quantity" value="${item.quantity}"/>
                 <span class="plus" data-id="${id}">+</span>
               </div>
-              <p class="remove" data-id="${id}" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal="remove">Remove</p>
+              <p class="remove" data-id="${id}">Remove</p>
           </div>`
         );
       }
@@ -78,42 +78,37 @@ function decreaseAmount() {
   if (product.quantity < 1) {
     this.nextElementSibling.value = `1`;
     product.quantity = 1;
+    // prisen blir null selv om jeg stiller quantity til 1
+    // jeg må også trykke to ganger
+    // MODAL
+    // Se på koden senere
+    const openModalMinus = document.querySelector(".modal-btn-minus");
+    openModalMinus.onclick = function () {
+      modal.style.display = "block";
+      modalHeader.innerHTML = `<p>Last item</p>`;
+      modalBody.innerHTML = `<p>Last item</p>`;
+      confirmBtn.addEventListener("click", () => {
+        const currentCart = getFromStorage(cartKey);
+        const newList = currentCart.filter((product) => product.id !== id);
+        saveToStorage(cartKey, newList);
+        createHtml(newList);
+        total();
+        columns();
+        productsInCart.innerText = `${newList.length} products in cart`;
+        modal.style.display = "none";
+      });
+    };
 
-    modal();
+    closeBtn.onclick = function () {
+      modal.style.display = "none";
+    };
 
-    let myModal = document.getElementById("infoModal");
-    myModal.addEventListener("show.bs.modal", (e) => {
-      let button = e.relatedTarget;
-      let newBodytext = button.getAttribute("data-modal");
-      let newTitle = button.getAttribute("data-title-modal");
-      let modalTitle = myModal.querySelector(".modal-title");
-      let modalBody = myModal.querySelector(".modal-body");
-
-      // Update the modal's content.
-
-      modalTitle.innerHTML = newTitle;
-      modalBody.innerHTML = `<b>${newBodytext}</b>`;
-    });
-
-    // modal(
-    //   "Are you sure you want to remove the product from cart?",
-    //   "Delete product",
-    //   "delete",
-    //   "Delete product",
-    //   deleteProduct
-    // );
-
-    function deleteProduct() {
-      const currentCart = getFromStorage(cartKey);
-      const newList = currentCart.filter((product) => product.id !== id);
-      saveToStorage(cartKey, newList);
-      createHtml(newList);
-      total();
-      columns();
-      productsInCart.innerText = `${newList.length} products in cart`;
-    }
+    window.onclick = function (e) {
+      if (e.target == modal) {
+        modal.style.display = "none";
+      }
+    };
   }
-  console.log(product);
   saveToStorage(cartKey, cartProducts);
   total();
 }
@@ -140,6 +135,7 @@ function deleteFromCart() {
 
   currentItems.forEach((item) => {
     if (item.id === id) {
+      // Her må jeg sette inn ny modal
       modal(`Are you sure you want to delete ${item.title}?`, "Delete product", id, "Delete product", productDelete);
 
       function productDelete() {

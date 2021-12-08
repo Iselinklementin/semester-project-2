@@ -45,3 +45,10 @@ export const results = document.querySelector(".results");
 
 // favorites
 export const clearBtn = document.querySelector(".clear");
+
+// modal
+export const modal = document.querySelector(".modal");
+export const modalHeader = document.querySelector(".modal-header");
+export const closeBtn = document.querySelector("#modal-btn-close");
+export const confirmBtn = document.querySelector(".confirmBtn");
+export const modalBody = document.querySelector(".modal-content");

@@ -1,41 +1,35 @@
 import { clearKey } from "../settings/storage.js";
 import { tokenKey, userKey } from "../settings/keys.js";
-import modalHtml, { getButton } from "../common/modal.js";
-
-modalHtml();
+// import modalHtml from "../common/modal.js";
+import { modal, modalHeader, closeBtn, confirmBtn } from "../components/elements.js";
 
 export default function logOutBtn() {
-  const clearToken = () => {
-    clearKey(userKey);
-    clearKey(tokenKey);
-    location.href = "/";
-  };
-
   const logoutbtn = document.querySelector(".logout");
-  logoutbtn.setAttribute("data-modal", "Sure you want to sign out?");
-  logoutbtn.setAttribute("data-bs-toggle", "modal");
-  logoutbtn.setAttribute("data-bs-target", "#infoModal");
-  logoutbtn.setAttribute("data-title-modal", "Sign out");
-  logoutbtn.setAttribute("data-function", `${clearToken}`);
-
-  // const clearToken = () => {
-  //   clearKey(userKey);
-  //   clearKey(tokenKey);
-  //   location.href = "/";
-  // };
 
   if (logoutbtn) {
-    let myModal = document.getElementById("infoModal");
-    myModal.addEventListener("show.bs.modal", (e) => {
-      getButton(e);
-      // let confirmBtn = document.querySelector(".confirmBtn");
-      // console.log(confirmBtn);
-      // // confirmBtn.addEventListener("click", (e) => {
-      // //   e.preventDefault();
-      // //   // myModal.hide();
-      // //   action();
-      // // });
-    });
+    // modalHtml();
+    const openModalSignout = document.querySelector(".modal-btn-signout");
+
+    openModalSignout.onclick = function () {
+      // console.log("this worked");
+      modal.style.display = "block";
+      modalHeader.innerHTML = `<p>Sign out</p>`;
+      confirmBtn.addEventListener("click", () => {
+        clearKey(userKey);
+        clearKey(tokenKey);
+        location.href = "/";
+      });
+    };
+
+    closeBtn.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    window.onclick = function (e) {
+      if (e.target == modal) {
+        modal.style.display = "none";
+      }
+    };
   }
 }
 
