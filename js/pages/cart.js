@@ -4,13 +4,14 @@ import { emptyResult } from "../components/emptyResult.js";
 import toggleSidebar from "../layout/nav.js";
 import { createHtml } from "../common/createHtml.js";
 import modal from "../common/modal.js";
-// import modal from "../common/modal.js";
-
+import { loadingCart } from "../common/loadingHtml.js";
+const productContainer = document.querySelector(".product-container");
+loadingCart();
 toggleSidebar();
 
 const currentItems = getFromStorage(cartKey);
 const productsInCart = document.querySelector(".count-products");
-
+productContainer.innerHTML = "";
 createHtml(currentItems);
 emptyResult();
 columns();
@@ -23,10 +24,10 @@ productsInCart.innerText = `${currentItems.length} products in cart`;
 
 function columns() {
   const productCards = document.querySelectorAll(".col");
-  productCards.forEach(product => {
+  productCards.forEach((product) => {
     let id = product.firstElementChild.getAttribute("data-id");
 
-    currentItems.forEach(item => {
+    currentItems.forEach((item) => {
       if (item.id === id) {
         product.insertAdjacentHTML(
           "beforeend",
@@ -47,14 +48,14 @@ function columns() {
   const plus = document.querySelectorAll(".plus");
   const removeItem = document.querySelectorAll(".remove");
 
-  minus.forEach(decrease => {
+  minus.forEach((decrease) => {
     decrease.addEventListener("click", decreaseAmount);
   });
-  plus.forEach(increase => {
+  plus.forEach((increase) => {
     increase.addEventListener("click", increaseAmount);
   });
 
-  removeItem.forEach(deleteItem => {
+  removeItem.forEach((deleteItem) => {
     deleteItem.addEventListener("click", deleteFromCart);
   });
 }
@@ -62,14 +63,14 @@ function columns() {
 function decreaseAmount() {
   let id = this.getAttribute("data-id");
   const cartProducts = getFromStorage(cartKey);
-  const product = cartProducts.find(product => product.id === id);
+  const product = cartProducts.find((product) => product.id === id);
   product.quantity--;
   this.nextElementSibling.value = `${product.quantity}`;
   saveToStorage(cartKey, cartProducts);
   total();
 
   if (product.quantity === 0) {
-    const products = cartProducts.filter(product => product.id !== id);
+    const products = cartProducts.filter((product) => product.id !== id);
     console.log(products);
     saveToStorage(cartKey, products);
     createHtml(products);
@@ -80,7 +81,7 @@ function decreaseAmount() {
 
 function increaseAmount() {
   let id = this.getAttribute("data-id");
-  const product = currentItems.find(product => product.id === id);
+  const product = currentItems.find((product) => product.id === id);
   product.quantity++;
   this.previousElementSibling.value = `${product.quantity}`;
   saveToStorage(cartKey, currentItems);
@@ -90,19 +91,13 @@ function increaseAmount() {
 function deleteFromCart() {
   let id = this.getAttribute("data-id");
 
-  currentItems.forEach(item => {
+  currentItems.forEach((item) => {
     if (item.id === id) {
-      modal(
-        `Are you sure you want to delete ${item.title}?`,
-        "Delete product",
-        id,
-        "Delete product",
-        productDelete
-      );
+      modal(`Are you sure you want to delete ${item.title}?`, "Delete product", id, "Delete product", productDelete);
 
       function productDelete() {
         const currentCart = getFromStorage(cartKey);
-        const newList = currentCart.filter(product => product.id !== id);
+        const newList = currentCart.filter((product) => product.id !== id);
         saveToStorage(cartKey, newList);
         createHtml(newList);
         total();
@@ -123,7 +118,7 @@ function total() {
     emptyResult();
   }
 
-  currentCart.map(product => {
+  currentCart.map((product) => {
     let productTotal = parseFloat(product.price) * product.quantity;
     cost += productTotal;
     sum.innerHTML = `$ ${cost.toFixed(2)}`;

@@ -200,6 +200,30 @@ footer {
   cursor: pointer;
 }
 
+#loading-img {
+  background-color: #dee1e3;
+}
+
+.loading-col {
+  min-width: 120px;
+}
+
+@media (min-width: 992px) {
+  .loading-col {
+    width: 233px;
+  }
+}
+
+.load-box {
+  height: 100px;
+  width: 100px;
+  background-color: #dee1e3;
+}
+
+.loadspan {
+  background-color: #c1c9cd;
+}
+
 nav {
   background-color: #c6d9de;
   height: 90px;
@@ -530,6 +554,7 @@ footer .logo-container-footer .logo-footer {
   padding: 0;
   position: relative;
   background-color: #5187a9;
+  min-height: 300px;
 }
 
 .home .hero-banner-container .hero-banner {
@@ -538,6 +563,7 @@ footer .logo-container-footer .logo-footer {
   object-fit: cover;
   object-position: 50%;
   position: relative;
+  background-color: #5187a9;
 }
 
 .home .hero-banner-container .hero-banner__logo {
@@ -966,19 +992,19 @@ footer .logo-container-footer .logo-footer {
   margin-top: 4rem;
 }
 
-.product-page-wrapper .image-container {
+.product-page-wrapper .hero-banner-container {
   background-color: #c8dae7;
   height: 350px;
   text-align: center;
 }
 
 @media (min-width: 1200px) {
-  .product-page-wrapper .image-container {
+  .product-page-wrapper .hero-banner-container {
     height: 400px;
   }
 }
 
-.product-page-wrapper .image-container img {
+.product-page-wrapper .hero-banner-container img {
   height: 100%;
   object-fit: cover;
   object-position: 53%;
@@ -1550,6 +1576,68 @@ footer .logo-container-footer .logo-footer {
   .cartpage-wrapper .wrap-content,
   .cartpage-wrapper .header-container {
     max-width: 1000px;
+  }
+}
+
+.cartpage-wrapper .load-cart {
+  padding-bottom: 2rem;
+}
+
+.detailpage-wrapper {
+  position: relative;
+}
+
+.detailpage-wrapper .loader-background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-color: #efefef;
+}
+
+.detailpage-wrapper .show-spinner {
+  display: block;
+  height: 300px;
+  position: relative;
+}
+
+.detailpage-wrapper .spinner::after {
+  content: "";
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin: auto;
+  top: 50%;
+  border-radius: 50%;
+}
+
+@media (min-width: 1200px) {
+  .detailpage-wrapper .spinner::after {
+    top: 80%;
+  }
+}
+
+.detailpage-wrapper .spinner.pulse::after {
+  background-color: #bd8320;
+  animation: pulse 1.5s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.5;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
   }
 }
 

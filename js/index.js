@@ -1,8 +1,10 @@
 import toggleSidebar from "./layout/nav.js";
 import { productsUrl, homeUrl } from "./settings/constant.js";
 import { createHtml } from "./common/createHtml.js";
+import { loadingHtml } from "./common/loadingHtml.js";
 
 toggleSidebar();
+loadingHtml();
 
 const herobanner = document.querySelector(".hero-banner");
 
@@ -13,18 +15,20 @@ const herobanner = document.querySelector(".hero-banner");
   let fetchProducts = fetch(productsUrl);
 
   Promise.all([fetchBanner, fetchProducts])
-    .then(values => Promise.all(values.map(value => value.json())))
-    .then(finalValues => {
+    .then((values) => Promise.all(values.map((value) => value.json())))
+    .then((finalValues) => {
       const homeAPI = finalValues[0];
       const productsAPI = finalValues[1];
+      // herobanner.innerHTML = "";
 
-      herobanner.src = `${homeAPI.hero_banner.url}`;
-
-      const featuredProducts = productsAPI.filter(product => (product.featured ? true : false));
+      herobanner.src = homeAPI.hero_banner.url;
+      const featuredProducts = productsAPI.filter((product) => (product.featured ? true : false));
+      const productContainer = document.querySelector(".product-container");
+      productContainer.innerHTML = "";
       createHtml(featuredProducts);
 
       const newBtn = document.querySelectorAll(".filter-btn");
-      newBtn.forEach(btn => {
+      newBtn.forEach((btn) => {
         btn.addEventListener("click", filterNewsFeatured);
       });
 
@@ -40,12 +44,12 @@ const herobanner = document.querySelector(".hero-banner");
         }
 
         if (this.value === "New") {
-          const newProducts = productsAPI.filter(product => product.volume === "Small");
+          const newProducts = productsAPI.filter((product) => product.volume === "Small");
           createHtml(newProducts);
         }
 
         if (this.value === "Featured") {
-          const featuredProducts = productsAPI.filter(product => (product.featured ? true : false));
+          const featuredProducts = productsAPI.filter((product) => (product.featured ? true : false));
           createHtml(featuredProducts);
         }
       }

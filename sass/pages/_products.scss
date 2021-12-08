@@ -5,10 +5,19 @@
     margin-top: 4rem;
   }
 
-  .image-container {
+  .hero-banner-container {
     background-color: #c8dae7;
     height: 350px;
     text-align: center;
+    // background-color: #5187a9;
+
+    // .hero-banner {
+    //   max-width: 100%;
+    //   height: 450px;
+    //   object-fit: cover;
+    //   object-position: 50%;
+    //   position: relative;
+    // }
 
     @include for-desktop {
       height: 400px;

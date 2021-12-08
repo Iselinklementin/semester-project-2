@@ -4,6 +4,7 @@
     padding: 0;
     position: relative;
     background-color: #5187a9;
+    min-height: 300px;
 
     .hero-banner {
       max-width: 100%;
@@ -11,6 +12,7 @@
       object-fit: cover;
       object-position: 50%;
       position: relative;
+      background-color: #5187a9;
 
       &__logo {
         width: 140px;

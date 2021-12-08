@@ -200,3 +200,25 @@ footer {
 .fa-sign-out-alt {
   cursor: pointer;
 }
+
+#loading-img {
+  background-color: #dee1e3;
+}
+
+.loading-col {
+  min-width: 120px;
+
+  @include for-laptop {
+    width: 233px;
+  }
+}
+
+.load-box {
+  height: 100px;
+  width: 100px;
+  background-color: #dee1e3;
+}
+
+.loadspan {
+  background-color: #c1c9cd;
+}

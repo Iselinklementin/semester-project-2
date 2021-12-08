@@ -14,21 +14,22 @@ const imageContainer = document.querySelector(".image-container");
 const productContainer = document.querySelector(".text-content-container");
 const productDescription = document.querySelector(".product-description-details");
 const productNutrition = document.querySelector(".product-nutrition");
-
+const loader = document.querySelector(".loader-background");
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
 
-// denne fungerer ikke her inne hvis du trykker hjerte
 fillNavHeart();
 
 (async function fetchProducts() {
   const response = await fetch(productsUrl + "/" + id);
   const result = await response.json();
 
+  loader.style.display = "none";
+
   // sett hjerte hvis det er i favoritter
   const currentFavorites = getFromStorage(favKey);
-  const doesFavExists = currentFavorites.find(fav => {
+  const doesFavExists = currentFavorites.find((fav) => {
     if (parseInt(fav.id) === result.id || fav.id === result.id) {
       return true;
     }
@@ -74,12 +75,12 @@ fillNavHeart();
     `<i class="far fa-heart favorite-icon ${cssClass}" data-id="${result.id}" data-title="${result.title}" data-description="${result.description}" data-price="${result.price}" data-volume="${result.volume}" data-image_url="${result.image_url}"></i>`
   );
 
+  productDescription.innerText = result.description_details;
+  productNutrition.innerText = result.nutrition;
+
   // tok vekk volume
   const minus = document.querySelector(".minus");
   const plus = document.querySelector(".plus");
-
-  productDescription.innerText = `${result.description_details}`;
-  productNutrition.innerText = `${result.nutrition}`;
 
   const favoritesHeart = document.querySelector(".favorite-icon");
   const addToCartBtn = document.querySelector("#addToCart-btn");
@@ -124,7 +125,7 @@ function addToCart() {
   let count = input.value;
 
   const cartItems = getFromStorage(cartKey);
-  const productExists = cartItems.find(product => product.id === id);
+  const productExists = cartItems.find((product) => product.id === id);
 
   if (productExists) {
     if (count <= 1) {
