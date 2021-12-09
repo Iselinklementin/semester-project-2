@@ -1,9 +1,6 @@
 import { createHtml } from "../common/createHtml.js";
 import toggleSidebar from "../layout/nav.js";
-
 import { emptyResult } from "../components/emptyResult.js";
-// import { fetchProductHeaderApi } from "../settings/fetchApi.js";
-// import { fetchProductsApi } from "../settings/fetchApi.js";
 import { loadingHtml } from "../common/loadingHtml.js";
 import { productpageUrl, productsUrl } from "../settings/constant.js";
 const btnfilter = document.querySelectorAll(".filter-btn");
@@ -24,9 +21,10 @@ const herobanner = document.querySelector(".hero-banner");
     .then((finalValues) => {
       const productBanner = finalValues[0];
       const products = finalValues[1];
-      // herobanner.innerHTML = "";
       herobanner.src = productBanner.banner[0].url;
+
       createHtml(products);
+      filterSearch(products);
     });
 })();
 
@@ -39,7 +37,6 @@ function filterSearch(products) {
       // Tar vekk span så produktet kan søkes på
       let titleStr = item.title;
       let title = titleStr.replace("<span>", "");
-
       if (title.toLowerCase().includes(searchValue) || item.description.toLowerCase().includes(searchValue)) {
         return true;
       }
@@ -49,8 +46,6 @@ function filterSearch(products) {
     emptyResult();
   };
 }
-
-filterSearch(products);
 
 btnfilter.forEach((btn) => {
   btn.addEventListener("click", filterProducts);

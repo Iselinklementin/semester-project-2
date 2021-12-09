@@ -141,6 +141,7 @@
           <div class="container edit-product-container">
             <div class="container upload-img-wrapper">
               <figure class="upload-img-container">
+
                 <img class="rounded uploadedimage image" alt="" id="uploadedimage" />
               </figure>
               <div class="upload-btn-warning-container">
@@ -150,9 +151,7 @@
                 <div class="input-error input-warning__image"></div>
               </div>
             </div>
-
-            <input class="edit-image form-input form-control" type="hidden" />
-
+            <input class="edit-image hidden-image-input form-input form-control" type="hidden" />
             <form class="container edit-form">
               <!--Title-->
               <div class="input-group">
@@ -171,7 +170,6 @@
                 </div>
 
                 <!--Price-->
-
                 <div class="price-volume-wrap">
                   <!-- Price ! -->
                   <div class="price-container">
@@ -237,13 +235,13 @@
                 </div>
 
                 <input id="id" type="hidden" />
+                <div class="message-container"></div>
+
                 <div class="button-container">
                   <button class="update-btn btn btn-primary">
                     <i class="fas fa-check"></i>Update
                   </button>
                 </div>
-
-                <div class="message-container"></div>
               </div>
             </form>
           </div>

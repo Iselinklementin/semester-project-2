@@ -22,14 +22,17 @@ export const editFeatured = document.querySelector(".featured");
 export const idInput = document.querySelector("#id");
 export const updateBtn = document.querySelector(".update-btn");
 
+export const hiddenImageContainer = document.querySelector(".hidden-image-input");
+
 // export const addForm = document.querySelector(".add-form");
+export const addImage = document.querySelector(".image");
 export const addTitle = document.querySelector(".title");
 export const addPrice = document.querySelector(".price");
 export const addDescription = document.querySelector(".description");
 export const addBtn = document.querySelector(".add-btn");
 export const addForm = document.querySelector(".add-form");
 export const featuredBox = document.querySelector(".featured");
-export const addImage = document.querySelector(".image");
+
 export const addVolume = document.querySelector(".volume");
 export const addNutrition = document.querySelector(".nutrition");
 export const descriptionDetails = document.querySelector(".description-details");
@@ -54,3 +57,9 @@ export const modalHeader = document.querySelector(".modal-header");
 export const closeBtn = document.querySelector("#modal-btn-close");
 export const confirmBtn = document.querySelector(".confirmBtn");
 export const modalBody = document.querySelector(".modal-content");
+
+// cart
+export const productsInCart = document.querySelector(".count-products");
+
+// denne er ny
+export const productContainer = document.querySelector(".product-container");
