@@ -9,9 +9,11 @@ export default function logOutBtn() {
     const openModalSignout = document.querySelector(".modal-btn-signout");
 
     openModalSignout.onclick = function () {
+      const modalButton = document.querySelector("#modal-btn-ok");
       modal.style.display = "block";
-      modalHeader.innerHTML = `<p>Sign out</p>`;
+      modalHeader.innerHTML = `<h2>Sign out</h2>`;
       modalBody.innerHTML = `<p>You are about to sign out of Milky admin. Please confirm.</p>`;
+      modalButton.innerText = `Sign out`;
       confirmBtn.addEventListener("click", () => {
         clearKey(userKey);
         clearKey(tokenKey);

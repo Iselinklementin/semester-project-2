@@ -1,4 +1,11 @@
-import { modal, modalHeader, closeBtn, confirmBtn, modalBody, productsInCart } from "../components/elements.js";
+import {
+  modal,
+  modalHeader,
+  closeBtn,
+  confirmBtn,
+  modalBody,
+  productsInCart,
+} from "../components/elements.js";
 import { getFromStorage, saveToStorage } from "../settings/storage.js";
 import { cartKey } from "../settings/keys.js";
 import { createHtml } from "../common/createHtml.js";
@@ -8,12 +15,14 @@ import { subtotal } from "../common/subtotal.js";
 export function decreaseAmount() {
   let id = this.getAttribute("data-id");
   const cartProducts = getFromStorage(cartKey);
-  const product = cartProducts.find((product) => product.id === id);
+  const product = cartProducts.find(product => product.id === id);
   product.quantity--;
 
   this.nextElementSibling.value = `${product.quantity}`;
 
-  let originalPrice = parseFloat(this.offsetParent.offsetParent.firstElementChild.getAttribute("data-price"));
+  let originalPrice = parseFloat(
+    this.offsetParent.offsetParent.firstElementChild.getAttribute("data-price")
+  );
   let newPrice = originalPrice * product.quantity;
   let priceDom = this.offsetParent.offsetParent.children[2].children[1].lastElementChild;
   priceDom.innerText = `$ ` + newPrice.toFixed(2);
@@ -24,12 +33,12 @@ export function decreaseAmount() {
     priceDom.innerText = `$ ${originalPrice.toFixed(2)}`;
     // modal
     modal.style.display = "block";
-    modalHeader.innerHTML = `<p>Last item</p>`;
-    modalBody.innerHTML = `<p>Last item</p>`;
+    modalHeader.innerHTML = `<h2>Remove product</h2>`;
+    modalBody.innerHTML = `<p>This is the last item, are you sure you want to delete it?</p>`;
     confirmBtn.addEventListener("click", () => {
       // productDelete();
       const currentCart = getFromStorage(cartKey);
-      const newList = currentCart.filter((product) => product.id !== id);
+      const newList = currentCart.filter(product => product.id !== id);
       saveToStorage(cartKey, newList);
       createHtml(newList);
       subtotal();

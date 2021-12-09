@@ -558,6 +558,7 @@ h2 {
   font-weight: 500;
   text-transform: uppercase;
   max-width: 200px;
+  padding: 8px 15px;
 }
 
 .btn-primary:hover, .home .to-productsite-container .to-products-wrap a:hover, .btn-primary:active, .home .to-productsite-container .to-products-wrap a:active, .btn-primary:focus, .home .to-productsite-container .to-products-wrap a:focus {
@@ -667,6 +668,8 @@ footer .logo-container-footer .logo-footer {
 
 .modal-container {
   max-width: 600px;
+  -webkit-animation: zoom 0.5s;
+          animation: zoom 0.5s;
 }
 
 .modal-content {
@@ -706,6 +709,41 @@ footer .logo-container-footer .logo-footer {
 #modal-btn-close,
 #modal-btn-ok {
   width: 150px;
+}
+
+#modal-btn-close {
+  margin: 0 0.5rem 0 0;
+}
+
+#modal-btn-ok {
+  margin: 0 0 0 0.5rem;
+  background-color: #db1275;
+}
+
+#modal-btn-ok:hover {
+  background-color: #a01158;
+}
+
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes zoom {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
 
 .home .hero-banner-container {

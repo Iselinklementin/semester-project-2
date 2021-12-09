@@ -17,27 +17,34 @@ const herobanner = document.querySelector(".hero-banner");
   let fetchProducts = fetch(productsUrl);
 
   Promise.all([fetchBanner, fetchProducts])
-    .then((values) => Promise.all(values.map((value) => value.json())))
-    .then((finalValues) => {
+    .then(values => Promise.all(values.map(value => value.json())))
+    .then(finalValues => {
       const productBanner = finalValues[0];
       const products = finalValues[1];
       herobanner.src = productBanner.banner[0].url;
 
       createHtml(products);
       filterSearch(products);
+
+      btnfilter.forEach(btn => {
+        btn.addEventListener("click", filterProducts);
+      });
     });
 })();
 
 // search
 
 function filterSearch(products) {
-  searchInput.onkeyup = (event) => {
+  searchInput.onkeyup = event => {
     const searchValue = event.target.value.trim();
-    const searchTitle = products.filter((item) => {
+    const searchTitle = products.filter(item => {
       // Tar vekk span så produktet kan søkes på
       let titleStr = item.title;
       let title = titleStr.replace("<span>", "");
-      if (title.toLowerCase().includes(searchValue) || item.description.toLowerCase().includes(searchValue)) {
+      if (
+        title.toLowerCase().includes(searchValue) ||
+        item.description.toLowerCase().includes(searchValue)
+      ) {
         return true;
       }
     });
@@ -47,10 +54,6 @@ function filterSearch(products) {
   };
 }
 
-btnfilter.forEach((btn) => {
-  btn.addEventListener("click", filterProducts);
-});
-
 // lag en filter function som fungerer på begge sidene?
 // denne er bedre enn på index
 
@@ -58,12 +61,10 @@ function filterProducts() {
   const parentChildren = this.parentElement.children;
   const findChildrenClass = [...parentChildren];
 
-  const removeClass = findChildrenClass.filter((child) => child.classList.contains("active-filter"));
+  const removeClass = findChildrenClass.filter(child => child.classList.contains("active-filter"));
   if (removeClass.length) {
     removeClass[0].classList.remove("active-filter");
   }
-
-  // kan vurdere en funksjon som gjør dette siden alt er likt
 
   if (this.value === "All products") {
     createHtml(products);
@@ -71,13 +72,13 @@ function filterProducts() {
   }
 
   if (this.value === "Small") {
-    const smallProducts = products.filter((product) => product.volume === "Small");
+    const smallProducts = products.filter(product => product.volume === "Small");
     createHtml(smallProducts);
     this.classList.add("active-filter");
   }
 
   if (this.value === "Large") {
-    const largeProducts = products.filter((product) => product.volume === "Large");
+    const largeProducts = products.filter(product => product.volume === "Large");
     createHtml(largeProducts);
     this.classList.add("active-filter");
   }

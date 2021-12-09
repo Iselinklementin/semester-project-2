@@ -14,6 +14,7 @@
 
 .modal-container {
   max-width: 600px;
+  animation: zoom 0.5s;
 }
 
 .modal-content {
@@ -41,4 +42,28 @@
 #modal-btn-close,
 #modal-btn-ok {
   width: 150px;
+}
+
+// Skift navn på fargen
+#modal-btn-close {
+  margin: 0 0.5rem 0 0;
+}
+
+#modal-btn-ok {
+  margin: 0 0 0 0.5rem;
+  background-color: getColour(addToCartBtn);
+
+  &:hover {
+    background-color: #a01158;
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
 }
