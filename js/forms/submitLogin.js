@@ -1,7 +1,7 @@
 import displayMessage from "../components/displayMessage.js";
 import { contentType, loginUrl } from "../settings/constant.js";
 import { saveToken, saveUser } from "../settings/storage.js";
-import { messages } from "../components/messages.js";
+import { MESSAGES } from "../components/messages.js";
 import { emailInput, passwordInput, loginBtn } from "../components/elements.js";
 
 export async function submitLogin(username, password) {
@@ -16,7 +16,7 @@ export async function submitLogin(username, password) {
   try {
     emailInput.disabled = true;
     passwordInput.disabled = true;
-    loginBtn.innerText = "Busy...";
+    loginBtn.innerText = "Signing in...";
     const response = await fetch(loginUrl, options);
     const json = await response.json();
 
@@ -27,11 +27,11 @@ export async function submitLogin(username, password) {
     }
 
     if (json.error) {
-      displayMessage("error", messages.incorrect, ".message-container");
+      displayMessage("error", MESSAGES.incorrect, ".message-container");
     }
   } catch (error) {
     console.log(error);
-    displayMessage("error", messages.server_error, ".message-container");
+    displayMessage("error", MESSAGES.server_error, ".message-container");
   } finally {
     emailInput.disabled = false;
     passwordInput.disabled = false;

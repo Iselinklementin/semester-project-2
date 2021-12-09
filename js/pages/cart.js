@@ -200,7 +200,3 @@ function updateProductPrice() {
     price.innerText = `$ ` + newPrice.toFixed(2);
   });
 }
-
-// BootstrapDialog.show({
-//   message: "Hi Apple!",
-// });

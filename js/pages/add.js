@@ -1,9 +1,9 @@
 import toggleSidebar from "../layout/nav.js";
 import { productsUrl, baseUrl, contentTypeAuth } from "../settings/constant.js";
 import displayMessage from "../components/displayMessage.js";
-import { messages } from "../components/messages.js";
+import { MESSAGES } from "../components/messages.js";
 // egen js
-import checkValidation from "../components/checkValidation.js";
+import validateLength from "../components/checkValidation.js";
 import {
   addTitle,
   addPrice,
@@ -80,7 +80,7 @@ export async function addProduct(
     const response = await fetch(productsUrl, options);
     const json = await response.json();
 
-    formInputs.forEach(input => {
+    formInputs.forEach((input) => {
       input.disabled = true;
     });
 
@@ -96,9 +96,9 @@ export async function addProduct(
       displayMessage("success", "Product created", ".message-container");
     }
   } catch (error) {
-    displayMessage("error", messages.server_error, ".message-container");
+    displayMessage("error", MESSAGES.server_error, ".message-container");
   } finally {
-    formInputs.forEach(input => {
+    formInputs.forEach((input) => {
       input.disabled = false;
     });
 
@@ -134,7 +134,7 @@ function submitProduct(event) {
   const description_details = descriptionDetails.value.trim();
   const nutrition = addNutrition.value.trim();
 
-  // if (checkValidation(addImage.value.length, 1)) {
+  // if (validateLength(addImage.value.length, 1)) {
   //   inputFeedback(".input-warning__image", "Please upload an image", "fa-exclamation-circle");
   // } else {
   //   inputFeedback(".input-warning__image", "", "");
@@ -148,28 +148,19 @@ function submitProduct(event) {
   //   inputFeedback(".input-warning__image", "", "");
   // }
 
-  if (!validateAddForm || checkValidation(addImage.value.length, 1)) {
-    return displayMessage("error", "Fill in all fields", ".message-container");
+  if (!validateAddForm || validateLength(addImage.value.length, 1)) {
+    return displayMessage("error", MESSAGES.fill_fields, ".message-container");
   }
 
-  addProduct(
-    title,
-    price,
-    description,
-    featured,
-    imageValue,
-    volume,
-    description_details,
-    nutrition
-  );
+  addProduct(title, price, description, featured, imageValue, volume, description_details, nutrition);
 }
 
 function validateAddForm() {
   let validationPassed = true;
 
   addTitle.addEventListener("blur", () => {
-    if (checkValidation(addTitle.value.length, 1)) {
-      inputFeedback(".input-warning__title", "Please insert text", "fa-exclamation-circle");
+    if (validateLength(addTitle.value.length, 1)) {
+      inputFeedback(".input-warning__title", MESSAGES.insert_text, "fa-exclamation-circle");
       validationPassed = false;
     } else {
       inputFeedback(".input-warning__title", "", "");
@@ -177,8 +168,8 @@ function validateAddForm() {
   });
 
   addPrice.addEventListener("blur", () => {
-    if (isNaN(addPrice.value) || checkValidation(addPrice.value, 1)) {
-      inputFeedback(".input-warning__price", "Insert numbers", "fa-exclamation-circle");
+    if (isNaN(addPrice.value) || validateLength(addPrice.value, 1)) {
+      inputFeedback(".input-warning__price", MESSAGES.insert_number, "fa-exclamation-circle");
       validationPassed = false;
     } else {
       inputFeedback(".input-warning__price", "", "");
@@ -186,8 +177,8 @@ function validateAddForm() {
   });
 
   addDescription.addEventListener("blur", () => {
-    if (checkValidation(addDescription.value.length, 1)) {
-      inputFeedback(".input-warning__description", "Please insert text", "fa-exclamation-circle");
+    if (validateLength(addDescription.value.length, 1)) {
+      inputFeedback(".input-warning__description", MESSAGES.insert_text, "fa-exclamation-circle");
       validationPassed = false;
     } else {
       inputFeedback(".input-warning__description", "", "");
@@ -195,12 +186,8 @@ function validateAddForm() {
   });
 
   descriptionDetails.addEventListener("blur", () => {
-    if (checkValidation(descriptionDetails.value.length, 1)) {
-      inputFeedback(
-        ".input-warning__description-details",
-        "Please insert text",
-        "fa-exclamation-circle"
-      );
+    if (validateLength(descriptionDetails.value.length, 1)) {
+      inputFeedback(".input-warning__description-details", MESSAGES.insert_text, "fa-exclamation-circle");
       validationPassed = false;
     } else {
       inputFeedback(".input-warning__description-details", "", "");
@@ -208,8 +195,8 @@ function validateAddForm() {
   });
 
   addNutrition.addEventListener("blur", () => {
-    if (checkValidation(addNutrition.value.length, 1)) {
-      inputFeedback(".input-warning__nutrition", "Please insert text", "fa-exclamation-circle");
+    if (validateLength(addNutrition.value.length, 1)) {
+      inputFeedback(".input-warning__nutrition", MESSAGES.insert_text, "fa-exclamation-circle");
       validationPassed = false;
     } else {
       inputFeedback(".input-warning__nutrition", "", "");
@@ -219,7 +206,7 @@ function validateAddForm() {
   addVolume.addEventListener("blur", () => {
     console.log(addVolume.value);
     if (addVolume.value === "Choose volume") {
-      inputFeedback(".input-warning__volume", "Choose volume", "fa-exclamation-circle");
+      inputFeedback(".input-warning__volume", MESSAGES.choose_volume, "fa-exclamation-circle");
       validationPassed = false;
     } else {
       inputFeedback(".input-warning__volume", "", "");
@@ -232,12 +219,12 @@ function validateAddForm() {
 validateAddForm();
 
 // if (
-//   checkValidation(title.length, 1) ||
-//   checkValidation(price.length, 1) ||
-//   checkValidation(description.length, 1) ||
-//   checkValidation(description_details.length, 1) ||
-//   checkValidation(nutrition.length, 1) ||
-//   checkValidation(imageValue.length, 1) ||
+//   validateLength(title.length, 1) ||
+//   validateLength(price.length, 1) ||
+//   validateLength(description.length, 1) ||
+//   validateLength(description_details.length, 1) ||
+//   validateLength(nutrition.length, 1) ||
+//   validateLength(imageValue.length, 1) ||
 //   isNaN(addPrice.value) ||
 //   !volumeValue
 // ) {

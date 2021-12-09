@@ -1,29 +1,23 @@
-// length val
-
-export default function checkValidation(value, len) {
+// length validation
+export default function validateLength(value, len) {
   if (value < len) {
     return true;
   }
 }
 
-// export default function validateLoginForm() {
-// 	const usernameError = elements.username.nextElementSibling.nextElementSibling;
-// 	const passwordError = elements.password.nextElementSibling.nextElementSibling;
+// email validation
 
-// 	let validationPassed = true;
+export function validateEmail(email) {
+  const regEx =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const patternMatches = regEx.test(email);
+  return patternMatches;
+}
 
-// 	if (elements.username.value.trim().length === 0) {
-// 		usernameError.innerText = "Please enter your username";
-// 		validationPassed = false;
-// 	} else {
-// 		usernameError.innerText = "";
-// 	}
+// password validation
 
-// 	if (elements.password.value.trim().length === 0) {
-// 		passwordError.innerText = "Please enter your password";
-// 		validationPassed = false;
-// 	} else {
-// 		passwordError.innerText = "";
-// 	}
-// 	return validationPassed;
-// }
+export function validatePassword(password) {
+  const regEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+  const patternMatches = regEx.test(password);
+  return patternMatches;
+}

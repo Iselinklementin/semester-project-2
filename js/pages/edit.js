@@ -1,120 +1,150 @@
-import { productsUrl } from "../settings/constant.js";
-import { contentTypeAuth, authorization } from "../settings/constant.js";
-import { getFromStorage, saveToStorage } from "../settings/storage.js";
-import { favKey, cartKey } from "../settings/keys.js";
+import toggleSidebar from "../layout/nav.js";
+import { authorization, contentTypeAuth, productsUrl } from "../settings/constant.js";
 import {
+  editVolume,
+  editFeatured,
+  editDescriptionDetail,
   editDescription,
   editForm,
+  editImage,
   editTitle,
   editPrice,
-  editImage,
   editNutrition,
   idInput,
-  updateBtn,
-  editDescriptionDetail,
-  editFeatured,
-  editVolume,
 } from "../components/elements.js";
-// import { displayMessage } from "../components/displayMessage.js";
-// import { messages } from "../components/messages.js";
-
-// hmm. samme navn på function og dokument?
-import toggleSidebar from "../layout/nav.js";
+import { MESSAGES } from "../components/messages.js";
+import { cloudName, uploadPreset, uploadWidget, uploadedImage } from "../components/elements.js";
+import displayMessage from "../components/displayMessage.js";
+import validateLength from "../components/checkValidation.js";
+import { inputFeedback } from "../forms/inputFeedback.js";
+import { getFromStorage } from "../settings/storage.js";
+import { favKey } from "../settings/keys.js";
+const hiddenImageContainer = document.querySelector(".edit-image");
 toggleSidebar();
+
+// bekreftelse på sendt kommer øverst og ikke nede, så man ser det ikke på tlf
+const myWidget = cloudinary.createUploadWidget(
+  {
+    cloudName: cloudName,
+    uploadPreset: uploadPreset,
+  },
+  (error, result) => {
+    if (!error && result && result.event === "success") {
+      console.log(result.info);
+      const editImage = document.querySelector(".image");
+      editImage.setAttribute("src", result.info.secure_url);
+      hiddenImageContainer.value = result.info.secure_url;
+    }
+  }
+);
+
+uploadWidget.addEventListener(
+  "click",
+  () => {
+    myWidget.open();
+  },
+  false
+);
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
 const url = productsUrl + `/` + id;
 
-(async function () {
+console.log(url);
+(async function showProduct() {
   try {
     const response = await fetch(url);
     const product = await response.json();
     const selected = [...editVolume.options];
 
-    // pagetitle
-    editNutrition.value = product.nutrition;
-    editTitle.value = product.title;
+    if (product.featured) {
+      editFeatured.checked = true;
+    }
+
+    if (product.volume === "Small") {
+      selected[1].setAttribute("selected", true);
+    }
+
+    if (product.volume === "Large") {
+      selected[2].setAttribute("selected", true);
+    }
+
+    // remove span from input-text
+    // convert string to html
+
+    let stringToHTML = function (str) {
+      let parser = new DOMParser();
+      let title = parser.parseFromString(str, "text/html");
+      return title.body;
+    };
+
+    let originalTitle = product.title;
+    const findSpan = originalTitle.split(" ", 3);
+    let tasteTitle = stringToHTML(findSpan[1]);
+
+    editImage.src = product.image_url;
+    editTitle.value = tasteTitle.innerText;
     editPrice.value = product.price;
     editDescription.value = product.description;
     editDescriptionDetail.value = product.description_details;
-    editImage.value = product.image_url;
     idInput.value = product.id;
-    editFeatured.value = product.featured;
-    editVolume.value = product.volume; // denne må fikses
-
-    console.log(product);
-  } catch (error) {}
+    editNutrition.value = product.nutrition;
+    hiddenImageContainer.value = product.image_url;
+  } catch (error) {
+    displayMessage("error", MESSAGES.server_error, ".message-container");
+  }
 })();
 
 editForm.addEventListener("submit", submitEdit);
 
-function submitEdit(event) {
+async function submitEdit(event) {
   event.preventDefault();
-
-  const titleValue = editTitle.value.trim();
+  const titleValue = `Milky <span>${editTitle.value.trim()}</span>`;
   const priceValue = editPrice.value.trim();
-  const descriptionValue = editDescription.value.trim();
   const idValue = idInput.value;
-  const imageValue = editImage.value.trim();
+  const descriptionValue = editDescription.value.trim();
   const descriptionDetailValue = editDescriptionDetail.value.trim();
   const nutritionValue = editNutrition.value.trim();
-  const featured = featured.checked;
-  const editVolume = editVolume.value;
-
-  // if (
-  //   checkValidation(titleValue, 1) ||
-  //   checkValidation(authorValue, 1) ||
-  //   checkValidation(summaryValue, 1 || checkValidation(idValue, 1)
-  // || isNaNprice )
-  // ) {
-  //   displayMessage(classes.error, messages.empty_input, messageContainer);
-  // }
+  const featuredValue = editFeatured.checked;
+  const imageSrc = hiddenImageContainer.value.trim();
+  const volumeValue = editVolume.value;
 
   updateProduct(
     titleValue,
     priceValue,
     descriptionValue,
-    idValue,
-    imageValue,
     descriptionDetailValue,
     nutritionValue,
-    featured,
-    editVolume
+    featuredValue,
+    imageSrc,
+    volumeValue,
+    idValue
   );
 }
-
-// import displayMessage from "../../global/components/displayMessage.js";
-// import { articlesUrl, contentTypeAuth } from "../../global/settings/api.js";
-// import { messageContainer } from "../../global/components/elements.js";
-// import { messages } from "../../global/components/messages.js";
-// import { classes } from "../../global/components/classes.js";
-// import { getFromStorage, saveToStorage } from "../../global/settings/storage.js";
-// import { favKey } from "../../global/settings/keys.js";
-
 export async function updateProduct(
   title,
   price,
-  id,
-  image,
   description,
   description_details,
   nutrition,
   featured,
-  volume
+  image_url,
+  volume,
+  id
 ) {
   const url = productsUrl + `/` + id;
   const data = JSON.stringify({
-    title,
-    price,
-    description,
-    image_url: image,
-    description_details,
-    nutrition,
-    featured,
-    volume,
+    title: title,
+    price: price,
+    description: description,
+    description_details: description_details,
+    nutrition: nutrition,
+    featured: featured,
+    image_url: image_url,
+    volume: volume,
   });
+
   const options = {
     method: "PUT",
     body: data,
@@ -126,46 +156,30 @@ export async function updateProduct(
     const json = await response.json();
 
     if (json.error) {
-      // console.log(error);
-      // console.log()
-      // return displayMessage(classes.error, json.message, messageContainer);
+      console.log(error);
+      return displayMessage("error", json.message, ".message-container");
     }
 
     if (json.updated_at) {
-      // if the article is in favourite, replace it with the new updated one
-      // const currentFav = getFromStorage(favKey);
-      // let editFavourite = currentFav.filter(article => parseInt(article.id) === json.id);
-      // if (editFavourite.length) {
-      //   const updatedArticle = {
-      //     id: JSON.stringify(json.id),
-      //     title: json.title,
-      //     summary: json.summary,
-      //     author: json.author,
-      //   };
-      //   const newFavourites = currentFav.filter(article => parseInt(article.id) !== json.id);
-      //   newFavourites.push(updatedArticle);
-      //   saveToStorage(favKey, newFavourites);
-      // }
-      // displayMessage(classes.success, messages.updated_article, messageContainer);
+      displayMessage("success", MESSAGES.updated_product, ".message-container");
     }
   } catch (error) {
-    // console.log(error);
-    // displayMessage(classes.warning, error, messageContainer);
+    displayMessage("error", MESSAGES.server_error, ".message-container");
   }
 }
 
-// egen js
+const buttonContainer = document.querySelector(".button-container");
 
-const currentFav = getFromStorage(favKey);
+buttonContainer.insertAdjacentHTML(
+  "afterbegin",
+  `<button type="button" class="delete delete-btn btn btn-primary"><i class="fas fa-trash-alt"></i> Delete</button>`
+);
 
-const deleteContainer = document.querySelector(".delete-container");
-deleteContainer.innerHTML = `<button type="button" class="delete delete-btn btn btn-primary mb-4"><i class="fas fa-trash-alt"></i> Delete</button>`;
 const deleteBtn = document.querySelector("button.delete");
 
-// console.log(deleteContainer);
-
-// export default function deleteButton(id) {
 deleteBtn.onclick = async function () {
+  // her må det komme en modal
+  // MODAL
   const deleteProduct = confirm("Are you sure you want to delete the product?");
 
   if (deleteProduct) {
@@ -175,18 +189,82 @@ deleteBtn.onclick = async function () {
       method: "DELETE",
       headers: authorization,
     };
+
     try {
       const response = await fetch(url, option);
       const json = await response.json();
-      location.href = "/";
 
-      // delete the article from favourite-list
+      location.href = "products.html";
+      currentFav = getFromStorage(favKey);
       const newFavourites = currentFav.filter((product) => parseInt(product.id) !== json.id);
       saveToStorage(favKey, newFavourites);
     } catch (error) {
-      // console.log(error);
-      // displayMessage("error", messages.server_error, ".message-container");
+      displayMessage("error", MESSAGES.server_error, ".message-container");
     }
   }
 };
-// }
+
+// samme som add-page
+// gjør alle classene like, så slipper man å ha det dobbelt opp
+
+function validateAddForm() {
+  let validationPassed = true;
+
+  editTitle.addEventListener("blur", () => {
+    if (validateLength(editTitle.value.length, 1)) {
+      inputFeedback(".input-warning__title", MESSAGES.insert_text, "fa-exclamation-circle");
+      validationPassed = false;
+    } else {
+      inputFeedback(".input-warning__title", "", "");
+    }
+  });
+
+  editPrice.addEventListener("blur", () => {
+    if (isNaN(editPrice.value) || validateLength(editPrice.value, 1)) {
+      inputFeedback(".input-warning__price", MESSAGES.insert_number, "fa-exclamation-circle");
+      validationPassed = false;
+    } else {
+      inputFeedback(".input-warning__price", "", "");
+    }
+  });
+
+  editDescription.addEventListener("blur", () => {
+    if (validateLength(editDescription.value.length, 1)) {
+      inputFeedback(".input-warning__description", MESSAGES.insert_text, "fa-exclamation-circle");
+      validationPassed = false;
+    } else {
+      inputFeedback(".input-warning__description", "", "");
+    }
+  });
+
+  editDescriptionDetail.addEventListener("blur", () => {
+    if (validateLength(editDescriptionDetail.value.length, 1)) {
+      inputFeedback(".input-warning__description-details", MESSAGES.insert_text, "fa-exclamation-circle");
+      validationPassed = false;
+    } else {
+      inputFeedback(".input-warning__description-details", "", "");
+    }
+  });
+
+  editNutrition.addEventListener("blur", () => {
+    if (validateLength(editNutrition.value.length, 1)) {
+      inputFeedback(".input-warning__nutrition", MESSAGES.insert_text, "fa-exclamation-circle");
+      validationPassed = false;
+    } else {
+      inputFeedback(".input-warning__nutrition", "", "");
+    }
+  });
+
+  editVolume.addEventListener("blur", () => {
+    if (editVolume.value === "Choose volume") {
+      inputFeedback(".input-warning__volume", MESSAGES.choose_volume, "fa-exclamation-circle");
+      validationPassed = false;
+    } else {
+      inputFeedback(".input-warning__volume", "", "");
+    }
+  });
+
+  return validationPassed;
+}
+
+validateAddForm();

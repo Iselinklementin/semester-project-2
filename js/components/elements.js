@@ -3,6 +3,8 @@ export const loginForm = document.querySelector(".login-form");
 export const emailInput = document.querySelector(".email");
 export const passwordInput = document.querySelector(".password");
 export const loginBtn = document.querySelector(".login-btn");
+export const errorLogin = document.querySelector(".login-error-username");
+export const errorPassword = document.querySelector(".login-error-password");
 
 // add product
 
