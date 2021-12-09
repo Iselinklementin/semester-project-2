@@ -1,6 +1,6 @@
 import { getFromStorage, saveToStorage } from "../settings/storage.js";
 import { favKey } from "../settings/keys.js";
-import { fillNavHeart } from "../common/createHtml.js";
+import { fillNavHeart } from "../common/fillNavHeart.js";
 
 export default function handleFavourites() {
   this.classList.toggle("fa");

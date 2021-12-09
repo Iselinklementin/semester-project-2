@@ -1,8 +1,9 @@
 import toggleSidebar from "../layout/nav.js";
 import { loginForm, emailInput, passwordInput } from "../components/elements.js";
 import { submitLogin } from "../forms/submitLogin.js";
-import { changeCartIcon, fillNavHeart } from "../common/createHtml.js";
+import { changeCartIcon } from "../common/changeCartIcon.js";
 import { validateLoginForm } from "../forms/validateLoginForm.js";
+import { fillNavHeart } from "../common/fillNavHeart.js";
 
 toggleSidebar();
 fillNavHeart();

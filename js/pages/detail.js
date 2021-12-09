@@ -5,7 +5,7 @@ import { getFromStorage } from "../settings/storage.js";
 import { favKey } from "../settings/keys.js";
 import { editIcon } from "../buttons/editIcon.js";
 import handleFavourites from "../buttons/handleFavorites.js";
-import { changeCartIcon, fillNavHeart } from "../common/createHtml.js";
+import { fillNavHeart } from "../common/fillNavHeart.js";
 import {
   breacrumbTitle,
   imageContainer,
@@ -16,6 +16,7 @@ import {
 } from "../components/elements.js";
 import { addToCart } from "../common/addToCart.js";
 import { showPrice } from "../common/showPrice.js";
+import { changeCartIcon } from "../common/changeCartIcon.js";
 
 toggleSidebar();
 

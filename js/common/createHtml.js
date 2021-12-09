@@ -1,8 +1,10 @@
 import Block from "../components/blocks.js";
-import { cartKey, favKey } from "../settings/keys.js";
+import { favKey } from "../settings/keys.js";
 import { getFromStorage } from "../settings/storage.js";
 import handleFavourites from "../buttons/handleFavorites.js";
 import { editIcon } from "../buttons/editIcon.js";
+import { fillNavHeart } from "./fillNavHeart.js";
+import { changeCartIcon } from "./changeCartIcon.js";
 
 export function createHtml(products) {
   const productContainer = document.querySelector(".product-container");
@@ -40,30 +42,4 @@ export function createHtml(products) {
   fillNavHeart();
   changeCartIcon();
   editIcon();
-}
-
-// spesifiser navheart bedre
-// denne fyller hjertet i navbaren hvis det ligger produkter inne
-
-export function fillNavHeart() {
-  const navHeart = document.querySelector(".fa-heart");
-  const favStorage = getFromStorage(favKey);
-  if (favStorage.length) {
-    navHeart.classList.add("fa");
-  } else {
-    navHeart.classList.remove("fa");
-  }
-}
-
-export function changeCartIcon() {
-  const shoppingCart = document.querySelector(".cart-icon");
-  const cartStorage = getFromStorage(cartKey);
-
-  if (cartStorage.length) {
-    shoppingCart.classList.remove("fa-shopping-cart");
-    shoppingCart.classList.add("fa-cart-arrow-down");
-  } else {
-    shoppingCart.classList.remove("fa-cart-arrow-down");
-    shoppingCart.classList.add("fa-shopping-cart");
-  }
 }
