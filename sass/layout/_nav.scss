@@ -4,6 +4,9 @@ nav {
   z-index: 5;
   position: relative;
 
+  .nav-links-top-right ul {
+    position: relative;
+  }
   @include for-laptop {
     height: 120px;
   }
