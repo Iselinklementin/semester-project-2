@@ -245,10 +245,6 @@ nav {
   position: relative;
 }
 
-nav li {
-  position: relative;
-}
-
 @media (min-width: 992px) {
   nav {
     height: 120px;
@@ -320,6 +316,10 @@ nav .hamburger-container .sidebar-nav-toggle {
 nav .hamburger-container .sidebar-nav-toggle.btn:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+nav .nav-desktop {
+  position: relative;
 }
 
 nav .nav-links-top-right {

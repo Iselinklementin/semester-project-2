@@ -4,10 +4,6 @@ nav {
   z-index: 5;
   position: relative;
 
-  li {
-    position: relative;
-  }
-
   @include for-laptop {
     height: 120px;
   }
@@ -77,7 +73,10 @@ nav {
       }
     }
   }
-
+  // finn ut hvorfor jeg har 2 classer her. Mulig jeg kan fjerne hele nav-html?
+  .nav-desktop {
+    position: relative;
+  }
   // Icons top right
 
   .nav-links-top-right {
