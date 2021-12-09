@@ -15,6 +15,11 @@ footer {
     @include flex(row, center, center);
     flex-wrap: wrap;
     margin: 0;
+    padding: 35px;
+
+    @include for-tablet {
+      padding: unset;
+    }
   }
 
   .nav-item {

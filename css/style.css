@@ -629,6 +629,13 @@ footer ul {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: 0;
+  padding: 35px;
+}
+
+@media (min-width: 768px) {
+  footer ul {
+    padding: unset;
+  }
 }
 
 footer .nav-item {
