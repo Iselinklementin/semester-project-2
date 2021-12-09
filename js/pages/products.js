@@ -1,10 +1,10 @@
 import { createHtml } from "../common/createHtml.js";
 import toggleSidebar from "../layout/nav.js";
-import { emptyResult } from "../components/emptyResult.js";
 import { loadingHtml } from "../common/loadingHtml.js";
 import { productpageUrl, productsUrl } from "../settings/constant.js";
+import { searchFunction } from "../common/searchFunction.js";
+
 const btnfilter = document.querySelectorAll(".filter-btn");
-const searchInput = document.querySelector(".search-product-page");
 
 // loadingBanner();
 loadingHtml();
@@ -24,62 +24,35 @@ const herobanner = document.querySelector(".hero-banner");
       herobanner.src = productBanner.banner[0].url;
 
       createHtml(products);
-      filterSearch(products);
+      searchFunction(products);
 
       btnfilter.forEach(btn => {
         btn.addEventListener("click", filterProducts);
       });
-    });
-})();
 
-// search
-
-function filterSearch(products) {
-  searchInput.onkeyup = event => {
-    const searchValue = event.target.value.trim();
-    const searchTitle = products.filter(item => {
-      // Tar vekk span så produktet kan søkes på
-      let titleStr = item.title;
-      let title = titleStr.replace("<span>", "");
-      if (
-        title.toLowerCase().includes(searchValue) ||
-        item.description.toLowerCase().includes(searchValue)
-      ) {
-        return true;
+      function filterProducts() {
+        const parentChildren = this.parentElement.children;
+        const findChildrenClass = [...parentChildren];
+        const removeClass = findChildrenClass.filter(child =>
+          child.classList.contains("active-filter")
+        );
+        if (removeClass.length) {
+          removeClass[0].classList.remove("active-filter");
+        }
+        if (this.value === "All products") {
+          createHtml(products);
+          this.classList.add("active-filter");
+        }
+        if (this.value === "Small") {
+          const smallProducts = products.filter(product => product.volume === "Small");
+          createHtml(smallProducts);
+          this.classList.add("active-filter");
+        }
+        if (this.value === "Large") {
+          const largeProducts = products.filter(product => product.volume === "Large");
+          createHtml(largeProducts);
+          this.classList.add("active-filter");
+        }
       }
     });
-
-    createHtml(searchTitle);
-    emptyResult();
-  };
-}
-
-// lag en filter function som fungerer på begge sidene?
-// denne er bedre enn på index
-
-function filterProducts() {
-  const parentChildren = this.parentElement.children;
-  const findChildrenClass = [...parentChildren];
-
-  const removeClass = findChildrenClass.filter(child => child.classList.contains("active-filter"));
-  if (removeClass.length) {
-    removeClass[0].classList.remove("active-filter");
-  }
-
-  if (this.value === "All products") {
-    createHtml(products);
-    this.classList.add("active-filter");
-  }
-
-  if (this.value === "Small") {
-    const smallProducts = products.filter(product => product.volume === "Small");
-    createHtml(smallProducts);
-    this.classList.add("active-filter");
-  }
-
-  if (this.value === "Large") {
-    const largeProducts = products.filter(product => product.volume === "Large");
-    createHtml(largeProducts);
-    this.classList.add("active-filter");
-  }
-}
+})();
