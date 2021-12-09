@@ -4,6 +4,10 @@ nav {
   z-index: 5;
   position: relative;
 
+  li {
+    position: relative;
+  }
+
   @include for-laptop {
     height: 120px;
   }

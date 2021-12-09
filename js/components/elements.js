@@ -42,7 +42,7 @@ export const uploadWidget = document.querySelector("#upload_widget");
 export const uploadedImage = document.querySelector("#uploadedimage");
 
 // detail-page
-
+export const contentContainer = document.querySelector(".text-content-container");
 export const productImage = document.querySelector(".product-image"); // usikker hvor den her blir brukt?
 export const documentTitle = document.querySelector("title");
 export const breacrumbTitle = document.querySelector(".breadcrumb-item.active");

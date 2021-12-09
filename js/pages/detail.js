@@ -13,15 +13,16 @@ import {
   productNutrition,
   loader,
   documentTitle,
+  contentContainer,
 } from "../components/elements.js";
 import { addToCart } from "../common/addToCart.js";
 import { showPrice } from "../common/showPrice.js";
 import { changeCartIcon } from "../common/changeCartIcon.js";
+// import { giveHeartClass } from "../common/giveHeartClass.js";
 
 toggleSidebar();
 
 // skift navn på den her
-export const productContainer = document.querySelector(".text-content-container");
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
@@ -37,9 +38,9 @@ changeCartIcon();
   const result = await response.json();
 
   loader.style.display = "none";
-
-  // add heart-icon if its in favorites
+  // giveHeartClass(result);
   // har den to plasser
+  // // add heart-icon if its in favorites
   const currentFavorites = getFromStorage(favKey);
   const doesFavExists = currentFavorites.find(fav => {
     if (parseInt(fav.id) === result.id || fav.id === result.id) {
@@ -48,7 +49,7 @@ changeCartIcon();
   });
   let cssClass = doesFavExists ? "fa" : "far";
 
-  productContainer.innerHTML += `<div class="title-container">
+  contentContainer.innerHTML += `<div class="title-container">
                                   <h1 class="title">${result.title}</h1>
                                   <a href="edit.html?id=${result.id}"><i class="far fa-edit"></i></a>
                                   <p>${result.description}</p>

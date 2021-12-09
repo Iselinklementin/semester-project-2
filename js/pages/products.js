@@ -6,7 +6,6 @@ import { searchFunction } from "../common/searchFunction.js";
 
 const btnfilter = document.querySelectorAll(".filter-btn");
 
-// loadingBanner();
 loadingHtml();
 toggleSidebar();
 

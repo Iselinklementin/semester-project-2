@@ -245,6 +245,10 @@ nav {
   position: relative;
 }
 
+nav li {
+  position: relative;
+}
+
 @media (min-width: 992px) {
   nav {
     height: 120px;
