@@ -245,10 +245,6 @@ nav {
   position: relative;
 }
 
-nav .nav-links-top-right ul {
-  position: relative;
-}
-
 @media (min-width: 992px) {
   nav {
     height: 120px;
@@ -337,7 +333,7 @@ nav .nav-links-top-right {
           flex-direction: row;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
-          justify-content: end;
+          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -2029,7 +2025,7 @@ footer .logo-container-footer .logo-footer {
             flex-direction: row;
     -webkit-box-pack: end;
         -ms-flex-pack: end;
-            justify-content: end;
+            justify-content: flex-end;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;

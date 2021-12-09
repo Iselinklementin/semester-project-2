@@ -4,9 +4,9 @@ nav {
   z-index: 5;
   position: relative;
 
-  .nav-links-top-right ul {
-    position: relative;
-  }
+  // .nav-links-top-right ul {
+  //   position: relative;
+  // }
   @include for-laptop {
     height: 120px;
   }
@@ -84,7 +84,7 @@ nav {
 
   .nav-links-top-right {
     position: relative;
-    @include flex(row, end, center);
+    @include flex(row, flex-end, center);
 
     ul {
       @include reset-list;

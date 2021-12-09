@@ -194,7 +194,7 @@
     }
 
     .buttons {
-      @include flex(row, end, center);
+      @include flex(row, flex-end, center);
 
       .btn-primary,
       .btn-secondary {
