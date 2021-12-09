@@ -9,8 +9,8 @@ export function createHtml(products) {
   productContainer.innerHTML = "";
   const currentFavorites = getFromStorage(favKey);
 
-  products.forEach((product) => {
-    const doesFavExists = currentFavorites.find((fav) => {
+  products.forEach(product => {
+    const doesFavExists = currentFavorites.find(fav => {
       if (parseInt(fav.id) === product.id || fav.id === product.id) {
         return true;
       }
@@ -33,7 +33,7 @@ export function createHtml(products) {
   });
 
   const favHeart = document.querySelectorAll(".favorite-heart");
-  favHeart.forEach((heart) => {
+  favHeart.forEach(heart => {
     heart.addEventListener("click", handleFavourites);
     heart.addEventListener("click", fillNavHeart);
   });
@@ -44,13 +44,10 @@ export function createHtml(products) {
 
 // spesifiser navheart bedre
 // denne fyller hjertet i navbaren hvis det ligger produkter inne
-// funker ikke hvis du går ut av siden å kommer tilbake
-// må kjøre en function på loading av siden også
 
 export function fillNavHeart() {
   const navHeart = document.querySelector(".fa-heart");
   const favStorage = getFromStorage(favKey);
-  // console.log(favStorage.length);
   if (favStorage.length) {
     navHeart.classList.add("fa");
   } else {
@@ -69,8 +66,4 @@ export function changeCartIcon() {
     shoppingCart.classList.remove("fa-cart-arrow-down");
     shoppingCart.classList.add("fa-shopping-cart");
   }
-}
-
-{
-  /* <i class="fas fa-cart-arrow-down"></i> */
 }

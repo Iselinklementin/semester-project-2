@@ -1,20 +1,27 @@
 import toggleSidebar from "../layout/nav.js";
 import { productsUrl } from "../settings/constant.js";
 import { productImage } from "../components/elements.js";
-import { getFromStorage, saveToStorage } from "../settings/storage.js";
-import { cartKey, favKey } from "../settings/keys.js";
+import { getFromStorage } from "../settings/storage.js";
+import { favKey } from "../settings/keys.js";
 import { editIcon } from "../buttons/editIcon.js";
 import handleFavourites from "../buttons/handleFavorites.js";
 import { changeCartIcon, fillNavHeart } from "../common/createHtml.js";
-import { modal, modalHeader, closeBtn, confirmBtn, modalBody } from "../components/elements.js";
+import {
+  breacrumbTitle,
+  imageContainer,
+  productDescription,
+  productNutrition,
+  loader,
+  documentTitle,
+} from "../components/elements.js";
+import { addToCart } from "../common/addToCart.js";
+import { showPrice } from "../common/showPrice.js";
+
 toggleSidebar();
 
-const breacrumbTitle = document.querySelector(".breadcrumb-item.active");
-const imageContainer = document.querySelector(".image-container");
-const productContainer = document.querySelector(".text-content-container");
-const productDescription = document.querySelector(".product-description-details");
-const productNutrition = document.querySelector(".product-nutrition");
-const loader = document.querySelector(".loader-background");
+// skift navn på den her
+export const productContainer = document.querySelector(".text-content-container");
+
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
@@ -22,7 +29,7 @@ const id = params.get("id");
 fillNavHeart();
 changeCartIcon();
 
-const documentTitle = document.querySelector("title");
+// tok vekk volume, se om det bør være med på designet
 
 (async function fetchProducts() {
   const response = await fetch(productsUrl + "/" + id);
@@ -30,25 +37,15 @@ const documentTitle = document.querySelector("title");
 
   loader.style.display = "none";
 
-  // sett hjerte hvis det er i favoritter
+  // add heart-icon if its in favorites
+  // har den to plasser
   const currentFavorites = getFromStorage(favKey);
-  const doesFavExists = currentFavorites.find((fav) => {
+  const doesFavExists = currentFavorites.find(fav => {
     if (parseInt(fav.id) === result.id || fav.id === result.id) {
       return true;
     }
   });
-
   let cssClass = doesFavExists ? "fa" : "far";
-
-  // jeg kan lage en funksjon her som kan brukes flere plasser
-  let titleWithoutSpan = result.title.replace("<span>", "").replace("</span>", "");
-  breacrumbTitle.innerText = titleWithoutSpan;
-  documentTitle.innerHTML = titleWithoutSpan;
-  productImage.src = result.image_url;
-  productImage.alt = titleWithoutSpan;
-  // form?
-
-  // HUSK Å FIKS MODAL CLASSES
 
   productContainer.innerHTML += `<div class="title-container">
                                   <h1 class="title">${result.title}</h1>
@@ -76,22 +73,28 @@ const documentTitle = document.querySelector("title");
 
   imageContainer.insertAdjacentHTML(
     "afterbegin",
-    `<i class="far fa-heart favorite-icon ${cssClass}" data-id="${result.id}" data-title="${result.title}" data-description="${result.description}" data-price="${result.price}" data-volume="${result.volume}" data-image_url="${result.image_url}"></i>`
+    `<i class="far fa-heart favorite-icon ${cssClass}" data-id="${result.id}" data-title="${result.title}" 
+    data-description="${result.description}" data-price="${result.price}" data-volume="${result.volume}" 
+    data-image_url="${result.image_url}"></i>`
   );
 
+  // jeg kan lage en funksjon her som kan brukes flere plasser?
+  let titleWithoutSpan = result.title.replace("<span>", "").replace("</span>", "");
+  breacrumbTitle.innerText = titleWithoutSpan;
+  documentTitle.innerHTML = titleWithoutSpan;
+  productImage.alt = titleWithoutSpan;
+  productImage.src = result.image_url;
   productDescription.innerText = result.description_details;
   productNutrition.innerText = result.nutrition;
 
-  // tok vekk volume
   const minus = document.querySelector(".minus");
   const plus = document.querySelector(".plus");
-
   const favoritesHeart = document.querySelector(".favorite-icon");
   const addToCartBtn = document.querySelector("#addToCart-btn");
 
+  // gå over alle navnene her, ulikt på hver side
   addToCartBtn.addEventListener("click", addToCart);
   favoritesHeart.addEventListener("click", handleFavourites);
-  // gå over alle navnene her, ulikt på hver side
   minus.addEventListener("click", decreaseQuantity);
   plus.addEventListener("click", increaseQuantity);
 
@@ -110,70 +113,6 @@ const documentTitle = document.querySelector("title");
   }
 
   editIcon();
-  // changeButton(result);
   showPrice(result);
+  // changeButton(result);
 })();
-
-// en funksjon som dekker begge, bare bytter ut navn
-
-function addToCart() {
-  // dette kan vel være en egen funksjon?
-  const id = this.dataset.id;
-  const title = this.dataset.title;
-  const price = this.dataset.price;
-  const volume = this.dataset.volume;
-  const image_url = this.dataset.image_url;
-  const description = this.dataset.description;
-  const input = document.querySelector(".input-quantity");
-  let count = input.value;
-
-  const cartItems = getFromStorage(cartKey);
-  const productExists = cartItems.find((product) => product.id === id);
-
-  if (productExists) {
-    if (count <= 1) {
-      productExists.quantity++;
-    }
-    if (count >= 2) {
-      productExists.quantity = parseFloat(productExists.quantity) + parseFloat(count);
-    }
-    saveToStorage(cartKey, cartItems);
-  } else {
-    const product = { id, title, price, volume, image_url, description, quantity: count };
-    cartItems.push(product);
-    saveToStorage(cartKey, cartItems);
-  }
-
-  input.value = 1;
-  changeCartIcon();
-  modal.style.display = "block";
-  modalHeader.innerHTML = `<p>${title} is added to cart!</p>`;
-  modalBody.innerHTML = `<p>${title} is added to cart!</p>`;
-  confirmBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-}
-
-closeBtn.onclick = function () {
-  modal.style.display = "none";
-};
-
-window.onclick = function (e) {
-  if (e.target == modal) {
-    modal.style.display = "none";
-  }
-
-  // modal(`${title} is added to cart!`, "Product added", "cart", "Go to cart", productAdded);
-  // være med?
-  // function productAdded() {
-  //   location.href = "cart.html";
-  //   input.value = 1;
-  // }
-};
-
-function showPrice(result) {
-  const priceSection = document.querySelector(".price");
-  const input = document.querySelector(".input-quantity");
-  let price = result.price * input.value;
-  priceSection.innerText = `${price.toFixed(2)}$`;
-}

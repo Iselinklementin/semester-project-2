@@ -43,7 +43,13 @@ export const uploadedImage = document.querySelector("#uploadedimage");
 
 // detail-page
 
-export const productImage = document.querySelector(".product-image");
+export const productImage = document.querySelector(".product-image"); // usikker hvor den her blir brukt?
+export const documentTitle = document.querySelector("title");
+export const breacrumbTitle = document.querySelector(".breadcrumb-item.active");
+export const imageContainer = document.querySelector(".image-container");
+export const productDescription = document.querySelector(".product-description-details");
+export const productNutrition = document.querySelector(".product-nutrition");
+export const loader = document.querySelector(".loader-background");
 
 //
 export const results = document.querySelector(".results");
