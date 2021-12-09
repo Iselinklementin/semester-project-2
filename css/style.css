@@ -455,15 +455,18 @@ h2 {
 }
 
 .btn-primary, .home .to-productsite-container .to-products-wrap a {
-  background-color: #c9868e;
-  background-color: #000000;
+  background-color: #82b447;
   border: none;
   font-weight: 500;
   text-transform: uppercase;
   max-width: 200px;
 }
 
-.btn-primary:hover, .home .to-productsite-container .to-products-wrap a:hover {
+.btn-primary:hover, .home .to-productsite-container .to-products-wrap a:hover, .btn-primary:active, .home .to-productsite-container .to-products-wrap a:active, .btn-primary:focus, .home .to-productsite-container .to-products-wrap a:focus {
+  background-color: #000000;
+}
+
+.btn-primary:disabled, .home .to-productsite-container .to-products-wrap a:disabled {
   background-color: #82b447;
 }
 
@@ -971,7 +974,8 @@ footer .logo-container-footer .logo-footer {
 }
 
 .login .btn-primary, .login .home .to-productsite-container .to-products-wrap a, .home .to-productsite-container .to-products-wrap .login a {
-  margin-top: 2rem;
+  width: 100%;
+  max-width: 100%;
 }
 
 .login .wrap-warning {
@@ -985,8 +989,9 @@ footer .logo-container-footer .logo-footer {
 }
 
 .login .wrap-warning p {
-  padding: 5px 10px;
-  background-color: #dbdba6;
+  padding: 2px;
+  line-height: 1.3;
+  color: #e3531c;
 }
 
 .login .wrap-warning i {

@@ -68,7 +68,7 @@ function validateForm() {
       errorPassword.innerHTML = ``;
       errorPassword.nextElementSibling.classList = "fas fa-check-circle";
     } else {
-      errorPassword.innerHTML = `<p>Please at least one numeric digit, one uppercase and one lowercase letter</p>`;
+      errorPassword.innerHTML = `<p>Password must contain a numeric digit, uppercase and lowercase letter</p>`;
       errorPassword.nextElementSibling.classList = "fas fa-exclamation-circle";
       loginBtn.disabled = true;
     }
