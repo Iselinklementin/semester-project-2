@@ -1,20 +1,20 @@
-import validateLength from "../components/checkValidation.js";
 import {
-  addTitle,
-  addPrice,
-  addDescription,
-  addVolume,
-  addNutrition,
+  volume,
   descriptionDetails,
+  description,
+  title,
+  price,
+  nutrition,
 } from "../components/elements.js";
-import { inputFeedback } from "../forms/inputFeedback.js";
+import validateLength from "../components/checkValidation.js";
+import { inputFeedback } from "./inputFeedback.js";
 import { MESSAGES } from "../components/messages.js";
 
-export function validateAddForm() {
+export function validateForm() {
   let validationPassed = true;
 
-  addTitle.addEventListener("blur", () => {
-    if (validateLength(addTitle.value.length, 1)) {
+  title.addEventListener("blur", () => {
+    if (validateLength(title.value.length, 1)) {
       inputFeedback(".input-warning__title", MESSAGES.insert_text, "fa-exclamation-circle");
       validationPassed = false;
     } else {
@@ -22,8 +22,8 @@ export function validateAddForm() {
     }
   });
 
-  addPrice.addEventListener("blur", () => {
-    if (isNaN(addPrice.value) || validateLength(addPrice.value, 1)) {
+  price.addEventListener("blur", () => {
+    if (isNaN(price.value) || validateLength(price.value, 1)) {
       inputFeedback(".input-warning__price", MESSAGES.insert_number, "fa-exclamation-circle");
       validationPassed = false;
     } else {
@@ -31,8 +31,8 @@ export function validateAddForm() {
     }
   });
 
-  addDescription.addEventListener("blur", () => {
-    if (validateLength(addDescription.value.length, 1)) {
+  description.addEventListener("blur", () => {
+    if (validateLength(description.value.length, 1)) {
       inputFeedback(".input-warning__description", MESSAGES.insert_text, "fa-exclamation-circle");
       validationPassed = false;
     } else {
@@ -42,15 +42,19 @@ export function validateAddForm() {
 
   descriptionDetails.addEventListener("blur", () => {
     if (validateLength(descriptionDetails.value.length, 1)) {
-      inputFeedback(".input-warning__description-details", MESSAGES.insert_text, "fa-exclamation-circle");
+      inputFeedback(
+        ".input-warning__description-details",
+        MESSAGES.insert_text,
+        "fa-exclamation-circle"
+      );
       validationPassed = false;
     } else {
       inputFeedback(".input-warning__description-details", "", "");
     }
   });
 
-  addNutrition.addEventListener("blur", () => {
-    if (validateLength(addNutrition.value.length, 1)) {
+  nutrition.addEventListener("blur", () => {
+    if (validateLength(nutrition.value.length, 1)) {
       inputFeedback(".input-warning__nutrition", MESSAGES.insert_text, "fa-exclamation-circle");
       validationPassed = false;
     } else {
@@ -58,9 +62,8 @@ export function validateAddForm() {
     }
   });
 
-  addVolume.addEventListener("blur", () => {
-    console.log(addVolume.value);
-    if (addVolume.value === "Choose volume") {
+  volume.addEventListener("blur", () => {
+    if (volume.value === "Choose volume") {
       inputFeedback(".input-warning__volume", MESSAGES.choose_volume, "fa-exclamation-circle");
       validationPassed = false;
     } else {
@@ -70,3 +73,6 @@ export function validateAddForm() {
 
   return validationPassed;
 }
+
+// validateEditForm
+// validateAddForm

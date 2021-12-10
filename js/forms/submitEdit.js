@@ -1,27 +1,27 @@
 import { updateProduct } from "./updateProduct.js";
 import {
-  editVolume,
-  editFeatured,
-  editDescriptionDetail,
-  editDescription,
-  editTitle,
-  editPrice,
-  editNutrition,
+  volume,
+  featuredCheckbox,
+  descriptionDetails,
+  description,
+  title,
+  price,
+  nutrition,
   idInput,
   hiddenImageContainer,
 } from "../components/elements.js";
 
 export async function submitEdit(event) {
   event.preventDefault();
-  const titleValue = `Milky <span>${editTitle.value.trim()}</span>`;
-  const priceValue = editPrice.value.trim();
+  const titleValue = `Milky <span>${title.value.trim()}</span>`;
+  const priceValue = price.value.trim();
   const idValue = idInput.value;
-  const descriptionValue = editDescription.value.trim();
-  const descriptionDetailValue = editDescriptionDetail.value.trim();
-  const nutritionValue = editNutrition.value.trim();
-  const featuredValue = editFeatured.checked;
+  const descriptionValue = description.value.trim();
+  const descriptionDetailValue = descriptionDetails.value.trim();
+  const nutritionValue = nutrition.value.trim();
+  const featuredValue = featuredCheckbox.checked;
   const imageSrc = hiddenImageContainer.value.trim();
-  const volumeValue = editVolume.value;
+  const volumeValue = volume.value;
 
   updateProduct(
     titleValue,

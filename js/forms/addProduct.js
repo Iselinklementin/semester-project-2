@@ -1,5 +1,5 @@
-import { addBtn, uploadedImage, addForm } from "../components/elements.js";
-import { productsUrl, contentTypeAuth } from "../settings/constant.js";
+import { submitBtn, uploadedImage, form } from "../components/elements.js";
+import { PRODUCT_URL, JSON_CONTENT_TYPE_AUTH } from "../settings/api.js";
 import displayMessage from "../components/displayMessage.js";
 const formInputs = document.querySelectorAll(".add-product-wrap .form-control");
 
@@ -27,25 +27,25 @@ export async function addProduct(
   const options = {
     method: "POST",
     body: data,
-    headers: contentTypeAuth,
+    headers: JSON_CONTENT_TYPE_AUTH,
   };
 
   try {
-    const response = await fetch(productsUrl, options);
+    const response = await fetch(PRODUCT_URL, options);
     const json = await response.json();
 
-    formInputs.forEach((input) => {
+    formInputs.forEach(input => {
       input.disabled = true;
     });
 
-    addBtn.innerText = "Adding product...";
+    submitBtn.innerText = "Adding product...";
 
     if (json.error) {
       displayMessage("error", json.message, ".message-container");
     }
 
     if (json.created_at) {
-      addForm.reset();
+      form.reset();
       uploadedImage.src = "";
       console.log(json.created_at);
       displayMessage("success", "Product created", ".message-container");
@@ -53,10 +53,10 @@ export async function addProduct(
   } catch (error) {
     displayMessage("error", MESSAGES.server_error, ".message-container");
   } finally {
-    formInputs.forEach((input) => {
+    formInputs.forEach(input => {
       input.disabled = false;
     });
 
-    addBtn.innerText = "Add product";
+    submitBtn.innerText = "Add product";
   }
 }

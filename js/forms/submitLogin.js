@@ -1,5 +1,5 @@
 import displayMessage from "../components/displayMessage.js";
-import { contentType, loginUrl } from "../settings/constant.js";
+import { JSON_CONTENT_TYPE, LOGIN_URL } from "../settings/api.js";
 import { saveToken, saveUser } from "../settings/storage.js";
 import { MESSAGES } from "../components/messages.js";
 import { emailInput, passwordInput, loginBtn } from "../components/elements.js";
@@ -10,14 +10,14 @@ export async function submitLogin(username, password) {
   const options = {
     method: "POST",
     body: data,
-    headers: contentType,
+    headers: JSON_CONTENT_TYPE,
   };
 
   try {
     emailInput.disabled = true;
     passwordInput.disabled = true;
     loginBtn.innerText = "Signing in...";
-    const response = await fetch(loginUrl, options);
+    const response = await fetch(LOGIN_URL, options);
     const json = await response.json();
 
     if (json.user) {

@@ -1,5 +1,5 @@
 import toggleSidebar from "../layout/nav.js";
-import { productsUrl } from "../settings/constant.js";
+import { PRODUCT_URL } from "../settings/api.js";
 import { productImage } from "../components/elements.js";
 import { getFromStorage } from "../settings/storage.js";
 import { favKey } from "../settings/keys.js";
@@ -34,7 +34,7 @@ changeCartIcon();
 // tok vekk volume, se om det bør være med på designet
 
 (async function fetchProducts() {
-  const response = await fetch(productsUrl + "/" + id);
+  const response = await fetch(PRODUCT_URL + id);
   const result = await response.json();
 
   loader.style.display = "none";

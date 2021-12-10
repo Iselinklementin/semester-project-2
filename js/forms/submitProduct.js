@@ -1,44 +1,53 @@
 import {
-  addTitle,
-  addPrice,
-  addDescription,
-  featuredBox,
-  addImage,
-  addVolume,
-  addNutrition,
+  title,
+  price,
+  description,
+  image,
+  volume,
+  nutrition,
   descriptionDetails,
+  featuredCheckbox,
 } from "../components/elements.js";
 import { MESSAGES } from "../components/messages.js";
 import displayMessage from "../components/displayMessage.js";
 import validateLength from "../components/checkValidation.js";
 import { addProduct } from "./addProduct.js";
-import { validateAddForm } from "./validateAddForm.js";
+import { validateForm } from "./validateForm.js";
 
 export function submitProduct(event) {
   event.preventDefault();
 
   let volumeValue = "";
 
-  if (addVolume.value == 1) {
+  if (volume.value == 1) {
     volumeValue = "Small";
   }
 
-  if (addVolume.value == 2) {
+  if (volume.value == 2) {
     volumeValue = "Large";
   }
 
-  const title = `Milky <span>${addTitle.value.trim()}</span>`;
-  const price = addPrice.value.trim();
-  const description = addDescription.value.trim();
-  const featured = featuredBox.checked;
-  const imageValue = addImage.value.trim();
-  const volume = volumeValue;
+  const titleValue = `Milky <span>${title.value.trim()}</span>`;
+  const priceValue = price.value.trim();
+  const descriptionValue = description.value.trim();
+  const featured = featuredCheckbox.checked;
+  const imageValue = image.value.trim();
+  const volumeSize = volumeValue;
   const description_details = descriptionDetails.value.trim();
-  const nutrition = addNutrition.value.trim();
+  const nutritionValue = nutrition.value.trim();
 
-  if (!validateAddForm || validateLength(addImage.value.length, 1)) {
+  if (!validateForm || validateLength(imageValue.length, 1)) {
     return displayMessage("error", MESSAGES.fill_fields, ".message-container");
   }
 
-  addProduct(title, price, description, featured, imageValue, volume, description_details, nutrition);
+  addProduct(
+    titleValue,
+    priceValue,
+    descriptionValue,
+    featured,
+    imageValue,
+    volumeSize,
+    description_details,
+    nutritionValue
+  );
 }

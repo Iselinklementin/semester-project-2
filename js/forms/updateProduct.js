@@ -1,7 +1,7 @@
 import { MESSAGES } from "../components/messages.js";
 import displayMessage from "../components/displayMessage.js";
-import { productsUrl } from "../settings/constant.js";
-import { contentTypeAuth } from "../settings/constant.js";
+import { PRODUCT_URL } from "../settings/api.js";
+import { JSON_CONTENT_TYPE_AUTH } from "../settings/api.js";
 
 export async function updateProduct(
   title,
@@ -14,7 +14,7 @@ export async function updateProduct(
   volume,
   id
 ) {
-  const url = productsUrl + `/` + id;
+  const url = PRODUCT_URL + id;
   const data = JSON.stringify({
     title: title,
     price: price,
@@ -29,7 +29,7 @@ export async function updateProduct(
   const options = {
     method: "PUT",
     body: data,
-    headers: contentTypeAuth,
+    headers: JSON_CONTENT_TYPE_AUTH,
   };
 
   try {

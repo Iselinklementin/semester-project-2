@@ -1,22 +1,22 @@
 import toggleSidebar from "../layout/nav.js";
-import { productsUrl } from "../settings/constant.js";
+import { PRODUCT_URL } from "../settings/api.js";
 import {
-  editVolume,
-  editFeatured,
-  editDescriptionDetail,
-  editDescription,
-  editForm,
-  editImage,
-  editTitle,
-  editPrice,
-  editNutrition,
+  volume,
+  featuredCheckbox,
+  descriptionDetails,
+  description,
+  form,
+  image,
+  title,
+  price,
+  nutrition,
   idInput,
   hiddenImageContainer,
 } from "../components/elements.js";
 import displayMessage from "../components/displayMessage.js";
 import { MESSAGES } from "../components/messages.js";
 import { submitEdit } from "../forms/submitEdit.js";
-import { validateEditForm } from "../forms/validateEditForm.js";
+import { validateForm } from "../forms/validateForm.js";
 import { deleteProduct } from "../common/deleteProduct.js";
 import { imageUploader } from "../common/imageUploader.js";
 import { fillNavHeart } from "../common/fillNavHeart.js";
@@ -32,16 +32,16 @@ changeCartIcon();
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
-const url = productsUrl + `/` + id;
+const url = PRODUCT_URL + id;
 
 (async function showProduct() {
   try {
     const response = await fetch(url);
     const product = await response.json();
-    const selected = [...editVolume.options];
+    const selected = [...volume.options];
 
     if (product.featured) {
-      editFeatured.checked = true;
+      featuredCheckbox.checked = true;
     }
 
     if (product.volume === "Small") {
@@ -65,21 +65,21 @@ const url = productsUrl + `/` + id;
     const findSpan = originalTitle.split(" ", 3);
     let tasteTitle = stringToHTML(findSpan[1]);
 
-    editImage.src = product.image_url;
-    editTitle.value = tasteTitle.innerText;
-    editPrice.value = product.price;
-    editDescription.value = product.description;
-    editDescriptionDetail.value = product.description_details;
+    image.src = product.image_url;
+    title.value = tasteTitle.innerText;
+    price.value = product.price;
+    description.value = product.description;
+    descriptionDetails.value = product.description_details;
     idInput.value = product.id;
-    editNutrition.value = product.nutrition;
+    nutrition.value = product.nutrition;
     hiddenImageContainer.value = product.image_url;
   } catch (error) {
     displayMessage("error", MESSAGES.server_error, ".message-container");
   }
 })();
 
-editForm.addEventListener("submit", submitEdit);
-validateEditForm();
+form.addEventListener("submit", submitEdit);
+validateForm();
 
 // delete button
 const buttonContainer = document.querySelector(".button-container");

@@ -1,7 +1,7 @@
 import { createHtml } from "../common/createHtml.js";
 import toggleSidebar from "../layout/nav.js";
 import { loadingHtml } from "../common/skeletonLoading.js";
-import { productpageUrl, productsUrl } from "../settings/constant.js";
+import { PRODUCTPAGE_URL, PRODUCT_URL } from "../settings/api.js";
 import { searchFunction } from "../common/searchFunction.js";
 
 const btnfilter = document.querySelectorAll(".filter-btn");
@@ -12,8 +12,8 @@ toggleSidebar();
 const herobanner = document.querySelector(".hero-banner");
 
 (function callApi() {
-  let fetchBanner = fetch(productpageUrl);
-  let fetchProducts = fetch(productsUrl);
+  let fetchBanner = fetch(PRODUCTPAGE_URL);
+  let fetchProducts = fetch(PRODUCT_URL);
 
   Promise.all([fetchBanner, fetchProducts])
     .then(values => Promise.all(values.map(value => value.json())))

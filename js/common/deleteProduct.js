@@ -1,4 +1,4 @@
-import { authorization, productsUrl } from "../settings/constant.js";
+import { AUTH_TOKEN, PRODUCT_URL } from "../settings/api.js";
 import { getFromStorage, saveToStorage } from "../settings/storage.js";
 import { favKey } from "../settings/keys.js";
 import displayMessage from "../components/displayMessage.js";
@@ -13,10 +13,10 @@ export function deleteProduct(id) {
   modalBody.innerHTML = `<p>Are you sure you want to delete this product?</p>`;
 
   confirmBtn.addEventListener("click", async function () {
-    const url = productsUrl + `/` + id;
+    const url = PRODUCT_URL + id;
     const option = {
       method: "DELETE",
-      headers: authorization,
+      headers: AUTH_TOKEN,
     };
 
     try {

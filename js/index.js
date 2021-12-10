@@ -1,5 +1,5 @@
 import toggleSidebar from "./layout/nav.js";
-import { productsUrl, homeUrl } from "./settings/constant.js";
+import { PRODUCT_URL, homeUrl } from "./settings/api.js";
 import { createHtml } from "./common/createHtml.js";
 import { loadingHtml } from "./common/skeletonLoading.js";
 
@@ -12,7 +12,7 @@ const herobanner = document.querySelector(".hero-banner");
 
 (function callApi() {
   let fetchBanner = fetch(homeUrl);
-  let fetchProducts = fetch(productsUrl);
+  let fetchProducts = fetch(PRODUCT_URL);
 
   Promise.all([fetchBanner, fetchProducts])
     .then(values => Promise.all(values.map(value => value.json())))
