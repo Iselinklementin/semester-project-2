@@ -21,9 +21,9 @@ import { deleteProduct } from "../common/deleteProduct.js";
 import { imageUploader } from "../common/imageUploader.js";
 import { fillNavHeart } from "../common/fillNavHeart.js";
 import { changeCartIcon } from "../common/changeCartIcon.js";
+import { missingToken } from "../components/missingToken.js";
 
-// Husk at sidene ikke skal sees hvis de ikke er logget inn
-
+missingToken();
 toggleSidebar();
 imageUploader();
 fillNavHeart();
