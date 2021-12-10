@@ -14,5 +14,3 @@ export const MESSAGES = {
   updated_product: "Success! Product is updated",
   // created_article: "Product created",
 };
-
-// message

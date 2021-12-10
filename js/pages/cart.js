@@ -2,7 +2,7 @@ import { getFromStorage } from "../settings/storage.js";
 import { cartKey } from "../settings/keys.js";
 import { emptyResult } from "../components/emptyResult.js";
 import { createHtml } from "../common/createHtml.js";
-import { loadingCart } from "../common/loadingHtml.js";
+import { loadingCart } from "../common/skeletonLoading.js";
 import { productsInCart, productContainer } from "../components/elements.js";
 import { addQuantityHtml } from "../common/addQuantityHtml.js";
 import { subtotal } from "../common/subtotal.js";

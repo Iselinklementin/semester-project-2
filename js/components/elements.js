@@ -10,6 +10,8 @@ export const errorPassword = document.querySelector(".login-error-password");
 
 // edit product
 
+// DETTE må fikses add/edit
+
 export const editForm = document.querySelector(".edit-form");
 export const editTitle = document.querySelector(".title");
 export const editPrice = document.querySelector(".price");
@@ -24,7 +26,6 @@ export const updateBtn = document.querySelector(".update-btn");
 
 export const hiddenImageContainer = document.querySelector(".hidden-image-input");
 
-// export const addForm = document.querySelector(".add-form");
 export const addImage = document.querySelector(".image");
 export const addTitle = document.querySelector(".title");
 export const addPrice = document.querySelector(".price");
@@ -51,9 +52,6 @@ export const productDescription = document.querySelector(".product-description-d
 export const productNutrition = document.querySelector(".product-nutrition");
 export const loader = document.querySelector(".loader-background");
 
-//
-export const results = document.querySelector(".results");
-
 // favorites
 export const clearBtn = document.querySelector(".clear");
 
@@ -69,3 +67,4 @@ export const productsInCart = document.querySelector(".count-products");
 
 // denne er ny
 export const productContainer = document.querySelector(".product-container");
+export const results = document.querySelector(".results");

@@ -1,5 +1,5 @@
 import { user } from "../settings/storage.js";
-import logOutBtn from "./logOutBtn.js";
+import signout from "./signout.js";
 const navDesktop = document.querySelector(".nav-desktop");
 const navSidebar = document.querySelector(".sidebar-nav-links");
 
@@ -30,7 +30,7 @@ export default function toggleSidebar() {
     } nav-link"><i class="fas fa-chevron-right"></i>Add product</a></li>
     `;
 
-    logOutBtn();
+    signout();
   }
 
   toggleNav.addEventListener("click", event => {

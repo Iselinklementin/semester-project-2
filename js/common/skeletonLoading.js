@@ -22,11 +22,6 @@ export function loadingHtml() {
   }
 }
 
-// export function loadingBanner() {
-//   const herobanner = document.querySelector(".hero-banner");
-//   herobanner.innerHTML = `<p class="placeholder-glow"><span class="placeholder" style="width: 100%; height: 300px; color:white;"></span></p>`;
-// }
-
 export function loadingCart() {
   const productContainer = document.querySelector(".product-container");
   productContainer.innerHTML = `<div class="load-cart">
@@ -50,14 +45,4 @@ export function loadingCart() {
 <span class="placeholder col-4"></span>
 <span class="placeholder col-6"></span>
 </p> */
-}
-
-{
-  /* <h5 class="card-title placeholder-glow">
-<span class="placeholder"></span>
-</h5>
-
-<h5 class="card-title placeholder-glow">
-<span class="placeholder"></span>
-</h5> */
 }

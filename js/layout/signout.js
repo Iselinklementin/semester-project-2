@@ -2,7 +2,7 @@ import { clearKey } from "../settings/storage.js";
 import { tokenKey, userKey } from "../settings/keys.js";
 import { modal, modalHeader, closeBtn, confirmBtn, modalBody } from "../components/elements.js";
 
-export default function logOutBtn() {
+export default function signout() {
   const logoutbtn = document.querySelector(".logout");
 
   if (logoutbtn) {

@@ -1,6 +1,6 @@
 import { createHtml } from "../common/createHtml.js";
 import toggleSidebar from "../layout/nav.js";
-import { loadingHtml } from "../common/loadingHtml.js";
+import { loadingHtml } from "../common/skeletonLoading.js";
 import { productpageUrl, productsUrl } from "../settings/constant.js";
 import { searchFunction } from "../common/searchFunction.js";
 

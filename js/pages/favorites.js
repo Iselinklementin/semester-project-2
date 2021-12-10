@@ -4,7 +4,7 @@ import { favKey } from "../settings/keys.js";
 import { emptyResult } from "../components/emptyResult.js";
 import { createHtml } from "../common/createHtml.js";
 import clearAll from "../buttons/clearFavorites.js";
-import { loadingHtml } from "../common/loadingHtml.js";
+import { loadingHtml } from "../common/skeletonLoading.js";
 
 const productContainer = document.querySelector(".product-container");
 
@@ -17,7 +17,7 @@ export function favourites() {
   createHtml(current);
 
   const favHeart = document.querySelectorAll(".fa-heart");
-  favHeart.forEach((heart) => {
+  favHeart.forEach(heart => {
     // render new html when clicking heart-icon
     heart.addEventListener("click", favourites);
   });

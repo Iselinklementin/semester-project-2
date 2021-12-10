@@ -3,9 +3,6 @@ import { cartKey } from "../settings/keys.js";
 import { changeCartIcon } from "../common/changeCartIcon.js";
 import { modal, modalHeader, closeBtn, confirmBtn, modalBody } from "../components/elements.js";
 
-const closeModal = document.querySelector("#modal-btn-close");
-// const goToCart = document.querySelector("#modal-btn-ok");
-
 export function addToCart() {
   // dette kan vel være en egen funksjon? nevnt mange plasser
   const id = this.dataset.id;
@@ -39,7 +36,7 @@ export function addToCart() {
   modal.style.display = "block";
   modalHeader.innerHTML = `<h2>Added to cart!</h2>`;
   modalBody.innerHTML = `<p>${title} is added to cart!</p>`;
-  closeModal.innerText = `Got it`;
+  closeBtn.innerText = `Got it`;
   confirmBtn.innerText = `Go to cart`;
 
   confirmBtn.addEventListener("click", () => {

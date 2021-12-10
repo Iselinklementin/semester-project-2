@@ -1,7 +1,7 @@
 import toggleSidebar from "./layout/nav.js";
 import { productsUrl, homeUrl } from "./settings/constant.js";
 import { createHtml } from "./common/createHtml.js";
-import { loadingHtml } from "./common/loadingHtml.js";
+import { loadingHtml } from "./common/skeletonLoading.js";
 
 toggleSidebar();
 loadingHtml();
@@ -19,7 +19,6 @@ const herobanner = document.querySelector(".hero-banner");
     .then(finalValues => {
       const homeAPI = finalValues[0];
       const productsAPI = finalValues[1];
-      // herobanner.innerHTML = "";
 
       herobanner.src = homeAPI.hero_banner.url;
       const featuredProducts = productsAPI.filter(product => (product.featured ? true : false));
@@ -33,7 +32,7 @@ const herobanner = document.querySelector(".hero-banner");
       });
 
       function filterNewsFeatured() {
-        // Fiks en remove class sånn som på products
+        // Fiks en remove class sånn som på products?
 
         if (this.nextElementSibling) {
           this.classList.add("active-filter");

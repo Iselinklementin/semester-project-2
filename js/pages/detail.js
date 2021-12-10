@@ -15,7 +15,7 @@ import {
   documentTitle,
   contentContainer,
 } from "../components/elements.js";
-import { addToCart } from "../common/addToCart.js";
+import { addToCart } from "../buttons/addToCart.js";
 import { showPrice } from "../common/showPrice.js";
 import { changeCartIcon } from "../common/changeCartIcon.js";
 // import { giveHeartClass } from "../common/giveHeartClass.js";
