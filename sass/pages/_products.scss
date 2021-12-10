@@ -39,12 +39,6 @@
     }
   }
 
-  .search-products {
-    @include for-desktop {
-      margin: 0;
-    }
-  }
-
   .search-featured {
     @include flex(column, center, center);
 
@@ -69,6 +63,13 @@
     @include for-desktop {
       margin-bottom: 0;
     }
+  }
+
+  .fa-search {
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    z-index: 4;
   }
 
   // kopiert fra home.scss

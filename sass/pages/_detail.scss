@@ -159,9 +159,13 @@
 
   #addToCart-btn {
     background-color: getColour(addToCartBtn);
-    padding: 0.6rem 0.75rem;
+    // padding: 0.6rem 0.75rem;
     width: 100%;
     max-width: 100%;
+
+    &:hover {
+      background-color: getColour(shopBtnHover);
+    }
 
     @include for-desktop {
       max-width: 200px;

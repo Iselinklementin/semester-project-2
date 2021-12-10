@@ -85,7 +85,7 @@ validateEditForm();
 const buttonContainer = document.querySelector(".button-container");
 buttonContainer.insertAdjacentHTML(
   "afterbegin",
-  `<button type="button" class="delete delete-btn btn btn-primary"><i class="fas fa-trash-alt"></i> Delete</button>`
+  `<button type="button" class="delete delete-btn btn btn-secondary"><i class="fas fa-trash-alt"></i> Delete</button>`
 );
 const deleteBtn = document.querySelector("button.delete");
 deleteBtn.onclick = function () {

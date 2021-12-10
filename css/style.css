@@ -219,9 +219,9 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 300px;
+  width: 200px;
   min-height: 300px;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .fa-sign-out-alt {
@@ -599,7 +599,8 @@ h2 {
   font-family: "Roboto Slab", serif;
 }
 
-.btn-primary, .home .to-productsite-container .to-products-wrap a {
+.btn-primary, .home .to-productsite-container .to-products-wrap a,
+.btn-secondary {
   background-color: #82b447;
   border: none;
   font-weight: 500;
@@ -608,12 +609,20 @@ h2 {
   padding: 8px 15px;
 }
 
-.btn-primary:hover, .home .to-productsite-container .to-products-wrap a:hover, .btn-primary:active, .home .to-productsite-container .to-products-wrap a:active, .btn-primary:focus, .home .to-productsite-container .to-products-wrap a:focus {
+.btn-primary:hover, .home .to-productsite-container .to-products-wrap a:hover, .btn-primary:active, .home .to-productsite-container .to-products-wrap a:active, .btn-primary:focus, .home .to-productsite-container .to-products-wrap a:focus,
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus {
   background-color: #000000;
 }
 
-.btn-primary:disabled, .home .to-productsite-container .to-products-wrap a:disabled {
+.btn-primary:disabled, .home .to-productsite-container .to-products-wrap a:disabled,
+.btn-secondary:disabled {
   background-color: #82b447;
+}
+
+.btn-secondary {
+  background-color: #576e82;
 }
 
 footer {
@@ -1006,19 +1015,6 @@ footer .logo-container-footer .logo-footer {
   }
 }
 
-.home .featured .input-group {
-  width: 300px;
-  margin-right: 1rem;
-  margin-bottom: 0;
-}
-
-.home .featured .input-group .fa-search {
-  position: absolute;
-  right: 10px;
-  top: 11px;
-  z-index: 4;
-}
-
 .home .benefits-container {
   margin-bottom: 2rem;
   margin-top: 0rem;
@@ -1354,12 +1350,6 @@ footer .logo-container-footer .logo-footer {
   }
 }
 
-@media (min-width: 1200px) {
-  .product-page-wrapper .search-products {
-    margin: 0;
-  }
-}
-
 .product-page-wrapper .search-featured {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1408,6 +1398,13 @@ footer .logo-container-footer .logo-footer {
   .product-page-wrapper .search-products {
     margin-bottom: 0;
   }
+}
+
+.product-page-wrapper .fa-search {
+  position: absolute;
+  right: 10px;
+  top: 11px;
+  z-index: 4;
 }
 
 .product-page-wrapper .filter-btns {
@@ -1809,7 +1806,7 @@ footer .logo-container-footer .logo-footer {
 }
 
 .editpage-wrapper .button-container button {
-  padding-right: 15px;
+  padding-right: 25px;
 }
 
 .editpage-wrapper .button-container button:first-child {
@@ -1984,15 +1981,9 @@ footer .logo-container-footer .logo-footer {
 }
 
 .cartpage-wrapper .btn-secondary {
-  background-color: #c6d9de;
-  color: black;
   padding: 0.6rem 0.75rem;
   width: 100%;
   max-width: 100%;
-  margin: 1rem 0 4rem 0;
-  border: none;
-  font-weight: 500;
-  text-transform: uppercase;
 }
 
 .cartpage-wrapper .remove {
@@ -2072,7 +2063,6 @@ footer .logo-container-footer .logo-footer {
   .cartpage-wrapper .buttons .btn-secondary {
     width: 200px;
     margin: 1rem;
-    display: block;
     margin-top: 3rem;
   }
   .cartpage-wrapper .buttons .btn-primary, .cartpage-wrapper .buttons .home .to-productsite-container .to-products-wrap a, .home .to-productsite-container .to-products-wrap .cartpage-wrapper .buttons a {
@@ -2080,6 +2070,9 @@ footer .logo-container-footer .logo-footer {
         -ms-flex-order: 2;
             order: 2;
     margin-right: 0;
+  }
+  .cartpage-wrapper .buttons .btn-primary:hover, .cartpage-wrapper .buttons .home .to-productsite-container .to-products-wrap a:hover, .home .to-productsite-container .to-products-wrap .cartpage-wrapper .buttons a:hover {
+    background-color: #a01158;
   }
   .cartpage-wrapper .wrap-content,
   .cartpage-wrapper .header-container {
@@ -2325,9 +2318,12 @@ footer .logo-container-footer .logo-footer {
 
 .detailpage-wrapper #addToCart-btn {
   background-color: #db1275;
-  padding: 0.6rem 0.75rem;
   width: 100%;
   max-width: 100%;
+}
+
+.detailpage-wrapper #addToCart-btn:hover {
+  background-color: #a01158;
 }
 
 @media (min-width: 1200px) {

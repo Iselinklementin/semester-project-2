@@ -10,7 +10,8 @@
 //   }
 // }
 
-.btn-primary {
+.btn-primary,
+.btn-secondary {
   background-color: getColour(secondary);
   border: none;
   font-weight: 500;
@@ -28,4 +29,8 @@
   &:disabled {
     background-color: getColour(secondary);
   }
+}
+
+.btn-secondary {
+  background-color: getColour(inputColor);
 }
