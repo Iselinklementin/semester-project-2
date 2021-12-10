@@ -67,8 +67,9 @@
 // Social Media Icons
 
 .social-media-wrapper {
-  @include flex(row, center, center);
+  @include flex(row, flex-start, center);
   padding-bottom: 5rem;
+  padding-left: 10px;
 
   p {
     margin-top: 1rem;
@@ -98,20 +99,6 @@
       margin: 1rem;
       font-size: 1.5rem;
     }
-  }
-}
-
-// Sidebar search
-
-.input-group {
-  max-width: 85%;
-  margin-bottom: 2rem;
-
-  .fa-search {
-    position: absolute;
-    right: 10px;
-    top: 11px;
-    z-index: 4;
   }
 }
 

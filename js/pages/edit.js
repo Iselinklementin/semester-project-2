@@ -19,9 +19,15 @@ import { submitEdit } from "../forms/submitEdit.js";
 import { validateEditForm } from "../forms/validateEditForm.js";
 import { deleteProduct } from "../common/deleteProduct.js";
 import { imageUploader } from "../common/imageUploader.js";
+import { fillNavHeart } from "../common/fillNavHeart.js";
+import { changeCartIcon } from "../common/changeCartIcon.js";
+
+// Husk at sidene ikke skal sees hvis de ikke er logget inn
 
 toggleSidebar();
 imageUploader();
+fillNavHeart();
+changeCartIcon();
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);

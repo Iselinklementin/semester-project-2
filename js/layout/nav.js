@@ -1,24 +1,14 @@
-// import { favKey } from "../settings/keys.js";
-// import { getFromStorage } from "../settings/storage.js";
-
 import { user } from "../settings/storage.js";
 import logOutBtn from "./logOutBtn.js";
 const navDesktop = document.querySelector(".nav-desktop");
 const navSidebar = document.querySelector(".sidebar-nav-links");
 
 // open sidebar on mobile
+// and extra options when signed in
 export default function toggleSidebar() {
   const { pathname } = document.location;
-  // let authLink = `<li><a href="/login.html" class="${pathname === "/login.html" ? "active" : ""}">Login</a></li>`;
-
   const toggleNav = document.querySelector(".sidebar-nav-toggle");
   const hamburger = toggleNav.children[0];
-
-  // if (user) {
-  //   authLink = `<li><a href="/add.html" class="d-none d-lg-block ${
-  //     pathname === "/add.html" ? "active" : ""
-  //   }">Add product</a></li>`;
-  // }
 
   if (user) {
     navDesktop.innerHTML = `
@@ -43,7 +33,7 @@ export default function toggleSidebar() {
     logOutBtn();
   }
 
-  toggleNav.addEventListener("click", (event) => {
+  toggleNav.addEventListener("click", event => {
     event.preventDefault();
     const wrapper = document.querySelector(".sidebar-nav-wrapper");
     wrapper.classList.toggle("show");

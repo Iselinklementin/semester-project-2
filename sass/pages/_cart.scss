@@ -26,41 +26,14 @@
   .quantity {
     position: absolute;
     left: 35%;
-    bottom: 4%;
-    height: 115px;
+    // bottom: 4%;
+    bottom: 14%;
+    height: 90px;
     @include flex(column, space-between, start);
 
     @include for-tablet {
-      left: 33%;
+      left: 31%;
     }
-
-    .number {
-      display: flex;
-      height: 43px;
-
-      .minus,
-      .plus {
-        padding: 10px 15px;
-        cursor: pointer;
-        background-color: white;
-        line-height: 1.5;
-        border-radius: 0.25rem;
-      }
-
-      .input-quantity {
-        width: 50px;
-        text-align: center;
-        border: none;
-
-        &:disabled {
-          background-color: white;
-        }
-      }
-    }
-
-    // .fa-trash-alt {
-    //   position: relative;
-    // }
   }
 
   .product-container {
@@ -153,13 +126,25 @@
 
   .remove {
     font-style: italic;
-    color: getColour(borderContrast);
     cursor: pointer;
+    color: getColour(borderContrast);
+    padding: 0;
+
+    &:hover {
+      scale: 1.05;
+      background-color: rgba(255, 255, 255, 0.426);
+    }
+
+    @include for-laptop {
+      padding: 10px 25px;
+    }
   }
 
   .row {
     width: 100%;
   }
+
+  // dette er laptop endringer
 
   @include for-laptop {
     .product-link {
@@ -171,7 +156,7 @@
       justify-content: space-between;
       align-items: baseline;
       left: 49%;
-      bottom: 16%;
+      bottom: 28%;
       width: 30%;
 
       .number {
@@ -220,33 +205,3 @@
     padding-bottom: 2rem;
   }
 }
-
-// same as detail?
-
-// .minus,
-// .plus {
-//   padding: 10px;
-//   cursor: pointer;
-// }
-
-// .card img {
-//   width: 200px;
-//   max-width: 200px;
-// }
-
-// .col {
-//   flex: none;
-//   max-width: 700px;
-// }
-
-// .products-wrapper .product-info {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   align-items: baseline;
-//   margin-top: 1rem;
-//   padding: 0 10px;
-//   position: absolute;
-//   top: 20%;
-//   right: 20%;
-// }

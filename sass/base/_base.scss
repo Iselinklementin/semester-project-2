@@ -105,11 +105,17 @@ footer {
     @include for-laptop {
       font-size: 1.4rem;
     }
+
+    &:hover {
+      scale: 1.05;
+      cursor: pointer;
+    }
   }
 
   .favorite-heart {
-    right: 13%;
-    top: 3%;
+    right: 8%;
+    top: 2%;
+    padding: 10px;
 
     @include for-laptop {
       right: 10%;
@@ -117,11 +123,22 @@ footer {
   }
 
   .fa-edit {
-    left: 13%;
-    top: 3%;
+    display: none;
 
-    @include for-laptop {
-      left: 10%;
+    @include for-desktop {
+      display: block;
+      padding: 10px;
+      bottom: 22%;
+      right: 9%;
+      color: #515966;
+    }
+
+    // @include for-laptop {
+    //   right: 9%;
+    // }
+
+    &:hover {
+      color: getColour(borderContrast);
     }
   }
 
@@ -192,4 +209,44 @@ footer {
 
 .loadspan {
   background-color: #b3bcc0;
+}
+
+// quantity buttons
+
+.number {
+  display: flex;
+  height: 43px;
+
+  &:hover {
+    scale: 1.05;
+  }
+
+  .minus,
+  .plus {
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: white;
+    line-height: 1.5;
+
+    &:hover {
+      scale: 1.02;
+    }
+
+    .minus {
+      border-radius: 0.25rem 0 0 0.25rem;
+    }
+
+    .plus {
+      border-radius: 0 0.25rem 0.25rem 0;
+    }
+  }
+
+  .input-quantity {
+    width: 50px;
+    text-align: center;
+    border: none;
+    &:disabled {
+      background-color: white;
+    }
+  }
 }

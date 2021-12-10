@@ -1,14 +1,13 @@
 import { authorization, productsUrl } from "../settings/constant.js";
-import { getFromStorage } from "../settings/storage.js";
+import { getFromStorage, saveToStorage } from "../settings/storage.js";
 import { favKey } from "../settings/keys.js";
 import displayMessage from "../components/displayMessage.js";
 import { MESSAGES } from "../components/messages.js";
 import { modal, modalHeader, modalBody, confirmBtn } from "../components/elements.js";
 
-export function deleteProduct(id) {
-  // MODAL
-  // sjekk om den fungerer
+const currentFav = getFromStorage(favKey);
 
+export function deleteProduct(id) {
   modal.style.display = "block";
   modalHeader.innerHTML = `<p>Delete product</p>`;
   modalBody.innerHTML = `<p>Are you sure you want to delete this product?</p>`;
@@ -25,11 +24,12 @@ export function deleteProduct(id) {
       const json = await response.json();
 
       location.href = "products.html";
-      currentFav = getFromStorage(favKey);
 
-      const newFavourites = currentFav.filter((product) => parseInt(product.id) !== json.id);
+      const newFavourites = currentFav.filter(product => parseInt(product.id) !== json.id);
+      console.log(newFavourites);
       saveToStorage(favKey, newFavourites);
     } catch (error) {
+      console.log(error);
       displayMessage("error", MESSAGES.server_error, ".message-container");
     }
   });

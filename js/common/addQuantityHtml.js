@@ -8,9 +8,9 @@ export function addQuantityHtml() {
   const productCards = document.querySelectorAll(".col");
   const currentItems = getFromStorage(cartKey);
 
-  productCards.forEach((product) => {
+  productCards.forEach(product => {
     let id = product.firstElementChild.getAttribute("data-id");
-    currentItems.forEach((item) => {
+    currentItems.forEach(item => {
       if (item.id === id) {
         product.insertAdjacentHTML(
           "beforeend",
@@ -20,7 +20,7 @@ export function addQuantityHtml() {
                 <input type="text" disabled="true" data-id="${id}" class="input-quantity" value="${item.quantity}"/>
                 <span class="plus" data-id="${id}">+</span>
               </div>
-              <p class="remove" data-id="${id}">Remove</p>
+              <button class="remove btn" data-id="${id}">Remove</button>
           </div>`
         );
       }
@@ -31,14 +31,14 @@ export function addQuantityHtml() {
   const plus = document.querySelectorAll(".plus");
   const removeItem = document.querySelectorAll(".remove");
 
-  minus.forEach((decrease) => {
+  minus.forEach(decrease => {
     decrease.addEventListener("click", decreaseAmount);
   });
-  plus.forEach((increase) => {
+  plus.forEach(increase => {
     increase.addEventListener("click", increaseAmount);
   });
 
-  removeItem.forEach((deleteItem) => {
+  removeItem.forEach(deleteItem => {
     deleteItem.addEventListener("click", deleteFromCart);
   });
 }

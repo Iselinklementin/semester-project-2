@@ -4,9 +4,6 @@ nav {
   z-index: 5;
   position: relative;
 
-  // .nav-links-top-right ul {
-  //   position: relative;
-  // }
   @include for-laptop {
     height: 120px;
   }
@@ -20,9 +17,11 @@ nav {
       background-image: url("../../images/logo.svg");
       background-repeat: no-repeat;
       width: 90px;
-      height: 36px;
+      // height: 36px;
+      height: 28px;
       z-index: 1;
-      top: 35px;
+      // top: 30px;
+      top: 32px;
       position: absolute;
       left: 0;
       right: 0;
@@ -76,7 +75,7 @@ nav {
       }
     }
   }
-  // finn ut hvorfor jeg har 2 classer her. Mulig jeg kan fjerne hele nav-html?
+
   .nav-desktop {
     position: relative;
   }
@@ -95,8 +94,8 @@ nav {
       position: relative;
       z-index: 2;
       color: getColour(dark);
-      top: 25px;
-      padding: 0.5rem 0.5rem;
+      top: 27px;
+      padding: 0.5rem 0.6rem;
 
       i {
         font-size: 1.4rem;
@@ -113,14 +112,8 @@ nav {
 
       @include for-laptop {
         padding-top: 0.5rem, 1.5rem;
+        top: 43px;
       }
-    }
-
-    // Nav desktop search
-
-    .input-group {
-      width: 200px;
-      margin: 2.5rem 1rem 0 0;
     }
   }
 }
