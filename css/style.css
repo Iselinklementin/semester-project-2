@@ -640,7 +640,7 @@ footer {
       -ms-flex-align: center;
           align-items: center;
   background-color: #c6d9de;
-  height: 100px;
+  min-height: 100px;
   width: 100%;
   -ms-flex-negative: 0;
       flex-shrink: 0;
@@ -1965,6 +1965,7 @@ footer .logo-container-footer .logo-footer {
 
 .cartpage-wrapper .subtotal .buttons {
   width: 100%;
+  margin-bottom: 4rem;
 }
 
 .cartpage-wrapper .subtotal p {

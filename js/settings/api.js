@@ -19,3 +19,5 @@ export const JSON_CONTENT_TYPE_AUTH = {
   "Content-type": "application/json",
   Authorization: `Bearer ${token}`,
 };
+
+// export const POST = "POST";
