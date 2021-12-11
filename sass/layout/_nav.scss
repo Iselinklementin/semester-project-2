@@ -102,8 +102,7 @@ nav {
       }
 
       &:hover {
-        scale: 1.1;
-        color: getColour(dark);
+        color: getColour(borderContrast);
       }
 
       @include for-phone {

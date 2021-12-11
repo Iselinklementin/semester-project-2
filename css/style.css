@@ -123,7 +123,10 @@ footer {
 }
 
 .products-wrapper .col:hover {
-  scale: 1.01;
+  -webkit-box-shadow: #dbdbdb 2px 1px 5px 2px;
+          box-shadow: #dbdbdb 2px 1px 5px 2px;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .products-wrapper .favorite-heart,
@@ -429,8 +432,7 @@ nav .nav-links-top-right a i {
 }
 
 nav .nav-links-top-right a:hover {
-  scale: 1.1;
-  color: #000000;
+  color: #bd8320;
 }
 
 @media (min-width: 576px) {
