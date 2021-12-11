@@ -42,15 +42,18 @@
   }
 
   .col {
-    // border: blue solid thin;
-    border-bottom: black solid thin;
+    padding: 0;
     padding-bottom: 2rem;
+
+    &:hover {
+      box-shadow: none;
+      border-bottom: 1px solid black;
+    }
   }
 
   .card {
     background-color: transparent;
     width: 40%;
-    // border: none;
 
     &-title {
       max-width: 100%;
@@ -79,15 +82,14 @@
   }
 
   .product-link {
-    // border: coral solid thin;
     @include flex(row, flex-start, start);
   }
 
   .subtotal {
     @include flex(row, space-between, center);
     flex-wrap: wrap;
-    // margin-top: -1rem;
     padding-top: 2rem;
+    border-top: black solid thin;
 
     // buttons er flere plasser her i fila
 
@@ -122,15 +124,19 @@
     font-style: italic;
     cursor: pointer;
     color: getColour(borderContrast);
-    padding: 0;
+    padding: 0.5rem 2rem 0 0;
 
     &:hover {
-      scale: 1.05;
-      background-color: rgba(255, 255, 255, 0.426);
+      transform: scale(1.05);
     }
 
     @include for-laptop {
       padding: 10px 25px;
+
+      &:hover {
+        transform: scale(1.05);
+        background-color: rgba(255, 255, 255, 0.62);
+      }
     }
   }
 
@@ -168,7 +174,6 @@
 
     .subtotal {
       margin-bottom: 4rem;
-      border-top: black solid thin;
       // padding-top: 4rem;
     }
 

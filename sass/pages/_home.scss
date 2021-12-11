@@ -142,26 +142,7 @@
     @include for-laptop {
       margin-top: 2rem;
     }
-
-    // .input-group {
-    //   width: 300px;
-    //   margin-right: 1rem;
-    //   margin-bottom: 0;
-
-    //   .fa-search {
-    //     position: absolute;
-    //     right: 10px;
-    //     top: 11px;
-    //     z-index: 4;
-    //     border: red solid thin;
-    //   }
-    // }
   }
-  // .col {
-  //   position: relative;
-  // }
-
-  //
 
   .benefits-container {
     margin-bottom: 2rem;
@@ -216,7 +197,6 @@
       text-transform: uppercase;
       font-weight: 500;
       border-bottom: getColour(borderContrast) 2px solid;
-      // background-color: red;
     }
 
     figure {
@@ -306,7 +286,7 @@
       @include flex(column, center, center);
 
       &:hover {
-        scale: 1.05;
+        transform: scale(1.05);
       }
 
       i {
@@ -324,7 +304,7 @@
 
     &:hover,
     &:focus {
-      scale: 1.05;
+      transform: scale(1.05);
     }
 
     .splat {

@@ -13,7 +13,7 @@ export default function handleFavourites() {
   const featured = this.dataset.featured;
   const favourites = getFromStorage(favKey);
   const productExists = favourites.find(product => product.id === id);
-
+  console.log(favourites);
   if (!productExists) {
     const product = {
       id,

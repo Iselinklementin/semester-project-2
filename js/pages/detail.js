@@ -51,7 +51,7 @@ changeCartIcon();
 
   contentContainer.innerHTML += `<div class="title-container">
                                   <h1 class="title">${result.title}</h1>
-                                  <a href="edit.html?id=${result.id}"><i class="far fa-edit"></i></a>
+                                  <a href="edit.html?id=${result.id}"><i class="fas fa-edit"></i></a>
                                   <p>${result.description}</p>
                                 </div>
                                   

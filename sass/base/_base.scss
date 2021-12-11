@@ -79,6 +79,7 @@ footer {
   a {
     text-decoration: none;
     color: getColour(dark);
+    // box-shadow: rgb(219, 219, 219) 2px 1px 5px 2px;
   }
 
   .product-info {
@@ -89,10 +90,12 @@ footer {
 
   .col {
     position: relative;
+    padding: 1rem;
 
     &:hover {
-      box-shadow: rgb(219, 219, 219) 2px 1px 5px 2px;
-      transform: scale(1.05);
+      // box-shadow: rgb(219, 219, 219) 2px 1px 5px 6px;
+      box-shadow: #dbdbdb 0px 2px 10px 2px;
+      transform: scale(1.01);
     }
   }
 
@@ -101,41 +104,32 @@ footer {
     position: absolute;
     z-index: 1;
     font-size: 1.2rem;
-
-    @include for-laptop {
-      font-size: 1.4rem;
-    }
+    padding: 15px;
 
     &:hover {
-      scale: 1.05;
+      transform: scale(1.05);
       cursor: pointer;
     }
   }
 
   .favorite-heart {
     right: 8%;
-    top: 2%;
-    padding: 10px;
+    top: 4%;
 
     @include for-laptop {
       right: 10%;
+      font-size: 1.4rem;
     }
   }
 
   .fa-edit {
     display: none;
 
-    @include for-desktop {
+    @include for-tablet {
       display: block;
-      padding: 10px;
-      bottom: 22%;
-      right: 9%;
-      color: #515966;
+      bottom: 24%;
+      right: 0%;
     }
-
-    // @include for-laptop {
-    //   right: 9%;
-    // }
 
     &:hover {
       color: getColour(borderContrast);
@@ -218,7 +212,7 @@ footer {
   height: 43px;
 
   &:hover {
-    scale: 1.05;
+    transform: scale(1.05);
   }
 
   .minus,
@@ -229,7 +223,7 @@ footer {
     line-height: 1.5;
 
     &:hover {
-      scale: 1.02;
+      transform: scale(1.02);
     }
 
     .minus {

@@ -16,7 +16,7 @@ export default class Block {
               <i class="far fa-heart favorite-heart ${this.cssClass}" data-id="${this.id}" data-title="${this.title}" 
               data-price="${this.price}" data-description="${this.description}" data-volume="${this.volume}" 
               data-featured="${this.featured}" data-image_url="${this.image_url}"></i>
-              <a href="edit.html?id=${this.id}"><i class="far fa-edit"></i></a>
+              <a href="edit.html?id=${this.id}"><i class="fas fa-edit"></i></a>
               
               <a href="detail.html?id=${this.id}" class="product-link">
                 <div class="card">

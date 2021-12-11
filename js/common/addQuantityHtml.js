@@ -10,7 +10,12 @@ export function addQuantityHtml() {
 
   productCards.forEach(product => {
     let id = product.firstElementChild.getAttribute("data-id");
+
     currentItems.forEach(item => {
+      // if (!item.quantity) {
+      //   item.quantity = 1;
+      // }
+
       if (item.id === id) {
         product.insertAdjacentHTML(
           "beforeend",

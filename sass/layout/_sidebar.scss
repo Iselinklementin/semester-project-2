@@ -58,7 +58,7 @@
     padding-left: 0;
 
     &:hover {
-      scale: 1.05;
+      transform: scale(1.05);
       color: getColour(dark);
     }
   }
@@ -89,7 +89,7 @@
 
       &:hover {
         cursor: pointer;
-        scale: 1.1;
+        transform: scale(1.05);
       }
     }
 

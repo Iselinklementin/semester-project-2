@@ -47,7 +47,6 @@ export async function addProduct(
     if (json.created_at) {
       form.reset();
       uploadedImage.src = "";
-      console.log(json.created_at);
       displayMessage("success", "Product created", ".message-container");
     }
   } catch (error) {
