@@ -5,6 +5,7 @@ import displayMessage from "../components/displayMessage.js";
 import { MESSAGES } from "../components/messages.js";
 import { confirmBtn } from "../components/elements.js";
 import { openModal } from "./openModal.js";
+import { ERROR, STATUS_ELEMENT } from "../components/misc.js";
 
 const currentFav = getFromStorage(FAV_STORAGE_KEY);
 
@@ -28,7 +29,7 @@ export function deleteProduct(id) {
       saveToStorage(FAV_STORAGE_KEY, newFavourites);
     } catch (error) {
       console.log(error);
-      displayMessage("error", MESSAGES.server_error, ".message-container");
+      displayMessage(ERROR, MESSAGES.server_error, STATUS_ELEMENT);
     }
   });
 }

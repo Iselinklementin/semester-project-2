@@ -13,6 +13,7 @@ import displayMessage from "../components/displayMessage.js";
 import validateLength from "../components/checkValidation.js";
 import { addProduct } from "./addProduct.js";
 import { validateForm } from "./validateForm.js";
+import { ERROR, STATUS_ELEMENT } from "../components/misc.js";
 
 export function submitProduct(event) {
   event.preventDefault();
@@ -39,7 +40,7 @@ export function submitProduct(event) {
   const nutritionValue = nutrition.value.trim();
 
   if (!validateForm || validateLength(imageValue.length, 1)) {
-    return displayMessage("error", MESSAGES.fill_fields, ".message-container");
+    return displayMessage(ERROR, MESSAGES.fill_fields, STATUS_ELEMENT);
   }
 
   addProduct(

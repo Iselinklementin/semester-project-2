@@ -4,6 +4,7 @@ import { PRODUCT_URL, PUT } from "../settings/api.js";
 import { JSON_CONTENT_TYPE_AUTH } from "../settings/api.js";
 import { getFromStorage, saveToStorage } from "../settings/storage.js";
 import { CART_STORAGE_KEY, FAV_STORAGE_KEY } from "../settings/keys.js";
+import { ERROR, STATUS_ELEMENT, SUCCESS } from "../components/misc.js";
 
 let currentFav = getFromStorage(FAV_STORAGE_KEY);
 let currentCart = getFromStorage(CART_STORAGE_KEY);
@@ -43,7 +44,7 @@ export async function updateProduct(
 
     if (json.error) {
       console.log(error);
-      return displayMessage("error", json.message, ".message-container");
+      return displayMessage(ERROR, json.message, STATUS_ELEMENT);
     }
 
     if (json.updated_at) {
@@ -71,10 +72,10 @@ export async function updateProduct(
       newFavourites.push(json);
       saveToStorage(FAV_STORAGE_KEY, newFavourites);
 
-      displayMessage("success", MESSAGES.updated_product, ".message-container");
+      displayMessage(SUCCESS, MESSAGES.updated_product, STATUS_ELEMENT);
     }
   } catch (error) {
     console.log(error);
-    displayMessage("error", MESSAGES.server_error, ".message-container");
+    displayMessage(ERROR, MESSAGES.server_error, STATUS_ELEMENT);
   }
 }

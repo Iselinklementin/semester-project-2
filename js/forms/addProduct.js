@@ -2,6 +2,7 @@ import { submitBtn, uploadedImage, form, formInputs } from "../components/elemen
 import { PRODUCT_URL, JSON_CONTENT_TYPE_AUTH, POST } from "../settings/api.js";
 import displayMessage from "../components/displayMessage.js";
 import { MESSAGES } from "../components/messages.js";
+import { ERROR, STATUS_ELEMENT, SUCCESS } from "../components/misc.js";
 
 export async function addProduct(
   title,
@@ -41,16 +42,16 @@ export async function addProduct(
     submitBtn.innerText = MESSAGES.adding;
 
     if (json.error) {
-      displayMessage("error", json.message, ".message-container");
+      displayMessage(ERROR, json.message, STATUS_ELEMENT);
     }
 
     if (json.created_at) {
       form.reset();
       uploadedImage.src = "";
-      displayMessage("success", MESSAGES.updated_product, ".message-container");
+      displayMessage(SUCCESS, MESSAGES.updated_product, STATUS_ELEMENT);
     }
   } catch (error) {
-    displayMessage("error", MESSAGES.server_error, ".message-container");
+    displayMessage(ERROR, MESSAGES.server_error, STATUS_ELEMENT);
   } finally {
     formInputs.forEach((input) => {
       input.disabled = false;

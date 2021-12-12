@@ -3,6 +3,7 @@ import { JSON_CONTENT_TYPE, LOGIN_URL, POST } from "../settings/api.js";
 import { saveToken, saveUser } from "../settings/storage.js";
 import { MESSAGES } from "../components/messages.js";
 import { emailInput, passwordInput, loginBtn } from "../components/elements.js";
+import { ERROR, STATUS_ELEMENT } from "../components/misc.js";
 
 export async function submitLogin(username, password) {
   const data = JSON.stringify({ identifier: username, password: password });
@@ -27,11 +28,11 @@ export async function submitLogin(username, password) {
     }
 
     if (json.error) {
-      displayMessage("error", MESSAGES.incorrect, ".message-container");
+      displayMessage(ERROR, MESSAGES.incorrect, STATUS_ELEMENT);
     }
   } catch (error) {
     console.log(error);
-    displayMessage("error", MESSAGES.server_error, ".message-container");
+    displayMessage(ERROR, MESSAGES.server_error, STATUS_ELEMENT);
   } finally {
     emailInput.disabled = false;
     passwordInput.disabled = false;

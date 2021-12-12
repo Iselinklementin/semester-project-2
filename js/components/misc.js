@@ -8,3 +8,6 @@ export const ALERT = {
 };
 
 export const WARNING = "fa-exclamation-circle";
+export const ERROR = "error";
+export const SUCCESS = "success";
+export const STATUS_ELEMENT = ".message-container";

@@ -24,6 +24,7 @@ import { imageUploader } from "../common/imageUploader.js";
 import { fillNavHeart } from "../common/fillNavHeart.js";
 import { changeCartIcon } from "../common/changeCartIcon.js";
 import { missingToken } from "../components/missingToken.js";
+import { ERROR, STATUS_ELEMENT } from "../components/misc.js";
 
 missingToken();
 toggleSidebar();
@@ -69,7 +70,7 @@ const url = PRODUCT_URL + id;
     nutrition.value = product.nutrition;
     hiddenImageContainer.value = product.image_url;
   } catch (error) {
-    displayMessage("error", MESSAGES.server_error, ".message-container");
+    displayMessage(ERROR, MESSAGES.server_error, STATUS_ELEMENT);
   }
 })();
 
