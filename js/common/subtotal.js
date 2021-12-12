@@ -1,10 +1,10 @@
 import { getFromStorage } from "../settings/storage.js";
-import { cartKey } from "../settings/keys.js";
+import { CART_STORAGE_KEY } from "../settings/keys.js";
 import { emptyResult } from "../components/emptyResult.js";
 
 export function subtotal() {
   const sum = document.querySelector(".sum");
-  const currentCart = getFromStorage(cartKey);
+  const currentCart = getFromStorage(CART_STORAGE_KEY);
   let cost = 0;
 
   if (currentCart.length === 0) {

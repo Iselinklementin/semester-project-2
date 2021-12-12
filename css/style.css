@@ -1772,11 +1772,20 @@ footer .logo-container-footer .logo-footer {
   position: relative;
 }
 
-.detailpage-wrapper .image-container .favorite-icon {
+.detailpage-wrapper .fa-edit,
+.detailpage-wrapper .favorite-icon {
+  padding: 15px;
   position: absolute;
-  right: 5%;
-  top: 5%;
+  right: 3%;
+  top: 3%;
   font-size: 1.4rem;
+  cursor: pointer;
+  color: #000000;
+}
+
+.detailpage-wrapper .fa-edit:hover,
+.detailpage-wrapper .favorite-icon:hover {
+  transform: scale(1.05);
 }
 
 .detailpage-wrapper .text-content-container {
@@ -1804,14 +1813,6 @@ footer .logo-container-footer .logo-footer {
   font-weight: 600;
   font-size: 2.3rem;
   display: block;
-}
-
-.detailpage-wrapper .text-content-container .title-container .fa-edit {
-  position: absolute;
-  right: 5%;
-  top: 5%;
-  font-size: 1.4rem;
-  color: black;
 }
 
 .detailpage-wrapper .text-content-container .buy-container {

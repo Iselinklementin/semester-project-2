@@ -1,6 +1,7 @@
 import { TOKEN_STORAGE_KEY, USER_STORAGE_KEY } from "./keys.js";
-export const token = getToken();
-export const user = getUsername();
+
+export const TOKEN_STORAGE = getToken();
+export const USER_STORAGE = getUsername();
 
 export function saveToStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value));

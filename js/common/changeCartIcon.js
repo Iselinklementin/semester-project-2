@@ -1,9 +1,9 @@
-import { cartKey } from "../settings/keys.js";
+import { CART_STORAGE_KEY } from "../settings/keys.js";
 import { getFromStorage } from "../settings/storage.js";
 
 export function changeCartIcon() {
   const shoppingCart = document.querySelector(".cart-icon");
-  const cartStorage = getFromStorage(cartKey);
+  const cartStorage = getFromStorage(CART_STORAGE_KEY);
 
   if (cartStorage.length) {
     shoppingCart.classList.remove("fa-shopping-cart");

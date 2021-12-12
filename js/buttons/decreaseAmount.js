@@ -1,14 +1,16 @@
-import { modal, modalHeader, confirmBtn, modalBody, productsInCart } from "../components/elements.js";
+import { modal, confirmBtn, productsInCart } from "../components/elements.js";
 import { getFromStorage, saveToStorage } from "../settings/storage.js";
-import { cartKey } from "../settings/keys.js";
+import { CART_STORAGE_KEY } from "../settings/keys.js";
 import { createHtml } from "../common/createHtml.js";
 import { addQuantityHtml } from "../common/addQuantityHtml.js";
 import { subtotal } from "../common/subtotal.js";
 import { closeModal } from "../common/closeModal.js";
+import { openModal } from "../common/openModal.js";
+import { MESSAGES } from "../components/messages.js";
 
 export function decreaseAmount() {
   let id = this.getAttribute("data-id");
-  const cartProducts = getFromStorage(cartKey);
+  const cartProducts = getFromStorage(CART_STORAGE_KEY);
   const product = cartProducts.find((product) => product.id === id);
   product.quantity--;
   this.nextElementSibling.value = `${product.quantity}`;
@@ -24,15 +26,14 @@ export function decreaseAmount() {
     this.nextElementSibling.value = "1";
     product.quantity = 1;
     priceDom.innerText = `$ ${originalPrice.toFixed(2)}`;
-    // modal
-    modal.style.display = "block";
-    modalHeader.innerHTML = `<h2>Remove product</h2>`;
-    modalBody.innerHTML = `<p>This is the last item, are you sure you want to delete it?</p>`;
+
+    openModal(MESSAGES.delete, MESSAGES.last_item);
+
     confirmBtn.addEventListener("click", () => {
       // productDelete(); ??
-      const currentCart = getFromStorage(cartKey);
+      const currentCart = getFromStorage(CART_STORAGE_KEY);
       const newList = currentCart.filter((product) => product.id !== id);
-      saveToStorage(cartKey, newList);
+      saveToStorage(CART_STORAGE_KEY, newList);
       createHtml(newList);
       subtotal();
       addQuantityHtml();
@@ -42,6 +43,6 @@ export function decreaseAmount() {
 
     closeModal();
   }
-  saveToStorage(cartKey, cartProducts);
+  saveToStorage(CART_STORAGE_KEY, cartProducts);
   subtotal();
 }

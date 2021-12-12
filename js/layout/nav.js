@@ -1,5 +1,5 @@
 import { wrapper, navSidebar, navDesktop } from "../components/elements.js";
-import { user } from "../settings/storage.js";
+import { USER_STORAGE } from "../settings/storage.js";
 import signout from "./signout.js";
 
 // open sidebar on mobile
@@ -9,7 +9,7 @@ export default function toggleSidebar() {
   const toggleNav = document.querySelector(".sidebar-nav-toggle");
   const hamburger = toggleNav.children[0];
 
-  if (user) {
+  if (USER_STORAGE) {
     navDesktop.innerHTML = `
     <li><a class="nav-link d-none d-lg-block" href="index.html">Home</a></li>
     <li><a class="nav-link d-none d-lg-block" href="products.html">Products</a></li>

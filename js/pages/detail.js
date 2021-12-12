@@ -83,6 +83,7 @@ const id = params.get("id");
 
   const minus = document.querySelector(".minus");
   const plus = document.querySelector(".plus");
+
   const favoritesHeart = document.querySelector(".favorite-icon");
   const addToCartBtn = document.querySelector("#addToCart-btn");
 

@@ -1,5 +1,3 @@
-// change text
-
 export const MESSAGES = {
   incorrect: "Username or password is incorrect",
   server_error: "There was a server error",
@@ -8,11 +6,16 @@ export const MESSAGES = {
   insert_number: "Insert numbers",
   choose_volume: "Choose volume",
   adding: "Adding product...",
+  added: "Added to cart",
   signing_in: "Signing in...",
-  // not_valid: "Sorry, need more characters",
-  // log_out: "Are you sure you want to log out?",
-  // delete_fav: "Are you sure you want to remove your favourite products?",
-  // empty_input: "All fields must contain text",
+  sign_out: "Sign out",
+  sign_out_confirm: "You are about to sign out of Milky admin. Please confirm.",
+  go_to_cart: "Go to cart",
+  confirm: "Got it",
+  clear: "Clear all favorites",
+  clearing_all: "Are you sure you want to delete all of your favorite products?",
+  delete: "Remove product",
+  last_item: "This is the last item, are you sure you want to remove it?",
+  delete_product: "Are you sure you want to delete this product?",
   updated_product: "Success! Product is updated",
-  // created_article: "Product created",
 };

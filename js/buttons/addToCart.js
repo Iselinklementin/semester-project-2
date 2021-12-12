@@ -1,8 +1,10 @@
 import { getFromStorage, saveToStorage } from "../settings/storage.js";
-import { cartKey } from "../settings/keys.js";
+import { CART_STORAGE_KEY } from "../settings/keys.js";
 import { changeCartIcon } from "../common/changeCartIcon.js";
-import { modal, modalHeader, closeBtn, confirmBtn, modalBody } from "../components/elements.js";
+import { modal, closeBtn, confirmBtn } from "../components/elements.js";
 import { closeModal } from "../common/closeModal.js";
+import { openModal } from "../common/openModal.js";
+import { MESSAGES } from "../components/messages.js";
 
 export function addToCart() {
   // dette kan vel være en egen funksjon? nevnt mange plasser
@@ -16,7 +18,7 @@ export function addToCart() {
 
   let count = inputQuantity.value;
 
-  const cartItems = getFromStorage(cartKey);
+  const cartItems = getFromStorage(CART_STORAGE_KEY);
   const productExists = cartItems.find((product) => product.id === id);
 
   if (productExists) {
@@ -26,22 +28,20 @@ export function addToCart() {
     if (count >= 2) {
       productExists.quantity = parseFloat(productExists.quantity) + parseFloat(count);
     }
-    saveToStorage(cartKey, cartItems);
+    saveToStorage(CART_STORAGE_KEY, cartItems);
   } else {
     const product = { id, title, price, volume, image_url, description, quantity: count };
     cartItems.push(product);
-    saveToStorage(cartKey, cartItems);
+    saveToStorage(CART_STORAGE_KEY, cartItems);
   }
 
   inputQuantity.value = 1;
   changeCartIcon();
+  openModal(MESSAGES.added, `${title} is added to cart!`);
 
-  modal.style.display = "block";
-  modalHeader.innerHTML = `<h2>Added to cart!</h2>`;
-  modalBody.innerHTML = `<p>${title} is added to cart!</p>`;
   // modal buttons
-  closeBtn.innerText = `Got it`;
-  confirmBtn.innerText = `Go to cart`;
+  closeBtn.innerText = MESSAGES.confirm;
+  confirmBtn.innerText = MESSAGES.go_to_cart;
 
   confirmBtn.addEventListener("click", () => {
     modal.style.display = "none";

@@ -1,12 +1,12 @@
 import { MESSAGES } from "../components/messages.js";
 import displayMessage from "../components/displayMessage.js";
-import { PRODUCT_URL } from "../settings/api.js";
+import { PRODUCT_URL, PUT } from "../settings/api.js";
 import { JSON_CONTENT_TYPE_AUTH } from "../settings/api.js";
 import { getFromStorage, saveToStorage } from "../settings/storage.js";
-import { cartKey, FAV_STORAGE_KEY } from "../settings/keys.js";
+import { CART_STORAGE_KEY, FAV_STORAGE_KEY } from "../settings/keys.js";
 
 let currentFav = getFromStorage(FAV_STORAGE_KEY);
-let currentCart = getFromStorage(cartKey);
+let currentCart = getFromStorage(CART_STORAGE_KEY);
 
 export async function updateProduct(
   title,
@@ -32,7 +32,7 @@ export async function updateProduct(
   });
 
   const options = {
-    method: "PUT",
+    method: PUT,
     body: data,
     headers: JSON_CONTENT_TYPE_AUTH,
   };
@@ -58,7 +58,7 @@ export async function updateProduct(
           const newCartProducts = currentCart.filter((product) => product.id !== json.id);
           json.quantity = quantityInCart;
           newCartProducts.push(json);
-          saveToStorage(cartKey, newCartProducts);
+          saveToStorage(CART_STORAGE_KEY, newCartProducts);
         }
       });
 

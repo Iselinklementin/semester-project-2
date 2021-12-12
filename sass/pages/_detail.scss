@@ -83,12 +83,20 @@
 
   .image-container {
     position: relative;
+  }
 
-    & .favorite-icon {
-      position: absolute;
-      right: 5%;
-      top: 5%;
-      font-size: 1.4rem;
+  .fa-edit,
+  .favorite-icon {
+    padding: 15px;
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: getColour(dark);
+
+    &:hover {
+      transform: scale(1.05);
     }
   }
 
@@ -113,14 +121,6 @@
           font-size: 2.3rem;
           display: block;
         }
-      }
-      // fa-edit og hjerte har samme css
-      .fa-edit {
-        position: absolute;
-        right: 5%;
-        top: 5%;
-        font-size: 1.4rem;
-        color: black;
       }
     }
 
@@ -159,7 +159,6 @@
 
   #addToCart-btn {
     background-color: getColour(addToCartBtn);
-    // padding: 0.6rem 0.75rem;
     width: 100%;
     max-width: 100%;
 
@@ -169,7 +168,6 @@
 
     @include for-desktop {
       max-width: 200px;
-      // margin: 0 4rem 0 1rem;
     }
   }
 

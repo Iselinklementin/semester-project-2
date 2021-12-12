@@ -2,20 +2,16 @@ import { decreaseAmount } from "../buttons/decreaseAmount.js";
 import { increaseAmount } from "../buttons/increaseAmount.js";
 import { deleteFromCart } from "../buttons/deleteFromCart.js";
 import { getFromStorage } from "../settings/storage.js";
-import { cartKey } from "../settings/keys.js";
+import { CART_STORAGE_KEY } from "../settings/keys.js";
 
 export function addQuantityHtml() {
   const productCards = document.querySelectorAll(".col");
-  const currentItems = getFromStorage(cartKey);
+  const currentItems = getFromStorage(CART_STORAGE_KEY);
 
-  productCards.forEach(product => {
+  productCards.forEach((product) => {
     let id = product.firstElementChild.getAttribute("data-id");
 
-    currentItems.forEach(item => {
-      // if (!item.quantity) {
-      //   item.quantity = 1;
-      // }
-
+    currentItems.forEach((item) => {
       if (item.id === id) {
         product.insertAdjacentHTML(
           "beforeend",
@@ -36,14 +32,14 @@ export function addQuantityHtml() {
   const plus = document.querySelectorAll(".plus");
   const removeItem = document.querySelectorAll(".remove");
 
-  minus.forEach(decrease => {
+  minus.forEach((decrease) => {
     decrease.addEventListener("click", decreaseAmount);
   });
-  plus.forEach(increase => {
+  plus.forEach((increase) => {
     increase.addEventListener("click", increaseAmount);
   });
 
-  removeItem.forEach(deleteItem => {
+  removeItem.forEach((deleteItem) => {
     deleteItem.addEventListener("click", deleteFromCart);
   });
 }
