@@ -1,12 +1,12 @@
-import Block from "../components/blocks.js";
-import { FAV_STORAGE_KEY } from "../settings/keys.js";
-import { getFromStorage } from "../settings/storage.js";
-import handleFavourites from "../buttons/handleFavorites.js";
-import { editIcon } from "../buttons/editIcon.js";
-import { fillNavHeart } from "./fillNavHeart.js";
-import { changeCartIcon } from "./changeCartIcon.js";
+import Block from "../../components/blocks.js";
+import { FAV_STORAGE_KEY } from "../../settings/keys.js";
+import { getFromStorage } from "../../settings/storage.js";
+import handleFavourites from "../../buttons/handleFavorites.js";
+import { showEditIcon } from "../../layout/showEditIcon.js";
+import { fillNavHeart } from "../../layout/fillNavHeart.js";
+import { changeCartIcon } from "../../layout/changeCartIcon.js";
 
-export function createHtml(products) {
+export function createProductCards(products) {
   const productContainer = document.querySelector(".product-container");
   productContainer.innerHTML = "";
   const currentFavorites = getFromStorage(FAV_STORAGE_KEY);
@@ -43,5 +43,5 @@ export function createHtml(products) {
   });
   fillNavHeart();
   changeCartIcon();
-  editIcon();
+  showEditIcon();
 }

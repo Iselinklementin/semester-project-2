@@ -1,8 +1,8 @@
-import { decreaseAmount } from "../buttons/decreaseAmount.js";
-import { increaseAmount } from "../buttons/increaseAmount.js";
-import { deleteFromCart } from "../buttons/deleteFromCart.js";
-import { getFromStorage } from "../settings/storage.js";
-import { CART_STORAGE_KEY } from "../settings/keys.js";
+import { decreaseQuantityInCart } from "../../buttons/decreaseQuantityInCart.js";
+import { increaseQuantityInCart } from "../../buttons/increaseQuantityInCart.js";
+import { removeFromCart } from "../../buttons/removeFromCart.js";
+import { getFromStorage } from "../../settings/storage.js";
+import { CART_STORAGE_KEY } from "../../settings/keys.js";
 
 export function addQuantityHtml() {
   const productCards = document.querySelectorAll(".col");
@@ -36,13 +36,13 @@ export function addQuantityHtml() {
 
   // Minus/plus controls how many of the same product the customer wants
   minus.forEach((decrease) => {
-    decrease.addEventListener("click", decreaseAmount);
+    decrease.addEventListener("click", decreaseQuantityInCart);
   });
   plus.forEach((increase) => {
-    increase.addEventListener("click", increaseAmount);
+    increase.addEventListener("click", increaseQuantityInCart);
   });
 
   removeItem.forEach((deleteItem) => {
-    deleteItem.addEventListener("click", deleteFromCart);
+    deleteItem.addEventListener("click", removeFromCart);
   });
 }

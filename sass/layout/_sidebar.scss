@@ -14,7 +14,7 @@
 }
 
 .sidebar-nav-items {
-  border-top: 1px solid getColour(contrast_dark);
+  @include border-top(contrast_dark);
   display: flex;
   width: 100%;
   margin-top: 2rem;

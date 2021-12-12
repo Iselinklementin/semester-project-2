@@ -1,5 +1,15 @@
 import toggleSidebar from "../layout/nav.js";
 import { PRODUCT_URL } from "../settings/api.js";
+import displayMessage from "../components/displayMessage.js";
+import { MESSAGES } from "../components/messages.js";
+import { ERROR, STATUS_ELEMENT } from "../components/misc.js";
+import { submitEdit } from "../forms/submit/submitEdit.js";
+import { validateForm } from "../forms/validate/validateForm.js";
+import { deleteProduct } from "../buttons/deleteProduct.js";
+import { imageUploader } from "../components/imageUploader.js";
+import { fillNavHeart } from "../layout/fillNavHeart.js";
+import { changeCartIcon } from "../layout/changeCartIcon.js";
+import { missingToken } from "../components/missingToken.js";
 import {
   volume,
   featuredCheckbox,
@@ -15,16 +25,6 @@ import {
   documentTitle,
   loader,
 } from "../components/elements.js";
-import displayMessage from "../components/displayMessage.js";
-import { MESSAGES } from "../components/messages.js";
-import { submitEdit } from "../forms/submitEdit.js";
-import { validateForm } from "../forms/validateForm.js";
-import { deleteProduct } from "../common/deleteProduct.js";
-import { imageUploader } from "../common/imageUploader.js";
-import { fillNavHeart } from "../common/fillNavHeart.js";
-import { changeCartIcon } from "../common/changeCartIcon.js";
-import { missingToken } from "../components/missingToken.js";
-import { ERROR, STATUS_ELEMENT } from "../components/misc.js";
 
 missingToken();
 toggleSidebar();

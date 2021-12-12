@@ -9,15 +9,6 @@
     background-color: #c8dae7;
     height: 350px;
     text-align: center;
-    // background-color: #5187a9;
-
-    // .hero-banner {
-    //   max-width: 100%;
-    //   height: 450px;
-    //   object-fit: cover;
-    //   object-position: 50%;
-    //   position: relative;
-    // }
 
     @include for-desktop {
       height: 400px;
@@ -26,7 +17,7 @@
     img {
       height: 100%;
       object-fit: cover;
-      object-position: 53%;
+      object-position: 55%;
     }
   }
 
@@ -70,43 +61,5 @@
     right: 10px;
     top: 11px;
     z-index: 4;
-  }
-
-  // kopiert fra home.scss
-  // lag den global
-
-  .filter-btns {
-    @include flex(row, center, center);
-    margin: 2rem auto 0rem auto;
-
-    input {
-      margin: 10px;
-      border-radius: 50px;
-      padding: 5px 15px;
-      color: getColour(dark);
-
-      &:focus,
-      &:hover {
-        box-shadow: none;
-        color: getColour(dark);
-      }
-    }
-
-    .filter-btn {
-      @include opacity(0.7);
-      background-color: transparent;
-      border-color: transparent;
-    }
-
-    .active-filter {
-      background-color: getColour(contrast);
-      border-color: transparent;
-      font-weight: 600;
-    }
-
-    @include for-laptop {
-      justify-content: start;
-      margin: unset;
-    }
   }
 }

@@ -3,9 +3,9 @@ import { PRODUCT_URL } from "../settings/api.js";
 import { productImage } from "../components/elements.js";
 import { getFromStorage } from "../settings/storage.js";
 import { FAV_STORAGE_KEY } from "../settings/keys.js";
-import { editIcon } from "../buttons/editIcon.js";
+import { showEditIcon } from "../layout/showEditIcon.js";
 import handleFavourites from "../buttons/handleFavorites.js";
-import { fillNavHeart } from "../common/fillNavHeart.js";
+import { fillNavHeart } from "../layout/fillNavHeart.js";
 import {
   breacrumbTitle,
   imageContainer,
@@ -16,8 +16,8 @@ import {
   contentContainer,
 } from "../components/elements.js";
 import { addToCart } from "../buttons/addToCart.js";
-import { showPrice } from "../common/showPrice.js";
-import { changeCartIcon } from "../common/changeCartIcon.js";
+import { updatePriceDetail } from "../common/handlePrice/updatePriceDetail.js";
+import { changeCartIcon } from "../layout/changeCartIcon.js";
 
 toggleSidebar();
 fillNavHeart();
@@ -98,14 +98,14 @@ const id = params.get("id");
     if (this.nextElementSibling.value <= 1) {
       this.nextElementSibling.value = 1;
     }
-    showPrice(product);
+    updatePriceDetail(product);
   }
 
   function increaseQuantity() {
     this.previousElementSibling.value++;
-    showPrice(product);
+    updatePriceDetail(product);
   }
 
-  editIcon();
-  showPrice(product);
+  showEditIcon();
+  updatePriceDetail(product);
 })();

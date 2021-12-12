@@ -1,8 +1,8 @@
-import { volume, descriptionDetails, description, title, price, nutrition } from "../components/elements.js";
-import validateLength from "../components/checkValidation.js";
-import { inputFeedback } from "./inputFeedback.js";
-import { MESSAGES } from "../components/messages.js";
-import { ALERT, WARNING } from "../components/misc.js";
+import { volume, descriptionDetails, description, title, price, nutrition } from "../../components/elements.js";
+import validateLength from "../../components/checkValidation.js";
+import { inputFeedback } from "../inputFeedback.js";
+import { MESSAGES } from "../../components/messages.js";
+import { ALERT, WARNING } from "../../components/misc.js";
 
 // Validation both for adding and editing products
 

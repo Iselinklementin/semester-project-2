@@ -1,8 +1,8 @@
 import { clearKey } from "../settings/storage.js";
 import { TOKEN_STORAGE_KEY, USER_STORAGE_KEY } from "../settings/keys.js";
 import { closeBtn, confirmBtn } from "../components/elements.js";
-import { closeModal } from "../common/closeModal.js";
-import { openModal } from "../common/openModal.js";
+import { closeModal } from "../common/modal/closeModal.js";
+import { openModal } from "../common/modal/openModal.js";
 import { MESSAGES } from "../components/messages.js";
 
 export default function signout() {

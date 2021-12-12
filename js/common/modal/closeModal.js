@@ -1,4 +1,4 @@
-import { closeBtn, modal } from "../components/elements.js";
+import { closeBtn, modal } from "../../components/elements.js";
 
 export function closeModal() {
   closeBtn.onclick = function () {

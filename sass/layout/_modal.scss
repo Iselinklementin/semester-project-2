@@ -35,7 +35,6 @@
   @include flex(row, center, center);
   width: 100%;
   height: 80px;
-  background: getColour(primary);
   background: getColour(backgroundColor);
 }
 
@@ -44,7 +43,6 @@
   width: 150px;
 }
 
-// Skift navn på fargen
 #modal-btn-close {
   margin: 0 0.5rem 0 0;
   text-transform: uppercase;
@@ -55,7 +53,7 @@
   background-color: getColour(confirmBtn);
 
   &:hover {
-    background-color: #a01158;
+    background-color: getColour(confirmHover);
   }
 }
 

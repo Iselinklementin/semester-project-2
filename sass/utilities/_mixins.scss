@@ -1,7 +1,14 @@
-// @mixin button-border($radius) {
-//   border-radius: $radius;
-//   border: 3px solid white;
-// }
+@mixin border-top($color) {
+  border-top: solid thin getColour($color);
+}
+
+@mixin border-bottom($color) {
+  border-bottom: solid thin getColour($color);
+}
+
+@mixin border($color) {
+  border: solid thin getColour($color);
+}
 
 @mixin flex($direction, $justify, $align) {
   display: flex;
@@ -11,10 +18,10 @@
 }
 
 @mixin transition($args...) {
-  // -webkit-transition: $args;
-  // -moz-transition: $args;
-  // -ms-transition: $args;
-  // -o-transition: $args;
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
   transition: $args;
 }
 
@@ -54,5 +61,4 @@
 @mixin opacity($opacity) {
   opacity: $opacity;
   $opacity-ie: $opacity * 100;
-  filter: alpha(opacity=$opacity-ie); //IE8
 }

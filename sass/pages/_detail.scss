@@ -31,6 +31,11 @@
 
   .image-container {
     position: relative;
+
+    img {
+      min-height: 400px;
+      object-fit: cover;
+    }
   }
 
   .fa-edit,
@@ -52,8 +57,8 @@
     position: relative;
 
     .title-container {
+      @include border-bottom(dark);
       position: relative;
-      border-bottom: getColour(dark) solid thin;
       padding-bottom: 1rem;
       margin: 2rem 0;
 
@@ -74,9 +79,8 @@
 
     .buy-container {
       @include flex(column, space-between, center);
-
+      @include border-bottom(dark);
       margin-bottom: 2rem;
-      border-bottom: getColour(dark) solid thin;
       padding-bottom: 2rem;
 
       @include for-desktop {
@@ -86,6 +90,10 @@
       .price-quantity-container {
         @include flex(row, space-between, center);
         margin-bottom: 2rem;
+
+        @include for-tablet {
+          padding: 0;
+        }
 
         @include for-desktop {
           margin-bottom: 0;

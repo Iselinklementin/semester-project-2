@@ -1,4 +1,4 @@
-import { hiddenImageContainer, cloudName, uploadPreset, uploadWidget, uploadedImage } from "../components/elements.js";
+import { hiddenImageContainer, cloudName, uploadPreset, uploadWidget, uploadedImage } from "./elements.js";
 
 // Using Cloudinary uploading-widget to get images to show
 

@@ -1,6 +1,6 @@
-import { createHtml } from "../common/createHtml.js";
+import { createProductCards } from "../common/createHtml/createProductCards.js";
 import toggleSidebar from "../layout/nav.js";
-import { loadingHtml } from "../common/skeletonLoading.js";
+import { loadingHtml } from "../layout/skeletonLoading.js";
 import { PRODUCTPAGE_URL, PRODUCT_URL } from "../settings/api.js";
 import { searchFunction } from "../common/searchFunction.js";
 import { herobanner, filterBtns } from "../components/elements.js";
@@ -20,7 +20,7 @@ toggleSidebar();
 
       herobanner.src = productBanner.banner[0].url;
 
-      createHtml(products);
+      createProductCards(products);
       searchFunction(products);
 
       filterBtns.forEach((btn) => {
@@ -36,17 +36,17 @@ toggleSidebar();
           removeClass[0].classList.remove("active-filter");
         }
         if (this.value === "All products") {
-          createHtml(products);
+          createProductCards(products);
           this.classList.add("active-filter");
         }
         if (this.value === "Small") {
           const smallProducts = products.filter((product) => product.volume === "Small");
-          createHtml(smallProducts);
+          createProductCards(smallProducts);
           this.classList.add("active-filter");
         }
         if (this.value === "Large") {
           const largeProducts = products.filter((product) => product.volume === "Large");
-          createHtml(largeProducts);
+          createProductCards(largeProducts);
           this.classList.add("active-filter");
         }
       }

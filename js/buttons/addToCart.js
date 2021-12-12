@@ -1,9 +1,9 @@
 import { getFromStorage, saveToStorage } from "../settings/storage.js";
 import { CART_STORAGE_KEY } from "../settings/keys.js";
-import { changeCartIcon } from "../common/changeCartIcon.js";
+import { changeCartIcon } from "../layout/changeCartIcon.js";
 import { modal, closeBtn, confirmBtn } from "../components/elements.js";
-import { closeModal } from "../common/closeModal.js";
-import { openModal } from "../common/openModal.js";
+import { closeModal } from "../common/modal/closeModal.js";
+import { openModal } from "../common/modal/openModal.js";
 import { MESSAGES } from "../components/messages.js";
 
 // Adding product to cart

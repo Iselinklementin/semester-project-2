@@ -120,8 +120,9 @@ footer {
 
     @include for-tablet {
       display: block;
-      bottom: 24%;
+      bottom: 21%;
       right: 0%;
+      color: #a9b7ba;
     }
 
     &:hover {
@@ -134,7 +135,7 @@ footer {
     position: relative;
 
     &-text {
-      margin-bottom: 10px;
+      margin-bottom: 2px;
     }
 
     &-price {
@@ -143,6 +144,7 @@ footer {
 
     &-title {
       font-size: 1.3rem;
+      margin-bottom: 0;
 
       span {
         font-weight: 600;

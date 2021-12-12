@@ -1,5 +1,5 @@
 // skeletonLoading in product-container
-// both index.html and products.html
+// both index.html, products.html and favourites
 
 export function loadingHtml() {
   const productContainer = document.querySelector(".product-container");

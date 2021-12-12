@@ -1,22 +1,22 @@
 import { getFromStorage } from "../settings/storage.js";
 import { CART_STORAGE_KEY } from "../settings/keys.js";
 import { emptyResult } from "../components/emptyResult.js";
-import { createHtml } from "../common/createHtml.js";
+import { createProductCards } from "../common/createHtml/createProductCards.js";
 import { productsInCart, productContainer, loader } from "../components/elements.js";
-import { addQuantityHtml } from "../common/addQuantityHtml.js";
-import { subtotal } from "../common/subtotal.js";
-import { updateProductPrice } from "../common/updateProductPrice.js";
+import { addQuantityHtml } from "../common/createHtml/addQuantityHtml.js";
+import { subtotal } from "../common/handlePrice/subtotal.js";
+import { updatePriceCart } from "../common/handlePrice/updatePriceCart.js";
 import toggleSidebar from "../layout/nav.js";
 
 const currentItems = getFromStorage(CART_STORAGE_KEY);
 productContainer.innerHTML = "";
 
 toggleSidebar();
-createHtml(currentItems);
+createProductCards(currentItems);
 emptyResult();
 addQuantityHtml();
 subtotal();
-updateProductPrice();
+updatePriceCart();
 
 loader.style.display = "none";
 productsInCart.innerText = `${currentItems.length} product(s) in cart`;

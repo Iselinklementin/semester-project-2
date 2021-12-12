@@ -15,7 +15,7 @@
     }
 
     .count-products {
-      border-bottom: getColour(dark) solid thin;
+      @include border-bottom(dark);
       padding-bottom: 3rem;
     }
   }
@@ -23,7 +23,6 @@
   .quantity {
     position: absolute;
     left: 35%;
-    // bottom: 4%;
     bottom: 14%;
     height: 90px;
     @include flex(column, space-between, start);
@@ -51,7 +50,7 @@
 
     &:hover {
       box-shadow: none;
-      border-bottom: 1px solid getColour(dark);
+      @include border-bottom(dark);
     }
   }
 
@@ -91,9 +90,9 @@
 
   .subtotal {
     @include flex(row, space-between, center);
+    @include border-top(dark);
     flex-wrap: wrap;
     padding-top: 2rem;
-    border-top: getColour(dark) solid thin;
 
     // buttons er flere plasser her i fila
 
@@ -148,7 +147,7 @@
     width: 100%;
   }
 
-  // dette er laptop endringer
+  // This is laptop-changes:
 
   @include for-laptop {
     .product-link {
@@ -178,7 +177,6 @@
 
     .subtotal {
       margin-bottom: 4rem;
-      // padding-top: 4rem;
     }
 
     .buttons {

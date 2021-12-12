@@ -1,4 +1,4 @@
-import { createHtml } from "./createHtml.js";
+import { createProductCards } from "./createHtml/createProductCards.js";
 import { emptyResult } from "../components/emptyResult.js";
 import { productContainer } from "../components/elements.js";
 
@@ -22,7 +22,7 @@ export function searchFunction(products) {
       productContainer.classList = `row row-cols-2 row-cols-md-2 g-4 row-cols-lg-4 results product-container`;
     }
 
-    createHtml(searchTitle);
+    createProductCards(searchTitle);
     emptyResult();
   };
 }

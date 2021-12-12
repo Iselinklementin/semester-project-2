@@ -1,14 +1,14 @@
 import { confirmBtn, modal, productsInCart } from "../components/elements.js";
 import { getFromStorage } from "../settings/storage.js";
 import { CART_STORAGE_KEY } from "../settings/keys.js";
-import { closeModal } from "../common/closeModal.js";
-import { openModal } from "../common/openModal.js";
+import { closeModal } from "../common/modal/closeModal.js";
+import { openModal } from "../common/modal/openModal.js";
 import { MESSAGES } from "../components/messages.js";
-import { removeProductFunction } from "../common/removeProductFunction.js";
+import { removeLastQuantityInCart } from "../common/removeLastQuantityInCart.js";
 
-// Delete products in cart
+// Remove products completely from cart
 
-export function deleteFromCart() {
+export function removeFromCart() {
   let id = this.getAttribute("data-id");
   const currentItems = getFromStorage(CART_STORAGE_KEY);
 
@@ -19,7 +19,7 @@ export function deleteFromCart() {
 
       // If its confirmed - delete it
       confirmBtn.addEventListener("click", () => {
-        removeProductFunction(id);
+        removeLastQuantityInCart(id);
         modal.style.display = "none";
       });
 

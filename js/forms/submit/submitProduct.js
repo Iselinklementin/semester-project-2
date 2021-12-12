@@ -7,13 +7,13 @@ import {
   nutrition,
   descriptionDetails,
   featuredCheckbox,
-} from "../components/elements.js";
-import { MESSAGES } from "../components/messages.js";
-import displayMessage from "../components/displayMessage.js";
-import validateLength from "../components/checkValidation.js";
-import { addProduct } from "./addProduct.js";
-import { validateForm } from "./validateForm.js";
-import { ERROR, STATUS_ELEMENT } from "../components/misc.js";
+} from "../../components/elements.js";
+import { MESSAGES } from "../../components/messages.js";
+import displayMessage from "../../components/displayMessage.js";
+import validateLength from "../../components/checkValidation.js";
+import { addProduct } from "../addProduct.js";
+import { validateForm } from "../validate/validateForm.js";
+import { ERROR, STATUS_ELEMENT } from "../../components/misc.js";
 
 export function submitProduct(event) {
   event.preventDefault();

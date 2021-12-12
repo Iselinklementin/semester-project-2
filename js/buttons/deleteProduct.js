@@ -4,7 +4,7 @@ import { FAV_STORAGE_KEY } from "../settings/keys.js";
 import displayMessage from "../components/displayMessage.js";
 import { MESSAGES } from "../components/messages.js";
 import { confirmBtn } from "../components/elements.js";
-import { openModal } from "./openModal.js";
+import { openModal } from "../common/modal/openModal.js";
 import { ERROR, STATUS_ELEMENT } from "../components/misc.js";
 
 const currentFav = getFromStorage(FAV_STORAGE_KEY);

@@ -1,4 +1,4 @@
-import { modal, modalHeader, modalBody } from "../components/elements.js";
+import { modal, modalHeader, modalBody } from "../../components/elements.js";
 
 export function openModal(header, body) {
   modal.style.display = "block";

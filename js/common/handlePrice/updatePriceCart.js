@@ -1,7 +1,7 @@
+// Cart page
 // Adjust total price of product, when adding more or less of the same item
-// Works on cart page
 
-export function updateProductPrice() {
+export function updatePriceCart() {
   const productPrice = document.querySelectorAll(".card-price");
   const prices = [...productPrice];
 

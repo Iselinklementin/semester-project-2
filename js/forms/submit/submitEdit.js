@@ -1,4 +1,4 @@
-import { updateProduct } from "./updateProduct.js";
+import { updateProduct } from "../updateProduct.js";
 import {
   volume,
   featuredCheckbox,
@@ -9,7 +9,7 @@ import {
   nutrition,
   idInput,
   hiddenImageContainer,
-} from "../components/elements.js";
+} from "../../components/elements.js";
 
 export async function submitEdit(event) {
   event.preventDefault();

@@ -1,7 +1,7 @@
 import toggleSidebar from "../layout/nav.js";
 import { PRODUCT_URL, HOME_URL } from "../settings/api.js";
-import { createHtml } from "../common/createHtml.js";
-import { loadingHtml } from "../common/skeletonLoading.js";
+import { createProductCards } from "../common/createHtml/createProductCards.js";
+import { loadingHtml } from "../layout/skeletonLoading.js";
 import { herobanner, productContainer, filterBtns } from "../components/elements.js";
 
 toggleSidebar();
@@ -23,7 +23,7 @@ loadingHtml();
       // if featured, create html
       const featuredProducts = products.filter((product) => (product.featured ? true : false));
       productContainer.innerHTML = "";
-      createHtml(featuredProducts);
+      createProductCards(featuredProducts);
 
       filterBtns.forEach((btn) => {
         btn.addEventListener("click", filterNewsFeatured);
@@ -44,12 +44,12 @@ loadingHtml();
 
         if (this.value === "New") {
           const newProducts = products.filter((product) => product.volume === "Small");
-          createHtml(newProducts);
+          createProductCards(newProducts);
         }
 
         if (this.value === "Featured") {
           const featuredProducts = products.filter((product) => (product.featured ? true : false));
-          createHtml(featuredProducts);
+          createProductCards(featuredProducts);
         }
       }
     })

@@ -1,6 +1,8 @@
-import { getFromStorage } from "../settings/storage.js";
-import { CART_STORAGE_KEY } from "../settings/keys.js";
-import { emptyResult } from "../components/emptyResult.js";
+import { getFromStorage } from "../../settings/storage.js";
+import { CART_STORAGE_KEY } from "../../settings/keys.js";
+import { emptyResult } from "../../components/emptyResult.js";
+
+// Subtotal in cart
 
 export function subtotal() {
   const sum = document.querySelector(".sum");
@@ -12,7 +14,6 @@ export function subtotal() {
     emptyResult();
   }
 
-  // adding total cost in cart
   // using quantity to get the correct price
 
   currentCart.map((product) => {
