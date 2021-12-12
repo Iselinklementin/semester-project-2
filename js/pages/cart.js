@@ -19,4 +19,4 @@ addQuantityHtml();
 subtotal();
 updateProductPrice();
 
-productsInCart.innerText = `${currentItems.length} products in cart`;
+productsInCart.innerText = `${currentItems.length} product(s) in cart`;

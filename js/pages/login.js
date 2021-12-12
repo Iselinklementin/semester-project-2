@@ -15,8 +15,9 @@ loginForm.addEventListener("focusin", validateLoginForm);
 function submitForm(event) {
   event.preventDefault();
 
-  validateLoginForm();
   const email = emailInput.value.trim();
   const password = passwordInput.value.trim();
+
+  validateLoginForm();
   submitLogin(email, password);
 }

@@ -1,5 +1,5 @@
 import { getFromStorage, saveToStorage } from "../settings/storage.js";
-import { favKey } from "../settings/keys.js";
+import { FAV_STORAGE_KEY } from "../settings/keys.js";
 import { fillNavHeart } from "../common/fillNavHeart.js";
 
 export default function handleFavourites() {
@@ -11,9 +11,10 @@ export default function handleFavourites() {
   const description = this.dataset.description;
   const volume = this.dataset.volume;
   const featured = this.dataset.featured;
-  const favourites = getFromStorage(favKey);
-  const productExists = favourites.find(product => product.id === id);
-  console.log(favourites);
+
+  const favourites = getFromStorage(FAV_STORAGE_KEY);
+  const productExists = favourites.find((product) => product.id === id);
+
   if (!productExists) {
     const product = {
       id,
@@ -26,11 +27,11 @@ export default function handleFavourites() {
     };
 
     favourites.push(product);
-    saveToStorage(favKey, favourites);
+    saveToStorage(FAV_STORAGE_KEY, favourites);
     fillNavHeart();
   } else {
-    const newProduct = favourites.filter(product => product.id !== id);
-    saveToStorage(favKey, newProduct);
+    const newProduct = favourites.filter((product) => product.id !== id);
+    saveToStorage(FAV_STORAGE_KEY, newProduct);
     fillNavHeart();
   }
 }

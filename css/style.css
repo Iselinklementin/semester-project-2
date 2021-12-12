@@ -1498,6 +1498,13 @@ footer .logo-container-footer .logo-footer {
   }
 }
 
+.cartpage-wrapper .products-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .cartpage-wrapper .product-container {
   margin-top: -4rem;
 }

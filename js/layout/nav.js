@@ -1,10 +1,9 @@
+import { wrapper, navSidebar, navDesktop } from "../components/elements.js";
 import { user } from "../settings/storage.js";
 import signout from "./signout.js";
-const navDesktop = document.querySelector(".nav-desktop");
-const navSidebar = document.querySelector(".sidebar-nav-links");
 
 // open sidebar on mobile
-// and extra options when signed in
+// extra options when signed in
 export default function toggleSidebar() {
   const { pathname } = document.location;
   const toggleNav = document.querySelector(".sidebar-nav-toggle");
@@ -33,9 +32,8 @@ export default function toggleSidebar() {
     signout();
   }
 
-  toggleNav.addEventListener("click", event => {
+  toggleNav.addEventListener("click", (event) => {
     event.preventDefault();
-    const wrapper = document.querySelector(".sidebar-nav-wrapper");
     wrapper.classList.toggle("show");
     hamburger.classList.toggle("fa-times");
   });

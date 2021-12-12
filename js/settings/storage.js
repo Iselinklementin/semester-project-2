@@ -1,4 +1,4 @@
-import { tokenKey, userKey } from "./keys.js";
+import { TOKEN_STORAGE_KEY, USER_STORAGE_KEY } from "./keys.js";
 export const token = getToken();
 export const user = getUsername();
 
@@ -19,19 +19,19 @@ export function clearKey(key) {
 }
 
 export function saveToken(token) {
-  saveToStorage(tokenKey, token);
+  saveToStorage(TOKEN_STORAGE_KEY, token);
 }
 
 export function getToken() {
-  return getFromStorage(tokenKey);
+  return getFromStorage(TOKEN_STORAGE_KEY);
 }
 
 export function saveUser(user) {
-  saveToStorage(userKey, user);
+  saveToStorage(USER_STORAGE_KEY, user);
 }
 
 export function getUsername() {
-  const user = getFromStorage(userKey);
+  const user = getFromStorage(USER_STORAGE_KEY);
 
   if (user) {
     return user.username;

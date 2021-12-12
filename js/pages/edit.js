@@ -12,6 +12,7 @@ import {
   nutrition,
   idInput,
   hiddenImageContainer,
+  documentTitle,
 } from "../components/elements.js";
 import displayMessage from "../components/displayMessage.js";
 import { MESSAGES } from "../components/messages.js";
@@ -28,6 +29,8 @@ toggleSidebar();
 imageUploader();
 fillNavHeart();
 changeCartIcon();
+
+// kanskje jeg kan kalle fetchene likt. nå er noen result og noen products
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
@@ -52,21 +55,12 @@ const url = PRODUCT_URL + id;
       selected[2].setAttribute("selected", true);
     }
 
-    // remove span from input-text
-    // convert string to html
+    // remove Milky and span from title
+    let titleWithoutSpan = product.title.replace("<span>", "").replace("</span>", "").replace("Milky", "");
 
-    let stringToHTML = function (str) {
-      let parser = new DOMParser();
-      let title = parser.parseFromString(str, "text/html");
-      return title.body;
-    };
-
-    let originalTitle = product.title;
-    const findSpan = originalTitle.split(" ", 3);
-    let tasteTitle = stringToHTML(findSpan[1]);
-
+    documentTitle.innerHTML = `Edit Milky` + titleWithoutSpan;
     image.src = product.image_url;
-    title.value = tasteTitle.innerText;
+    title.value = titleWithoutSpan;
     price.value = product.price;
     description.value = product.description;
     descriptionDetails.value = product.description_details;
@@ -88,6 +82,6 @@ buttonContainer.insertAdjacentHTML(
   `<button type="button" class="delete delete-btn btn btn-secondary"><i class="fas fa-trash-alt"></i> Delete</button>`
 );
 const deleteBtn = document.querySelector("button.delete");
-deleteBtn.onclick = function () {
+deleteBtn.onclick = () => {
   deleteProduct(id);
 };

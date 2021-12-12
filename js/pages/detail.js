@@ -2,7 +2,7 @@ import toggleSidebar from "../layout/nav.js";
 import { PRODUCT_URL } from "../settings/api.js";
 import { productImage } from "../components/elements.js";
 import { getFromStorage } from "../settings/storage.js";
-import { favKey } from "../settings/keys.js";
+import { FAV_STORAGE_KEY } from "../settings/keys.js";
 import { editIcon } from "../buttons/editIcon.js";
 import handleFavourites from "../buttons/handleFavorites.js";
 import { fillNavHeart } from "../common/fillNavHeart.js";
@@ -18,31 +18,22 @@ import {
 import { addToCart } from "../buttons/addToCart.js";
 import { showPrice } from "../common/showPrice.js";
 import { changeCartIcon } from "../common/changeCartIcon.js";
-// import { giveHeartClass } from "../common/giveHeartClass.js";
 
 toggleSidebar();
-
-// skift navn på den her
+fillNavHeart();
+changeCartIcon();
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
-
-fillNavHeart();
-changeCartIcon();
-
-// tok vekk volume, se om det bør være med på designet
 
 (async function fetchProducts() {
   const response = await fetch(PRODUCT_URL + id);
   const result = await response.json();
 
   loader.style.display = "none";
-  // giveHeartClass(result);
-  // har den to plasser
-  // // add heart-icon if its in favorites
-  const currentFavorites = getFromStorage(favKey);
-  const doesFavExists = currentFavorites.find(fav => {
+  const currentFavorites = getFromStorage(FAV_STORAGE_KEY);
+  const doesFavExists = currentFavorites.find((fav) => {
     if (parseInt(fav.id) === result.id || fav.id === result.id) {
       return true;
     }
@@ -80,8 +71,9 @@ changeCartIcon();
     data-image_url="${result.image_url}"></i>`
   );
 
-  // jeg kan lage en funksjon her som kan brukes flere plasser?
+  // remove span from the title
   let titleWithoutSpan = result.title.replace("<span>", "").replace("</span>", "");
+
   breacrumbTitle.innerText = titleWithoutSpan;
   documentTitle.innerHTML = titleWithoutSpan;
   productImage.alt = titleWithoutSpan;
@@ -94,7 +86,6 @@ changeCartIcon();
   const favoritesHeart = document.querySelector(".favorite-icon");
   const addToCartBtn = document.querySelector("#addToCart-btn");
 
-  // gå over alle navnene her, ulikt på hver side
   addToCartBtn.addEventListener("click", addToCart);
   favoritesHeart.addEventListener("click", handleFavourites);
   minus.addEventListener("click", decreaseQuantity);
@@ -116,5 +107,4 @@ changeCartIcon();
 
   editIcon();
   showPrice(result);
-  // changeButton(result);
 })();

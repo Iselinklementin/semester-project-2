@@ -3,9 +3,9 @@ import displayMessage from "../components/displayMessage.js";
 import { PRODUCT_URL } from "../settings/api.js";
 import { JSON_CONTENT_TYPE_AUTH } from "../settings/api.js";
 import { getFromStorage, saveToStorage } from "../settings/storage.js";
-import { cartKey, favKey } from "../settings/keys.js";
+import { cartKey, FAV_STORAGE_KEY } from "../settings/keys.js";
 
-let currentFav = getFromStorage(favKey);
+let currentFav = getFromStorage(FAV_STORAGE_KEY);
 let currentCart = getFromStorage(cartKey);
 
 export async function updateProduct(
@@ -51,21 +51,21 @@ export async function updateProduct(
 
       // if in cart
       let quantityInCart;
-      currentCart.find(product => {
+
+      currentCart.find((product) => {
         if (product.id === json.id) {
           quantityInCart = product.quantity;
+          const newCartProducts = currentCart.filter((product) => product.id !== json.id);
+          json.quantity = quantityInCart;
+          newCartProducts.push(json);
+          saveToStorage(cartKey, newCartProducts);
         }
       });
 
-      const newCartProducts = currentCart.filter(product => product.id !== json.id);
-      json.quantity = quantityInCart;
-      newCartProducts.push(json);
-      saveToStorage(cartKey, newCartProducts);
-
       // if in favourites
-      const newFavourites = currentFav.filter(product => product.id !== json.id);
+      const newFavourites = currentFav.filter((product) => product.id !== json.id);
       newFavourites.push(json);
-      saveToStorage(favKey, newFavourites);
+      saveToStorage(FAV_STORAGE_KEY, newFavourites);
 
       displayMessage("success", MESSAGES.updated_product, ".message-container");
     }

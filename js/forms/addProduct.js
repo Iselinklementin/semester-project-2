@@ -1,7 +1,9 @@
-import { submitBtn, uploadedImage, form } from "../components/elements.js";
-import { PRODUCT_URL, JSON_CONTENT_TYPE_AUTH } from "../settings/api.js";
+import { submitBtn, uploadedImage, form, formInputs } from "../components/elements.js";
+import { PRODUCT_URL, JSON_CONTENT_TYPE_AUTH, POST } from "../settings/api.js";
 import displayMessage from "../components/displayMessage.js";
-const formInputs = document.querySelectorAll(".add-product-wrap .form-control");
+import { MESSAGES } from "../components/messages.js";
+
+// const formInputs = document.querySelectorAll(".add-product-wrap .form-control");
 
 export async function addProduct(
   title,
@@ -25,7 +27,7 @@ export async function addProduct(
   });
 
   const options = {
-    method: "POST",
+    method: POST,
     body: data,
     headers: JSON_CONTENT_TYPE_AUTH,
   };
@@ -34,11 +36,11 @@ export async function addProduct(
     const response = await fetch(PRODUCT_URL, options);
     const json = await response.json();
 
-    formInputs.forEach(input => {
+    formInputs.forEach((input) => {
       input.disabled = true;
     });
 
-    submitBtn.innerText = "Adding product...";
+    submitBtn.innerText = MESSAGES.adding;
 
     if (json.error) {
       displayMessage("error", json.message, ".message-container");
@@ -47,15 +49,15 @@ export async function addProduct(
     if (json.created_at) {
       form.reset();
       uploadedImage.src = "";
-      displayMessage("success", "Product created", ".message-container");
+      displayMessage("success", MESSAGES.updated_product, ".message-container");
     }
   } catch (error) {
     displayMessage("error", MESSAGES.server_error, ".message-container");
   } finally {
-    formInputs.forEach(input => {
+    formInputs.forEach((input) => {
       input.disabled = false;
     });
 
-    submitBtn.innerText = "Add product";
+    submitBtn.innerHTML = `<i class="fas fa-plus"></i> Add product`;
   }
 }

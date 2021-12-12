@@ -1,6 +1,7 @@
 import { clearKey } from "../settings/storage.js";
-import { tokenKey, userKey } from "../settings/keys.js";
-import { modal, modalHeader, closeBtn, confirmBtn, modalBody } from "../components/elements.js";
+import { TOKEN_STORAGE_KEY, USER_STORAGE_KEY } from "../settings/keys.js";
+import { modal, modalHeader, confirmBtn, modalBody } from "../components/elements.js";
+import { closeModal } from "../common/closeModal.js";
 
 export default function signout() {
   const logoutbtn = document.querySelector(".logout");
@@ -15,20 +16,12 @@ export default function signout() {
       modalBody.innerHTML = `<p>You are about to sign out of Milky admin. Please confirm.</p>`;
       modalButton.innerText = `Sign out`;
       confirmBtn.addEventListener("click", () => {
-        clearKey(userKey);
-        clearKey(tokenKey);
+        clearKey(USER_STORAGE_KEY);
+        clearKey(TOKEN_STORAGE_KEY);
         location.href = "/";
       });
     };
 
-    closeBtn.onclick = function () {
-      modal.style.display = "none";
-    };
-
-    window.onclick = function (e) {
-      if (e.target == modal) {
-        modal.style.display = "none";
-      }
-    };
+    closeModal();
   }
 }

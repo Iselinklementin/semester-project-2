@@ -33,6 +33,10 @@
     }
   }
 
+  .products-wrapper {
+    @include flex(row, center, center);
+  }
+
   .product-container {
     margin-top: -4rem;
   }

@@ -20,4 +20,5 @@ export const JSON_CONTENT_TYPE_AUTH = {
   Authorization: `Bearer ${token}`,
 };
 
-// export const POST = "POST";
+export const POST = "POST";
+export const DELETE = "DELETE";

@@ -3,6 +3,10 @@
 // global
 export const productContainer = document.querySelector(".product-container");
 export const results = document.querySelector(".results");
+export const wrapper = document.querySelector(".sidebar-nav-wrapper");
+export const navDesktop = document.querySelector(".nav-desktop");
+export const navSidebar = document.querySelector(".sidebar-nav-links");
+export const herobanner = document.querySelector(".hero-banner");
 
 // login form
 export const loginForm = document.querySelector(".login-form");
@@ -31,12 +35,15 @@ export const form = document.querySelector(".forms");
 export const submitBtn = document.querySelector(".submit");
 export const hiddenImageContainer = document.querySelector(".hidden-image-input");
 
+// add
+export const formInputs = document.querySelectorAll(".add-product-wrap .form-control");
+
 // edit
 export const idInput = document.querySelector("#id");
 
 // detail-page
 export const contentContainer = document.querySelector(".text-content-container");
-export const productImage = document.querySelector(".product-image"); // usikker hvor den her blir brukt?
+export const productImage = document.querySelector(".product-image");
 export const documentTitle = document.querySelector("title");
 export const breacrumbTitle = document.querySelector(".breadcrumb-item.active");
 export const imageContainer = document.querySelector(".image-container");
@@ -56,3 +63,6 @@ export const confirmBtn = document.querySelector(".confirmBtn");
 
 // cart
 export const productsInCart = document.querySelector(".count-products");
+
+// index
+export const filterBtns = document.querySelectorAll(".filter-btn");

@@ -7,6 +7,8 @@ export const MESSAGES = {
   insert_text: "Please insert text",
   insert_number: "Insert numbers",
   choose_volume: "Choose volume",
+  adding: "Adding product...",
+  signing_in: "Signing in...",
   // not_valid: "Sorry, need more characters",
   // log_out: "Are you sure you want to log out?",
   // delete_fav: "Are you sure you want to remove your favourite products?",

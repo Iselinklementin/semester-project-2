@@ -2,6 +2,7 @@ import { getFromStorage, saveToStorage } from "../settings/storage.js";
 import { cartKey } from "../settings/keys.js";
 import { changeCartIcon } from "../common/changeCartIcon.js";
 import { modal, modalHeader, closeBtn, confirmBtn, modalBody } from "../components/elements.js";
+import { closeModal } from "../common/closeModal.js";
 
 export function addToCart() {
   // dette kan vel være en egen funksjon? nevnt mange plasser
@@ -11,11 +12,12 @@ export function addToCart() {
   const volume = this.dataset.volume;
   const image_url = this.dataset.image_url;
   const description = this.dataset.description;
-  const input = document.querySelector(".input-quantity");
-  let count = input.value;
+  const inputQuantity = document.querySelector(".input-quantity");
+
+  let count = inputQuantity.value;
 
   const cartItems = getFromStorage(cartKey);
-  const productExists = cartItems.find(product => product.id === id);
+  const productExists = cartItems.find((product) => product.id === id);
 
   if (productExists) {
     if (count <= 1) {
@@ -31,11 +33,13 @@ export function addToCart() {
     saveToStorage(cartKey, cartItems);
   }
 
-  input.value = 1;
+  inputQuantity.value = 1;
   changeCartIcon();
+
   modal.style.display = "block";
   modalHeader.innerHTML = `<h2>Added to cart!</h2>`;
   modalBody.innerHTML = `<p>${title} is added to cart!</p>`;
+  // modal buttons
   closeBtn.innerText = `Got it`;
   confirmBtn.innerText = `Go to cart`;
 
@@ -45,12 +49,4 @@ export function addToCart() {
   });
 }
 
-closeBtn.onclick = function () {
-  modal.style.display = "none";
-};
-
-window.onclick = function (e) {
-  if (e.target == modal) {
-    modal.style.display = "none";
-  }
-};
+closeModal();

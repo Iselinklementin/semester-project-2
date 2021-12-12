@@ -1,9 +1,10 @@
-import { modal, modalHeader, closeBtn, confirmBtn, modalBody, productsInCart } from "../components/elements.js";
+import { modal, modalHeader, confirmBtn, modalBody, productsInCart } from "../components/elements.js";
 import { getFromStorage, saveToStorage } from "../settings/storage.js";
 import { cartKey } from "../settings/keys.js";
 import { createHtml } from "../common/createHtml.js";
 import { addQuantityHtml } from "../common/addQuantityHtml.js";
 import { subtotal } from "../common/subtotal.js";
+import { closeModal } from "../common/closeModal.js";
 
 export function deleteFromCart() {
   let id = this.getAttribute("data-id");
@@ -26,15 +27,7 @@ export function deleteFromCart() {
         modal.style.display = "none";
       });
 
-      closeBtn.onclick = function () {
-        modal.style.display = "none";
-      };
-
-      window.onclick = function (e) {
-        if (e.target == modal) {
-          modal.style.display = "none";
-        }
-      };
+      closeModal();
     }
   });
 }

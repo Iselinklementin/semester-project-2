@@ -1,5 +1,5 @@
 import Block from "../components/blocks.js";
-import { favKey } from "../settings/keys.js";
+import { FAV_STORAGE_KEY } from "../settings/keys.js";
 import { getFromStorage } from "../settings/storage.js";
 import handleFavourites from "../buttons/handleFavorites.js";
 import { editIcon } from "../buttons/editIcon.js";
@@ -9,10 +9,10 @@ import { changeCartIcon } from "./changeCartIcon.js";
 export function createHtml(products) {
   const productContainer = document.querySelector(".product-container");
   productContainer.innerHTML = "";
-  const currentFavorites = getFromStorage(favKey);
+  const currentFavorites = getFromStorage(FAV_STORAGE_KEY);
 
-  products.forEach(product => {
-    const doesFavExists = currentFavorites.find(fav => {
+  products.forEach((product) => {
+    const doesFavExists = currentFavorites.find((fav) => {
       if (parseInt(fav.id) === product.id || fav.id === product.id) {
         return true;
       }
@@ -35,7 +35,7 @@ export function createHtml(products) {
   });
 
   const favHeart = document.querySelectorAll(".favorite-heart");
-  favHeart.forEach(heart => {
+  favHeart.forEach((heart) => {
     heart.addEventListener("click", handleFavourites);
     heart.addEventListener("click", fillNavHeart);
   });
