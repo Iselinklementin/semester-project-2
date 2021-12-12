@@ -17,6 +17,8 @@ import { validateForm } from "./validateForm.js";
 export function submitProduct(event) {
   event.preventDefault();
 
+  // Get the right volume of the product added
+
   let volumeValue = "";
 
   if (volume.value == 1) {

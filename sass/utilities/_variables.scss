@@ -6,24 +6,22 @@ $font-primary: "Roboto", sans-serif;
 // colours
 
 $colours: (
+  dark: black,
+  bright: white,
   primary: #c6d9de,
   secondary: #82b447,
   backgroundColor: #efefef,
-  addToCartBtn: #db1275,
-  shopBtnHover: #a01158,
+  activeSidebar: #991955,
+  confirmBtn: #db1275,
+  confirmHover: #a01158,
+  contrast: #fbaf2a,
+  inputColor: #576e82,
+  contrast_dark: #bd8320,
   statusSuccess: #cde5c8,
   statusWarning: #f7d3ab,
   statusError: #fbc9b6,
-  contrast: #fbaf2a,
-  dark: #000000,
-  bright: white,
-  inputColor: #576e82,
-  borderContrast: #bd8320,
-  errorColor: #e3531c,
+  errorText: #e3531c,
 );
-
-// skift navn på borderContrast - brukes flere plasser enn kun border
-// statusOk: #cbe7f4,
 
 // media
 $mobile-width: 576px;

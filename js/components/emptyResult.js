@@ -1,5 +1,8 @@
 import { results } from "../components/elements.js";
 
+// If search, favourites or cart is empty
+// give feedback
+
 export function emptyResult() {
   const child = results.firstChild;
   if (!child) {

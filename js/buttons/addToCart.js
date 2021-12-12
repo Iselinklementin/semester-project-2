@@ -6,8 +6,9 @@ import { closeModal } from "../common/closeModal.js";
 import { openModal } from "../common/openModal.js";
 import { MESSAGES } from "../components/messages.js";
 
+// Adding product to cart
+
 export function addToCart() {
-  // dette kan vel være en egen funksjon? nevnt mange plasser
   const id = this.dataset.id;
   const title = this.dataset.title;
   const price = this.dataset.price;
@@ -16,6 +17,7 @@ export function addToCart() {
   const description = this.dataset.description;
   const inputQuantity = document.querySelector(".input-quantity");
 
+  // Use the input-quantity to see how many products they want
   let count = inputQuantity.value;
 
   const cartItems = getFromStorage(CART_STORAGE_KEY);
@@ -23,9 +25,12 @@ export function addToCart() {
 
   if (productExists) {
     if (count <= 1) {
+      // If the product already is in cart and input quantity is 1, just add one extra
       productExists.quantity++;
     }
     if (count >= 2) {
+      // If the product already is in cart and input quantity is 2 or more,
+      // add them up with the existing quantity
       productExists.quantity = parseFloat(productExists.quantity) + parseFloat(count);
     }
     saveToStorage(CART_STORAGE_KEY, cartItems);
@@ -35,11 +40,10 @@ export function addToCart() {
     saveToStorage(CART_STORAGE_KEY, cartItems);
   }
 
+  // set input back to one, and give feedback that the product is added
   inputQuantity.value = 1;
   changeCartIcon();
   openModal(MESSAGES.added, `${title} is added to cart!`);
-
-  // modal buttons
   closeBtn.innerText = MESSAGES.confirm;
   confirmBtn.innerText = MESSAGES.go_to_cart;
 

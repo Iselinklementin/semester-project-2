@@ -14,7 +14,7 @@
 }
 
 .sidebar-nav-items {
-  border-top: 1px solid getColour(borderContrast);
+  border-top: 1px solid getColour(contrast_dark);
   display: flex;
   width: 100%;
   margin-top: 2rem;
@@ -56,6 +56,10 @@
     text-decoration: none;
     color: getColour(dark);
     padding-left: 0;
+
+    &.active {
+      color: getColour(activeSidebar);
+    }
 
     &:hover {
       transform: scale(1.05);

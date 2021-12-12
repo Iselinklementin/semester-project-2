@@ -1,78 +1,67 @@
-import {
-  volume,
-  descriptionDetails,
-  description,
-  title,
-  price,
-  nutrition,
-} from "../components/elements.js";
+import { volume, descriptionDetails, description, title, price, nutrition } from "../components/elements.js";
 import validateLength from "../components/checkValidation.js";
 import { inputFeedback } from "./inputFeedback.js";
 import { MESSAGES } from "../components/messages.js";
+import { ALERT, WARNING } from "../components/misc.js";
+
+// Validation both for adding and editing products
 
 export function validateForm() {
   let validationPassed = true;
 
   title.addEventListener("blur", () => {
     if (validateLength(title.value.length, 1)) {
-      inputFeedback(".input-warning__title", MESSAGES.insert_text, "fa-exclamation-circle");
+      inputFeedback(ALERT.title, MESSAGES.insert_text, WARNING);
       validationPassed = false;
     } else {
-      inputFeedback(".input-warning__title", "", "");
+      inputFeedback(ALERT.title, "", "");
     }
   });
 
   price.addEventListener("blur", () => {
     if (isNaN(price.value) || validateLength(price.value, 1)) {
-      inputFeedback(".input-warning__price", MESSAGES.insert_number, "fa-exclamation-circle");
+      inputFeedback(ALERT.price, MESSAGES.insert_number, WARNING);
       validationPassed = false;
     } else {
-      inputFeedback(".input-warning__price", "", "");
+      inputFeedback(ALERT.price, "", "");
     }
   });
 
   description.addEventListener("blur", () => {
     if (validateLength(description.value.length, 1)) {
-      inputFeedback(".input-warning__description", MESSAGES.insert_text, "fa-exclamation-circle");
+      inputFeedback(ALERT.description, MESSAGES.insert_text, WARNING);
       validationPassed = false;
     } else {
-      inputFeedback(".input-warning__description", "", "");
+      inputFeedback(ALERT.description, "", "");
     }
   });
 
   descriptionDetails.addEventListener("blur", () => {
     if (validateLength(descriptionDetails.value.length, 1)) {
-      inputFeedback(
-        ".input-warning__description-details",
-        MESSAGES.insert_text,
-        "fa-exclamation-circle"
-      );
+      inputFeedback(ALERT.details, MESSAGES.insert_text, WARNING);
       validationPassed = false;
     } else {
-      inputFeedback(".input-warning__description-details", "", "");
+      inputFeedback(ALERT.details, "", "");
     }
   });
 
   nutrition.addEventListener("blur", () => {
     if (validateLength(nutrition.value.length, 1)) {
-      inputFeedback(".input-warning__nutrition", MESSAGES.insert_text, "fa-exclamation-circle");
+      inputFeedback(ALERT.nutrition, MESSAGES.insert_text, WARNING);
       validationPassed = false;
     } else {
-      inputFeedback(".input-warning__nutrition", "", "");
+      inputFeedback(ALERT.nutrition, "", "");
     }
   });
 
   volume.addEventListener("blur", () => {
     if (volume.value === "Choose volume") {
-      inputFeedback(".input-warning__volume", MESSAGES.choose_volume, "fa-exclamation-circle");
+      inputFeedback(ALERT.volume, MESSAGES.choose_volume, WARNING);
       validationPassed = false;
     } else {
-      inputFeedback(".input-warning__volume", "", "");
+      inputFeedback(ALERT.volume, "", "");
     }
   });
 
   return validationPassed;
 }
-
-// validateEditForm
-// validateAddForm

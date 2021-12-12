@@ -7,7 +7,7 @@ export function searchFunction(products) {
   searchInput.onkeyup = (event) => {
     const searchValue = event.target.value.trim();
     const searchTitle = products.filter((item) => {
-      // Tar vekk span så produktet kan søkes på
+      // remove span from the title so the search works like it should
       let titleStr = item.title;
       let title = titleStr.replace("<span>", "");
       if (title.toLowerCase().includes(searchValue) || item.description.toLowerCase().includes(searchValue)) {
@@ -15,6 +15,7 @@ export function searchFunction(products) {
       }
     });
 
+    // If its two or less in searchresults, columns is set to 2 instead of 4.
     if (searchTitle.length <= 2) {
       productContainer.classList = `row row-cols-2 row-cols-md-2 g-4 row-cols-lg-2 results product-container`;
     } else {
@@ -22,7 +23,6 @@ export function searchFunction(products) {
     }
 
     createHtml(searchTitle);
-
     emptyResult();
   };
 }

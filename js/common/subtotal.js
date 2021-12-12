@@ -12,6 +12,9 @@ export function subtotal() {
     emptyResult();
   }
 
+  // adding total cost in cart
+  // using quantity to get the correct price
+
   currentCart.map((product) => {
     let productTotal = parseFloat(product.price) * product.quantity;
     cost += productTotal;

@@ -20,6 +20,8 @@ export function createHtml(products) {
 
     let cssClass = doesFavExists ? "fa" : "far";
 
+    // using Block to create html
+
     const newBlock = new Block(
       `${product.title}`,
       `${product.price}`,

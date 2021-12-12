@@ -15,7 +15,7 @@
     }
 
     .count-products {
-      border-bottom: black solid thin;
+      border-bottom: getColour(dark) solid thin;
       padding-bottom: 3rem;
     }
   }
@@ -51,7 +51,7 @@
 
     &:hover {
       box-shadow: none;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid getColour(dark);
     }
   }
 
@@ -93,7 +93,7 @@
     @include flex(row, space-between, center);
     flex-wrap: wrap;
     padding-top: 2rem;
-    border-top: black solid thin;
+    border-top: getColour(dark) solid thin;
 
     // buttons er flere plasser her i fila
 
@@ -111,7 +111,7 @@
   // FIKS KNAPPENE OVERALT
 
   .btn-primary {
-    background-color: getColour(addToCartBtn);
+    background-color: getColour(confirmBtn);
     padding: 0.6rem 0.75rem;
     width: 100%;
     max-width: 100%;
@@ -127,7 +127,7 @@
   .remove {
     font-style: italic;
     cursor: pointer;
-    color: getColour(borderContrast);
+    color: getColour(contrast_dark);
     padding: 0.5rem 2rem 0 0;
 
     &:hover {
@@ -196,7 +196,7 @@
         margin-right: 0;
 
         &:hover {
-          background-color: getColour(shopBtnHover);
+          background-color: getColour(confirmHover);
         }
       }
     }

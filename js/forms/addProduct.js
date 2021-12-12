@@ -3,8 +3,6 @@ import { PRODUCT_URL, JSON_CONTENT_TYPE_AUTH, POST } from "../settings/api.js";
 import displayMessage from "../components/displayMessage.js";
 import { MESSAGES } from "../components/messages.js";
 
-// const formInputs = document.querySelectorAll(".add-product-wrap .form-control");
-
 export async function addProduct(
   title,
   price,

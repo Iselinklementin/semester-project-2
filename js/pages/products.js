@@ -27,6 +27,7 @@ toggleSidebar();
         btn.addEventListener("click", filterProducts);
       });
 
+      // filter products with buttons
       function filterProducts() {
         const parentChildren = this.parentElement.children;
         const findChildrenClass = [...parentChildren];
@@ -49,5 +50,10 @@ toggleSidebar();
           this.classList.add("active-filter");
         }
       }
+    })
+    .catch((error) => {
+      console.error(error.message);
+      const hero_banner_container = document.querySelector(".hero-banner-container");
+      hero_banner_container.style.display = "none";
     });
 })();

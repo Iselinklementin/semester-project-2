@@ -4,6 +4,7 @@ import { fillNavHeart } from "../common/fillNavHeart.js";
 
 export default function handleFavourites() {
   this.classList.toggle("fa");
+
   const id = this.dataset.id;
   const title = this.dataset.title;
   const price = this.dataset.price;

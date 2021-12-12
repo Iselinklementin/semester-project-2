@@ -49,7 +49,9 @@ export async function updateProduct(
     if (json.updated_at) {
       json.id = JSON.stringify(json.id);
 
-      // if in cart
+      // if product is in cart while updating it,
+      // update cart too
+
       let quantityInCart;
 
       currentCart.find((product) => {
@@ -62,7 +64,9 @@ export async function updateProduct(
         }
       });
 
-      // if in favourites
+      // if product is in favourites while updating it,
+      // update favourites too
+
       const newFavourites = currentFav.filter((product) => product.id !== json.id);
       newFavourites.push(json);
       saveToStorage(FAV_STORAGE_KEY, newFavourites);

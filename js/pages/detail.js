@@ -29,21 +29,21 @@ const id = params.get("id");
 
 (async function fetchProducts() {
   const response = await fetch(PRODUCT_URL + id);
-  const result = await response.json();
+  const product = await response.json();
 
   loader.style.display = "none";
   const currentFavorites = getFromStorage(FAV_STORAGE_KEY);
   const doesFavExists = currentFavorites.find((fav) => {
-    if (parseInt(fav.id) === result.id || fav.id === result.id) {
+    if (parseInt(fav.id) === product.id || fav.id === product.id) {
       return true;
     }
   });
   let cssClass = doesFavExists ? "fa" : "far";
 
   contentContainer.innerHTML += `<div class="title-container">
-                                  <h1 class="title">${result.title}</h1>
-                                  <a href="edit.html?id=${result.id}"><i class="fas fa-edit"></i></a>
-                                  <p>${result.description}</p>
+                                  <h1 class="title">${product.title}</h1>
+                                  <a href="edit.html?id=${product.id}"><i class="fas fa-edit"></i></a>
+                                  <p>${product.description}</p>
                                 </div>
                                   
                                   <div class="buy-container">
@@ -56,30 +56,30 @@ const id = params.get("id");
                                     <p class="price"></p>
                                     </div>
 
-                                    <button type="button" class="btn btn-primary" id="addToCart-btn" data-id="${result.id}" data-title="${result.title}" 
-                                    data-description="${result.description}" data-price="${result.price}" data-volume="${result.volume}" 
-                                    data-featured="${result.featured}" data-image_url="${result.image_url}" data-nutrition="${result.nutrition}"
-                                    data-description_detail="${result.description_details}">
+                                    <button type="button" class="btn btn-primary" id="addToCart-btn" data-id="${product.id}" data-title="${product.title}" 
+                                    data-description="${product.description}" data-price="${product.price}" data-volume="${product.volume}" 
+                                    data-featured="${product.featured}" data-image_url="${product.image_url}" data-nutrition="${product.nutrition}"
+                                    data-description_detail="${product.description_details}">
                                     <i class="fas fa-plus"></i> Add to cart</button>
-                                
                                   </div`;
 
+  // adding favourite-heart
   imageContainer.insertAdjacentHTML(
     "afterbegin",
-    `<i class="far fa-heart favorite-icon ${cssClass}" data-id="${result.id}" data-title="${result.title}" 
-    data-description="${result.description}" data-price="${result.price}" data-volume="${result.volume}" 
-    data-image_url="${result.image_url}"></i>`
+    `<i class="far fa-heart favorite-icon ${cssClass}" data-id="${product.id}" data-title="${product.title}" 
+    data-description="${product.description}" data-price="${product.price}" data-volume="${product.volume}" 
+    data-image_url="${product.image_url}"></i>`
   );
 
   // remove span from the title
-  let titleWithoutSpan = result.title.replace("<span>", "").replace("</span>", "");
+  let titleWithoutSpan = product.title.replace("<span>", "").replace("</span>", "");
 
   breacrumbTitle.innerText = titleWithoutSpan;
   documentTitle.innerHTML = titleWithoutSpan;
   productImage.alt = titleWithoutSpan;
-  productImage.src = result.image_url;
-  productDescription.innerText = result.description_details;
-  productNutrition.innerText = result.nutrition;
+  productImage.src = product.image_url;
+  productDescription.innerText = product.description_details;
+  productNutrition.innerText = product.nutrition;
 
   const minus = document.querySelector(".minus");
   const plus = document.querySelector(".plus");
@@ -98,14 +98,14 @@ const id = params.get("id");
     if (this.nextElementSibling.value <= 1) {
       this.nextElementSibling.value = 1;
     }
-    showPrice(result);
+    showPrice(product);
   }
 
   function increaseQuantity() {
     this.previousElementSibling.value++;
-    showPrice(result);
+    showPrice(product);
   }
 
   editIcon();
-  showPrice(result);
+  showPrice(product);
 })();

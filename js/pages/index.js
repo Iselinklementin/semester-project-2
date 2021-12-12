@@ -1,5 +1,5 @@
 import toggleSidebar from "../layout/nav.js";
-import { PRODUCT_URL, homeUrl } from "../settings/api.js";
+import { PRODUCT_URL, HOME_URL } from "../settings/api.js";
 import { createHtml } from "../common/createHtml.js";
 import { loadingHtml } from "../common/skeletonLoading.js";
 import { herobanner, productContainer, filterBtns } from "../components/elements.js";
@@ -10,7 +10,7 @@ loadingHtml();
 // husk try fetch finally og autocall
 
 (function callApi() {
-  let fetchBanner = fetch(homeUrl);
+  let fetchBanner = fetch(HOME_URL);
   let fetchProducts = fetch(PRODUCT_URL);
 
   Promise.all([fetchBanner, fetchProducts])
@@ -18,9 +18,9 @@ loadingHtml();
     .then((finalValues) => {
       const home = finalValues[0];
       const products = finalValues[1];
-
       herobanner.src = home.hero_banner.url;
 
+      // if featured, create html
       const featuredProducts = products.filter((product) => (product.featured ? true : false));
       productContainer.innerHTML = "";
       createHtml(featuredProducts);
@@ -28,6 +28,8 @@ loadingHtml();
       filterBtns.forEach((btn) => {
         btn.addEventListener("click", filterNewsFeatured);
       });
+
+      // filter function
 
       function filterNewsFeatured() {
         if (this.nextElementSibling) {
@@ -50,5 +52,11 @@ loadingHtml();
           createHtml(featuredProducts);
         }
       }
+    })
+    .catch((error) => {
+      const hero_banner_text = document.querySelector(".hero-banner__text");
+      console.error(error.message);
+      herobanner.style.height = "100px";
+      hero_banner_text.style.top = "20%";
     });
 })();

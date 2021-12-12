@@ -1,5 +1,7 @@
 import { hiddenImageContainer, cloudName, uploadPreset, uploadWidget, uploadedImage } from "../components/elements.js";
 
+// Using Cloudinary uploading-widget to get images to show
+
 export function imageUploader() {
   const myWidget = cloudinary.createUploadWidget(
     {

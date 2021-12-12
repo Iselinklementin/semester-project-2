@@ -60,13 +60,13 @@
       background-color: #76a9c6;
       padding: 5px 15px;
       box-shadow: none;
-      color: white;
+      color: getColour(bright);
       text-transform: uppercase;
       font-size: 14px;
       @include flex(row, center, center);
 
       &:hover {
-        color: white;
+        color: getColour(bright);
         transform: scale(1.05);
       }
 

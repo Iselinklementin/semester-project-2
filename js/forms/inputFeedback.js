@@ -1,3 +1,6 @@
+// give feedback on inputs if they are not filled in correct
+// used on validationForm
+
 export function inputFeedback(targetElement, message, icon) {
   const container = document.querySelector(targetElement);
 

@@ -35,7 +35,7 @@ footer {
   padding: 10px;
   text-align: center;
   margin: 2rem auto;
-  border: getColour(borderContrast) thin solid;
+  border: getColour(contrast_dark) thin solid;
 }
 
 .success {
@@ -43,7 +43,6 @@ footer {
   padding: 10px;
   text-align: center;
   margin: 2rem auto;
-  // border: getColour(borderContrast) thin solid;
 }
 
 // cow on home & login
@@ -62,12 +61,6 @@ footer {
     font-size: 1.5rem;
   }
 }
-
-// husk å lag loadingbar
-// active in nav
-// hover (!)
-
-// product layout
 
 // denne kan gjøres på base.
 // så kan jeg bruke samme classes på fav og products osv
@@ -132,7 +125,7 @@ footer {
     }
 
     &:hover {
-      color: getColour(borderContrast);
+      color: getColour(contrast_dark);
     }
   }
 
@@ -185,10 +178,11 @@ footer {
 
 #loading-img {
   background-color: #dee1e3;
+  color: #dee1e3;
 }
 
 .loading-col {
-  min-width: 120px;
+  min-width: 180px;
 
   @include for-laptop {
     width: 233px;
@@ -219,7 +213,7 @@ footer {
   .plus {
     padding: 10px 15px;
     cursor: pointer;
-    background-color: white;
+    background-color: getColour(bright);
     line-height: 1.5;
 
     &:hover {
@@ -240,7 +234,61 @@ footer {
     text-align: center;
     border: none;
     &:disabled {
-      background-color: white;
+      background-color: getColour(bright);
     }
+  }
+}
+
+// loader
+
+.loader-background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-color: getColour(backgroundColor);
+}
+
+.show-spinner {
+  display: block;
+  height: 300px;
+  position: relative;
+}
+
+.spinner::after {
+  content: "";
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin: auto;
+  top: 50%;
+  border-radius: 50%;
+
+  @include for-desktop {
+    top: 80%;
+  }
+}
+
+.spinner.pulse::after {
+  background-color: getColour(contrast_dark);
+  animation: pulse 1.5s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.5;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
   }
 }

@@ -1,3 +1,6 @@
+// skeletonLoading in product-container
+// both index.html and products.html
+
 export function loadingHtml() {
   const productContainer = document.querySelector(".product-container");
 
@@ -5,7 +8,7 @@ export function loadingHtml() {
     productContainer.innerHTML += `
     <div class="col loading-col">
     <div class="card" aria-hidden="true">
-      <img src="..." class="card-img-top" id="loading-img" alt="..." style="height: 200px;" />
+      <img src="" class="card-img-top" id="loading-img" alt="..." style="height: 200px;" />
       <div class="card-body">
         <h5 class="card-title placeholder-glow">
           <span class="placeholder loadspan"></span>
@@ -20,29 +23,4 @@ export function loadingHtml() {
       </div>
     </div>`;
   }
-}
-
-export function loadingCart() {
-  const productContainer = document.querySelector(".product-container");
-  productContainer.innerHTML = `<div class="load-cart">
-                                  <div class="d-flex" aria-hidden="true">
-                                  <div class="load-box"></div>
-                                    <div class="card-body placeholder-glow">
-                                      <h5 class="card-title">
-                                      <span class="placeholder loadspan"></span>
-                                      </h5>
-                                      <span class="placeholder col-5 loadspan"></span>
-                                      <span class="placeholder col-5 loadspan"></span>
-                                    </div>
-                                  </div>
-                                </div>`;
-}
-
-{
-  /* <p class="text-center placeholder-glow">
-<span class="placeholder col-7"></span>
-<span class="placeholder col-4"></span>
-<span class="placeholder col-4"></span>
-<span class="placeholder col-6"></span>
-</p> */
 }

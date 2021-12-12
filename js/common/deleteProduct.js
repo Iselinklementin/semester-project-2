@@ -25,7 +25,6 @@ export function deleteProduct(id) {
       location.href = "products.html";
 
       const newFavourites = currentFav.filter((product) => parseInt(product.id) !== json.id);
-      console.log(newFavourites);
       saveToStorage(FAV_STORAGE_KEY, newFavourites);
     } catch (error) {
       console.log(error);

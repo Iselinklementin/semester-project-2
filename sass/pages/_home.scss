@@ -4,7 +4,7 @@
     padding: 0;
     position: relative;
     background-color: #5187a9;
-    min-height: 300px;
+    min-height: 200px;
 
     .hero-banner {
       max-width: 100%;
@@ -12,7 +12,6 @@
       object-fit: cover;
       object-position: 50%;
       position: relative;
-      background-color: #5187a9;
 
       &__logo {
         width: 140px;
@@ -33,7 +32,7 @@
 
       &__text {
         position: absolute;
-        color: white;
+        color: getColour(bright);
         text-align: left;
         top: 8%;
         left: 0;
@@ -84,7 +83,7 @@
   }
 
   .line {
-    border-bottom: getColour(borderContrast) thin solid;
+    border-bottom: getColour(contrast_dark) thin solid;
     width: 35%;
     margin: 3rem auto 0 auto;
 
@@ -163,7 +162,7 @@
     h2 {
       width: 218px;
       padding-bottom: 1rem;
-      border-bottom: getColour(borderContrast) thin solid;
+      border-bottom: getColour(contrast_dark) thin solid;
       padding-left: 0;
 
       @include for-phone {
@@ -196,7 +195,7 @@
       text-decoration: none;
       text-transform: uppercase;
       font-weight: 500;
-      border-bottom: getColour(borderContrast) 2px solid;
+      border-bottom: getColour(contrast_dark) 2px solid;
     }
 
     figure {
@@ -321,7 +320,7 @@
       right: 0;
       left: 0;
       margin: auto;
-      color: white;
+      color: getColour(bright);
       text-decoration: none;
       text-transform: uppercase;
       font-weight: 600;

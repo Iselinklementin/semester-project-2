@@ -13,6 +13,7 @@ import {
   idInput,
   hiddenImageContainer,
   documentTitle,
+  loader,
 } from "../components/elements.js";
 import displayMessage from "../components/displayMessage.js";
 import { MESSAGES } from "../components/messages.js";
@@ -30,8 +31,6 @@ imageUploader();
 fillNavHeart();
 changeCartIcon();
 
-// kanskje jeg kan kalle fetchene likt. nå er noen result og noen products
-
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
@@ -42,6 +41,8 @@ const url = PRODUCT_URL + id;
     const response = await fetch(url);
     const product = await response.json();
     const selected = [...volume.options];
+
+    loader.style.display = "none";
 
     if (product.featured) {
       featuredCheckbox.checked = true;

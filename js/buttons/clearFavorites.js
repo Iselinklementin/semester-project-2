@@ -13,8 +13,10 @@ export default function clearAll() {
   clearBtn.addEventListener("click", clearAll);
 
   function clearAll() {
+    // ask if they want to clear all favourites
     openModal(MESSAGES.clear, MESSAGES.clearing_all);
 
+    // if its confirmed - clear all
     confirmBtn.addEventListener("click", () => {
       modal.style.display = "none";
       clearKey(FAV_STORAGE_KEY);

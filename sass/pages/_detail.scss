@@ -1,68 +1,16 @@
 .detailpage-wrapper {
   position: relative;
 
-  .loader-background {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    background-color: getColour(backgroundColor);
-  }
-
-  .show-spinner {
-    display: block;
-    height: 300px;
-    position: relative;
-  }
-
-  .spinner::after {
-    content: "";
-    width: 80px;
-    height: 80px;
-    position: absolute;
-    right: 0;
-    left: 0;
-    margin: auto;
-    top: 50%;
-    border-radius: 50%;
-
-    @include for-desktop {
-      top: 80%;
-    }
-  }
-
-  .spinner.pulse::after {
-    background-color: getColour(borderContrast);
-    animation: pulse 1.5s ease-out infinite;
-  }
-
-  @keyframes pulse {
-    0% {
-      transform: scale(0.1);
-      opacity: 0;
-    }
-    30% {
-      opacity: 0.5;
-    }
-    60% {
-      transform: scale(1.2);
-      opacity: 0;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-
   .image-bread-container {
     margin-top: 4rem;
 
     a {
       text-decoration: none;
-      color: black;
+      color: getColour(dark);
     }
 
     .active {
-      color: getColour(borderContrast);
+      color: getColour(contrast_dark);
     }
 
     @include for-tablet {
@@ -105,7 +53,7 @@
 
     .title-container {
       position: relative;
-      border-bottom: black solid thin;
+      border-bottom: getColour(dark) solid thin;
       padding-bottom: 1rem;
       margin: 2rem 0;
 
@@ -128,7 +76,7 @@
       @include flex(column, space-between, center);
 
       margin-bottom: 2rem;
-      border-bottom: black solid thin;
+      border-bottom: getColour(dark) solid thin;
       padding-bottom: 2rem;
 
       @include for-desktop {
@@ -149,7 +97,7 @@
     .price {
       font-size: 1.6rem;
       margin: 0;
-      color: getColour(secondary);
+      color: getColour(contrast_dark);
     }
   }
 
@@ -158,12 +106,12 @@
   }
 
   #addToCart-btn {
-    background-color: getColour(addToCartBtn);
+    background-color: getColour(confirmBtn);
     width: 100%;
     max-width: 100%;
 
     &:hover {
-      background-color: getColour(shopBtnHover);
+      background-color: getColour(confirmHover);
     }
 
     @include for-desktop {

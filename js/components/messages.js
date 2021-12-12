@@ -18,4 +18,6 @@ export const MESSAGES = {
   last_item: "This is the last item, are you sure you want to remove it?",
   delete_product: "Are you sure you want to delete this product?",
   updated_product: "Success! Product is updated",
+  valid_email: "Please insert a valid email",
+  valid_password: "Password must contain a numeric digit, upper-/lowercase letter",
 };

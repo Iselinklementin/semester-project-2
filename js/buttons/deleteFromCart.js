@@ -1,12 +1,12 @@
-import { modal, confirmBtn, productsInCart } from "../components/elements.js";
-import { getFromStorage, saveToStorage } from "../settings/storage.js";
+import { confirmBtn, modal, productsInCart } from "../components/elements.js";
+import { getFromStorage } from "../settings/storage.js";
 import { CART_STORAGE_KEY } from "../settings/keys.js";
-import { createHtml } from "../common/createHtml.js";
-import { addQuantityHtml } from "../common/addQuantityHtml.js";
-import { subtotal } from "../common/subtotal.js";
 import { closeModal } from "../common/closeModal.js";
 import { openModal } from "../common/openModal.js";
 import { MESSAGES } from "../components/messages.js";
+import { removeProductFunction } from "../common/removeProductFunction.js";
+
+// Delete products in cart
 
 export function deleteFromCart() {
   let id = this.getAttribute("data-id");
@@ -14,17 +14,12 @@ export function deleteFromCart() {
 
   currentItems.forEach((item) => {
     if (item.id === id) {
+      // ask if they wish to delete product
       openModal(MESSAGES.delete, `Are you sure you want to remove ${item.title} from your cart?`);
 
+      // If its confirmed - delete it
       confirmBtn.addEventListener("click", () => {
-        // productDelete(); ??
-        const currentCart = getFromStorage(CART_STORAGE_KEY);
-        const newList = currentCart.filter((product) => product.id !== id);
-        saveToStorage(CART_STORAGE_KEY, newList);
-        createHtml(newList);
-        subtotal();
-        addQuantityHtml();
-        productsInCart.innerText = `${newList.length} products in cart`;
+        removeProductFunction(id);
         modal.style.display = "none";
       });
 

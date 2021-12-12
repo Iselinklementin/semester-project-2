@@ -11,6 +11,8 @@ export function addQuantityHtml() {
   productCards.forEach((product) => {
     let id = product.firstElementChild.getAttribute("data-id");
 
+    // add quantity-html to product-columns in cart
+
     currentItems.forEach((item) => {
       if (item.id === id) {
         product.insertAdjacentHTML(
@@ -32,6 +34,7 @@ export function addQuantityHtml() {
   const plus = document.querySelectorAll(".plus");
   const removeItem = document.querySelectorAll(".remove");
 
+  // Minus/plus controls how many of the same product the customer wants
   minus.forEach((decrease) => {
     decrease.addEventListener("click", decreaseAmount);
   });

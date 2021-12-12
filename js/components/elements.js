@@ -1,11 +1,12 @@
-// sjekk global, tror ikke den er koblet opp
-
 // global
 export const productContainer = document.querySelector(".product-container");
 export const results = document.querySelector(".results");
 export const wrapper = document.querySelector(".sidebar-nav-wrapper");
 export const navDesktop = document.querySelector(".nav-desktop");
 export const navSidebar = document.querySelector(".sidebar-nav-links");
+
+// index & products
+export const filterBtns = document.querySelectorAll(".filter-btn");
 export const herobanner = document.querySelector(".hero-banner");
 
 // login form
@@ -63,6 +64,3 @@ export const confirmBtn = document.querySelector(".confirmBtn");
 
 // cart
 export const productsInCart = document.querySelector(".count-products");
-
-// index
-export const filterBtns = document.querySelectorAll(".filter-btn");
