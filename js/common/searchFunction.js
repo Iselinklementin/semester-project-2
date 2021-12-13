@@ -9,8 +9,8 @@ export function searchFunction(products) {
     const searchValue = event.target.value.trim();
     const filterProducts = products.filter((item) => {
       // remove span from the title
-      let title = item.title.replace("<span>", "").replace("</span>", "");
-      if (title.toLowerCase().includes(searchValue) || item.description.toLowerCase().includes(searchValue)) {
+      // let title = item.title.replace("<span>", "").replace("</span>", "");
+      if (item.title.toLowerCase().includes(searchValue) || item.description.toLowerCase().includes(searchValue)) {
         return true;
       }
     });
