@@ -45,6 +45,9 @@ const url = PRODUCT_URL + id;
 
     loader.style.display = "none";
 
+    // dropdown not working in Safari
+    // need to use divs instead
+
     if (product.featured) {
       featuredCheckbox.checked = true;
     }

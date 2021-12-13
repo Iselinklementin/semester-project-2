@@ -4,7 +4,7 @@ import { productContainer } from "../components/elements.js";
 
 export function searchFunction(products) {
   const searchInput = document.querySelector(".search-product-page");
-  searchInput.onkeyup = (event) => {
+  searchInput.oninput = (event) => {
     const searchValue = event.target.value.trim();
     const searchTitle = products.filter((item) => {
       // remove span from the title so the search works like it should

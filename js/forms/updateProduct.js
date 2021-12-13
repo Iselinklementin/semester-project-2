@@ -75,7 +75,6 @@ export async function updateProduct(
       displayMessage(SUCCESS, MESSAGES.updated_product, STATUS_ELEMENT);
     }
   } catch (error) {
-    console.log(error);
     displayMessage(ERROR, MESSAGES.server_error, STATUS_ELEMENT);
   }
 }

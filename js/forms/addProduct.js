@@ -48,7 +48,7 @@ export async function addProduct(
     if (json.created_at) {
       form.reset();
       uploadedImage.src = "";
-      displayMessage(SUCCESS, MESSAGES.updated_product, STATUS_ELEMENT);
+      displayMessage(SUCCESS, MESSAGES.created, STATUS_ELEMENT);
     }
   } catch (error) {
     displayMessage(ERROR, MESSAGES.server_error, STATUS_ELEMENT);
