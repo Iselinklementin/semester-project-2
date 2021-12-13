@@ -9,8 +9,8 @@ export function searchFunction(products) {
     const searchValue = event.target.value.trim();
     const filterProducts = products.filter((item) => {
       // remove span from the title
-      // let title = item.title.replace("<span>", "").replace("</span>", "");
-      if (item.title.toLowerCase().includes(searchValue) || item.description.toLowerCase().includes(searchValue)) {
+      let title = item.title.replace("<span>", "").replace("</span>", "");
+      if (title.toLowerCase().includes(searchValue) || item.description.toLowerCase().includes(searchValue)) {
         return true;
       }
     });
@@ -21,9 +21,6 @@ export function searchFunction(products) {
     } else {
       productContainer.classList = `row row-cols-2 row-cols-md-2 g-4 row-cols-lg-4 results product-container`;
     }
-
-    console.log(`This is search value:` + searchValue);
-    console.log(filterProducts);
 
     createProductCards(filterProducts);
     emptyResult();
