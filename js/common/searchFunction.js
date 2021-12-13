@@ -23,6 +23,7 @@ export function searchFunction(products) {
     }
 
     console.log(`This is search value:` + searchValue);
+    console.log(filterProducts);
 
     createProductCards(filterProducts);
     emptyResult();
