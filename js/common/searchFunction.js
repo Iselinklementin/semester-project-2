@@ -4,8 +4,8 @@ import { productContainer } from "../components/elements.js";
 
 export function searchFunction(products) {
   const searchInput = document.querySelector(".search-product-page");
-  searchInput.addEventListener("keyup", (event) => {
-    // searchInput.oninput = (event) => {
+
+  searchInput.oninput = (event) => {
     const searchValue = event.target.value.trim();
     const filterProducts = products.filter((item) => {
       // remove span from the title
@@ -22,7 +22,9 @@ export function searchFunction(products) {
       productContainer.classList = `row row-cols-2 row-cols-md-2 g-4 row-cols-lg-4 results product-container`;
     }
 
+    console.log(`This is search value:` + searchValue);
+
     createProductCards(filterProducts);
     emptyResult();
-  });
+  };
 }
