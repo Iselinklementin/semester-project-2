@@ -1801,12 +1801,24 @@ footer .logo-container-footer .logo-footer {
   }
 }
 
+@media (min-width: 1400px) {
+  .product-page-wrapper .hero-banner-container {
+    height: 100%;
+  }
+}
+
 .product-page-wrapper .hero-banner-container img {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: 55%;
      object-position: 55%;
+}
+
+@media (min-width: 1400px) {
+  .product-page-wrapper .hero-banner-container img {
+    width: 100%;
+  }
 }
 
 .product-page-wrapper h1 {

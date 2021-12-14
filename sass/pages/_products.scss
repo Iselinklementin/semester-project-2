@@ -14,10 +14,18 @@
       height: 400px;
     }
 
+    @include for-large-desktop {
+      height: 100%;
+    }
+
     img {
       height: 100%;
       object-fit: cover;
       object-position: 55%;
+
+      @include for-large-desktop {
+        width: 100%;
+      }
     }
   }
 

@@ -5,12 +5,15 @@ import { productContainer } from "../components/elements.js";
 export function searchFunction(products) {
   const searchInput = document.querySelector(".search-product-page");
 
-  searchInput.oninput = (event) => {
+  searchInput.oninput = event => {
     const searchValue = event.target.value.trim();
-    const filterProducts = products.filter((item) => {
+    const filterProducts = products.filter(item => {
       // remove span from the title
       let title = item.title.replace("<span>", "").replace("</span>", "");
-      if (title.toLowerCase().includes(searchValue) || item.description.toLowerCase().includes(searchValue)) {
+      if (
+        title.toLowerCase().includes(searchValue) ||
+        item.description.toLowerCase().includes(searchValue)
+      ) {
         return true;
       }
     });
@@ -23,6 +26,6 @@ export function searchFunction(products) {
     }
 
     createProductCards(filterProducts);
-    emptyResult();
   };
+  emptyResult();
 }

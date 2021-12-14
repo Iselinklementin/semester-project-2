@@ -18,7 +18,9 @@ export default function toggleSidebar() {
   if (USER_STORAGE) {
     navDesktop.innerHTML = `
     <li><a class="${classes} ${currentPage("/index.html")}" href="/index.html">Home</a></li>
-    <li><a class="${classes} ${currentPage("/products.html")}" href="products.html">Products</a></li>
+    <li><a class="${classes} ${currentPage(
+      "/products.html"
+    )}" href="products.html">Products</a></li>
     <li><a href="/add.html" class="${classes} ${currentPage("/add.html")}">Add product</a></li>
     <li><a class="nav-link ${currentPage(
       "/favorites.html"
@@ -46,7 +48,7 @@ export default function toggleSidebar() {
     signout();
   }
 
-  toggleNav.addEventListener("click", (event) => {
+  toggleNav.addEventListener("click", event => {
     event.preventDefault();
     wrapper.classList.toggle("show");
     hamburger.classList.toggle("fa-times");
