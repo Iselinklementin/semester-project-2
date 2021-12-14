@@ -4,9 +4,6 @@
     text-align: center;
     @include flex(row, space-between, center);
   }
-  // .card {
-  //   max-width: 208px;
-  // }
 
   .clear {
     font-size: 0.8rem;

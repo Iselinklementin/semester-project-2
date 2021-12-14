@@ -1,5 +1,3 @@
-// vurder en annen type loading også
-
 .cartpage-wrapper {
   .favorite-heart,
   .fa-edit {
@@ -107,8 +105,6 @@
     }
   }
 
-  // FIKS KNAPPENE OVERALT
-
   .btn-primary {
     background-color: getColour(confirmBtn);
     padding: 0.6rem 0.75rem;
@@ -147,7 +143,7 @@
     width: 100%;
   }
 
-  // This is laptop-changes:
+  // This is all laptop-changes:
 
   @include for-laptop {
     .product-link {

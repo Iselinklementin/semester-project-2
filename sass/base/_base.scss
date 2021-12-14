@@ -30,22 +30,23 @@ footer {
 // feedback
 // her må jeg lage en mal og bare endre farge
 
-.error {
-  background-color: getColour(statusWarning);
+.error,
+.success {
   padding: 10px;
   text-align: center;
   margin: 2rem auto;
+}
+
+.error {
+  background-color: getColour(statusWarning);
   border: getColour(contrast_dark) thin solid;
 }
 
 .success {
   background-color: getColour(statusSuccess);
-  padding: 10px;
-  text-align: center;
-  margin: 2rem auto;
 }
 
-// cow on home & login
+// cow - index & login
 
 .cow-container {
   @include flex(column, center, center);
@@ -62,8 +63,7 @@ footer {
   }
 }
 
-// denne kan gjøres på base.
-// så kan jeg bruke samme classes på fav og products osv
+// products
 
 .products-wrapper {
   @include flex(row, flex-start, center);
@@ -72,7 +72,6 @@ footer {
   a {
     text-decoration: none;
     color: getColour(dark);
-    // box-shadow: rgb(219, 219, 219) 2px 1px 5px 2px;
   }
 
   .product-info {
@@ -86,7 +85,6 @@ footer {
     padding: 1rem;
 
     &:hover {
-      // box-shadow: rgb(219, 219, 219) 2px 1px 5px 6px;
       box-shadow: #dbdbdb 0px 2px 10px 2px;
       transform: scale(1.01);
     }
@@ -152,8 +150,6 @@ footer {
         display: block;
       }
     }
-
-    // denne er ny etter create-html
 
     img {
       height: 320px;

@@ -1,3 +1,5 @@
+// borders
+
 @mixin border-top($color) {
   border-top: solid thin getColour($color);
 }
@@ -9,6 +11,8 @@
 @mixin border($color) {
   border: solid thin getColour($color);
 }
+
+// flex & transitions
 
 @mixin flex($direction, $justify, $align) {
   display: flex;
@@ -25,11 +29,15 @@
   transition: $args;
 }
 
+// reset lists-elements
+
 @mixin reset-list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
+
+// media-query
 
 @mixin for-phone {
   @media (min-width: $mobile-width) {

@@ -21,6 +21,7 @@
   padding-top: 1rem;
   flex-direction: column;
   overflow: hidden;
+  height: 430px;
 
   @include for-laptop {
     height: 370px;
@@ -36,6 +37,7 @@
   flex-wrap: wrap;
   max-height: 190px;
   margin-bottom: 2rem;
+  margin-top: 2rem;
 
   .fa-chevron-right::before {
     margin-right: 0.5rem;
@@ -72,7 +74,6 @@
 
 .social-media-wrapper {
   @include flex(row, flex-start, center);
-  padding-bottom: 5rem;
   padding-left: 10px;
 
   p {

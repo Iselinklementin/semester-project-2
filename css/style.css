@@ -36,19 +36,20 @@ footer {
       flex-shrink: 0;
 }
 
-.error {
-  background-color: #f7d3ab;
+.error,
+.success {
   padding: 10px;
   text-align: center;
   margin: 2rem auto;
+}
+
+.error {
+  background-color: #f7d3ab;
   border: #bd8320 thin solid;
 }
 
 .success {
   background-color: #cde5c8;
-  padding: 10px;
-  text-align: center;
-  margin: 2rem auto;
 }
 
 .cow-container {
@@ -464,7 +465,7 @@ nav .hamburger-container .sidebar-nav-toggle.btn:focus {
           box-shadow: none;
 }
 
-nav .nav-desktop {
+nav .nav-links-top {
   position: relative;
 }
 
@@ -566,6 +567,7 @@ nav .nav-links-top-right a:hover {
       -ms-flex-direction: column;
           flex-direction: column;
   overflow: hidden;
+  height: 430px;
 }
 
 @media (min-width: 992px) {
@@ -586,6 +588,7 @@ nav .nav-links-top-right a:hover {
       flex-wrap: wrap;
   max-height: 190px;
   margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .sidebar-nav-links .fa-chevron-right::before {
@@ -634,7 +637,6 @@ nav .nav-links-top-right a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-bottom: 5rem;
   padding-left: 10px;
 }
 
