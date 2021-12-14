@@ -8,12 +8,4 @@
   .clear {
     font-size: 0.8rem;
   }
-
-  .col {
-    max-width: 190px;
-
-    @include for-tablet {
-      max-width: unset;
-    }
-  }
 }

@@ -11,21 +11,34 @@ toggleSidebar();
 loadingHtml();
 
 export function favourites() {
-  const current = getFromStorage(FAV_STORAGE_KEY);
+  const currentFav = getFromStorage(FAV_STORAGE_KEY);
 
   productContainer.innerHTML = "";
-  createProductCards(current);
+  createProductCards(currentFav);
+  const favLength = currentFav.length;
+
+  // If its just one in favourites, I dont need any columns.
+  if (favLength === 1) {
+    productContainer.classList = `row results product-container`;
+    const col = document.querySelector(".col");
+    col.style.width = "250px";
+  }
+
+  // If its two or less in favourites, columns is set to 2 instead of 4.
+  if (favLength === 2) {
+    productContainer.classList = `row row-cols-2 g-4 results product-container`;
+  } else {
+    currentFav.classList = `row row-cols-4 g-4 results product-container`;
+  }
 
   const favHeart = document.querySelectorAll(".fa-heart");
-  favHeart.forEach((heart) => {
+  favHeart.forEach(heart => {
     // render new html when clicking heart-icon
     heart.addEventListener("click", favourites);
   });
 
-  if (!current.length) {
-    emptyResult();
-  }
+  emptyResult();
 }
-
+emptyResult();
 favourites();
 clearAll();

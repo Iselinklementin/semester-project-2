@@ -106,6 +106,10 @@
     }
   }
 
+  .products-wrapper {
+    @include flex(row, center, center);
+  }
+
   .benefits-container {
     margin-bottom: 2rem;
     margin-top: 0rem;
