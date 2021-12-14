@@ -26,6 +26,6 @@ export function searchFunction(products) {
     }
 
     createProductCards(filterProducts);
+    emptyResult();
   };
-  emptyResult();
 }
