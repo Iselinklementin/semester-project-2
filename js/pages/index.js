@@ -14,18 +14,18 @@ loadingHtml();
   let fetchProducts = fetch(PRODUCT_URL);
 
   Promise.all([fetchBanner, fetchProducts])
-    .then((values) => Promise.all(values.map((value) => value.json())))
-    .then((finalValues) => {
+    .then(values => Promise.all(values.map(value => value.json())))
+    .then(finalValues => {
       const home = finalValues[0];
       const products = finalValues[1];
       herobanner.src = home.hero_banner.url;
 
       // if featured, create html
-      const featuredProducts = products.filter((product) => (product.featured ? true : false));
+      const featuredProducts = products.filter(product => (product.featured ? true : false));
       productContainer.innerHTML = "";
       createProductCards(featuredProducts);
 
-      filterBtns.forEach((btn) => {
+      filterBtns.forEach(btn => {
         btn.addEventListener("click", filterNewsFeatured);
       });
 
@@ -43,17 +43,17 @@ loadingHtml();
         }
 
         if (this.value === "New") {
-          const newProducts = products.filter((product) => product.volume === "Small");
+          const newProducts = products.filter(product => product.volume === "Small");
           createProductCards(newProducts);
         }
 
         if (this.value === "Featured") {
-          const featuredProducts = products.filter((product) => (product.featured ? true : false));
+          const featuredProducts = products.filter(product => (product.featured ? true : false));
           createProductCards(featuredProducts);
         }
       }
     })
-    .catch((error) => {
+    .catch(error => {
       const hero_banner_text = document.querySelector(".hero-banner__text");
       console.error(error.message);
       herobanner.style.height = "100px";

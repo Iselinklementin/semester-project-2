@@ -187,7 +187,15 @@ footer {
   min-width: 180px;
 
   @include for-laptop {
+    width: 234px;
+  }
+
+  @include for-desktop {
     width: 279px;
+  }
+
+  @include for-large-desktop {
+    width: 324px;
   }
 }
 
