@@ -2383,14 +2383,19 @@ footer .logo-container-footer .logo-footer {
   color: #bd8320;
 }
 
-.detailpage-wrapper .fa-plus {
-  margin-right: 15px;
+.detailpage-wrapper h2 {
+  font-size: 1.6rem;
+  margin-top: 2rem;
 }
 
 .detailpage-wrapper #addToCart-btn {
   background-color: #db1275;
   width: 100%;
   max-width: 100%;
+}
+
+.detailpage-wrapper #addToCart-btn .fa-plus {
+  margin-right: 15px;
 }
 
 .detailpage-wrapper #addToCart-btn:hover {
@@ -2431,10 +2436,6 @@ footer .logo-container-footer .logo-footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.favorites-page-wrapper .card {
-  max-width: 208px;
 }
 
 .favorites-page-wrapper .clear {

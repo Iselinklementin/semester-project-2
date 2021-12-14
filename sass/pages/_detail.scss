@@ -109,14 +109,19 @@
     }
   }
 
-  .fa-plus {
-    margin-right: 15px;
+  h2 {
+    font-size: 1.6rem;
+    margin-top: 2rem;
   }
 
   #addToCart-btn {
     background-color: getColour(confirmBtn);
     width: 100%;
     max-width: 100%;
+
+    .fa-plus {
+      margin-right: 15px;
+    }
 
     &:hover {
       background-color: getColour(confirmHover);

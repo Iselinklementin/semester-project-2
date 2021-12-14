@@ -55,10 +55,10 @@ export async function updateProduct(
 
       let quantityInCart;
 
-      currentCart.find((product) => {
+      currentCart.find(product => {
         if (product.id === json.id) {
           quantityInCart = product.quantity;
-          const newCartProducts = currentCart.filter((product) => product.id !== json.id);
+          const newCartProducts = currentCart.filter(product => product.id !== json.id);
           json.quantity = quantityInCart;
           newCartProducts.push(json);
           saveToStorage(CART_STORAGE_KEY, newCartProducts);
@@ -68,9 +68,13 @@ export async function updateProduct(
       // if product is in favourites while updating it,
       // update favourites too
 
-      const newFavourites = currentFav.filter((product) => product.id !== json.id);
-      newFavourites.push(json);
-      saveToStorage(FAV_STORAGE_KEY, newFavourites);
+      currentFav.find(product => {
+        if (product.id === json.id) {
+          const newFavourites = currentFav.filter(product => product.id !== json.id);
+          newFavourites.push(json);
+          saveToStorage(FAV_STORAGE_KEY, newFavourites);
+        }
+      });
 
       displayMessage(SUCCESS, MESSAGES.updated_product, STATUS_ELEMENT);
     }
