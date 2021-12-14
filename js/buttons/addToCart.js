@@ -21,7 +21,7 @@ export function addToCart() {
   let count = inputQuantity.value;
 
   const cartItems = getFromStorage(CART_STORAGE_KEY);
-  const productExists = cartItems.find((product) => product.id === id);
+  const productExists = cartItems.find(product => product.id === id);
 
   if (productExists) {
     if (count <= 1) {
@@ -33,24 +33,36 @@ export function addToCart() {
       // add them up with the existing quantity
       productExists.quantity = parseFloat(productExists.quantity) + parseFloat(count);
     }
+
+    // Give feedback that the product is added, and how many are in cart.
+    openModal(MESSAGES.added, `${title} is added! You now have ${productExists.quantity} in cart.`);
+    closeBtn.innerText = MESSAGES.confirm;
+    confirmBtn.innerText = MESSAGES.go_to_cart;
+
+    confirmBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+      location.href = "cart.html";
+    });
+
     saveToStorage(CART_STORAGE_KEY, cartItems);
   } else {
     const product = { id, title, price, volume, image_url, description, quantity: count };
     cartItems.push(product);
     saveToStorage(CART_STORAGE_KEY, cartItems);
+
+    // Give feedback that the product is added
+    openModal(MESSAGES.added, `${title} is added!`);
+    closeBtn.innerText = MESSAGES.confirm;
+    confirmBtn.innerText = MESSAGES.go_to_cart;
+
+    confirmBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+      location.href = "cart.html";
+    });
   }
 
-  // set input back to one, and give feedback that the product is added
+  // set input back to one
   inputQuantity.value = 1;
   changeCartIcon();
-  openModal(MESSAGES.added, `${title} is added to cart!`);
-  closeBtn.innerText = MESSAGES.confirm;
-  confirmBtn.innerText = MESSAGES.go_to_cart;
-
-  confirmBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-    location.href = "cart.html";
-  });
 }
-
 closeModal();
