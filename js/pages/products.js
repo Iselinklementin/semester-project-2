@@ -13,8 +13,8 @@ toggleSidebar();
   let fetchProducts = fetch(PRODUCT_URL);
 
   Promise.all([fetchBanner, fetchProducts])
-    .then((values) => Promise.all(values.map((value) => value.json())))
-    .then((finalValues) => {
+    .then(values => Promise.all(values.map(value => value.json())))
+    .then(finalValues => {
       const productBanner = finalValues[0];
       const products = finalValues[1];
 
@@ -23,7 +23,7 @@ toggleSidebar();
       createProductCards(products);
       searchFunction(products);
 
-      filterBtns.forEach((btn) => {
+      filterBtns.forEach(btn => {
         btn.addEventListener("click", filterProducts);
       });
 
@@ -31,7 +31,9 @@ toggleSidebar();
       function filterProducts() {
         const parentChildren = this.parentElement.children;
         const findChildrenClass = [...parentChildren];
-        const removeClass = findChildrenClass.filter((child) => child.classList.contains("active-filter"));
+        const removeClass = findChildrenClass.filter(child =>
+          child.classList.contains("active-filter")
+        );
         if (removeClass.length) {
           removeClass[0].classList.remove("active-filter");
         }
@@ -40,19 +42,19 @@ toggleSidebar();
           this.classList.add("active-filter");
         }
         if (this.value === "Small") {
-          const smallProducts = products.filter((product) => product.volume === "Small");
+          const smallProducts = products.filter(product => product.volume === "Small");
           createProductCards(smallProducts);
           this.classList.add("active-filter");
         }
         if (this.value === "Large") {
-          const largeProducts = products.filter((product) => product.volume === "Large");
+          const largeProducts = products.filter(product => product.volume === "Large");
           createProductCards(largeProducts);
           this.classList.add("active-filter");
         }
       }
     })
-    .catch((error) => {
-      console.error(error.message);
+    .catch(error => {
+      console.error(error);
       const hero_banner_container = document.querySelector(".hero-banner-container");
       hero_banner_container.style.display = "none";
     });
