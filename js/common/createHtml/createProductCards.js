@@ -11,8 +11,8 @@ export function createProductCards(products) {
   productContainer.innerHTML = "";
   const currentFavorites = getFromStorage(FAV_STORAGE_KEY);
 
-  products.forEach((product) => {
-    const doesFavExists = currentFavorites.find((fav) => {
+  products.forEach(product => {
+    const doesFavExists = currentFavorites.find(fav => {
       if (parseInt(fav.id) === product.id || fav.id === product.id) {
         return true;
       }
@@ -37,7 +37,7 @@ export function createProductCards(products) {
   });
 
   const favHeart = document.querySelectorAll(".favorite-heart");
-  favHeart.forEach((heart) => {
+  favHeart.forEach(heart => {
     heart.addEventListener("click", handleFavourites);
     heart.addEventListener("click", fillNavHeart);
   });

@@ -16,7 +16,7 @@ export function subtotal() {
 
   // using quantity to get the correct price
 
-  currentCart.map((product) => {
+  currentCart.map(product => {
     let productTotal = parseFloat(product.price) * product.quantity;
     cost += productTotal;
     sum.innerHTML = `$ ${cost.toFixed(2)}`;

@@ -8,12 +8,12 @@ export function addQuantityHtml() {
   const productCards = document.querySelectorAll(".col");
   const currentItems = getFromStorage(CART_STORAGE_KEY);
 
-  productCards.forEach((product) => {
+  productCards.forEach(product => {
     let id = product.firstElementChild.getAttribute("data-id");
 
     // add quantity-html to product-columns in cart
 
-    currentItems.forEach((item) => {
+    currentItems.forEach(item => {
       if (item.id === id) {
         product.insertAdjacentHTML(
           "beforeend",
@@ -35,14 +35,14 @@ export function addQuantityHtml() {
   const removeItem = document.querySelectorAll(".remove");
 
   // Minus/plus controls how many of the same product the customer wants
-  minus.forEach((decrease) => {
+  minus.forEach(decrease => {
     decrease.addEventListener("click", decreaseQuantityInCart);
   });
-  plus.forEach((increase) => {
+  plus.forEach(increase => {
     increase.addEventListener("click", increaseQuantityInCart);
   });
 
-  removeItem.forEach((deleteItem) => {
+  removeItem.forEach(deleteItem => {
     deleteItem.addEventListener("click", removeFromCart);
   });
 }

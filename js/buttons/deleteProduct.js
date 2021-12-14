@@ -26,9 +26,11 @@ export function deleteProduct(id) {
 
       location.href = "products.html";
 
+      // if its in cart, remove it
       const newCartItems = currentCart.filter(product => parseInt(product.id) !== json.id);
       saveToStorage(CART_STORAGE_KEY, newCartItems);
 
+      // if its in favourites, remove it
       const newFavourites = currentFav.filter(product => parseInt(product.id) !== json.id);
       saveToStorage(FAV_STORAGE_KEY, newFavourites);
     } catch (error) {

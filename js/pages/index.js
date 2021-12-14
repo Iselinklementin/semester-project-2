@@ -7,8 +7,6 @@ import { herobanner, productContainer, filterBtns } from "../components/elements
 toggleSidebar();
 loadingHtml();
 
-// husk try fetch finally og autocall
-
 (function callApi() {
   let fetchBanner = fetch(HOME_URL);
   let fetchProducts = fetch(PRODUCT_URL);
@@ -19,6 +17,7 @@ loadingHtml();
       const home = finalValues[0];
       const products = finalValues[1];
       herobanner.src = home.hero_banner.url;
+      herobanner.alt = home.hero_banner.alternativeText;
 
       // if featured, create html
       const featuredProducts = products.filter(product => (product.featured ? true : false));
@@ -55,7 +54,7 @@ loadingHtml();
     })
     .catch(error => {
       const hero_banner_text = document.querySelector(".hero-banner__text");
-      console.error(error.message);
+      console.error(error);
       herobanner.style.height = "100px";
       hero_banner_text.style.top = "20%";
     });

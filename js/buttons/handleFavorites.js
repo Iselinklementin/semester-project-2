@@ -14,7 +14,7 @@ export default function handleFavourites() {
   const featured = this.dataset.featured;
 
   const favourites = getFromStorage(FAV_STORAGE_KEY);
-  const productExists = favourites.find((product) => product.id === id);
+  const productExists = favourites.find(product => product.id === id);
 
   if (!productExists) {
     const product = {
@@ -31,7 +31,7 @@ export default function handleFavourites() {
     saveToStorage(FAV_STORAGE_KEY, favourites);
     fillNavHeart();
   } else {
-    const newProduct = favourites.filter((product) => product.id !== id);
+    const newProduct = favourites.filter(product => product.id !== id);
     saveToStorage(FAV_STORAGE_KEY, newProduct);
     fillNavHeart();
   }

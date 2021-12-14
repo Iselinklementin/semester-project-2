@@ -35,7 +35,7 @@ export async function addProduct(
     const response = await fetch(PRODUCT_URL, options);
     const json = await response.json();
 
-    formInputs.forEach((input) => {
+    formInputs.forEach(input => {
       input.disabled = true;
     });
 
@@ -53,7 +53,7 @@ export async function addProduct(
   } catch (error) {
     displayMessage(ERROR, MESSAGES.server_error, STATUS_ELEMENT);
   } finally {
-    formInputs.forEach((input) => {
+    formInputs.forEach(input => {
       input.disabled = false;
     });
 

@@ -6,14 +6,14 @@ export function originalProductPrice(id) {
   // Find original price, to add it to current price
   const getData = document.querySelectorAll(".favorite-heart");
   const data = [...getData];
-  let originalPrice = data.find((price) => {
+  let originalPrice = data.find(price => {
     if (price.getAttribute("data-id") === id) return price;
   });
 
   // Find price-html, so you can change it
   const getPrices = document.querySelectorAll(".card-price");
   const prices = [...getPrices];
-  let priceHtml = prices.find((price) => {
+  let priceHtml = prices.find(price => {
     if (price.getAttribute("data-id") === id) return price;
   });
 

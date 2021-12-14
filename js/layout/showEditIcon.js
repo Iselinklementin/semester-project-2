@@ -5,7 +5,7 @@ import { signedIn } from "../components/missingToken.js";
 export function showEditIcon() {
   if (signedIn) {
     const editIcons = document.querySelectorAll(".fa-edit");
-    editIcons.forEach((icon) => {
+    editIcons.forEach(icon => {
       icon.style.display = "none";
     });
   }

@@ -61,7 +61,10 @@ const url = PRODUCT_URL + id;
     }
 
     // remove Milky and span from title
-    let titleWithoutSpan = product.title.replace("<span>", "").replace("</span>", "").replace("Milky", "");
+    let titleWithoutSpan = product.title
+      .replace("<span>", "")
+      .replace("</span>", "")
+      .replace("Milky", "");
 
     documentTitle.innerHTML = `Edit Milky` + titleWithoutSpan;
     image.src = product.image_url;

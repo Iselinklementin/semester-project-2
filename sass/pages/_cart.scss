@@ -22,7 +22,7 @@
     position: absolute;
     left: 35%;
     bottom: 14%;
-    height: 90px;
+    height: 80px;
     @include flex(column, space-between, start);
 
     @include for-tablet {
@@ -57,7 +57,11 @@
     width: 40%;
 
     &-title {
-      max-width: 100%;
+      max-width: 160px;
+
+      @include for-tablet {
+        max-width: 100%;
+      }
     }
 
     img {

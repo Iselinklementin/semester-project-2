@@ -19,6 +19,7 @@ toggleSidebar();
       const products = finalValues[1];
 
       herobanner.src = productBanner.banner[0].url;
+      herobanner.alt = productBanner.banner[0].alternativeText;
 
       createProductCards(products);
       searchFunction(products);

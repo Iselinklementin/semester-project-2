@@ -9,7 +9,7 @@ import { subtotal } from "./handlePrice/subtotal.js";
 
 export function removeLastQuantityInCart(id) {
   const currentCart = getFromStorage(CART_STORAGE_KEY);
-  const newList = currentCart.filter((product) => product.id !== id);
+  const newList = currentCart.filter(product => product.id !== id);
   saveToStorage(CART_STORAGE_KEY, newList);
   createProductCards(newList);
   subtotal();

@@ -43,13 +43,17 @@
     padding: 15px;
     position: absolute;
     right: 3%;
-    top: 3%;
+    top: -15%;
     font-size: 1.4rem;
     cursor: pointer;
     color: getColour(dark);
 
     &:hover {
       transform: scale(1.05);
+    }
+
+    @include for-tablet {
+      top: 3%;
     }
   }
 

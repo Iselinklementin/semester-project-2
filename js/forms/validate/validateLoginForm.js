@@ -1,5 +1,11 @@
 import { validateEmail, validatePassword } from "../../components/checkValidation.js";
-import { loginBtn, errorLogin, errorPassword, emailInput, passwordInput } from "../../components/elements.js";
+import {
+  loginBtn,
+  errorLogin,
+  errorPassword,
+  emailInput,
+  passwordInput,
+} from "../../components/elements.js";
 import { MESSAGES } from "../../components/messages.js";
 
 export function validateLoginForm() {

@@ -12,7 +12,7 @@ export function removeFromCart() {
   let id = this.getAttribute("data-id");
   const currentItems = getFromStorage(CART_STORAGE_KEY);
 
-  currentItems.forEach((item) => {
+  currentItems.forEach(item => {
     if (item.id === id) {
       // ask if they wish to delete product
       openModal(MESSAGES.delete, `Are you sure you want to remove ${item.title} from your cart?`);

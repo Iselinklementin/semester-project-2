@@ -33,7 +33,7 @@ const id = params.get("id");
 
   loader.style.display = "none";
   const currentFavorites = getFromStorage(FAV_STORAGE_KEY);
-  const doesFavExists = currentFavorites.find((fav) => {
+  const doesFavExists = currentFavorites.find(fav => {
     if (parseInt(fav.id) === product.id || fav.id === product.id) {
       return true;
     }
