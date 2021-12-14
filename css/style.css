@@ -2428,4 +2428,14 @@ footer .logo-container-footer .logo-footer {
 .favorites-page-wrapper .clear {
   font-size: 0.8rem;
 }
+
+.favorites-page-wrapper .col {
+  max-width: 190px;
+}
+
+@media (min-width: 768px) {
+  .favorites-page-wrapper .col {
+    max-width: unset;
+  }
+}
 /*# sourceMappingURL=style.css.map */
