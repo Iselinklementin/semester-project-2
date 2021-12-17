@@ -6,10 +6,10 @@
   width: 0;
   overflow-y: hidden;
   background: getColour(contrast);
-  opacity: 0;
   display: flex;
   padding-top: 5rem;
   top: 0;
+  @include opacity(0);
   @include transition(all 0.5s ease);
 }
 
@@ -112,7 +112,7 @@
 .sidebar-nav-wrapper {
   &.show .sidebar-nav-container {
     width: 100%;
-    opacity: 1;
+    @include opacity(1);
     @include transition(all 0.5s ease);
   }
 }

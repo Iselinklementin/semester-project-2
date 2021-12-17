@@ -464,10 +464,10 @@ nav .nav-links-top-right a:hover {
   width: 0;
   overflow-y: hidden;
   background: #fbaf2a;
-  opacity: 0;
   display: flex;
   padding-top: 5rem;
   top: 0;
+  opacity: 0;
   transition: all 0.5s ease;
 }
 
