@@ -33,8 +33,13 @@
     position: relative;
 
     img {
-      min-height: 400px;
+      min-height: 600px;
       object-fit: cover;
+
+      @include for-desktop {
+        height: 500px;
+        min-height: unset;
+      }
     }
   }
 
@@ -43,7 +48,6 @@
     padding: 15px;
     position: absolute;
     right: 3%;
-    top: -15%;
     font-size: 1.4rem;
     cursor: pointer;
     color: getColour(dark);
@@ -55,6 +59,11 @@
     @include for-tablet {
       top: 3%;
     }
+  }
+
+  .fa-edit {
+    right: -3%;
+    top: -15%;
   }
 
   .text-content-container {
@@ -115,7 +124,7 @@
 
   h2 {
     font-size: 1.6rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 
   #addToCart-btn {

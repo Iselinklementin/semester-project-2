@@ -1838,8 +1838,15 @@ footer .logo-container-footer .logo-footer {
 }
 
 .detailpage-wrapper .image-container img {
-  min-height: 400px;
+  min-height: 600px;
   object-fit: cover;
+}
+
+@media (min-width: 1200px) {
+  .detailpage-wrapper .image-container img {
+    height: 500px;
+    min-height: unset;
+  }
 }
 
 .detailpage-wrapper .fa-edit,
@@ -1847,7 +1854,6 @@ footer .logo-container-footer .logo-footer {
   padding: 15px;
   position: absolute;
   right: 3%;
-  top: -15%;
   font-size: 1.4rem;
   cursor: pointer;
   color: black;
@@ -1863,6 +1869,11 @@ footer .logo-container-footer .logo-footer {
   .detailpage-wrapper .favorite-icon {
     top: 3%;
   }
+}
+
+.detailpage-wrapper .fa-edit {
+  right: -3%;
+  top: -15%;
 }
 
 .detailpage-wrapper .text-content-container {
@@ -1937,7 +1948,7 @@ footer .logo-container-footer .logo-footer {
 
 .detailpage-wrapper h2 {
   font-size: 1.6rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .detailpage-wrapper #addToCart-btn {

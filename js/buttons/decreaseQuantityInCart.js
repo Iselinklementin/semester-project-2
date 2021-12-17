@@ -7,14 +7,19 @@ import { openModal } from "../common/modal/openModal.js";
 import { MESSAGES } from "../components/messages.js";
 import { removeLastQuantityInCart } from "../common/removeLastQuantityInCart.js";
 import { originalProductPrice } from "../common/handlePrice/originalProductPrice.js";
+import { updatePriceCart } from "../common/handlePrice/updatePriceCart.js";
 
 // decrease quantity in cart
 // and update the price
 
 export function decreaseQuantityInCart() {
+  // her fungerer ikke prisen når jeg fjerner noe
+  // den går tilbake til start
+  // skjer også når jeg sletter
+
   let id = this.getAttribute("data-id");
   const cartProducts = getFromStorage(CART_STORAGE_KEY);
-  const product = cartProducts.find(product => product.id === id);
+  const product = cartProducts.find((product) => product.id === id);
 
   product.quantity--;
   this.nextElementSibling.value = `${product.quantity}`;
