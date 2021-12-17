@@ -104,6 +104,7 @@ nav {
 
       &:hover {
         color: getColour(contrast_dark);
+        cursor: pointer;
       }
 
       @include for-phone {
