@@ -48,7 +48,7 @@
 
     &:hover {
       box-shadow: none;
-      @include border-bottom(dark);
+      transform: scale(1);
     }
   }
 

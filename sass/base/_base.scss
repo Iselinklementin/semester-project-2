@@ -159,15 +159,18 @@ footer {
   }
 }
 
-.no-results {
-  border: #737e7c dashed 2px;
+.empty-results-container {
+  width: 100%;
+  height: 100%;
+  border: #66abad dashed 2px;
   border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 200px;
-  min-height: 300px;
-  margin: 1.5rem auto 1.5rem auto;
+  margin: 1.5rem auto;
+  @include flex(row, center, center);
+
+  .empty-results {
+    margin: 0;
+    padding: 2rem;
+  }
 }
 
 .fa-sign-out-alt {
