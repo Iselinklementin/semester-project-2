@@ -16,7 +16,7 @@ import {
   contentContainer,
 } from "../components/elements.js";
 import { addToCart } from "../buttons/addToCart.js";
-import { updatePriceDetail } from "../common/handlePrice/updatePriceDetail.js";
+import { priceDetail } from "../common/handlePrice/priceDetail.js";
 import { changeCartIcon } from "../layout/changeCartIcon.js";
 
 toggleSidebar();
@@ -33,7 +33,7 @@ const id = params.get("id");
 
   loader.style.display = "none";
   const currentFavorites = getFromStorage(FAV_STORAGE_KEY);
-  const doesFavExists = currentFavorites.find(fav => {
+  const doesFavExists = currentFavorites.find((fav) => {
     if (parseInt(fav.id) === product.id || fav.id === product.id) {
       return true;
     }
@@ -98,14 +98,14 @@ const id = params.get("id");
     if (this.nextElementSibling.value <= 1) {
       this.nextElementSibling.value = 1;
     }
-    updatePriceDetail(product);
+    priceDetail(product);
   }
 
   function increaseQuantity() {
     this.previousElementSibling.value++;
-    updatePriceDetail(product);
+    priceDetail(product);
   }
 
   showEditIcon();
-  updatePriceDetail(product);
+  priceDetail(product);
 })();

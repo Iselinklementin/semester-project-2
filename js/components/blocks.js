@@ -26,7 +26,7 @@ export default class Block {
                 <div class="product-info">
                     <h2 class="card-title">${this.title}</h2>
                     <p class="card-text">${this.description}</p>
-                    <p class="card-price" data-id="${this.id}">$ ${this.price}</p>
+                    <p class="card-price" data-id="${this.id}" data-price="${this.price}">$${this.price}</p>
                 </div>
               </a> 
             </div>`;

@@ -11,6 +11,7 @@ export function subtotal() {
   let cost = 0;
   let inCart = 0;
 
+  // Show how many items it is in cart
   currentCart.filter((product) => {
     inCart += parseFloat(product.quantity);
     productsInCart.innerText = `${inCart} product(s) in cart`;
@@ -19,6 +20,7 @@ export function subtotal() {
   if (currentCart.length === 0) {
     sum.innerHTML = `$ 0.00`;
     emptyResult();
+    productsInCart.innerText = `0 product(s) in cart`;
   }
 
   // using quantity to get the correct price

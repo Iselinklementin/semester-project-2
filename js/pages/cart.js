@@ -5,8 +5,8 @@ import { createProductCards } from "../common/createHtml/createProductCards.js";
 import { productContainer, loader } from "../components/elements.js";
 import { addQuantityHtml } from "../common/createHtml/addQuantityHtml.js";
 import { subtotal } from "../common/handlePrice/subtotal.js";
-import { updatePriceCart } from "../common/handlePrice/updatePriceCart.js";
 import toggleSidebar from "../layout/nav.js";
+import { setCartPrices } from "../common/handlePrice/setCartPrices.js";
 
 const currentItems = getFromStorage(CART_STORAGE_KEY);
 productContainer.innerHTML = "";
@@ -16,6 +16,9 @@ createProductCards(currentItems);
 emptyResult();
 addQuantityHtml();
 subtotal();
-updatePriceCart();
+
+currentItems.forEach((product) => {
+  setCartPrices(product.id, product);
+});
 
 loader.style.display = "none";
