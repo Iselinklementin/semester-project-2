@@ -12,7 +12,7 @@ export function searchFunction(products) {
       // remove span from the title
       let title = item.title.replace("<span>", "").replace("</span>", "").toLowerCase();
       const descProduct = item.description.toLowerCase();
-      if (descProduct.includes(searchValue) || title.toLowerCase().includes(searchValue)) {
+      if (descProduct.includes(searchValue) || title.includes(searchValue)) {
         return true;
       }
     });
