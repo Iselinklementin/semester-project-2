@@ -87,8 +87,16 @@ nav {
       @include flex(row, center, center);
     }
 
-    & .active {
-      color: getColour(contrast_dark);
+    & .active::after {
+      position: absolute;
+      content: "";
+      height: 2px;
+      margin: auto;
+      left: 0;
+      right: 0;
+      width: 50%;
+      background: getColour(contrast_dark);
+      bottom: 0;
     }
 
     a {

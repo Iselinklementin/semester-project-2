@@ -271,6 +271,19 @@ footer {
   background-color: white;
 }
 
+.cart-count {
+  position: absolute;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.8rem;
+  padding: 1px 7px;
+  border-radius: 50%;
+  margin-left: -10px;
+  top: -6px;
+  background-color: #2d6789;
+  background-color: #bd8320;
+  color: white;
+}
+
 .loader-background {
   position: absolute;
   height: 100%;
@@ -424,8 +437,16 @@ nav .nav-links-top-right ul {
   align-items: center;
 }
 
-nav .nav-links-top-right .active {
-  color: #bd8320;
+nav .nav-links-top-right .active::after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 50%;
+  background: #bd8320;
+  bottom: 0;
 }
 
 nav .nav-links-top-right a {

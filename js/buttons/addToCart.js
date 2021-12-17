@@ -19,9 +19,10 @@ export function addToCart() {
 
   // Use the input-quantity to see how many products they want
   let count = inputQuantity.value;
+  changeCartIcon();
 
   const cartItems = getFromStorage(CART_STORAGE_KEY);
-  const productExists = cartItems.find(product => product.id === id);
+  const productExists = cartItems.find((product) => product.id === id);
 
   if (productExists) {
     if (count <= 1) {
@@ -38,6 +39,7 @@ export function addToCart() {
     openModal(MESSAGES.added, `${title} is added! You now have ${productExists.quantity} in cart.`);
     closeBtn.innerText = MESSAGES.confirm;
     confirmBtn.innerText = MESSAGES.go_to_cart;
+    changeCartIcon();
 
     confirmBtn.addEventListener("click", () => {
       modal.style.display = "none";
@@ -54,6 +56,7 @@ export function addToCart() {
     openModal(MESSAGES.added, `${title} is added!`);
     closeBtn.innerText = MESSAGES.confirm;
     confirmBtn.innerText = MESSAGES.go_to_cart;
+    changeCartIcon();
 
     confirmBtn.addEventListener("click", () => {
       modal.style.display = "none";

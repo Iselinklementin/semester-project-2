@@ -1,4 +1,5 @@
 import { results } from "../components/elements.js";
+import { changeCartIcon } from "../layout/changeCartIcon.js";
 
 // If search, favourites or cart is empty
 // give feedback

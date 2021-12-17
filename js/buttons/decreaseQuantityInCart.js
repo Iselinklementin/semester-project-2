@@ -3,6 +3,7 @@ import { CART_STORAGE_KEY } from "../settings/keys.js";
 import { subtotal } from "../common/handlePrice/subtotal.js";
 import { setCartPrices } from "../common/handlePrice/setCartPrices.js";
 import { removeFromCart } from "./removeFromCart.js";
+import { changeCartIcon } from "../layout/changeCartIcon.js";
 
 // decrease quantity in cart
 // and update the price
@@ -28,4 +29,5 @@ export function decreaseQuantityInCart() {
   setCartPrices(id, product);
   saveToStorage(CART_STORAGE_KEY, cartProducts);
   subtotal();
+  changeCartIcon();
 }

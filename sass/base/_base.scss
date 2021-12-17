@@ -254,6 +254,20 @@ footer {
   }
 }
 
+// cartIcon
+.cart-count {
+  position: absolute;
+  font-family: $font-primary;
+  font-size: 0.8rem;
+  padding: 1px 7px;
+  border-radius: 50%;
+  margin-left: -10px;
+  top: -6px;
+  background-color: #2d6789;
+  background-color: getColour(contrast_dark);
+  color: white;
+}
+
 // loader
 
 .loader-background {

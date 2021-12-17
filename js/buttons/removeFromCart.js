@@ -8,6 +8,7 @@ import { addQuantityHtml } from "../common/createHtml/addQuantityHtml.js";
 import { subtotal } from "../common/handlePrice/subtotal.js";
 import { createProductCards } from "../common/createHtml/createProductCards.js";
 import { setCartPrices } from "../common/handlePrice/setCartPrices.js";
+import { changeCartIcon } from "../layout/changeCartIcon.js";
 
 // Remove products from cart
 // if button is confirmed
@@ -28,11 +29,13 @@ export function removeFromCart(id) {
         createProductCards(newList);
         subtotal();
         addQuantityHtml();
+        changeCartIcon();
 
         // Set price on the other products
         newList.forEach((product) => {
           setCartPrices(product.id, product);
         });
+
         modal.style.display = "none";
       });
       closeModal();
