@@ -1,14 +1,11 @@
 import { createProductCards } from "./createHtml/createProductCards.js";
 import { emptyResult } from "../components/emptyResult.js";
-import { productContainer } from "../components/elements.js";
+import { productContainer, filterBtns, searchInput } from "../components/elements.js";
 
 export function searchFunction(products) {
-  const searchInput = document.querySelector(".search-product-page");
-  const filterBtn = document.querySelectorAll(".filter-btn");
-
   searchInput.oninput = event => {
     const searchValue = event.target.value.trim().toLowerCase();
-    const findChildrenClass = [...filterBtn];
+    const findChildrenClass = [...filterBtns];
     const hasClass = findChildrenClass.filter(child => child.classList.contains("active-filter"));
 
     const filterProducts = products.filter(product => {

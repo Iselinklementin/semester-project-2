@@ -12,7 +12,7 @@ export function increaseQuantityInCart() {
 
   // increase quantity in cart
   const cartProducts = getFromStorage(CART_STORAGE_KEY);
-  const product = cartProducts.find((product) => product.id === id);
+  const product = cartProducts.find(product => product.id === id);
   product.quantity++;
   this.previousElementSibling.value = product.quantity;
   setCartPrices(id, product);

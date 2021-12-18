@@ -16,7 +16,7 @@ import { changeCartIcon } from "../layout/changeCartIcon.js";
 export function removeFromCart(id) {
   const currentItems = getFromStorage(CART_STORAGE_KEY);
 
-  currentItems.forEach((item) => {
+  currentItems.forEach(item => {
     if (item.id === id) {
       // ask if they wish to delete product
       openModal(MESSAGES.delete, `Are you sure you want to remove ${item.title} from your cart?`);
@@ -24,7 +24,7 @@ export function removeFromCart(id) {
       // If its confirmed - delete it
       confirmBtn.addEventListener("click", () => {
         const currentCart = getFromStorage(CART_STORAGE_KEY);
-        const newList = currentCart.filter((product) => product.id !== id);
+        const newList = currentCart.filter(product => product.id !== id);
         saveToStorage(CART_STORAGE_KEY, newList);
         createProductCards(newList);
         subtotal();
@@ -32,7 +32,7 @@ export function removeFromCart(id) {
         changeCartIcon();
 
         // Set price on the other products
-        newList.forEach((product) => {
+        newList.forEach(product => {
           setCartPrices(product.id, product);
         });
 

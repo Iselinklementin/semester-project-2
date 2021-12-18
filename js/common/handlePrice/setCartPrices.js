@@ -4,7 +4,7 @@
 export function setCartPrices(id, product) {
   const getPrices = document.querySelectorAll(".card-price");
   const prices = [...getPrices];
-  let priceHtml = prices.find((price) => {
+  let priceHtml = prices.find(price => {
     if (price.getAttribute("data-id") === id) return price;
   });
 

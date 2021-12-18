@@ -3,7 +3,7 @@ import toggleSidebar from "../layout/nav.js";
 import { loadingHtml } from "../layout/skeletonLoading.js";
 import { PRODUCTPAGE_URL, PRODUCT_URL } from "../settings/api.js";
 import { searchFunction } from "../common/searchFunction.js";
-import { herobanner, filterBtns, productContainer } from "../components/elements.js";
+import { herobanner, filterBtns, productContainer, searchInput } from "../components/elements.js";
 
 loadingHtml();
 toggleSidebar();
@@ -29,10 +29,10 @@ toggleSidebar();
       });
 
       // filter products with buttons
+
       function filterProducts() {
         // empty search-input if user clicks on a new filter
         // and reset card-container to standard
-        const searchInput = document.querySelector(".search-product-page");
         searchInput.value = "";
         productContainer.classList = `container p-0 row row-cols-2 g-4 row-cols-lg-4 results product-container`;
 

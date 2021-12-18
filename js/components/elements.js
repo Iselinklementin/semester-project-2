@@ -9,6 +9,9 @@ export const navSidebar = document.querySelector(".sidebar-nav-links");
 export const filterBtns = document.querySelectorAll(".filter-btn");
 export const herobanner = document.querySelector(".hero-banner");
 
+// search
+export const searchInput = document.querySelector(".search-product-page");
+
 // login form
 export const loginForm = document.querySelector(".login-form");
 export const emailInput = document.querySelector(".email");

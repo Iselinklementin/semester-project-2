@@ -12,7 +12,7 @@ export function decreaseQuantityInCart() {
   let id = this.getAttribute("data-id");
 
   const cartProducts = getFromStorage(CART_STORAGE_KEY);
-  const product = cartProducts.find((product) => product.id === id);
+  const product = cartProducts.find(product => product.id === id);
   product.quantity--;
   this.nextElementSibling.value = `${product.quantity}`;
 
