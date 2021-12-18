@@ -48,6 +48,7 @@
       .search-products {
         order: 2;
         max-width: 300px;
+        margin-right: 2.25rem;
       }
     }
   }
@@ -69,5 +70,19 @@
     right: 10px;
     top: 11px;
     z-index: 4;
+  }
+
+  .products-wrapper {
+    min-height: 300px;
+    align-items: baseline;
+    justify-content: center;
+
+    @include for-tablet {
+      justify-content: flex-start;
+    }
+
+    @include for-laptop {
+      min-height: 600px;
+    }
   }
 }
