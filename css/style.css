@@ -282,6 +282,7 @@ footer {
   background-color: #2d6789;
   background-color: #bd8320;
   color: white;
+  display: none;
 }
 
 .loader-background {
