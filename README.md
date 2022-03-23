@@ -11,7 +11,7 @@ The site must have a good user experience and UI design, following today’s tre
 Build a frontend with home, product list, product detail and cart pages.
 Build admin pages to create, update and delete products.
 
-**Bold Text** The home page must include:
+**** The home page must include:
 
     A hero banner with an image that is uploaded to Strapi. You can find this in the Home single type in the provided Strapi project.
     A list of featured products. On Strapi products can be marked as ‘featured’. When a product is marked as ‘featured’ it should be displayed on the homepage. You can find the products in the Products collection type.
