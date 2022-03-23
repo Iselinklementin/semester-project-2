@@ -11,12 +11,12 @@ Build a frontend with home, product list, product detail and cart pages.
 Build admin pages to create, update and delete products.
 
 **The home page must include:**
-
+---
 - A hero banner with an image that is uploaded to Strapi. You can find this in the Home single type in the provided Strapi project.
 - A list of featured products. On Strapi products can be marked as ‘featured’. When a product is marked as ‘featured’ it should be displayed on the homepage.
 
 **The products page must include:**
-
+---
 - A list of all products added to Strapi. Each product must display its title, price and image. The product should link to its products detail page.
 - A search text box. When searching, only the products that include the searched text in their title or description should be listed.
 
