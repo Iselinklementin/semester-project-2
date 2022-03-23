@@ -11,12 +11,12 @@ Build a frontend with home, product list, product detail and cart pages.
 Build admin pages to create, update and delete products.
 
 **The home page must include:**
----
+
 - A hero banner with an image that is uploaded to Strapi. You can find this in the Home single type in the provided Strapi project.
 - A list of featured products. On Strapi products can be marked as ‘featured’. When a product is marked as ‘featured’ it should be displayed on the homepage.
 
 **The products page must include:**
----
+
 - A list of all products added to Strapi. Each product must display its title, price and image. The product should link to its products detail page.
 - A search text box. When searching, only the products that include the searched text in their title or description should be listed.
 
@@ -44,22 +44,25 @@ After the list of products, display the total price of all the products in the c
 The admin section must only be accessible to logged in admin users and must include the following features.
 
 **Login/Logout**
+
 Create an admin login form that allows administrator users to login. Use local storage to keep the user logged in.
 When logged in, display a logout button in the layout that logs the user out. Logging out should not clear the cart.
 
 **Add/edit products**
+
 Create form(s) that allow products to be added and edited. The form must allow the user to toggle whether a product is featured.
 
 **Product images**
+
 For adding/editing product images use either of these 2 methods:
 
 - Use a file upload field to upload images to Strapi
 - Use a text input that allows a URL to be entered. This allows an image from an external URL to be used as the product image.
 
 **Delete existing product**
+
 Allow products to be deleted. Before a product is deleted you must display a confirmation dialog.
 The product should only be deleted if the user confirms.
-
 The API MUST be publicly hosted and accessible, you cannot submit a custom API with your frontend code.
 
 **FAQ**
