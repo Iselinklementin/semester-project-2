@@ -56,8 +56,8 @@ Create form(s) that allow products to be added and edited. The form must allow t
 **Product images**
 For adding/editing product images use either of these 2 methods:
 
-    Use a file upload field to upload images to Strapi, or
-    Use a text input that allows a URL to be entered. This allows an image from an external URL to be used as the product image.
+- Use a file upload field to upload images to Strapi
+- Use a text input that allows a URL to be entered. This allows an image from an external URL to be used as the product image.
 
 **Delete existing product**
 Allow products to be deleted. Before a product is deleted you must display a confirmation dialog.
