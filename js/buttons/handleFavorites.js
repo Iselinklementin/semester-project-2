@@ -3,7 +3,7 @@ import { FAV_STORAGE_KEY } from "../settings/keys.js";
 import { fillNavHeart } from "../layout/fillNavHeart.js";
 
 export default function handleFavourites() {
-  this.classList.toggle("fa");
+  this.classList.toggle("fa-solid");
 
   const id = this.dataset.id;
   const title = this.dataset.title;
