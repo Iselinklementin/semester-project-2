@@ -6,8 +6,8 @@ export function fillNavHeart() {
   const navHeart = document.querySelector(".fa-heart");
   const favStorage = getFromStorage(FAV_STORAGE_KEY);
   if (favStorage.length) {
-    navHeart.classList.add("fa");
+    navHeart.classList.add("fa-solid");
   } else {
-    navHeart.classList.remove("fa");
+    navHeart.classList.remove("fa-solid");
   }
 }
