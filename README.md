@@ -1,3 +1,8 @@
+Because of Strapi/Heroku/Cloudinary, it takes sometime to load the page at first.
+It gets better after you have entered the first time.
+
+---
+
 # Semester Project 2
 
 We needed to create an e-commerce website that had both customer-facing and admin sections.
