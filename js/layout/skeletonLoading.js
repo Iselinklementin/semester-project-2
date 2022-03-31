@@ -8,7 +8,7 @@ export function loadingHtml() {
     productContainer.innerHTML += `
     <div class="col loading-col">
     <div class="card" aria-hidden="true">
-      <img src="" class="card-img-top" id="loading-img" alt="..." style="height: 200px;" />
+      <div style="height: 200px;"></div>
       <div class="card-body">
         <h5 class="card-title placeholder-glow">
           <span class="placeholder loadspan"></span>
