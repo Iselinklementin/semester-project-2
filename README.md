@@ -108,7 +108,6 @@ The API MUST be publicly hosted and accessible, you cannot submit a custom API w
 
 ### Contact
 
+You can have a look at 👩‍🎨 [My portfolio](https://iselinklementin.netlify.app/), or contact me on LinkedIn:
 
-👩🏼‍💻 [My portfolio](https://iselinklementin.netlify.app/)
-- [Github](https://github.com/Iselinklementin)
-- [LinkedIn](https://www.linkedin.com/in/iselinhaugen)
+[![Linkedin Badge](https://img.shields.io/badge/-IselinHaugen-white?style=for-the-badge&logo=Linkedin&logoColor=0077b5&link=https://www.linkedin.com/in/iselinhaugen)](https://www.linkedin.com/in/iselinhaugen)
