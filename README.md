@@ -17,6 +17,12 @@ Both sections needed to be responsive and populated by a Strapi API.
 
 ---
 
+## Contributing
+
+Make sure to open a pull request so code can be reviewed.
+
+---
+
 
 ## Brief
 
