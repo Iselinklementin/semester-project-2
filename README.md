@@ -1,6 +1,6 @@
 # Semester Project 2
 
-![image](https://user-images.githubusercontent.com/52622303/164316813-4b12d99f-aeb7-4069-85cf-e72b3a50ac99.png)
+![image](images/semester_image.jpg)
 
 We was set to create an e-commerce website that had both customer-facing and admin sections.
 Both sections needed to be responsive and populated by a Strapi API.
