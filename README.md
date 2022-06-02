@@ -17,8 +17,7 @@ Both sections needed to be responsive and populated by a Strapi API.
 
 
 ## Brief
-Design your website using your favourite tool. You will need to create a suitable logo.
-You must apply all that you have learned in your studies so far.
+
 The site must have a good user experience and UI design, following today’s trends and design patterns.
 Build a frontend with home, product list, product detail and cart pages.
 Build admin pages to create, update and delete products.
@@ -32,7 +31,6 @@ Build admin pages to create, update and delete products.
 
 - A list of all products added to Strapi. Each product must display its title, price and image. The product should link to its products detail page.
 - A search text box. When searching, only the products that include the searched text in their title or description should be listed.
-
 
 **The product details page must include:**
 
