@@ -106,8 +106,10 @@ The API MUST be publicly hosted and accessible, you cannot submit a custom API w
 
 ---
 
-## Contact
+### Contact
+https://shields.io/badge/style-plastic-green?logo=appveyor&style=plastic
+![LinkedIn](https://shields.io/badge/style-plastic-green?logo=appveyor&style=plastic)
 
-- [My portfolio](https://iselinklementin.netlify.app/)
+👩🏼‍💻 [My portfolio](https://iselinklementin.netlify.app/)
 - [Github](https://github.com/Iselinklementin)
 - [LinkedIn](https://www.linkedin.com/in/iselinhaugen)
