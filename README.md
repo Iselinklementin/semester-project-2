@@ -1,9 +1,11 @@
-Because of Strapi/Heroku/Cloudinary, it takes sometime to load the page at first.
-It gets better after you have entered the first time.
+# Semester Project 2
+
+We was set to create an e-commerce website that had both customer-facing and admin sections.
+Both sections needed to be responsive and populated by a Strapi API.
 
 ---
 
-### Tech
+### Tech used
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
 ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white) <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" /> ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
@@ -13,10 +15,6 @@ It gets better after you have entered the first time.
 
 ---
 
-# Semester Project 2
-
-We was set to create an e-commerce website that had both customer-facing and admin sections.
-Both sections needed to be responsive and populated by a Strapi API.
 
 ## Brief
 Design your website using your favourite tool. You will need to create a suitable logo.
