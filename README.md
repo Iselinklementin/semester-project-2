@@ -91,5 +91,7 @@ The API MUST be publicly hosted and accessible, you cannot submit a custom API w
     Use appropriate names for Sass classes and folders.
     All code should be properly formatted and arranged with sensible variable and function names.
     Use modules (imports/exports) to organise your code.
+    
+---
 
-### Grade: A
+#### Final grade: A
