@@ -103,3 +103,11 @@ The API MUST be publicly hosted and accessible, you cannot submit a custom API w
 ---
 
 #### Final grade: A
+
+---
+
+## Contact
+
+- [My portfolio](https://iselinklementin.netlify.app/)
+- [Github](https://github.com/Iselinklementin)
+- [LinkedIn](https://www.linkedin.com/in/iselinhaugen)
